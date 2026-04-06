@@ -10,11 +10,19 @@ const FOOTER_SERVICES = [
   { label: 'Rosacea Program', href: '/services#face-reality-acne-program' },
 ];
 
+const FOOTER_PRODUCTS = [
+  { label: 'All Products', href: '/products' },
+  { label: 'Cleansers', href: '/products' },
+  { label: 'Serums', href: '/products' },
+  { label: 'Treatments', href: '/products' },
+  { label: 'Moisturizers', href: '/products' },
+];
+
 const FOOTER_COMPANY = [
   { label: 'About Marta', href: '/about' },
   { label: 'Results', href: '/results' },
   { label: 'Reviews', href: '/reviews' },
-  { label: 'Blog', href: '#' },
+  { label: 'Blog', href: '/blog' },
 ];
 
 const FOOTER_CONTACT = [
@@ -29,7 +37,7 @@ export function Footer() {
   return (
     <footer className="bg-text text-white/50 pt-14 pb-6" role="contentinfo">
       <div className="max-w-300 mx-auto px-8 max-md:px-5">
-        <div className="grid grid-cols-[2.2fr_1fr_1fr_1fr] gap-10 pb-10 border-b border-white/6 max-lg:grid-cols-2 max-md:grid-cols-1">
+        <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-8 pb-10 border-b border-white/6 max-lg:grid-cols-3 max-md:grid-cols-1">
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5 no-underline text-white mb-3" aria-label="360 Radiance — Home">
               <div className="w-9.5 h-9.5 bg-teal rounded-2.5 flex items-center justify-center">
@@ -53,6 +61,7 @@ export function Footer() {
           </div>
 
           <FooterCol title="Services" links={FOOTER_SERVICES} />
+          <FooterCol title="Products" links={FOOTER_PRODUCTS} />
           <FooterCol title="Company" links={FOOTER_COMPANY} />
           <FooterCol title="Contact" links={FOOTER_CONTACT} />
         </div>

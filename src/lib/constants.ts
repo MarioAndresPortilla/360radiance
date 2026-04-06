@@ -348,6 +348,295 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
   },
 ];
 
+export type SkinConcern = 'acne' | 'aging' | 'rosacea' | 'hyperpigmentation' | 'dehydration' | 'sensitivity';
+
+export const SKIN_CONCERNS: { id: SkinConcern; label: string; icon: string }[] = [
+  { id: 'acne', label: 'Acne & Breakouts', icon: 'scan' },
+  { id: 'aging', label: 'Anti-Aging', icon: 'sparkle' },
+  { id: 'rosacea', label: 'Rosacea', icon: 'care' },
+  { id: 'hyperpigmentation', label: 'Dark Spots', icon: 'dropper' },
+  { id: 'dehydration', label: 'Dehydration', icon: 'vial' },
+  { id: 'sensitivity', label: 'Sensitivity', icon: 'leaf' },
+];
+
+export interface Product {
+  slug: string;
+  name: string;
+  tagline: string;
+  category: 'cleanser' | 'serum' | 'treatment' | 'moisturizer' | 'specialty';
+  concerns: SkinConcern[];
+  keyIngredients: { name: string; benefit: string }[];
+  howToUse: string;
+  pairsWith: string[];
+  badge?: string;
+  origin?: string;
+}
+
+export const PRODUCT_CATEGORIES = [
+  { id: 'all', label: 'All Products' },
+  { id: 'cleanser', label: 'Cleansers' },
+  { id: 'serum', label: 'Serums' },
+  { id: 'treatment', label: 'Treatments' },
+  { id: 'moisturizer', label: 'Moisturizers' },
+  { id: 'specialty', label: 'Specialty' },
+] as const;
+
+export const PRODUCTS: Product[] = [
+  {
+    slug: 'radiance-purifying-cleanser',
+    name: 'Purifying Gel Cleanser',
+    tagline: 'Deep-clean without stripping. Botanical-powered, pH-balanced.',
+    category: 'cleanser',
+    concerns: ['acne', 'sensitivity'],
+    keyIngredients: [
+      { name: 'Tea Tree Extract', benefit: 'Natural antibacterial that fights breakout-causing bacteria without irritation' },
+      { name: 'Aloe Vera', benefit: 'Soothes and hydrates while maintaining the skin\'s natural moisture barrier' },
+      { name: 'Green Tea Polyphenols', benefit: 'Antioxidant protection that neutralizes free radicals from daily exposure' },
+    ],
+    howToUse: 'Apply to damp skin morning and evening. Massage gently for 60 seconds, focusing on the T-zone. Rinse with lukewarm water.',
+    pairsWith: ['Radiance Clarifying Toner', 'Acne Control Serum'],
+    badge: 'Best Seller',
+  },
+  {
+    slug: 'radiance-clarifying-toner',
+    name: 'Clarifying Botanical Toner',
+    tagline: 'Rebalance. Refine pores. Prep for serums.',
+    category: 'cleanser',
+    concerns: ['acne', 'hyperpigmentation'],
+    keyIngredients: [
+      { name: 'Witch Hazel', benefit: 'Natural astringent that tightens pores without alcohol-based drying' },
+      { name: 'Niacinamide (B3)', benefit: 'Reduces inflammation, minimizes pores, and evens skin tone simultaneously' },
+      { name: 'Chamomile Extract', benefit: 'Anti-inflammatory botanical that calms redness and prepares skin for treatment' },
+    ],
+    howToUse: 'After cleansing, apply to a cotton pad and sweep across face and neck. Let absorb for 30 seconds before applying serum.',
+    pairsWith: ['Purifying Gel Cleanser', 'Vitamin C Brightening Serum'],
+  },
+  {
+    slug: 'acne-control-serum',
+    name: 'Acne Control Serum',
+    tagline: 'Targeted acne treatment with clinical-grade actives.',
+    category: 'serum',
+    concerns: ['acne'],
+    keyIngredients: [
+      { name: 'Salicylic Acid (2%)', benefit: 'Penetrates pores to dissolve oil and dead skin buildup — the root cause of breakouts' },
+      { name: 'Mandelic Acid', benefit: 'Gentle AHA that exfoliates surface cells and reduces post-inflammatory hyperpigmentation' },
+      { name: 'Zinc PCA', benefit: 'Regulates sebum production and reduces inflammation at the cellular level' },
+    ],
+    howToUse: 'Apply 3-4 drops to clean skin in the evening. Focus on active breakout areas. Follow with moisturizer. Introduce gradually — every other night for the first week.',
+    pairsWith: ['Purifying Gel Cleanser', 'Hydra-Repair Moisturizer'],
+    badge: 'Face Reality Protocol',
+  },
+  {
+    slug: 'vitamin-c-brightening-serum',
+    name: 'Vitamin C Brightening Serum',
+    tagline: 'European glass ampule technology for maximum potency.',
+    category: 'serum',
+    concerns: ['hyperpigmentation', 'aging'],
+    keyIngredients: [
+      { name: 'L-Ascorbic Acid (15%)', benefit: 'The gold standard of vitamin C — stimulates collagen and fades dark spots' },
+      { name: 'Ferulic Acid', benefit: 'Doubles the photoprotective capacity of vitamin C and stabilizes the formula' },
+      { name: 'Vitamin E', benefit: 'Synergistic antioxidant that enhances vitamin C absorption by 400%' },
+    ],
+    howToUse: 'Snap open one glass ampule. Apply entire contents to clean, dry skin in the morning. Follow with moisturizer and SPF.',
+    pairsWith: ['Clarifying Botanical Toner', 'Hydra-Repair Moisturizer'],
+    badge: 'European Grade',
+    origin: 'Germany',
+  },
+  {
+    slug: 'hyaluronic-hydration-serum',
+    name: 'Hyaluronic Hydration Serum',
+    tagline: 'Multi-weight hyaluronic acid for deep, lasting hydration.',
+    category: 'serum',
+    concerns: ['dehydration', 'aging', 'sensitivity'],
+    keyIngredients: [
+      { name: 'Triple-Weight Hyaluronic Acid', benefit: 'Three molecular sizes penetrate different skin layers for surface and deep hydration' },
+      { name: 'Panthenol (B5)', benefit: 'Strengthens the moisture barrier and accelerates skin repair' },
+      { name: 'Marine Collagen Peptides', benefit: 'Signal fibroblasts to produce more collagen, improving firmness over time' },
+    ],
+    howToUse: 'Apply 4-5 drops to damp skin morning and evening. Pat gently — do not rub. Layer under moisturizer for best results.',
+    pairsWith: ['Vitamin C Brightening Serum', 'Botanical Repair Cream'],
+    origin: 'Switzerland',
+  },
+  {
+    slug: 'rosacea-calm-treatment',
+    name: 'Rosacea Calm Treatment',
+    tagline: 'Clinical-strength redness reduction. Gentle enough for daily use.',
+    category: 'treatment',
+    concerns: ['rosacea', 'sensitivity'],
+    keyIngredients: [
+      { name: 'Azelaic Acid (10%)', benefit: 'Clinically proven to reduce rosacea redness, papules, and pustules' },
+      { name: 'Centella Asiatica', benefit: 'Cica extract that strengthens capillary walls and reduces visible redness' },
+      { name: 'Licorice Root Extract', benefit: 'Natural anti-inflammatory that inhibits melanin production and soothes irritation' },
+    ],
+    howToUse: 'Apply a thin layer to affected areas twice daily after cleansing. Can be used under moisturizer. Avoid direct sun exposure.',
+    pairsWith: ['Purifying Gel Cleanser', 'Botanical Repair Cream'],
+  },
+  {
+    slug: 'retinol-renewal-treatment',
+    name: 'Retinol Renewal Treatment',
+    tagline: 'Time-released retinol encapsulated in botanical microspheres.',
+    category: 'treatment',
+    concerns: ['aging', 'hyperpigmentation', 'acne'],
+    keyIngredients: [
+      { name: 'Encapsulated Retinol (0.5%)', benefit: 'Time-released delivery minimizes irritation while maximizing collagen stimulation' },
+      { name: 'Bakuchiol', benefit: 'Plant-based retinol alternative that enhances results without increasing sensitivity' },
+      { name: 'Squalane', benefit: 'Lightweight oil that prevents retinol-induced dryness while supporting skin barrier' },
+    ],
+    howToUse: 'Apply a pea-sized amount to clean, dry skin every other evening. Build to nightly use over 4 weeks. Always use SPF the following morning.',
+    pairsWith: ['Hyaluronic Hydration Serum', 'Hydra-Repair Moisturizer'],
+    origin: 'Spain',
+  },
+  {
+    slug: 'hydra-repair-moisturizer',
+    name: 'Hydra-Repair Moisturizer',
+    tagline: 'Lightweight barrier repair. Locks in actives. Never greasy.',
+    category: 'moisturizer',
+    concerns: ['dehydration', 'sensitivity', 'acne'],
+    keyIngredients: [
+      { name: 'Ceramide Complex', benefit: 'Restores the lipid barrier — the #1 factor in healthy, resilient skin' },
+      { name: 'Jojoba Oil', benefit: 'Mimics natural sebum, so skin absorbs it instantly without clogging pores' },
+      { name: 'Allantoin', benefit: 'Promotes cell regeneration and soothes post-treatment skin' },
+    ],
+    howToUse: 'Apply generously to face and neck morning and evening as the final step in your routine. Can be used over serums and treatments.',
+    pairsWith: ['Acne Control Serum', 'Hyaluronic Hydration Serum'],
+    badge: 'Best Seller',
+  },
+  {
+    slug: 'botanical-repair-cream',
+    name: 'Botanical Repair Cream',
+    tagline: 'Rich, restorative. For post-treatment and overnight recovery.',
+    category: 'moisturizer',
+    concerns: ['sensitivity', 'rosacea', 'dehydration'],
+    keyIngredients: [
+      { name: 'Shea Butter', benefit: 'Deep moisturization with natural vitamins A, E, and F for overnight repair' },
+      { name: 'Calendula Extract', benefit: 'Powerful wound-healing botanical that accelerates post-treatment recovery' },
+      { name: 'Rosehip Seed Oil', benefit: 'Rich in essential fatty acids that reduce scarring and improve skin elasticity' },
+    ],
+    howToUse: 'Apply a generous layer to clean skin in the evening. Ideal as a sleeping mask after treatments. Use nightly or as needed for recovery.',
+    pairsWith: ['Rosacea Calm Treatment', 'Hyaluronic Hydration Serum'],
+  },
+  {
+    slug: 'microderm-polish',
+    name: 'Microderm Polish',
+    tagline: 'Professional-grade exfoliant for at-home maintenance.',
+    category: 'specialty',
+    concerns: ['aging', 'hyperpigmentation', 'acne'],
+    keyIngredients: [
+      { name: 'Aluminum Oxide Crystals', benefit: 'Same medical-grade crystals used in professional microdermabrasion treatments' },
+      { name: 'Papaya Enzyme', benefit: 'Natural enzyme exfoliant that dissolves dead skin without abrasion' },
+      { name: 'Kaolin Clay', benefit: 'Absorbs excess oil and refines pore appearance without over-drying' },
+    ],
+    howToUse: 'Use 1-2 times per week on damp skin. Massage in small circles for 2 minutes, avoiding the eye area. Rinse thoroughly.',
+    pairsWith: ['Clarifying Botanical Toner', 'Vitamin C Brightening Serum'],
+    badge: 'Professional Grade',
+  },
+];
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  readTime: number;
+  date: string;
+  featured?: boolean;
+  tags: string[];
+}
+
+export const BLOG_CATEGORIES = [
+  'All',
+  'Acne Science',
+  'Ingredients',
+  'Skin Health',
+  'Treatments',
+  'Product Guides',
+] as const;
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: 'why-face-reality-works-when-everything-else-fails',
+    title: 'Why Face Reality Works When Everything Else Fails',
+    excerpt: 'After years of dermatologists, antibiotics, and over-the-counter products — why does this protocol finally clear your skin? The answer lies in how Face Reality treats acne as a chronic condition, not a one-time event.',
+    category: 'Acne Science',
+    readTime: 8,
+    date: '2026-03-28',
+    featured: true,
+    tags: ['Face Reality', 'acne', 'protocol', 'clinical'],
+  },
+  {
+    slug: 'the-science-of-glass-ampule-serums',
+    title: 'The Science of Glass Ampule Serums: Why Europe Got It Right',
+    excerpt: 'European skincare labs have used glass ampule technology for decades. Here\'s why single-dose, air-sealed delivery makes your serums 4x more effective than anything in a bottle.',
+    category: 'Ingredients',
+    readTime: 6,
+    date: '2026-03-21',
+    tags: ['serums', 'European', 'glass ampule', 'ingredients'],
+  },
+  {
+    slug: 'rosacea-triggers-complete-guide',
+    title: 'Rosacea Triggers: The Complete Guide to What\'s Inflaming Your Skin',
+    excerpt: 'Rosacea isn\'t random. From gut health to UV exposure to specific ingredients in your current products — here are the 12 most common triggers and exactly how to avoid them.',
+    category: 'Skin Health',
+    readTime: 10,
+    date: '2026-03-14',
+    tags: ['rosacea', 'triggers', 'inflammation', 'gut health'],
+  },
+  {
+    slug: 'microdermabrasion-what-actually-happens',
+    title: 'Microdermabrasion: What Actually Happens to Your Skin (Layer by Layer)',
+    excerpt: 'Most people know microdermabrasion "exfoliates" — but what does that mean at a cellular level? A clinical breakdown of how crystal exfoliation triggers your skin\'s repair cascade.',
+    category: 'Treatments',
+    readTime: 7,
+    date: '2026-03-07',
+    tags: ['microdermabrasion', 'exfoliation', 'collagen', 'treatment'],
+  },
+  {
+    slug: 'your-skin-barrier-explained',
+    title: 'Your Skin Barrier Explained: Why It Matters More Than Any Product',
+    excerpt: 'The acid mantle, the lipid matrix, the microbiome. Your skin barrier is a complex ecosystem — and most skincare routines are accidentally destroying it. Here\'s how to rebuild it.',
+    category: 'Skin Health',
+    readTime: 9,
+    date: '2026-02-28',
+    tags: ['skin barrier', 'acid mantle', 'microbiome', 'ceramides'],
+  },
+  {
+    slug: 'retinol-vs-bakuchiol',
+    title: 'Retinol vs. Bakuchiol: A Clinician\'s Honest Comparison',
+    excerpt: 'Bakuchiol is marketed as "natural retinol" — but does it deliver the same results? We break down the clinical data, the ideal use cases, and why we use both in our Retinol Renewal Treatment.',
+    category: 'Ingredients',
+    readTime: 7,
+    date: '2026-02-21',
+    tags: ['retinol', 'bakuchiol', 'anti-aging', 'ingredients'],
+  },
+  {
+    slug: 'hormonal-acne-root-cause',
+    title: 'Hormonal Acne: Getting to the Root Cause (Not Just the Surface)',
+    excerpt: 'Hormonal acne follows patterns — jawline, chin, cyclical flares. Understanding the androgen-sebum connection is the first step to breaking the cycle without harsh medications.',
+    category: 'Acne Science',
+    readTime: 8,
+    date: '2026-02-14',
+    tags: ['hormonal acne', 'androgens', 'sebum', 'jawline acne'],
+  },
+  {
+    slug: 'building-a-morning-routine-that-works',
+    title: 'Building a Morning Routine That Actually Works (And Why Order Matters)',
+    excerpt: 'Cleanser, toner, serum, moisturizer, SPF — but the order, wait times, and layering technique matter as much as the products themselves. A step-by-step guide from our clinic.',
+    category: 'Product Guides',
+    readTime: 6,
+    date: '2026-02-07',
+    tags: ['routine', 'morning', 'layering', 'SPF'],
+  },
+  {
+    slug: 'parabens-sulfates-toxins-what-to-actually-avoid',
+    title: 'Parabens, Sulfates, Toxins: What to Actually Avoid (And What\'s Just Marketing)',
+    excerpt: 'Not all "clean beauty" claims are equal. A science-based guide to which ingredients genuinely harm your skin and which "scary" chemicals are perfectly safe.',
+    category: 'Ingredients',
+    readTime: 9,
+    date: '2026-01-31',
+    tags: ['clean beauty', 'parabens', 'sulfates', 'toxins'],
+  },
+];
+
 export const BOOKING_SERVICES = [
   'Acne Consultation',
   'Microdermabrasion',
