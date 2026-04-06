@@ -5,7 +5,10 @@
       "Bash(npx create-next-app@latest . --typescript --tailwind --app --src-dir --no-eslint --no-import-alias --use-npm)",
       "Bash(npm install:*)",
       "Bash(npx next:*)",
-      "Bash(grep \"Replace with\\\\|TODO\\\\|FIXME\\\\|placeholder\\\\|dummy\" /c/Users/mport/Documents/360radiance/src/components/sections/*.tsx /c/Users/mport/Documents/360radiance/src/components/layout/*.tsx)"
+      "Bash(grep \"Replace with\\\\|TODO\\\\|FIXME\\\\|placeholder\\\\|dummy\" /c/Users/mport/Documents/360radiance/src/components/sections/*.tsx /c/Users/mport/Documents/360radiance/src/components/layout/*.tsx)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)"
     ]
   }
 }

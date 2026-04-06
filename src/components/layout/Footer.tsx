@@ -3,114 +3,121 @@ import Image from 'next/image';
 import { BUSINESS } from '@/lib/constants';
 import { IconWhatsApp } from '@/components/icons/Icons';
 
-const FOOTER_SERVICES = [
-  { label: 'Acne Treatment', href: '/services#face-reality-acne-program' },
-  { label: 'Microdermabrasion', href: '/services#microdermabrasion' },
-  { label: 'Skin Analysis', href: '/services#skin-analysis-consultation' },
-  { label: 'Botanical Care', href: '/services#botanical-treatments' },
-  { label: 'Rosacea Program', href: '/services#face-reality-acne-program' },
-];
-
-const FOOTER_PRODUCTS = [
-  { label: 'All Products', href: '/products' },
-  { label: 'Cleansers', href: '/products' },
-  { label: 'Serums', href: '/products' },
-  { label: 'Treatments', href: '/products' },
-  { label: 'Moisturizers', href: '/products' },
-];
-
-const FOOTER_COMPANY = [
-  { label: 'About Marta', href: '/about' },
-  { label: 'Results', href: '/results' },
-  { label: 'Reviews', href: '/reviews' },
-  { label: 'Blog', href: '/blog' },
-];
-
-const FOOTER_CONTACT = [
-  { label: BUSINESS.phone, href: `tel:${BUSINESS.phoneRaw}` },
-  { label: 'WhatsApp', href: BUSINESS.whatsapp, external: true },
-  { label: 'Instagram', href: BUSINESS.social.instagram, external: true },
-  { label: 'Facebook', href: BUSINESS.social.facebook, external: true },
-  { label: 'Book Online', href: '/contact' },
+const FOOTER_LINKS = [
+  {
+    title: 'Services',
+    links: [
+      { label: 'Acne Treatment', href: '/services#acne-treatment-program' },
+      { label: 'HydraFacial', href: '/services#hydrafacial' },
+      { label: 'Microneedling', href: '/services#microneedling' },
+      { label: 'Chemical Peels', href: '/services#chemical-peels' },
+      { label: 'All Services', href: '/services' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About Marta', href: '/about' },
+      { label: 'Results', href: '/results' },
+      { label: 'Reviews', href: '/reviews' },
+      { label: 'Products', href: '/products' },
+      { label: 'Blog', href: '/blog' },
+    ],
+  },
+  {
+    title: 'Contact',
+    links: [
+      { label: BUSINESS.phone, href: `tel:${BUSINESS.phoneRaw}`, external: false },
+      { label: 'WhatsApp', href: BUSINESS.whatsapp, external: true },
+      { label: 'Instagram', href: BUSINESS.social.instagram, external: true },
+      { label: 'Facebook', href: BUSINESS.social.facebook, external: true },
+      { label: 'Book Online', href: '/contact' },
+    ],
+  },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-text text-white/50 pt-14 pb-6" role="contentinfo">
+    <footer className="bg-text text-white/50 pt-16 pb-8" role="contentinfo">
       <div className="max-w-300 mx-auto px-8 max-md:px-5">
-        <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-8 pb-10 border-b border-white/6 max-lg:grid-cols-3 max-md:grid-cols-1">
+        <div className="grid grid-cols-[2.5fr_1fr_1fr_1fr] gap-12 pb-12 border-b border-white/8 max-lg:grid-cols-2 max-lg:gap-10 max-md:grid-cols-1 max-md:gap-8">
+          {/* Brand column */}
           <div>
-            <Link href="/" className="inline-flex items-center gap-2.5 no-underline text-white mb-3" aria-label="360 Radiance — Home">
+            <Link href="/" className="inline-flex items-center gap-3 no-underline text-white mb-5" aria-label="360 Radiance — Home">
               <Image
                 src="/images/360-radiance-logo.png"
                 alt=""
-                width={40}
-                height={40}
+                width={44}
+                height={44}
                 className="rounded-lg object-contain"
               />
               <span className="font-serif text-xl">360 Radiance</span>
             </Link>
-            <p className="text-[.82rem] leading-[1.7] max-w-70 mb-4">
-              Advanced paramedical skincare in Sunrise, FL. European serums, certified acne treatment, and proprietary botanical formulas.
+            <p className="text-[.85rem] leading-[1.8] max-w-75 mb-5 text-white/40">
+              Award-winning paramedical skincare in Sunrise, FL. European serums, certified acne treatment, and proprietary botanical formulas.
             </p>
+            <div className="flex items-center gap-4 mb-5">
+              <Image
+                src="/images/ascp-member.png"
+                alt="ASCP Member"
+                width={70}
+                height={42}
+                className="object-contain opacity-60"
+              />
+            </div>
             <a
               href={BUSINESS.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-whatsapp text-white rounded-lg text-[.75rem] font-semibold py-2 px-3.5 hover:bg-whatsapp-dark transition-all"
+              className="inline-flex items-center gap-2 bg-whatsapp text-white rounded-xl text-[.78rem] font-semibold py-2.5 px-4 hover:bg-whatsapp-dark transition-all"
               aria-label="Chat with us on WhatsApp"
             >
-              <IconWhatsApp size={14} className="fill-white" />
+              <IconWhatsApp size={16} className="fill-white" />
               Chat on WhatsApp
             </a>
           </div>
 
-          <FooterCol title="Services" links={FOOTER_SERVICES} />
-          <FooterCol title="Products" links={FOOTER_PRODUCTS} />
-          <FooterCol title="Company" links={FOOTER_COMPANY} />
-          <FooterCol title="Contact" links={FOOTER_CONTACT} />
+          {/* Link columns */}
+          {FOOTER_LINKS.map((col) => (
+            <div key={col.title}>
+              <h4 className="text-white text-[.72rem] font-bold uppercase tracking-[2px] mb-5">{col.title}</h4>
+              <ul className="list-none flex flex-col gap-3">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 no-underline text-[.85rem] hover:text-teal-light transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    ) : link.href.startsWith('tel:') ? (
+                      <a href={link.href} className="text-white/40 no-underline text-[.85rem] hover:text-teal-light transition-colors">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href} className="text-white/40 no-underline text-[.85rem] hover:text-teal-light transition-colors">
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="pt-6 flex justify-between items-center text-[.7rem] max-md:flex-col max-md:gap-2.5 max-md:text-center">
-          <span>&copy; 2026 360 Radiance. All rights reserved. &middot; ASCP Member</span>
-          <div role="group" aria-label="Language selection">
-            <a href="#" className="text-gold-light no-underline ml-2.5" aria-current="page" aria-label="English (current language)">English</a>
-            <a href="#" className="text-white/30 no-underline ml-2.5 hover:text-gold-light transition-colors" aria-label="Spanish" hrefLang="es">Espa&ntilde;ol</a>
+        {/* Bottom bar */}
+        <div className="pt-8 flex justify-between items-center text-[.75rem] max-md:flex-col max-md:gap-3 max-md:text-center text-white/30">
+          <span>&copy; 2026 360 Radiance. All rights reserved. &middot; ASCP Member &middot; Best of 2026 Award Winner</span>
+          <div role="group" aria-label="Language selection" className="flex gap-4">
+            <a href="#" className="text-gold-light no-underline" aria-current="page" aria-label="English (current language)">English</a>
+            <a href="#" className="text-white/30 no-underline hover:text-gold-light transition-colors" aria-label="Spanish" hrefLang="es">Espa&ntilde;ol</a>
           </div>
         </div>
       </div>
     </footer>
-  );
-}
-
-function FooterCol({ title, links }: { title: string; links: { label: string; href: string; external?: boolean }[] }) {
-  return (
-    <div>
-      <h4 className="text-white text-[.72rem] font-bold uppercase tracking-[1.5px] mb-3">{title}</h4>
-      <ul className="list-none">
-        {links.map((link) => (
-          <li key={link.label}>
-            {link.external ? (
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-white/40 no-underline text-[.82rem] mb-1.5 hover:text-teal-light transition-colors"
-              >
-                {link.label}
-              </a>
-            ) : link.href.startsWith('tel:') || link.href === '#' ? (
-              <a href={link.href} className="block text-white/40 no-underline text-[.82rem] mb-1.5 hover:text-teal-light transition-colors">
-                {link.label}
-              </a>
-            ) : (
-              <Link href={link.href} className="block text-white/40 no-underline text-[.82rem] mb-1.5 hover:text-teal-light transition-colors">
-                {link.label}
-              </Link>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
