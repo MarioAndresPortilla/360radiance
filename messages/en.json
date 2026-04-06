@@ -269,16 +269,7 @@
   },
   "booking": {
     "title": "Ready for Clear, Radiant Skin?",
-    "subtitle": "Book a free consultation with Marta. Your personalized treatment roadmap starts with a single conversation.",
-    "name": "Full name",
-    "phone": "Phone number",
-    "email": "Email address",
-    "service": "Select service",
-    "day": "Preferred day",
-    "submit": "Book Free Consultation",
-    "thankYou": "Thank you!",
-    "confirm": "We'll be in touch within 24 hours to confirm your appointment.",
-    "ariaLabel": "Book a free consultation"
+    "subtitle": "Book a free consultation with Marta. Your personalized treatment roadmap starts with a single conversation."
   },
   "hours": {
     "tag": "Visit Us",

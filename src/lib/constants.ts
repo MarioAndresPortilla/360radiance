@@ -57,6 +57,64 @@ export const BUSINESS = {
   },
 } as const;
 
+// Cal.com — Marta updates her availability/services in her cal.com dashboard.
+// Username + event slug compose into "marta-360radiance/free-consultation".
+// To change: update CAL.username after Marta signs up. Event slugs map to her
+// "Event Types" in cal.com (free-consultation is the default 15min intake).
+export const CAL = {
+  username: 'marta-360radiance',
+  defaultEvent: 'free-consultation',
+  link: 'marta-360radiance/free-consultation',
+} as const;
+
+// Instagram showcase: each entry is one card on the homepage.
+// To swap in real content: replace `image` with the file under
+// /public/images/instagram/ and `postUrl` with the actual instagram.com/p/... URL.
+export const INSTAGRAM_POSTS: { id: number; image: string; postUrl: string; alt: string; caption: string }[] = [
+  {
+    id: 1,
+    image: '/images/instagram/1.jpg',
+    postUrl: 'https://instagram.com/360radianceinc',
+    alt: 'Acne transformation results from 12-week program at 360 Radiance',
+    caption: '12-week acne transformation',
+  },
+  {
+    id: 2,
+    image: '/images/instagram/2.jpg',
+    postUrl: 'https://instagram.com/360radianceinc',
+    alt: 'HydraFacial treatment at 360 Radiance',
+    caption: 'HydraFacial in progress',
+  },
+  {
+    id: 3,
+    image: '/images/instagram/3.jpg',
+    postUrl: 'https://instagram.com/360radianceinc',
+    alt: 'Radiance Skin Care Line products',
+    caption: 'The Radiance Collection',
+  },
+  {
+    id: 4,
+    image: '/images/instagram/4.jpg',
+    postUrl: 'https://instagram.com/360radianceinc',
+    alt: 'Client rosacea results at 360 Radiance',
+    caption: 'Rosacea cleared in 4 weeks',
+  },
+  {
+    id: 5,
+    image: '/images/instagram/5.jpg',
+    postUrl: 'https://instagram.com/360radianceinc',
+    alt: 'Behind the scenes at 360 Radiance clinic',
+    caption: 'Behind the scenes',
+  },
+  {
+    id: 6,
+    image: '/images/instagram/6.jpg',
+    postUrl: 'https://instagram.com/360radianceinc',
+    alt: 'Marta Nazzar, paramedical aesthetician',
+    caption: 'Meet Marta',
+  },
+];
+
 export const HOURS: HourEntry[] = [
   { day: 'Sunday', time: 'Closed', closed: true },
   { day: 'Monday', time: '9:00 AM – 7:00 PM', closed: false },
@@ -995,28 +1053,3 @@ export function getBlogPost(locale: string, slug: string): BlogPost | undefined 
   return getBlogPosts(locale).find((p) => p.slug === slug);
 }
 
-export const BOOKING_SERVICES = [
-  'Acne Treatment Program',
-  'HydraFacial',
-  'Microdermabrasion',
-  'Microneedling',
-  'Chemical Peel',
-  'LED Facial Therapy',
-  'Oxygen Facial',
-  'Carbon Yag Laser',
-  'Tattoo Removal Laser',
-  'Back Facial',
-  'Skin Deep Facial',
-  'Sulwhasoo Korean Facial',
-  'Botanical Treatment',
-  'Skin Analysis & Consultation',
-  'Custom Regimen',
-] as const;
-
-export const BOOKING_DAYS = [
-  'Monday',
-  'Tuesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-] as const;

@@ -1,17 +1,8 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { BUSINESS } from '@/lib/constants';
+import { BUSINESS, INSTAGRAM_POSTS } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-
-const INSTAGRAM_POSTS = [
-  { id: 1, alt: 'Acne transformation results from 12-week program at 360 Radiance' },
-  { id: 2, alt: 'HydraFacial treatment at 360 Radiance' },
-  { id: 3, alt: 'Radiance Skin Care Line products' },
-  { id: 4, alt: 'Client rosacea results at 360 Radiance' },
-  { id: 5, alt: 'Behind the scenes at 360 Radiance clinic' },
-  { id: 6, alt: 'Marta Nazzar, paramedical aesthetician' },
-];
 
 export function InstagramSection() {
   const t = useTranslations('instagram');
@@ -31,14 +22,14 @@ export function InstagramSection() {
           {INSTAGRAM_POSTS.map((post) => (
             <ScrollReveal key={post.id}>
               <a
-                href={BUSINESS.social.instagram}
+                href={post.postUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block relative rounded-2xl overflow-hidden aspect-square border border-border hover:border-teal transition-all hover:shadow-lg no-underline"
                 aria-label={post.alt}
               >
                 <Image
-                  src={`/images/instagram/${post.id}.jpg`}
+                  src={post.image}
                   alt={post.alt}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -46,14 +37,15 @@ export function InstagramSection() {
                 />
 
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-teal/0 group-hover:bg-teal/85 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-teal/0 group-hover:bg-teal/85 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 p-4">
                   <div className="text-white text-center">
                     <svg width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-2.5">
                       <rect x="2" y="2" width="20" height="20" rx="5" />
                       <circle cx="12" cy="12" r="5" />
                       <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
                     </svg>
-                    <span className="text-[.78rem] font-semibold">{t('viewOnInstagram')}</span>
+                    <span className="block text-[.78rem] font-semibold mb-1">{post.caption}</span>
+                    <span className="block text-[.7rem] opacity-80">{t('viewOnInstagram')}</span>
                   </div>
                 </div>
               </a>

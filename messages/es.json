@@ -269,16 +269,7 @@
   },
   "booking": {
     "title": "¿Lista para una Piel Clara y Radiante?",
-    "subtitle": "Reserve una consulta gratuita con Marta. Su hoja de ruta de tratamiento personalizada comienza con una sola conversación.",
-    "name": "Nombre completo",
-    "phone": "Número de teléfono",
-    "email": "Correo electrónico",
-    "service": "Seleccione un servicio",
-    "day": "Día preferido",
-    "submit": "Reservar Consulta Gratuita",
-    "thankYou": "¡Gracias!",
-    "confirm": "Nos pondremos en contacto en 24 horas para confirmar su cita.",
-    "ariaLabel": "Reserve una consulta gratuita"
+    "subtitle": "Reserve una consulta gratuita con Marta. Su hoja de ruta de tratamiento personalizada comienza con una sola conversación."
   },
   "hours": {
     "tag": "Visítenos",
