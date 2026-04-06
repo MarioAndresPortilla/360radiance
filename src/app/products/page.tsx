@@ -83,7 +83,7 @@ export default function ProductsPage() {
                   {
                     num: '01',
                     title: 'Clinician-Formulated',
-                    desc: 'Every product is created by Marta Nazzar — not a marketing team. Formulas are built on 25 years of medical expertise and real clinical outcomes.',
+                    desc: 'Every product is created by Marta Nazzar — not a marketing team. Formulas are built on 20+ years of medical expertise and real clinical outcomes.',
                   },
                   {
                     num: '02',

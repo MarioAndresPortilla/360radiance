@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BUSINESS } from '@/lib/constants';
-import { IconRadiance, IconWhatsApp } from '@/components/icons/Icons';
+import { IconWhatsApp } from '@/components/icons/Icons';
 
 const FOOTER_SERVICES = [
   { label: 'Acne Treatment', href: '/services#face-reality-acne-program' },
@@ -40,9 +41,13 @@ export function Footer() {
         <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-8 pb-10 border-b border-white/6 max-lg:grid-cols-3 max-md:grid-cols-1">
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5 no-underline text-white mb-3" aria-label="360 Radiance — Home">
-              <div className="w-9.5 h-9.5 bg-teal rounded-2.5 flex items-center justify-center">
-                <IconRadiance size={24} className="text-white" />
-              </div>
+              <Image
+                src="/images/360-radiance-logo.png"
+                alt=""
+                width={40}
+                height={40}
+                className="rounded-lg object-contain"
+              />
               <span className="font-serif text-xl">360 Radiance</span>
             </Link>
             <p className="text-[.82rem] leading-[1.7] max-w-70 mb-4">

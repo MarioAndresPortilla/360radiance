@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { JOURNEY_STEPS, TESTIMONIALS } from '@/lib/constants';
 import { AnnouncementBar } from '@/components/layout/AnnouncementBar';
@@ -19,7 +20,7 @@ const STATS = [
   { value: '90%+', label: 'Average client improvement by week 8' },
   { value: '2 Weeks', label: 'Typical time to see first visible results' },
   { value: '500+', label: 'Clients treated with the Face Reality protocol' },
-  { value: '25+', label: 'Years of medical expertise behind every treatment' },
+  { value: '20+', label: 'Years of medical expertise behind every treatment' },
 ];
 
 export default function ResultsPage() {
@@ -83,6 +84,61 @@ export default function ResultsPage() {
                   </div>
                 </ScrollReveal>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Before & After */}
+        <section className="py-20 max-md:py-14 bg-cream" aria-labelledby="before-after-heading">
+          <div className="max-w-300 mx-auto px-8 max-md:px-5">
+            <ScrollReveal>
+              <div className="text-center mb-12">
+                <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-teal mb-3 bg-teal-pale px-4 py-1.5 rounded-full">
+                  Proof in Photos
+                </span>
+                <h2 id="before-after-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-3">Before &amp; After</h2>
+                <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7]">
+                  Real clients, real results. These transformations were achieved with the Acne Treatment Program.
+                </p>
+              </div>
+            </ScrollReveal>
+            <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1 max-w-200 mx-auto">
+              <ScrollReveal>
+                <div className="rounded-2xl overflow-hidden shadow-md border border-border">
+                  <Image
+                    src="/images/before-after-1.jpg"
+                    alt="Client before and after acne treatment — significant reduction in cystic acne and inflammation"
+                    width={800}
+                    height={500}
+                    className="w-full h-auto"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                  />
+                  <div className="p-5 bg-white">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">Before &amp; After</span>
+                      <span className="text-[.68rem] font-semibold text-teal bg-teal-pale py-1 px-2.5 rounded-md">Acne Treatment</span>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal>
+                <div className="rounded-2xl overflow-hidden shadow-md border border-border">
+                  <Image
+                    src="/images/before-after-2.jpg"
+                    alt="Client before and after acne treatment — dramatic clearing of persistent acne and scarring"
+                    width={800}
+                    height={500}
+                    className="w-full h-auto"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                  />
+                  <div className="p-5 bg-white">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">Before &amp; After</span>
+                      <span className="text-[.68rem] font-semibold text-teal bg-teal-pale py-1 px-2.5 rounded-md">12-Week Program</span>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>

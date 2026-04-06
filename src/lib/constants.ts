@@ -29,7 +29,7 @@ export const HOURS: HourEntry[] = [
 export const TRUST_ITEMS: TrustItem[] = [
   { icon: 'diploma', label: 'B.S. Biology' },
   { icon: 'science', label: 'Face Reality Certified' },
-  { icon: 'medical', label: '25+ Years Medical' },
+  { icon: 'medical', label: '20+ Years Medical' },
   { icon: 'globe', label: 'European Serums' },
   { icon: 'shield', label: 'ASCP Member' },
   { icon: 'language', label: 'Bilingual EN/ES' },
@@ -40,7 +40,7 @@ export const WHY_CARDS: WhyCard[] = [
     icon: 'medical',
     iconTheme: 'teal',
     title: 'Medical-Grade Expertise',
-    description: ' 25 years of medical background with a B.S. in Biology and A.S. in Lab Sciences. Clinical precision in every consultation.',
+    description: ' 20+ years of medical background with a B.S. in Biology and A.S. in Lab Sciences. Clinical precision in every consultation.',
   },
   {
     icon: 'science',
@@ -334,7 +334,7 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
     tag: 'Free with booking',
     description: [
       'Every successful skin treatment begins with understanding. Marta\'s comprehensive skin analysis evaluates your skin type, current conditions, lifestyle factors, and treatment history to develop a personalized roadmap to your best skin.',
-      'Using her 25 years of medical expertise and B.S. in Biology, Marta examines your skin at a deeper level than most aestheticians. She identifies underlying causes — not just symptoms — and creates a treatment plan that addresses the root of your concerns.',
+      'Using her 20+ years of medical expertise and B.S. in Biology, Marta examines your skin at a deeper level than most aestheticians. She identifies underlying causes — not just symptoms — and creates a treatment plan that addresses the root of your concerns.',
       'The consultation is completely free when you book a treatment. You\'ll leave with a clear understanding of your skin, a customized treatment plan, and product recommendations tailored specifically to you.',
     ],
     benefits: [

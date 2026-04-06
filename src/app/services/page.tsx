@@ -25,7 +25,7 @@ export default function ServicesPage() {
         <PageHeader
           tag="Our Services"
           title="Expert Skincare Treatments"
-          subtitle="Every treatment is tailored to your unique skin type and concerns. Marta combines 25 years of medical expertise with cutting-edge protocols for real results."
+          subtitle="Every treatment is tailored to your unique skin type and concerns. Marta combines 20+ years of medical expertise with cutting-edge protocols for real results."
         />
 
         {/* Pricing overview */}

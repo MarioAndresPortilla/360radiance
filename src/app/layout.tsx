@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s | 360 Radiance',
   },
   description:
-    'Advanced paramedical skincare in Sunrise, FL. Face Reality Acne Certified. European-grade serums. 25 years medical expertise. Book your free consultation.',
+    'Advanced paramedical skincare in Sunrise, FL. Face Reality Acne Certified. European-grade serums. 20+ years medical expertise. Book your free consultation.',
   keywords: [
     'skincare',
     'acne treatment',

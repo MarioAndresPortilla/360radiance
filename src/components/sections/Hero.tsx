@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { BUSINESS } from '@/lib/constants';
 import { Button } from '@/components/ui/Button';
 import { IconWhatsApp, IconScience } from '@/components/icons/Icons';
@@ -17,7 +18,7 @@ export function Hero() {
               Where Science Meets <span className="text-teal">Beautiful Skin</span>
             </h1>
             <p className="text-base text-text-mid max-w-120 leading-[1.8] mb-8 max-lg:mx-auto">
-              Paramedical skincare backed by 25 years of medical expertise, European-grade serums, and a proven acne treatment protocol. Real results in as little as 2 weeks.
+              Paramedical skincare backed by 20+ years of medical expertise, European-grade serums, and a proven acne treatment protocol. Real results in as little as 2 weeks.
             </p>
             <div className="flex gap-4 flex-wrap mb-5 max-lg:justify-center max-md:flex-col max-md:items-center">
               <Button variant="teal" href="/contact" className="py-3.5! px-8! text-[.9rem]!">
@@ -44,15 +45,19 @@ export function Hero() {
           </div>
 
           <div className="relative max-lg:max-w-95 max-lg:mx-auto">
-            <div className="w-full aspect-4/5 rounded-2xl overflow-hidden bg-teal-pale relative shadow-lg" role="img" aria-label="Marta Nazzar, Licensed Paramedical Aesthetician at 360 Radiance">
-              <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-linear-to-br from-teal-pale to-cream">
-                <div className="font-serif text-[4.5rem] text-teal opacity-20" aria-hidden="true">MN</div>
-                <div className="text-[.68rem] text-text-light tracking-[1px] uppercase">Replace with Marta&apos;s photo</div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-linear-to-t from-[rgba(30,42,56,.7)] to-transparent z-1" aria-hidden="true" />
+            <div className="w-full aspect-4/5 rounded-2xl overflow-hidden relative shadow-lg">
+              <Image
+                src="/images/marta-nazzar.jpg"
+                alt="Marta Nazzar, Licensed Paramedical Aesthetician at 360 Radiance"
+                fill
+                className="object-cover object-top"
+                priority
+                sizes="(max-width: 1024px) 380px, 50vw"
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-linear-to-t from-[rgba(30,42,56,.75)] to-transparent z-1" aria-hidden="true" />
               <div className="absolute bottom-6 left-6 z-2 text-white">
                 <h3 className="font-serif text-xl mb-1">Marta Nazzar</h3>
-                <p className="text-[.75rem] opacity-85 font-medium">Licensed Paramedical Aesthetician</p>
+                <p className="text-[.75rem] opacity-90 font-medium">Licensed Paramedical Aesthetician</p>
               </div>
             </div>
             <div className="absolute top-4 right-4 bg-white rounded-xl py-2.5 px-4 shadow-md z-2 flex items-center gap-2.5 text-[.75rem] font-semibold text-teal">

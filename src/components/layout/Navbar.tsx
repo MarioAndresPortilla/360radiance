@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { BUSINESS } from '@/lib/constants';
-import { IconRadiance, IconPhone, IconWhatsApp } from '@/components/icons/Icons';
+import { IconPhone, IconWhatsApp } from '@/components/icons/Icons';
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
@@ -38,9 +39,13 @@ export function Navbar() {
       <nav aria-label="Main navigation" className="px-8 max-md:px-4">
         <div className="max-w-300 mx-auto flex justify-between items-center h-16">
           <Link href="/" className="flex items-center gap-2.5 no-underline text-text" aria-label="360 Radiance — Home">
-            <div className="w-9.5 h-9.5 bg-teal rounded-2.5 flex items-center justify-center">
-              <IconRadiance size={24} className="text-white" />
-            </div>
+            <Image
+              src="/images/360-radiance-logo.png"
+              alt=""
+              width={40}
+              height={40}
+              className="rounded-lg object-contain"
+            />
             <span className="font-serif text-xl">360 Radiance</span>
           </Link>
 

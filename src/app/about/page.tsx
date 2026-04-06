@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { CREDENTIALS } from '@/lib/constants';
 import { AnnouncementBar } from '@/components/layout/AnnouncementBar';
@@ -12,7 +13,7 @@ import { IconDiploma, IconCheck } from '@/components/icons/Icons';
 
 export const metadata: Metadata = {
   title: 'About Marta Nazzar',
-  description: 'Meet Marta Nazzar — licensed Paramedical Aesthetician with 25+ years of medical expertise, B.S. in Biology, and Face Reality Acne Certification.',
+  description: 'Meet Marta Nazzar — licensed Paramedical Aesthetician with 20+ years of medical expertise, B.S. in Biology, and Face Reality Acne Certification.',
 };
 
 export default function AboutPage() {
@@ -24,7 +25,7 @@ export default function AboutPage() {
         <PageHeader
           tag="Meet Marta Nazzar"
           title="The Science Behind Your Best Skin"
-          subtitle="25 years of medical expertise, a deep passion for skincare science, and a commitment to results that change lives."
+          subtitle="20+ years of medical expertise, a deep passion for skincare science, and a commitment to results that change lives."
         />
 
         {/* Main bio */}
@@ -33,16 +34,21 @@ export default function AboutPage() {
             <div className="grid grid-cols-[1fr_1.4fr] gap-16 items-start max-lg:grid-cols-1">
               <ScrollReveal>
                 <div className="relative max-lg:max-w-75 max-lg:mx-auto">
-                  <div className="rounded-2xl overflow-hidden bg-teal-pale aspect-3/4 flex items-center justify-center flex-col gap-3 shadow-md" role="img" aria-label="Portrait of Marta Nazzar">
-                    <div className="font-serif text-[3.5rem] text-teal opacity-15" aria-hidden="true">MN</div>
-                    <div className="text-[.6rem] text-text-light tracking-[1.5px] uppercase">Replace with photo</div>
+                  <div className="rounded-2xl overflow-hidden aspect-3/4 shadow-md relative">
+                    <Image
+                      src="/images/marta-nazzar.jpg"
+                      alt="Marta Nazzar, Licensed Paramedical Aesthetician"
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 1024px) 300px, 35vw"
+                    />
                   </div>
                   <div className="absolute -bottom-4 -right-4 bg-white rounded-xl py-3 px-4 shadow-lg flex items-center gap-2">
                     <div className="w-8 h-8 bg-gold-pale rounded-2.5 flex items-center justify-center" aria-hidden="true">
                       <IconDiploma size={18} className="text-gold-dark" />
                     </div>
                     <div className="text-[.7rem] font-semibold text-teal">
-                      25+ Years
+                      20+ Years
                       <span className="block font-normal text-text-light text-[.6rem]">Medical Experience</span>
                     </div>
                   </div>
@@ -57,7 +63,7 @@ export default function AboutPage() {
                     Marta Nazzar is a licensed Paramedical Aesthetician whose path to skincare was built on a deep foundation of medical science. With a B.S. in Biology and an A.S. in Medical &amp; Laboratory Studies from Florida College of Natural Health, she brings a level of clinical precision that sets her apart from traditional aestheticians.
                   </p>
                   <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
-                    Her 25 years in the medical field gave her an understanding of skin at a cellular level — how it heals, what triggers inflammation, and why certain ingredients work while others don&apos;t. This knowledge is the backbone of every treatment she provides.
+                    Her 20+ years in the medical field gave her an understanding of skin at a cellular level — how it heals, what triggers inflammation, and why certain ingredients work while others don&apos;t. This knowledge is the backbone of every treatment she provides.
                   </p>
                   <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
                     Certified under renowned acne expert Dr. James E. Fulton through the Face Reality program, Marta evaluates diverse skin types to determine the best solution for each individual. Dr. Fulton pioneered Retin-A — and his clinical protocol is the foundation of Marta&apos;s acne treatment approach.
@@ -80,7 +86,7 @@ export default function AboutPage() {
             <ScrollReveal>
               <h2 id="cred-heading" className="font-serif text-[1.6rem] text-center mb-10">Credentials &amp; Certifications</h2>
             </ScrollReveal>
-            <div className="grid grid-cols-5 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2">
+            <div className="grid grid-cols-6 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2">
               {CREDENTIALS.map((cred) => (
                 <ScrollReveal key={cred.label}>
                   <div className="bg-white rounded-2xl p-6 text-center border border-border hover:border-border-hover hover:shadow-md transition-all">
@@ -91,6 +97,17 @@ export default function AboutPage() {
                   </div>
                 </ScrollReveal>
               ))}
+              <ScrollReveal>
+                <div className="bg-white rounded-2xl p-6 text-center border border-border hover:border-border-hover hover:shadow-md transition-all flex items-center justify-center">
+                  <Image
+                    src="/images/ascp-member.png"
+                    alt="Associated Skin Care Professionals Member"
+                    width={100}
+                    height={60}
+                    className="object-contain"
+                  />
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -103,7 +120,7 @@ export default function AboutPage() {
                 <h2 id="philosophy-heading" className="font-serif text-[1.6rem] text-center mb-8">The 360 Radiance Philosophy</h2>
                 <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1">
                   {[
-                    { title: 'Science-First Approach', desc: 'Every recommendation is backed by clinical research and 25 years of medical experience. No trends, no guesswork — just proven results.' },
+                    { title: 'Science-First Approach', desc: 'Every recommendation is backed by clinical research and 20+ years of medical experience. No trends, no guesswork — just proven results.' },
                     { title: 'Personalized Care', desc: 'No two skin types are the same. Every client receives a custom treatment roadmap and take-home protocol designed for their unique needs.' },
                     { title: 'Clean Ingredients', desc: 'The Radiance line is toxin-free, paraben-free, and sulfate-free. We believe effective skincare should never compromise your health.' },
                     { title: 'Long-Term Health', desc: 'We treat the root cause, not just symptoms. Our goal is lasting skin health and the confidence that comes with it.' },
