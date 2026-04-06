@@ -1,4 +1,20 @@
 import type { Service, Testimonial, WhyCard, Credential, JourneyStep, ProductFeature, HourEntry, TrustItem } from '@/types';
+import { BLOG_CONTENT } from './blog-content';
+import { BLOG_CONTENT_2 } from './blog-content-2';
+
+const ALL_BLOG_CONTENT = { ...BLOG_CONTENT, ...BLOG_CONTENT_2 };
+
+const BLOG_CTAS: Record<string, string> = {
+  'why-face-reality-works-when-everything-else-fails': 'Ready to break the cycle of failed acne treatments? Book a consultation at 360 Radiance in Sunrise, FL. Marta\'s 12-week Face Reality program has helped hundreds of clients finally achieve clear skin — starting at $280.',
+  'the-science-of-glass-ampule-serums': 'Experience European glass ampule serums in person. Book a treatment at 360 Radiance and feel the difference clinical-grade actives make.',
+  'rosacea-triggers-complete-guide': 'Struggling with rosacea? Marta has cleared rosacea clients in as little as 4 weeks. Book a consultation at 360 Radiance in Sunrise, FL.',
+  'microdermabrasion-what-actually-happens': 'Experience the most thorough microdermabrasion in South Florida. Book your treatment with Marta at 360 Radiance.',
+  'your-skin-barrier-explained': 'Not sure if your skin barrier is damaged? Book a free skin analysis at 360 Radiance and get a personalized barrier-repair plan.',
+  'retinol-vs-bakuchiol': 'Get a personalized anti-aging assessment with Marta at 360 Radiance. We use the best of both retinol and bakuchiol in our Retinol Renewal Treatment.',
+  'hormonal-acne-root-cause': 'Hormonal acne is treatable — with the right protocol. Book the 12-week Face Reality program at 360 Radiance in Sunrise, FL. Starting at $280.',
+  'building-a-morning-routine-that-works': 'Stop guessing. Get a Custom Regimen Design from Marta and learn exactly which products to use, in what order, and why.',
+  'parabens-sulfates-toxins-what-to-actually-avoid': 'Try the Radiance Skin Care Line — clinically formulated, free of genuinely concerning ingredients, and designed to actually work. Available at 360 Radiance.',
+};
 
 export const BUSINESS = {
   name: '360 Radiance',
@@ -818,6 +834,11 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
+export interface BlogSection {
+  heading?: string;
+  body: string[];
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -827,6 +848,8 @@ export interface BlogPost {
   date: string;
   featured?: boolean;
   tags: string[];
+  content: BlogSection[];
+  cta?: string;
 }
 
 export const BLOG_CATEGORIES = [
@@ -838,7 +861,9 @@ export const BLOG_CATEGORIES = [
   'Product Guides',
 ] as const;
 
-export const BLOG_POSTS: BlogPost[] = [
+type BlogPostMeta = Omit<BlogPost, 'content' | 'cta'>;
+
+const BLOG_POSTS_META: BlogPostMeta[] = [
   {
     slug: 'why-face-reality-works-when-everything-else-fails',
     title: 'Why Face Reality Works When Everything Else Fails',
@@ -922,6 +947,12 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ['clean beauty', 'parabens', 'sulfates', 'toxins'],
   },
 ];
+
+export const BLOG_POSTS: BlogPost[] = BLOG_POSTS_META.map((meta) => ({
+  ...meta,
+  content: ALL_BLOG_CONTENT[meta.slug] ?? [],
+  cta: BLOG_CTAS[meta.slug],
+}));
 
 export const BOOKING_SERVICES = [
   'Acne Treatment Program',
