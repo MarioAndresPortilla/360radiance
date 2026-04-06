@@ -93,7 +93,7 @@ export default function BlogPage() {
               <div className="max-w-150 mx-auto text-center">
                 <h2 id="newsletter-heading" className="font-serif text-[1.6rem] mb-3">Get Skincare Science in Your Inbox</h2>
                 <p className="text-text-mid text-[.95rem] leading-[1.7] mb-8">
-                  One article per week. No spam, no sales pitches — just evidence-based insights from a clinician who&apos;s been in the field for 20+ years.
+                  One article per week. No spam, no sales pitches — just evidence-based insights from a clinician who&apos;s been in the field for 25+ years.
                 </p>
                 <NewsletterSignup />
               </div>

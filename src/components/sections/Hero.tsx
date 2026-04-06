@@ -18,7 +18,7 @@ export function Hero() {
               Where Science Meets <span className="text-teal">Beautiful Skin</span>
             </h1>
             <p className="text-base text-text-mid max-w-120 leading-[1.8] mb-8 max-lg:mx-auto">
-              Paramedical skincare backed by 20+ years of medical expertise, European-grade serums, and a proven acne treatment protocol. Real results in as little as 2 weeks.
+              Paramedical skincare backed by 25+ years of medical expertise, European-grade serums, and a proven acne treatment protocol. Real results in as little as 2 weeks.
             </p>
             <div className="flex gap-4 flex-wrap mb-5 max-lg:justify-center max-md:flex-col max-md:items-center">
               <Button variant="teal" href="/contact" className="py-3.5! px-8! text-[.9rem]!">

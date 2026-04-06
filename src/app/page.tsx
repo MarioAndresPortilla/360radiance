@@ -1,7 +1,4 @@
-import { AnnouncementBar } from '@/components/layout/AnnouncementBar';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
-import { FloatingButtons } from '@/components/layout/FloatingButtons';
+import { PageShell } from '@/components/layout/PageShell';
 import { Hero } from '@/components/sections/Hero';
 import { TrustBar } from '@/components/sections/TrustBar';
 import { WhySection } from '@/components/sections/WhySection';
@@ -15,23 +12,17 @@ import { HoursSection } from '@/components/sections/HoursSection';
 
 export default function Home() {
   return (
-    <>
-      <AnnouncementBar />
-      <Navbar />
-      <main id="main-content">
-        <Hero />
-        <TrustBar />
-        <WhySection />
-        <ServicesSection />
-        <AboutSection />
-        <JourneySection />
-        <TestimonialsSection />
-        <ProductsSection />
-        <BookingSection />
-        <HoursSection />
-      </main>
-      <Footer />
-      <FloatingButtons />
-    </>
+    <PageShell>
+      <Hero />
+      <TrustBar />
+      <WhySection />
+      <ServicesSection />
+      <AboutSection />
+      <JourneySection />
+      <TestimonialsSection />
+      <ProductsSection />
+      <BookingSection />
+      <HoursSection />
+    </PageShell>
   );
 }

@@ -25,7 +25,7 @@ export function AboutSection() {
                   <IconDiploma size={18} className="text-gold-dark" />
                 </div>
                 <div className="text-[.75rem] font-semibold text-teal">
-                  20+ Years
+                  25+ Years
                   <span className="block font-normal text-text-light text-[.65rem] mt-0.5">Medical Experience</span>
                 </div>
               </div>
@@ -41,7 +41,7 @@ export function AboutSection() {
                 The Science Behind Your <em className="text-teal not-italic">Best Skin</em>
               </h2>
               <p className="text-text-mid leading-[1.85] mb-5 text-[.92rem]">
-                Marta Nazzar is a licensed Paramedical Aesthetician with a B.S. in Biology and A.S. in Medical &amp; Laboratory Studies from Florida College of Natural Health. Her 20+ years of medical background allow her to merge clinical precision with aesthetic artistry.
+                Marta Nazzar is a licensed Paramedical Aesthetician with a B.S. in Biology and A.S. in Medical &amp; Laboratory Studies from Florida College of Natural Health. Her 25+ years of medical background allow her to merge clinical precision with aesthetic artistry.
               </p>
               <p className="text-text-mid leading-[1.85] mb-5 text-[.92rem]">
                 Certified under renowned acne expert Dr. James E. Fulton through the Face Reality program, Marta evaluates diverse skin types to determine the best solution for each individual. She created the Radiance Skin Care Line — botanical formulas free of toxins, parabens, and sulfates.
