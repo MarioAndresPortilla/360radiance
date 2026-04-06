@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { BUSINESS } from '@/lib/constants';
 import { PageShell } from '@/components/layout/PageShell';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -7,18 +8,27 @@ import { BookingSection } from '@/components/sections/BookingSection';
 import { HoursSection } from '@/components/sections/HoursSection';
 import { IconPhone, IconWhatsApp } from '@/components/icons/Icons';
 
-export const metadata: Metadata = {
-  title: 'Contact & Book',
-  description: 'Book your free skincare consultation at 360 Radiance in Sunrise, FL. Call (561) 632-8218, WhatsApp, or book online. Open Mon-Sat.',
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'contact' });
+  return {
+    title: t('title'),
+    description: t('subtitle'),
+  };
+}
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('contact');
+  const tNav = await getTranslations('nav');
+
   return (
     <PageShell>
       <PageHeader
-        tag="Get in Touch"
-        title="Book Your Free Consultation"
-        subtitle="Ready for clear, radiant skin? Reach out any way you like — we're here to help you start your journey."
+        tag={t('tag')}
+        title={t('title')}
+        subtitle={t('subtitle')}
       />
 
       {/* Contact methods */}
@@ -30,14 +40,14 @@ export default function ContactPage() {
               <a
                 href={`tel:${BUSINESS.phoneRaw}`}
                 className="group block bg-cream rounded-2xl p-10 max-md:p-8 text-center no-underline transition-all hover:shadow-md hover:-translate-y-1"
-                aria-label={`Call us at ${BUSINESS.phone}`}
+                aria-label={tNav('callUs', { phone: BUSINESS.phone })}
               >
                 <div className="w-16 h-16 bg-teal-pale rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-teal/12 transition-colors" aria-hidden="true">
                   <IconPhone size={28} className="text-teal" />
                 </div>
-                <h3 className="font-serif text-[1.15rem] mb-2 text-text">Call Us</h3>
+                <h3 className="font-serif text-[1.15rem] mb-2 text-text">{t('callUsTitle')}</h3>
                 <p className="text-teal font-semibold text-[1rem] mb-2">{BUSINESS.phone}</p>
-                <p className="text-text-light text-[.82rem]">Mon-Sat during business hours</p>
+                <p className="text-text-light text-[.82rem]">{t('callUsSub')}</p>
               </a>
             </ScrollReveal>
 
@@ -52,9 +62,9 @@ export default function ContactPage() {
                 <div className="w-16 h-16 bg-[#e8f8ed] rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-whatsapp/15 transition-colors" aria-hidden="true">
                   <IconWhatsApp size={28} className="fill-whatsapp" />
                 </div>
-                <h3 className="font-serif text-[1.15rem] mb-2 text-text">WhatsApp</h3>
-                <p className="text-whatsapp-dark font-semibold text-[1rem] mb-2">Message us anytime</p>
-                <p className="text-text-light text-[.82rem]">We reply fast — usually within minutes</p>
+                <h3 className="font-serif text-[1.15rem] mb-2 text-text">{t('whatsappTitle')}</h3>
+                <p className="text-whatsapp-dark font-semibold text-[1rem] mb-2">{t('whatsappBody')}</p>
+                <p className="text-text-light text-[.82rem]">{t('whatsappSub')}</p>
               </a>
             </ScrollReveal>
 
@@ -72,7 +82,7 @@ export default function ContactPage() {
                     <circle cx="12" cy="9" r="2.5" />
                   </svg>
                 </div>
-                <h3 className="font-serif text-[1.15rem] mb-2 text-text">Visit Us</h3>
+                <h3 className="font-serif text-[1.15rem] mb-2 text-text">{t('visitTitle')}</h3>
                 <p className="text-text-mid font-medium text-[.95rem] mb-2">{BUSINESS.address}</p>
                 <p className="text-text-light text-[.82rem]">{BUSINESS.city}, {BUSINESS.state} {BUSINESS.zip}</p>
               </a>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -8,18 +9,26 @@ import { PRODUCT_FEATURES } from '@/lib/constants';
 import { ProductShowcase } from './ProductShowcase';
 import { SkinConcernMatcher } from './SkinConcernMatcher';
 
-export const metadata: Metadata = {
-  title: 'Products — The Radiance Collection',
-  description: 'Shop the Radiance Skin Care Line — proprietary botanical formulas by Marta Nazzar. Toxin-free, paraben-free, European-grade serums and treatments for every skin type.',
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'products' });
+  return {
+    title: 'Products',
+    description: t('pageSubtitle'),
+  };
+}
 
-export default function ProductsPage() {
+export default async function ProductsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('products');
+
   return (
     <PageShell>
       <PageHeader
-        tag="The Radiance Collection"
-        title="Skincare That Actually Works"
-        subtitle="Proprietary formulas created by Marta Nazzar — blending clinical science with nature's most effective botanical ingredients. Every product is toxin-free, paraben-free, and sulfate-free."
+        tag={t('pageTag')}
+        title={t('pageTitle')}
+        subtitle={t('pageSubtitle')}
       />
 
       {/* Promise bar */}
@@ -43,9 +52,9 @@ export default function ProductsPage() {
         <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-10">
-              <h2 id="matcher-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">Find Your Perfect Products</h2>
+              <h2 id="matcher-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">{t('matcherTitle')}</h2>
               <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7]">
-                Select your primary skin concern and we&apos;ll show you the products formulated specifically for you.
+                {t('matcherSubtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -58,9 +67,9 @@ export default function ProductsPage() {
         <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 id="catalog-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">The Full Collection</h2>
+              <h2 id="catalog-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">{t('catalogTitle')}</h2>
               <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7]">
-                Browse by category or explore the entire line. Every product is designed to work together.
+                {t('catalogSubtitle')}
               </p>
             </div>
           </ScrollReveal>

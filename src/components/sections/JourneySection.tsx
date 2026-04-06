@@ -1,18 +1,20 @@
+import { useTranslations } from 'next-intl';
 import { JOURNEY_STEPS } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 
 export function JourneySection() {
+  const t = useTranslations('results');
   return (
     <section className="py-24 max-md:py-16 bg-cream" id="results" aria-labelledby="results-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader
             id="results-heading"
-            tag="Real Results"
-            title="Your Clear Skin Journey"
-            subtitle="What clients typically experience with the Face Reality program."
+            tag={t('tag')}
+            title={t('title')}
+            subtitle={t('subtitle')}
           />
         </ScrollReveal>
         <ol className="grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-lg:gap-5 list-none">

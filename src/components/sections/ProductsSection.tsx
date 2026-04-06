@@ -1,8 +1,10 @@
+import { useTranslations } from 'next-intl';
 import { PRODUCT_FEATURES } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { IconDropper, IconCheck } from '@/components/icons/Icons';
 
 export function ProductsSection() {
+  const t = useTranslations('products');
   return (
     <section className="py-24 max-md:py-16 bg-cream" aria-labelledby="products-heading">
       <div className="container-site">
@@ -10,18 +12,18 @@ export function ProductsSection() {
           <ScrollReveal>
             <div className="bg-teal-pale rounded-2xl aspect-4/3 flex items-center justify-center flex-col gap-5 relative" role="img" aria-label="Radiance Skin Care product line">
               <IconDropper size={64} className="text-teal" aria-hidden="true" />
-              <span className="text-[.65rem] font-bold text-teal tracking-[2px] uppercase">Radiance Skin Care Line</span>
+              <span className="text-[.65rem] font-bold text-teal tracking-[2px] uppercase">{t('lineLabel')}</span>
             </div>
           </ScrollReveal>
 
           <ScrollReveal>
             <div>
               <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-teal mb-4 bg-teal-pale px-4 py-1.5 rounded-full">
-                Proprietary Formulas
+                {t('tag')}
               </span>
-              <h2 id="products-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-5">The Radiance Collection</h2>
+              <h2 id="products-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-5">{t('title')}</h2>
               <p className="text-text-mid leading-[1.85] mb-8 text-[.92rem]">
-                Every formula is a groundbreaking blend of clinical science with nature&apos;s most beneficial botanical ingredients — resulting in healthier, younger-looking skin.
+                {t('description')}
               </p>
               <ul className="flex flex-col gap-4 list-none" aria-label="Product features">
                 {PRODUCT_FEATURES.map((f) => (

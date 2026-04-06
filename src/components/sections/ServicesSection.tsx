@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { SERVICES } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -8,6 +9,7 @@ import { cn } from '@/lib/utils';
 const FEATURED_COUNT = 8;
 
 export function ServicesSection() {
+  const t = useTranslations('services');
   const featured = SERVICES.slice(0, FEATURED_COUNT);
 
   return (
@@ -16,9 +18,9 @@ export function ServicesSection() {
         <ScrollReveal>
           <SectionHeader
             id="services-heading"
-            tag="Our Services"
-            title="Expert Skincare Treatments"
-            subtitle="From clinical acne programs to luxury Korean facials — every treatment is tailored to your unique skin."
+            tag={t('tag')}
+            title={t('title')}
+            subtitle={t('subtitle')}
           />
         </ScrollReveal>
         <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-lg:gap-5 max-md:grid-cols-1 max-md:gap-4" role="list">
@@ -57,7 +59,7 @@ export function ServicesSection() {
               href="/services"
               className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-teal text-teal rounded-xl font-semibold text-[.88rem] px-7 py-3 transition-all hover:bg-teal hover:text-white no-underline"
             >
-              View All {SERVICES.length} Services &rarr;
+              {t('viewAll', { count: SERVICES.length })}
             </Link>
           </div>
         )}

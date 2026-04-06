@@ -11,7 +11,10 @@
       "Bash(git push:*)",
       "Bash(node -e ':*)",
       "Bash(xargs sed:*)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "Bash(grep -l \"from '@/components/layout/PageShell'\" src/app/[locale]/*/page.tsx)",
+      "Bash(ls -la src/lib/blog-content*es*.ts)",
+      "Bash(wc -l src/lib/blog-content*es*.ts)"
     ]
   }
 }

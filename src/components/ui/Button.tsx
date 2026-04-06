@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { Link } from '@/i18n/navigation';
 import { IconWhatsApp } from '@/components/icons/Icons';
 
 type ButtonVariant = 'teal' | 'gold' | 'outline-teal' | 'whatsapp';
@@ -20,19 +21,28 @@ const variantStyles: Record<ButtonVariant, string> = {
   whatsapp: 'bg-whatsapp text-white hover:bg-whatsapp-dark',
 };
 
-export function Button({ variant, href, children, className, type = 'button', external, onClick }: ButtonProps) {
-  const base = 'inline-flex items-center gap-1.5 rounded-lg font-semibold text-[.82rem] px-5 py-2.5 transition-all duration-250 cursor-pointer font-sans';
+const base = 'inline-flex items-center gap-1.5 rounded-lg font-semibold text-[.82rem] px-5 py-2.5 transition-all duration-250 cursor-pointer font-sans';
 
+export function Button({ variant, href, children, className, type = 'button', external, onClick }: ButtonProps) {
   if (href) {
+    if (external) {
+      return (
+        <a
+          href={href}
+          className={cn(base, variantStyles[variant], className)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {variant === 'whatsapp' && <IconWhatsApp size={16} className="fill-white" />}
+          {children}
+        </a>
+      );
+    }
     return (
-      <a
-        href={href}
-        className={cn(base, variantStyles[variant], className)}
-        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      >
+      <Link href={href as '/contact' | '/services' | '/results' | '/about' | '/blog' | '/products' | '/reviews' | '/'} className={cn(base, variantStyles[variant], className)}>
         {variant === 'whatsapp' && <IconWhatsApp size={16} className="fill-white" />}
         {children}
-      </a>
+      </Link>
     );
   }
 

@@ -1,8 +1,10 @@
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { IconStar } from '@/components/icons/Icons';
 
 export function AwardSection() {
+  const t = useTranslations('award');
   return (
     <section className="py-24 max-md:py-16 bg-text overflow-hidden" aria-labelledby="award-heading">
       <div className="container-site">
@@ -31,20 +33,20 @@ export function AwardSection() {
                 ))}
               </div>
               <span className="inline-block text-[.68rem] font-bold uppercase tracking-[3px] text-gold mb-4">
-                Award Winner
+                {t('tag')}
               </span>
               <h2 id="award-heading" className="font-serif text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.15] mb-6">
-                Best of 2026<br />
-                <span className="text-gold">Skin Care Clinic</span>
+                {t('title1')}<br />
+                <span className="text-gold">{t('title2')}</span>
               </h2>
               <p className="text-white/60 text-[1rem] leading-[1.85] mb-8 max-w-120">
-                360 Radiance has been recognized as the <strong className="text-white/90">Best Skin Care Clinic in Sunrise, Florida</strong> by BusinessRate, powered by Google Reviews. This award reflects the trust, satisfaction, and real results our clients experience every day.
+                {t('description')}
               </p>
               <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1 max-md:gap-4 mb-8">
                 {[
-                  { value: '5.0', label: 'Google Rating' },
-                  { value: '#1', label: 'Skin Care Clinic' },
-                  { value: '2026', label: 'Award Year' },
+                  { value: '5.0', label: t('googleRating') },
+                  { value: '#1', label: t('rank') },
+                  { value: '2026', label: t('year') },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-white/5 rounded-xl p-5 text-center border border-white/8">
                     <div className="font-serif text-[1.6rem] text-gold mb-1">{stat.value}</div>
@@ -53,7 +55,7 @@ export function AwardSection() {
                 ))}
               </div>
               <p className="text-white/40 text-[.78rem]">
-                Powered by Google Reviews &middot; BusinessRate Verified
+                {t('footer')}
               </p>
             </div>
           </ScrollReveal>

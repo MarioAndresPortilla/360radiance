@@ -1,3 +1,4 @@
+import { setRequestLocale } from 'next-intl/server';
 import { PageShell } from '@/components/layout/PageShell';
 import { Hero } from '@/components/sections/Hero';
 import { TrustBar } from '@/components/sections/TrustBar';
@@ -12,7 +13,9 @@ import { ProductsSection } from '@/components/sections/ProductsSection';
 import { BookingSection } from '@/components/sections/BookingSection';
 import { HoursSection } from '@/components/sections/HoursSection';
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return (
     <PageShell>
       <Hero />

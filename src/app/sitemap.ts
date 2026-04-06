@@ -2,25 +2,38 @@ import type { MetadataRoute } from 'next';
 import { BLOG_POSTS } from '@/lib/constants';
 
 const BASE = 'https://360radianceskincare.com';
+const LOCALES = ['en', 'es'] as const;
+const ROUTES = ['', '/services', '/results', '/about', '/products', '/reviews', '/blog', '/contact'];
+
+function buildAlternates(path: string) {
+  return {
+    languages: {
+      en: `${BASE}${path}`,
+      es: `${BASE}/es${path}`,
+    },
+  };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages: MetadataRoute.Sitemap = [
-    { url: BASE, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
-    { url: `${BASE}/services`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${BASE}/results`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/products`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${BASE}/reviews`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-  ];
+  const pages: MetadataRoute.Sitemap = ROUTES.flatMap((route) =>
+    LOCALES.map((locale) => ({
+      url: locale === 'en' ? `${BASE}${route || '/'}` : `${BASE}/${locale}${route}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: route === '' ? 1 : 0.8,
+      alternates: buildAlternates(route),
+    }))
+  );
 
-  const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
-    url: `${BASE}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: 'monthly',
-    priority: 0.6,
-  }));
+  const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.flatMap((post) =>
+    LOCALES.map((locale) => ({
+      url: locale === 'en' ? `${BASE}/blog/${post.slug}` : `${BASE}/${locale}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+      alternates: buildAlternates(`/blog/${post.slug}`),
+    }))
+  );
 
   return [...pages, ...blogPages];
 }

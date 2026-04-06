@@ -1,0 +1,266 @@
+{
+  "common": {
+    "bookFreeConsultation": "Reserve Consulta Gratuita",
+    "bookConsultation": "Reservar Consulta",
+    "bookNow": "Reservar",
+    "learnMore": "Más Información",
+    "viewAll": "Ver Todo",
+    "readMore": "Leer Más",
+    "readArticle": "Leer artículo",
+    "getDirections": "Cómo Llegar",
+    "comingSoon": "Próximamente",
+    "today": "hoy",
+    "minRead": "min de lectura",
+    "by": "Por",
+    "phone": "(561) 632-8218",
+    "address": "12651 W. Sunrise Blvd, Suite 301",
+    "cityState": "Sunrise, FL 33323"
+  },
+  "announcement": {
+    "text": "Piel clara en tan solo 2 semanas —",
+    "linkText": "Reserve su consulta gratuita"
+  },
+  "nav": {
+    "services": "Servicios",
+    "products": "Productos",
+    "results": "Resultados",
+    "about": "Acerca de",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "ariaLabel": "Navegación principal",
+    "homeAria": "360 Radiance — Inicio",
+    "callUs": "Llámenos al {phone}",
+    "whatsapp": "WhatsApp",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "mobileMenu": "Navegación móvil",
+    "language": "Idioma",
+    "english": "English",
+    "spanish": "Español"
+  },
+  "hero": {
+    "badge": "Certificada en Face Reality Acne",
+    "headline1": "Donde la Ciencia Encuentra",
+    "headline2": "la Piel Hermosa",
+    "description": "Cuidado paramédico de la piel respaldado por más de 25 años de experiencia médica, sueros europeos de grado farmacéutico, y un protocolo comprobado para el tratamiento del acné. Resultados reales en tan solo 2 semanas.",
+    "ctaPrimary": "Reserve Consulta Gratuita →",
+    "ctaSecondary": "Ver Resultados",
+    "messageUs": "O envíenos un mensaje:",
+    "whatsappLink": "WhatsApp — respondemos rápido",
+    "photoTitle": "Marta Nazzar",
+    "photoSubtitle": "Esteticista Paramédica Licenciada",
+    "certBadge": "Certificada en Face Reality",
+    "stat1Label": "Años Médicos",
+    "stat2Label": "Mejora Promedio",
+    "stat3Label": "Orígenes de Suero"
+  },
+  "trust": {
+    "label": "Credenciales profesionales",
+    "items": {
+      "biology": "Lic. en Biología",
+      "faceReality": "Certificada en Face Reality",
+      "medical": "25+ Años Médicos",
+      "european": "Sueros Europeos",
+      "ascp": "Miembro ASCP",
+      "bilingual": "Bilingüe EN/ES"
+    }
+  },
+  "why": {
+    "tag": "Por Qué 360 Radiance",
+    "title": "Una Práctica de Cuidado de la Piel Diferente",
+    "subtitle": "Marta combina experiencia médica con cuidado personalizado para ofrecer resultados que los productos de venta libre no pueden lograr.",
+    "cards": {
+      "expertise": {
+        "title": "Experiencia de Grado Médico",
+        "description": "Más de 25 años de experiencia médica con una Licenciatura en Biología y Asociado en Ciencias de Laboratorio. Precisión clínica en cada consulta."
+      },
+      "protocol": {
+        "title": "Protocolo Certificado para el Acné",
+        "description": "Certificada en Face Reality bajo el Dr. James E. Fulton, pionero del Retin-A. Un sistema comprobado — no conjeturas."
+      },
+      "european": {
+        "title": "Sueros de Grado Europeo",
+        "description": "Sueros premium en ampollas de vidrio de Alemania, España, Suiza e Italia. Activos concentrados no disponibles en tiendas."
+      },
+      "botanicals": {
+        "title": "Botánicos Exclusivos",
+        "description": "La línea Radiance Skin Care está libre de toxinas, parabenos y sulfatos. Creada por Marta para condiciones reales de la piel."
+      },
+      "personalized": {
+        "title": "Regímenes Personalizados",
+        "description": "No hay dos tipos de piel iguales. Cada cliente recibe una hoja de ruta de tratamiento personalizada y un protocolo para el hogar."
+      },
+      "bilingual": {
+        "title": "Atención Bilingüe",
+        "description": "Fluida en inglés y español, asegurando que cada cliente se sienta comprendido y seguro en su plan de tratamiento."
+      }
+    }
+  },
+  "services": {
+    "tag": "Nuestros Servicios",
+    "title": "Tratamientos Expertos para la Piel",
+    "subtitle": "Desde programas clínicos para el acné hasta faciales coreanos de lujo — cada tratamiento se adapta a su piel única.",
+    "viewAll": "Ver Todos los {count} Servicios →",
+    "pageTitle": "Servicios",
+    "pageSubtitle": "Cada tratamiento se adapta a su tipo de piel y preocupaciones. Marta combina más de 25 años de experiencia médica con protocolos de vanguardia para resultados reales.",
+    "bookTreatment": "Reservar Este Tratamiento →",
+    "programIncludes": "El Programa Incluye",
+    "benefits": "Beneficios",
+    "idealFor": "Ideal Para",
+    "consultation": "Consulta",
+    "acneFacial": "Facial para Acné",
+    "homeCare": "Productos para el Hogar",
+    "totalStarting": "Total Desde",
+    "biMonthly": "Visitas Quincenales",
+    "perVisit": "por visita · 3 meses",
+    "biMonthlyDesc": "Incluye monitoreo del progreso y un facial para acné para preparar su piel para la siguiente fase del tratamiento.",
+    "contraindicationsTitle": "Importante: Antes de Comenzar el Tratamiento"
+  },
+  "award": {
+    "tag": "Ganadora del Premio",
+    "title1": "Mejor de 2026",
+    "title2": "Clínica de Cuidado de la Piel",
+    "description": "360 Radiance ha sido reconocida como la **Mejor Clínica de Cuidado de la Piel en Sunrise, Florida** por BusinessRate, impulsado por las reseñas de Google. Este premio refleja la confianza, satisfacción y resultados reales que nuestras clientas experimentan cada día.",
+    "googleRating": "Calificación Google",
+    "rank": "Clínica de Cuidado",
+    "year": "Año del Premio",
+    "footer": "Impulsado por Google Reviews · Verificado por BusinessRate"
+  },
+  "about": {
+    "tag": "Conozca a Marta Nazzar",
+    "titleText": "La Ciencia Detrás de Su",
+    "titleHighlight": "Mejor Piel",
+    "p1": "Marta Nazzar es una Esteticista Paramédica Licenciada con una Licenciatura en Biología y un Asociado en Estudios Médicos y de Laboratorio del Florida College of Natural Health. Sus más de 25 años de experiencia médica le permiten fusionar la precisión clínica con el arte estético.",
+    "p2": "Certificada bajo el reconocido experto en acné Dr. James E. Fulton a través del programa Face Reality, Marta evalúa diversos tipos de piel para determinar la mejor solución para cada persona. Creó la línea Radiance Skin Care — fórmulas botánicas libres de toxinas, parabenos y sulfatos.",
+    "yearsBadge": "25+ Años",
+    "yearsBadgeSub": "Experiencia Médica",
+    "pageSubtitle": "Más de 25 años de experiencia médica, una profunda pasión por la ciencia del cuidado de la piel, y un compromiso con resultados que cambian vidas.",
+    "bioHeading": "De la Ciencia Médica al Arte del Cuidado de la Piel",
+    "credentialsHeading": "Credenciales y Certificaciones",
+    "philosophyHeading": "La Filosofía de 360 Radiance"
+  },
+  "results": {
+    "tag": "Resultados Reales",
+    "title": "Su Camino Hacia una Piel Clara",
+    "subtitle": "Lo que las clientas típicamente experimentan con el programa Face Reality.",
+    "pageSubtitle": "Desde la primera consulta hasta la confianza radiante — esto es lo que las clientas experimentan con el programa Face Reality y nuestros tratamientos expertos.",
+    "timelineHeading": "La Línea de Tiempo del Tratamiento",
+    "timelineSubtitle": "La piel de cada cliente es diferente, pero esta es la progresión típica con el programa Face Reality.",
+    "beforeAfterTag": "Pruebas en Fotos",
+    "beforeAfterTitle": "Antes y Después",
+    "beforeAfterSubtitle": "Clientas reales, resultados reales. Estas transformaciones se lograron con el Programa de Tratamiento de Acné.",
+    "expectHeading": "Qué Esperar Durante el Tratamiento",
+    "stories": "Historias de Éxito de Clientas",
+    "readAllReviews": "Leer Todas las Reseñas →",
+    "ctaHeading": "¿Lista para Comenzar Su Camino?",
+    "ctaSubtitle": "La mayoría de las clientas ven mejoras visibles en 2 semanas. Reserve su consulta gratuita hoy.",
+    "stats": {
+      "improvement": "Mejora promedio del cliente para la semana 8",
+      "weeks": "Tiempo típico para ver los primeros resultados visibles",
+      "clients": "Clientas tratadas con el protocolo Face Reality",
+      "years": "Años de experiencia médica detrás de cada tratamiento"
+    }
+  },
+  "testimonials": {
+    "tag": "Historias de Clientas",
+    "title": "Lo Que Dicen Nuestras Clientas",
+    "starRating": "Calificado 5 de 5 estrellas"
+  },
+  "instagram": {
+    "tag": "Síganos",
+    "title": "Vea Nuestro Trabajo en Instagram",
+    "subtitle": "Tratamientos reales, resultados reales, clientas reales. Siga @360radianceinc para ciencia diaria del cuidado de la piel y transformaciones.",
+    "follow": "Siga @360radianceinc",
+    "viewOnInstagram": "Ver en Instagram"
+  },
+  "products": {
+    "tag": "Fórmulas Exclusivas",
+    "title": "La Colección Radiance",
+    "description": "Cada fórmula es una mezcla innovadora de ciencia clínica con los ingredientes botánicos más beneficiosos de la naturaleza — resultando en una piel más saludable y joven.",
+    "lineLabel": "Línea Radiance Skin Care",
+    "pageTag": "La Colección Radiance",
+    "pageTitle": "Cuidado de la Piel Que Realmente Funciona",
+    "pageSubtitle": "Fórmulas exclusivas creadas por Marta Nazzar — fusionando ciencia clínica con los ingredientes botánicos más efectivos de la naturaleza. Cada producto está libre de toxinas, parabenos y sulfatos.",
+    "matcherTitle": "Encuentre Sus Productos Perfectos",
+    "matcherSubtitle": "Seleccione su preocupación principal de la piel y le mostraremos los productos formulados específicamente para usted.",
+    "catalogTitle": "La Colección Completa",
+    "catalogSubtitle": "Explore por categoría o vea toda la línea. Cada producto está diseñado para trabajar en conjunto."
+  },
+  "booking": {
+    "title": "¿Lista para una Piel Clara y Radiante?",
+    "subtitle": "Reserve una consulta gratuita con Marta. Su hoja de ruta de tratamiento personalizada comienza con una sola conversación.",
+    "name": "Nombre completo",
+    "phone": "Número de teléfono",
+    "email": "Correo electrónico",
+    "service": "Seleccione un servicio",
+    "day": "Día preferido",
+    "submit": "Reservar Consulta Gratuita",
+    "thankYou": "¡Gracias!",
+    "confirm": "Nos pondremos en contacto en 24 horas para confirmar su cita.",
+    "ariaLabel": "Reserve una consulta gratuita"
+  },
+  "hours": {
+    "tag": "Visítenos",
+    "title": "Horario de Atención",
+    "ariaTable": "Horario semanal de atención",
+    "monday": "Lunes",
+    "tuesday": "Martes",
+    "wednesday": "Miércoles",
+    "thursday": "Jueves",
+    "friday": "Viernes",
+    "saturday": "Sábado",
+    "sunday": "Domingo",
+    "closed": "Cerrado"
+  },
+  "contact": {
+    "tag": "Contáctenos",
+    "title": "Reserve Su Consulta Gratuita",
+    "subtitle": "¿Lista para una piel clara y radiante? Comuníquese de la manera que prefiera — estamos aquí para ayudarle a comenzar su camino.",
+    "callUsTitle": "Llámenos",
+    "callUsSub": "Lun-Sáb durante horario de atención",
+    "whatsappTitle": "WhatsApp",
+    "whatsappBody": "Envíenos un mensaje en cualquier momento",
+    "whatsappSub": "Respondemos rápido — usualmente en minutos",
+    "visitTitle": "Visítenos"
+  },
+  "blog": {
+    "pageTag": "El Diario Radiance",
+    "pageTitle": "Ciencia del Cuidado de la Piel y Conocimiento Experto",
+    "pageSubtitle": "Artículos basados en evidencia de Marta Nazzar y el equipo de 360 Radiance. Sin relleno, sin tendencias — solo la ciencia detrás de su mejor piel.",
+    "featured": "Destacado",
+    "readFullArticle": "Leer artículo completo →",
+    "allArticles": "Todos los Artículos",
+    "allArticlesSubtitle": "Explore por categoría o vea nuestra biblioteca completa de ciencia del cuidado de la piel.",
+    "newsletterTitle": "Reciba Ciencia del Cuidado de la Piel en Su Correo",
+    "newsletterSubtitle": "Un artículo por semana. Sin spam, sin ventas — solo conocimiento basado en evidencia de una clínica con más de 25 años de experiencia.",
+    "subscribe": "Suscribirse",
+    "emailPlaceholder": "Su correo electrónico",
+    "subscribed": "¡Está dentro!",
+    "subscribedBody": "Revise su bandeja de entrada por un correo de bienvenida. Su primer artículo llega la próxima semana.",
+    "topicsHeading": "Explorar por Tema",
+    "ctaHeading": "El Conocimiento es el Primer Paso Hacia una Piel Clara",
+    "ctaSubtitle": "¿Lista para poner la ciencia en práctica? Reserve una consulta gratuita y deje que Marta diseñe un plan para su piel.",
+    "moreIn": "Más en {category}",
+    "articleCtaHeading": "¿Tiene Preguntas Sobre Su Piel?",
+    "articleCtaSubtitle": "Reserve una consulta y obtenga respuestas expertas respaldadas por más de 25 años de experiencia clínica.",
+    "categories": {
+      "all": "Todos",
+      "acneScience": "Ciencia del Acné",
+      "ingredients": "Ingredientes",
+      "skinHealth": "Salud de la Piel",
+      "treatments": "Tratamientos",
+      "productGuides": "Guías de Productos"
+    }
+  },
+  "footer": {
+    "description": "Cuidado paramédico de la piel galardonado en Sunrise, FL. Más de 25 años de experiencia médica, sueros europeos, y fórmulas botánicas exclusivas.",
+    "services": "Servicios",
+    "company": "Empresa",
+    "contact": "Contacto",
+    "copyright": "© 2026 360 Radiance. Todos los derechos reservados.",
+    "credentials": "Miembro ASCP · Ganadora del Premio Best of 2026"
+  },
+  "ctaBanner": {
+    "default": "Reserve Consulta Gratuita"
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "common": {
+    "bookFreeConsultation": "Book Free Consultation",
+    "bookConsultation": "Book Consultation",
+    "bookNow": "Book Now",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "readMore": "Read More",
+    "readArticle": "Read article",
+    "getDirections": "Get Directions",
+    "comingSoon": "Coming soon",
+    "today": "today",
+    "minRead": "min read",
+    "by": "By",
+    "phone": "(561) 632-8218",
+    "address": "12651 W. Sunrise Blvd, Suite 301",
+    "cityState": "Sunrise, FL 33323"
+  },
+  "announcement": {
+    "text": "Clear skin in as little as 2 weeks —",
+    "linkText": "Book your free consultation"
+  },
+  "nav": {
+    "services": "Services",
+    "products": "Products",
+    "results": "Results",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "ariaLabel": "Main navigation",
+    "homeAria": "360 Radiance — Home",
+    "callUs": "Call us at {phone}",
+    "whatsapp": "WhatsApp",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mobileMenu": "Mobile navigation",
+    "language": "Language",
+    "english": "English",
+    "spanish": "Español"
+  },
+  "hero": {
+    "badge": "Face Reality Acne Certified",
+    "headline1": "Where Science Meets",
+    "headline2": "Beautiful Skin",
+    "description": "Paramedical skincare backed by 25+ years of medical expertise, European-grade serums, and a proven acne treatment protocol. Real results in as little as 2 weeks.",
+    "ctaPrimary": "Book Free Consultation →",
+    "ctaSecondary": "See Results",
+    "messageUs": "Or message us:",
+    "whatsappLink": "WhatsApp — we reply fast",
+    "photoTitle": "Marta Nazzar",
+    "photoSubtitle": "Licensed Paramedical Aesthetician",
+    "certBadge": "Face Reality Certified",
+    "stat1Label": "Years Medical",
+    "stat2Label": "Avg Improvement",
+    "stat3Label": "Serum Origins"
+  },
+  "trust": {
+    "label": "Professional credentials",
+    "items": {
+      "biology": "B.S. Biology",
+      "faceReality": "Face Reality Certified",
+      "medical": "25+ Years Medical",
+      "european": "European Serums",
+      "ascp": "ASCP Member",
+      "bilingual": "Bilingual EN/ES"
+    }
+  },
+  "why": {
+    "tag": "Why 360 Radiance",
+    "title": "A Different Kind of Skincare Practice",
+    "subtitle": "Marta combines medical expertise with personalized care to deliver results that store-bought products can't.",
+    "cards": {
+      "expertise": {
+        "title": "Medical-Grade Expertise",
+        "description": "25+ years of medical background with a B.S. in Biology and A.S. in Lab Sciences. Clinical precision in every consultation."
+      },
+      "protocol": {
+        "title": "Certified Acne Protocol",
+        "description": "Face Reality certified under Dr. James E. Fulton, the pioneer of Retin-A. A proven system — not guesswork."
+      },
+      "european": {
+        "title": "European-Grade Serums",
+        "description": "Premium glass ampule serums from Germany, Spain, Switzerland, and Italy. Concentrated actives unavailable in stores."
+      },
+      "botanicals": {
+        "title": "Proprietary Botanicals",
+        "description": "The Radiance Skin Care Line is toxin-free, paraben-free, and sulfate-free. Created by Marta for real skin conditions."
+      },
+      "personalized": {
+        "title": "Personalized Regimens",
+        "description": "No two skin types are the same. Every client receives a custom treatment roadmap and take-home protocol."
+      },
+      "bilingual": {
+        "title": "Bilingual Care",
+        "description": "Fluent in English and Spanish, ensuring every client feels understood and confident in their treatment plan."
+      }
+    }
+  },
+  "services": {
+    "tag": "Our Services",
+    "title": "Expert Skincare Treatments",
+    "subtitle": "From clinical acne programs to luxury Korean facials — every treatment is tailored to your unique skin.",
+    "viewAll": "View All {count} Services →",
+    "pageTitle": "Services",
+    "pageSubtitle": "Every treatment is tailored to your unique skin type and concerns. Marta combines 25+ years of medical expertise with cutting-edge protocols for real results.",
+    "bookTreatment": "Book This Treatment →",
+    "programIncludes": "Program Includes",
+    "benefits": "Benefits",
+    "idealFor": "Ideal For",
+    "consultation": "Consultation",
+    "acneFacial": "Acne Facial",
+    "homeCare": "Home-Care Products",
+    "totalStarting": "Total Starting At",
+    "biMonthly": "Bi-Monthly Visits",
+    "perVisit": "per visit · 3 months",
+    "biMonthlyDesc": "Includes progress monitoring and an acne facial to prepare your skin for the next phase of treatment.",
+    "contraindicationsTitle": "Important: Before Beginning Treatment"
+  },
+  "award": {
+    "tag": "Award Winner",
+    "title1": "Best of 2026",
+    "title2": "Skin Care Clinic",
+    "description": "360 Radiance has been recognized as the **Best Skin Care Clinic in Sunrise, Florida** by BusinessRate, powered by Google Reviews. This award reflects the trust, satisfaction, and real results our clients experience every day.",
+    "googleRating": "Google Rating",
+    "rank": "Skin Care Clinic",
+    "year": "Award Year",
+    "footer": "Powered by Google Reviews · BusinessRate Verified"
+  },
+  "about": {
+    "tag": "Meet Marta Nazzar",
+    "titleText": "The Science Behind Your",
+    "titleHighlight": "Best Skin",
+    "p1": "Marta Nazzar is a licensed Paramedical Aesthetician with a B.S. in Biology and A.S. in Medical & Laboratory Studies from Florida College of Natural Health. Her 25+ years of medical background allow her to merge clinical precision with aesthetic artistry.",
+    "p2": "Certified under renowned acne expert Dr. James E. Fulton through the Face Reality program, Marta evaluates diverse skin types to determine the best solution for each individual. She created the Radiance Skin Care Line — botanical formulas free of toxins, parabens, and sulfates.",
+    "yearsBadge": "25+ Years",
+    "yearsBadgeSub": "Medical Experience",
+    "pageSubtitle": "25+ years of medical expertise, a deep passion for skincare science, and a commitment to results that change lives.",
+    "bioHeading": "From Medical Science to Skincare Artistry",
+    "credentialsHeading": "Credentials & Certifications",
+    "philosophyHeading": "The 360 Radiance Philosophy"
+  },
+  "results": {
+    "tag": "Real Results",
+    "title": "Your Clear Skin Journey",
+    "subtitle": "What clients typically experience with the Face Reality program.",
+    "pageSubtitle": "From first consultation to radiant confidence — here's what clients experience with the Face Reality program and our expert treatments.",
+    "timelineHeading": "The Treatment Timeline",
+    "timelineSubtitle": "Every client's skin is different, but here's the typical progression with the Face Reality program.",
+    "beforeAfterTag": "Proof in Photos",
+    "beforeAfterTitle": "Before & After",
+    "beforeAfterSubtitle": "Real clients, real results. These transformations were achieved with the Acne Treatment Program.",
+    "expectHeading": "What to Expect During Treatment",
+    "stories": "Client Success Stories",
+    "readAllReviews": "Read All Reviews →",
+    "ctaHeading": "Ready to Start Your Journey?",
+    "ctaSubtitle": "Most clients see visible improvement within 2 weeks. Book your free consultation today.",
+    "stats": {
+      "improvement": "Average client improvement by week 8",
+      "weeks": "Typical time to see first visible results",
+      "clients": "Clients treated with the Face Reality protocol",
+      "years": "Years of medical expertise behind every treatment"
+    }
+  },
+  "testimonials": {
+    "tag": "Client Stories",
+    "title": "What Our Clients Say",
+    "starRating": "Rated 5 out of 5 stars"
+  },
+  "instagram": {
+    "tag": "Follow Us",
+    "title": "See Our Work on Instagram",
+    "subtitle": "Real treatments, real results, real clients. Follow @360radianceinc for daily skincare science and transformations.",
+    "follow": "Follow @360radianceinc",
+    "viewOnInstagram": "View on Instagram"
+  },
+  "products": {
+    "tag": "Proprietary Formulas",
+    "title": "The Radiance Collection",
+    "description": "Every formula is a groundbreaking blend of clinical science with nature's most beneficial botanical ingredients — resulting in healthier, younger-looking skin.",
+    "lineLabel": "Radiance Skin Care Line",
+    "pageTag": "The Radiance Collection",
+    "pageTitle": "Skincare That Actually Works",
+    "pageSubtitle": "Proprietary formulas created by Marta Nazzar — blending clinical science with nature's most effective botanical ingredients. Every product is toxin-free, paraben-free, and sulfate-free.",
+    "matcherTitle": "Find Your Perfect Products",
+    "matcherSubtitle": "Select your primary skin concern and we'll show you the products formulated specifically for you.",
+    "catalogTitle": "The Full Collection",
+    "catalogSubtitle": "Browse by category or explore the entire line. Every product is designed to work together."
+  },
+  "booking": {
+    "title": "Ready for Clear, Radiant Skin?",
+    "subtitle": "Book a free consultation with Marta. Your personalized treatment roadmap starts with a single conversation.",
+    "name": "Full name",
+    "phone": "Phone number",
+    "email": "Email address",
+    "service": "Select service",
+    "day": "Preferred day",
+    "submit": "Book Free Consultation",
+    "thankYou": "Thank you!",
+    "confirm": "We'll be in touch within 24 hours to confirm your appointment.",
+    "ariaLabel": "Book a free consultation"
+  },
+  "hours": {
+    "tag": "Visit Us",
+    "title": "Office Hours",
+    "ariaTable": "Weekly office hours",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "closed": "Closed"
+  },
+  "contact": {
+    "tag": "Get in Touch",
+    "title": "Book Your Free Consultation",
+    "subtitle": "Ready for clear, radiant skin? Reach out any way you like — we're here to help you start your journey.",
+    "callUsTitle": "Call Us",
+    "callUsSub": "Mon-Sat during business hours",
+    "whatsappTitle": "WhatsApp",
+    "whatsappBody": "Message us anytime",
+    "whatsappSub": "We reply fast — usually within minutes",
+    "visitTitle": "Visit Us"
+  },
+  "blog": {
+    "pageTag": "The Radiance Journal",
+    "pageTitle": "Skincare Science & Expert Insights",
+    "pageSubtitle": "Evidence-based articles from Marta Nazzar and the 360 Radiance team. No fluff, no trends — just the science behind your best skin.",
+    "featured": "Featured",
+    "readFullArticle": "Read full article →",
+    "allArticles": "All Articles",
+    "allArticlesSubtitle": "Browse by category or explore our full library of skincare science.",
+    "newsletterTitle": "Get Skincare Science in Your Inbox",
+    "newsletterSubtitle": "One article per week. No spam, no sales pitches — just evidence-based insights from a clinician who's been in the field for 25+ years.",
+    "subscribe": "Subscribe",
+    "emailPlaceholder": "Your email address",
+    "subscribed": "You're in!",
+    "subscribedBody": "Check your inbox for a welcome email. Your first article arrives next week.",
+    "topicsHeading": "Explore by Topic",
+    "ctaHeading": "Knowledge Is the First Step to Clear Skin",
+    "ctaSubtitle": "Ready to put the science into practice? Book a free consultation and let Marta design a plan for your skin.",
+    "moreIn": "More in {category}",
+    "articleCtaHeading": "Have Questions About Your Skin?",
+    "articleCtaSubtitle": "Book a consultation and get expert answers backed by 25+ years of clinical experience.",
+    "categories": {
+      "all": "All",
+      "acneScience": "Acne Science",
+      "ingredients": "Ingredients",
+      "skinHealth": "Skin Health",
+      "treatments": "Treatments",
+      "productGuides": "Product Guides"
+    }
+  },
+  "footer": {
+    "description": "Award-winning paramedical skincare in Sunrise, FL. 25+ years of medical expertise, European serums, and proprietary botanical formulas.",
+    "services": "Services",
+    "company": "Company",
+    "contact": "Contact",
+    "copyright": "© 2026 360 Radiance. All rights reserved.",
+    "credentials": "ASCP Member · Best of 2026 Award Winner"
+  },
+  "ctaBanner": {
+    "default": "Book Free Consultation"
+  }
+}

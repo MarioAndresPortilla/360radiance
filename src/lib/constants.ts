@@ -1,10 +1,18 @@
 import type { Service, Testimonial, WhyCard, Credential, JourneyStep, ProductFeature, HourEntry, TrustItem } from '@/types';
 import { BLOG_CONTENT } from './blog-content';
 import { BLOG_CONTENT_2 } from './blog-content-2';
+import { BLOG_CONTENT_ES } from './blog-content-es';
+import { BLOG_CONTENT_2_ES } from './blog-content-2-es';
 
-const ALL_BLOG_CONTENT = { ...BLOG_CONTENT, ...BLOG_CONTENT_2 };
+const ALL_BLOG_CONTENT_EN = { ...BLOG_CONTENT, ...BLOG_CONTENT_2 };
+const ALL_BLOG_CONTENT_ES = { ...BLOG_CONTENT_ES, ...BLOG_CONTENT_2_ES };
 
-const BLOG_CTAS: Record<string, string> = {
+export const BLOG_CONTENT_BY_LOCALE: Record<string, typeof ALL_BLOG_CONTENT_EN> = {
+  en: ALL_BLOG_CONTENT_EN,
+  es: ALL_BLOG_CONTENT_ES,
+};
+
+const BLOG_CTAS_EN: Record<string, string> = {
   'why-face-reality-works-when-everything-else-fails': 'Ready to break the cycle of failed acne treatments? Book a consultation at 360 Radiance in Sunrise, FL. Marta\'s 12-week Face Reality program has helped hundreds of clients finally achieve clear skin — starting at $280.',
   'the-science-of-glass-ampule-serums': 'Experience European glass ampule serums in person. Book a treatment at 360 Radiance and feel the difference clinical-grade actives make.',
   'rosacea-triggers-complete-guide': 'Struggling with rosacea? Marta has cleared rosacea clients in as little as 4 weeks. Book a consultation at 360 Radiance in Sunrise, FL.',
@@ -14,6 +22,23 @@ const BLOG_CTAS: Record<string, string> = {
   'hormonal-acne-root-cause': 'Hormonal acne is treatable — with the right protocol. Book the 12-week Face Reality program at 360 Radiance in Sunrise, FL. Starting at $280.',
   'building-a-morning-routine-that-works': 'Stop guessing. Get a Custom Regimen Design from Marta and learn exactly which products to use, in what order, and why.',
   'parabens-sulfates-toxins-what-to-actually-avoid': 'Try the Radiance Skin Care Line — clinically formulated, free of genuinely concerning ingredients, and designed to actually work. Available at 360 Radiance.',
+};
+
+const BLOG_CTAS_ES: Record<string, string> = {
+  'why-face-reality-works-when-everything-else-fails': '¿Lista para romper el ciclo de tratamientos de acné fallidos? Reserve una consulta en 360 Radiance en Sunrise, FL. El programa Face Reality de 12 semanas de Marta ha ayudado a cientos de clientes a finalmente lograr una piel clara — desde $280.',
+  'the-science-of-glass-ampule-serums': 'Experimente los sueros europeos en ampollas de vidrio en persona. Reserve un tratamiento en 360 Radiance y sienta la diferencia que hacen los activos de grado clínico.',
+  'rosacea-triggers-complete-guide': '¿Sufre de rosácea? Marta ha aclarado clientes con rosácea en tan solo 4 semanas. Reserve una consulta en 360 Radiance en Sunrise, FL.',
+  'microdermabrasion-what-actually-happens': 'Experimente la microdermoabrasión más completa del sur de la Florida. Reserve su tratamiento con Marta en 360 Radiance.',
+  'your-skin-barrier-explained': '¿No está segura de si su barrera cutánea está dañada? Reserve un análisis gratuito de la piel en 360 Radiance y obtenga un plan personalizado de reparación.',
+  'retinol-vs-bakuchiol': 'Obtenga una evaluación antienvejecimiento personalizada con Marta en 360 Radiance. Usamos lo mejor del retinol y el bakuchiol en nuestro Tratamiento de Renovación con Retinol.',
+  'hormonal-acne-root-cause': 'El acné hormonal es tratable — con el protocolo correcto. Reserve el programa Face Reality de 12 semanas en 360 Radiance en Sunrise, FL. Desde $280.',
+  'building-a-morning-routine-that-works': 'Deje de adivinar. Obtenga un Diseño de Régimen Personalizado de Marta y aprenda exactamente qué productos usar, en qué orden y por qué.',
+  'parabens-sulfates-toxins-what-to-actually-avoid': 'Pruebe la línea Radiance Skin Care — formulada clínicamente, libre de ingredientes genuinamente preocupantes, y diseñada para realmente funcionar. Disponible en 360 Radiance.',
+};
+
+export const BLOG_CTAS_BY_LOCALE: Record<string, Record<string, string>> = {
+  en: BLOG_CTAS_EN,
+  es: BLOG_CTAS_ES,
 };
 
 export const BUSINESS = {
@@ -948,11 +973,27 @@ const BLOG_POSTS_META: BlogPostMeta[] = [
   },
 ];
 
+// English by default for any code that just iterates metadata
 export const BLOG_POSTS: BlogPost[] = BLOG_POSTS_META.map((meta) => ({
   ...meta,
-  content: ALL_BLOG_CONTENT[meta.slug] ?? [],
-  cta: BLOG_CTAS[meta.slug],
+  content: ALL_BLOG_CONTENT_EN[meta.slug] ?? [],
+  cta: BLOG_CTAS_EN[meta.slug],
 }));
+
+// Locale-aware lookup for article pages
+export function getBlogPosts(locale: string): BlogPost[] {
+  const content = BLOG_CONTENT_BY_LOCALE[locale] ?? ALL_BLOG_CONTENT_EN;
+  const ctas = BLOG_CTAS_BY_LOCALE[locale] ?? BLOG_CTAS_EN;
+  return BLOG_POSTS_META.map((meta) => ({
+    ...meta,
+    content: content[meta.slug] ?? ALL_BLOG_CONTENT_EN[meta.slug] ?? [],
+    cta: ctas[meta.slug],
+  }));
+}
+
+export function getBlogPost(locale: string, slug: string): BlogPost | undefined {
+  return getBlogPosts(locale).find((p) => p.slug === slug);
+}
 
 export const BOOKING_SERVICES = [
   'Acne Treatment Program',

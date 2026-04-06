@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { BUSINESS } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -12,15 +13,16 @@ const INSTAGRAM_POSTS = [
 ];
 
 export function InstagramSection() {
+  const t = useTranslations('instagram');
   return (
     <section className="py-24 max-md:py-16" aria-labelledby="instagram-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader
             id="instagram-heading"
-            tag="Follow Us"
-            title="See Our Work on Instagram"
-            subtitle="Real treatments, real results, real clients. Follow @360radianceinc for daily skincare science and transformations."
+            tag={t('tag')}
+            title={t('title')}
+            subtitle={t('subtitle')}
           />
         </ScrollReveal>
 
@@ -53,7 +55,7 @@ export function InstagramSection() {
                       <circle cx="12" cy="12" r="5" />
                       <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
                     </svg>
-                    <span className="text-[.75rem] font-semibold">View on Instagram</span>
+                    <span className="text-[.75rem] font-semibold">{t('viewOnInstagram')}</span>
                   </div>
                 </div>
               </a>
@@ -73,7 +75,7 @@ export function InstagramSection() {
               <circle cx="12" cy="12" r="5" />
               <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
             </svg>
-            Follow @360radianceinc
+            {t('follow')}
           </a>
         </div>
       </div>

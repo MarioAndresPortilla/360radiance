@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { SERVICE_DETAILS, ACNE_PROGRAM_PRICING, ACNE_PROGRAM_CONTRAINDICATIONS } from '@/lib/constants';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
@@ -9,18 +10,26 @@ import { Icon, type IconName } from '@/components/icons/Icons';
 import { IconCheck } from '@/components/icons/Icons';
 import { cn } from '@/lib/utils';
 
-export const metadata: Metadata = {
-  title: 'Services',
-  description: 'Expert skincare treatments at 360 Radiance: Acne Treatment, HydraFacial, microneedling, LED therapy, chemical peels, tattoo removal laser, Carbon Yag laser, Sulwhasoo Korean facial, and more in Sunrise, FL.',
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'services' });
+  return {
+    title: t('pageTitle'),
+    description: t('pageSubtitle'),
+  };
+}
 
-export default function ServicesPage() {
+export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('services');
+
   return (
     <PageShell>
       <PageHeader
-        tag="Our Services"
-        title="Expert Skincare Treatments"
-        subtitle="Every treatment is tailored to your unique skin type and concerns. Marta combines 25+ years of medical expertise with cutting-edge protocols for real results."
+        tag={t('tag')}
+        title={t('title')}
+        subtitle={t('pageSubtitle')}
       />
 
       {/* Pricing overview */}
@@ -30,19 +39,19 @@ export default function ServicesPage() {
             <div className="grid grid-cols-4 gap-6 max-md:grid-cols-2 text-center">
               <div>
                 <div className="font-serif text-[1.8rem] text-teal">${ACNE_PROGRAM_PRICING.consultation}</div>
-                <div className="text-[.78rem] text-text-mid mt-1">Consultation</div>
+                <div className="text-[.78rem] text-text-mid mt-1">{t('consultation')}</div>
               </div>
               <div>
                 <div className="font-serif text-[1.8rem] text-teal">${ACNE_PROGRAM_PRICING.acneFacial}</div>
-                <div className="text-[.78rem] text-text-mid mt-1">Acne Facial</div>
+                <div className="text-[.78rem] text-text-mid mt-1">{t('acneFacial')}</div>
               </div>
               <div>
                 <div className="font-serif text-[1.8rem] text-teal">~${ACNE_PROGRAM_PRICING.homeCareProducts}</div>
-                <div className="text-[.78rem] text-text-mid mt-1">Home-Care Products</div>
+                <div className="text-[.78rem] text-text-mid mt-1">{t('homeCare')}</div>
               </div>
               <div>
                 <div className="font-serif text-[1.8rem] text-gold">${ACNE_PROGRAM_PRICING.totalStarting}</div>
-                <div className="text-[.78rem] text-text-mid mt-1">Total Starting At</div>
+                <div className="text-[.78rem] text-text-mid mt-1">{t('totalStarting')}</div>
               </div>
             </div>
           </ScrollReveal>
@@ -82,7 +91,7 @@ export default function ServicesPage() {
                       {/* Contraindications for acne program */}
                       {svc.slug === 'acne-treatment-program' && (
                         <div className="bg-gold-pale border border-gold-light/30 rounded-2xl p-6 mt-6">
-                          <h3 className="font-serif text-[1rem] text-gold-dark mb-3">Important: Before Beginning Treatment</h3>
+                          <h3 className="font-serif text-[1rem] text-gold-dark mb-3">{t('contraindicationsTitle')}</h3>
                           <ul className="flex flex-col gap-2.5 list-none">
                             {ACNE_PROGRAM_CONTRAINDICATIONS.map((item) => (
                               <li key={item} className="flex items-start gap-2.5 text-[.82rem] text-gold-dark/80 leading-[1.6]">
@@ -98,14 +107,14 @@ export default function ServicesPage() {
                         href="/contact"
                         className="inline-flex items-center gap-1.5 bg-teal text-white rounded-xl font-semibold text-[.88rem] px-7 py-3.5 transition-all hover:bg-teal-dark hover:-translate-y-px hover:shadow-md no-underline mt-6"
                       >
-                        Book This Treatment &rarr;
+                        {t('bookTreatment')}
                       </Link>
                     </div>
 
                     <div className={cn(i % 2 === 1 && 'max-lg:order-none lg:order-1')}>
                       <div className="bg-cream rounded-2xl p-8 max-md:p-6">
                         <h3 className="font-serif text-[1.1rem] mb-5">
-                          {svc.slug === 'acne-treatment-program' ? 'Program Includes' : 'Benefits'}
+                          {svc.slug === 'acne-treatment-program' ? t('programIncludes') : t('benefits')}
                         </h3>
                         <ul className="flex flex-col gap-3.5 list-none mb-8">
                           {svc.benefits.map((b) => (
@@ -121,18 +130,18 @@ export default function ServicesPage() {
                         {/* Bi-monthly pricing for acne program */}
                         {svc.slug === 'acne-treatment-program' && (
                           <div className="bg-white rounded-xl p-5 mb-6 border border-border">
-                            <div className="text-[.78rem] font-semibold text-text mb-2">Bi-Monthly Visits</div>
+                            <div className="text-[.78rem] font-semibold text-text mb-2">{t('biMonthly')}</div>
                             <div className="flex items-baseline gap-1">
                               <span className="font-serif text-[1.5rem] text-teal">${ACNE_PROGRAM_PRICING.biMonthlyVisit}</span>
-                              <span className="text-[.78rem] text-text-light">per visit &middot; 3 months</span>
+                              <span className="text-[.78rem] text-text-light">{t('perVisit')}</span>
                             </div>
                             <p className="text-[.75rem] text-text-mid mt-2 leading-[1.6]">
-                              Includes progress monitoring and an acne facial to prepare your skin for the next phase of treatment.
+                              {t('biMonthlyDesc')}
                             </p>
                           </div>
                         )}
 
-                        <h3 className="font-serif text-[1.1rem] mb-4">Ideal For</h3>
+                        <h3 className="font-serif text-[1.1rem] mb-4">{t('idealFor')}</h3>
                         <div className="flex flex-wrap gap-2.5">
                           {svc.idealFor.map((item) => (
                             <span key={item} className="bg-teal-pale text-teal-dark py-2 px-3.5 rounded-lg text-[.72rem] font-semibold">

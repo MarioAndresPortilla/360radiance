@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { TESTIMONIALS } from '@/lib/constants';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
@@ -6,17 +7,25 @@ import { PageHeader } from '@/components/ui/PageHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { IconStar } from '@/components/icons/Icons';
 
-export const metadata: Metadata = {
-  title: 'Reviews',
-  description: 'Read what our clients say about 360 Radiance. Real testimonials from real people who transformed their skin with Marta\'s expert treatments.',
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'testimonials' });
+  return {
+    title: t('title'),
+    description: 'Real testimonials from real people who transformed their skin with Marta\'s expert treatments.',
+  };
+}
 
-export default function ReviewsPage() {
+export default async function ReviewsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('testimonials');
+
   return (
     <PageShell>
       <PageHeader
-        tag="Client Stories"
-        title="What Our Clients Say"
+        tag={t('tag')}
+        title={t('title')}
         subtitle="Real testimonials from real people who transformed their skin. Every review is from a verified 360 Radiance client."
       />
 
@@ -54,7 +63,7 @@ export default function ReviewsPage() {
         <div className="container-site">
           <h2 id="all-reviews-heading" className="sr-only">All Reviews</h2>
           <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
-            {TESTIMONIALS.map((t, i) => (
+            {TESTIMONIALS.map((t) => (
               <ScrollReveal key={t.name}>
                 <blockquote className="bg-white border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-md hover:border-border-hover h-full flex flex-col">
                   <div className="flex gap-0.5 mb-4" aria-label="Rated 5 out of 5 stars">

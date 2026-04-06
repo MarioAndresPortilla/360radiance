@@ -1,25 +1,34 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { CREDENTIALS } from '@/lib/constants';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Icon, type IconName } from '@/components/icons/Icons';
-import { IconDiploma, IconCheck } from '@/components/icons/Icons';
+import { IconDiploma } from '@/components/icons/Icons';
 
-export const metadata: Metadata = {
-  title: 'About Marta Nazzar',
-  description: 'Meet Marta Nazzar — licensed Paramedical Aesthetician with 25+ years of medical expertise, B.S. in Biology, and Face Reality Acne Certification.',
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'about' });
+  return {
+    title: 'About Marta Nazzar',
+    description: t('pageSubtitle'),
+  };
+}
 
-export default function AboutPage() {
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('about');
+
   return (
     <PageShell>
       <PageHeader
-        tag="Meet Marta Nazzar"
-        title="The Science Behind Your Best Skin"
-        subtitle="25+ years of medical expertise, a deep passion for skincare science, and a commitment to results that change lives."
+        tag={t('tag')}
+        title={`${t('titleText')} ${t('titleHighlight')}`}
+        subtitle={t('pageSubtitle')}
       />
 
       {/* Main bio */}
@@ -42,8 +51,8 @@ export default function AboutPage() {
                     <IconDiploma size={18} className="text-gold-dark" />
                   </div>
                   <div className="text-[.7rem] font-semibold text-teal">
-                    25+ Years
-                    <span className="block font-normal text-text-light text-[.6rem]">Medical Experience</span>
+                    {t('yearsBadge')}
+                    <span className="block font-normal text-text-light text-[.6rem]">{t('yearsBadgeSub')}</span>
                   </div>
                 </div>
               </div>
@@ -52,13 +61,9 @@ export default function AboutPage() {
             <ScrollReveal>
               <div>
                 <h2 id="bio-heading" className="sr-only">About Marta Nazzar</h2>
-                <h3 className="font-serif text-[1.6rem] mb-4 leading-[1.2]">From Medical Science to Skincare Artistry</h3>
-                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
-                  Marta Nazzar is a licensed Paramedical Aesthetician whose path to skincare was built on a deep foundation of medical science. With a B.S. in Biology and an A.S. in Medical &amp; Laboratory Studies from Florida College of Natural Health, she brings a level of clinical precision that sets her apart from traditional aestheticians.
-                </p>
-                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
-                  Her 25+ years in the medical field gave her an understanding of skin at a cellular level — how it heals, what triggers inflammation, and why certain ingredients work while others don&apos;t. This knowledge is the backbone of every treatment she provides.
-                </p>
+                <h3 className="font-serif text-[1.6rem] mb-4 leading-[1.2]">{t('bioHeading')}</h3>
+                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">{t('p1')}</p>
+                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">{t('p2')}</p>
                 <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
                   Certified under renowned acne expert Dr. James E. Fulton through the Face Reality program, Marta evaluates diverse skin types to determine the best solution for each individual. Dr. Fulton pioneered Retin-A — and his clinical protocol is the foundation of Marta&apos;s acne treatment approach.
                 </p>
@@ -78,7 +83,7 @@ export default function AboutPage() {
       <section className="py-16 bg-cream" aria-labelledby="cred-heading">
         <div className="container-site">
           <ScrollReveal>
-            <h2 id="cred-heading" className="font-serif text-[1.6rem] text-center mb-10">Credentials &amp; Certifications</h2>
+            <h2 id="cred-heading" className="font-serif text-[1.6rem] text-center mb-10">{t('credentialsHeading')}</h2>
           </ScrollReveal>
           <div className="grid grid-cols-6 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2">
             {CREDENTIALS.map((cred) => (
@@ -111,7 +116,7 @@ export default function AboutPage() {
         <div className="container-site">
           <ScrollReveal>
             <div className="max-w-175 mx-auto">
-              <h2 id="philosophy-heading" className="font-serif text-[1.6rem] text-center mb-8">The 360 Radiance Philosophy</h2>
+              <h2 id="philosophy-heading" className="font-serif text-[1.6rem] text-center mb-8">{t('philosophyHeading')}</h2>
               <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1">
                 {[
                   { title: 'Science-First Approach', desc: 'Every recommendation is backed by clinical research and 25+ years of medical experience. No trends, no guesswork — just proven results.' },

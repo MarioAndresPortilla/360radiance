@@ -1,32 +1,34 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import Image from 'next/image';
 import { BUSINESS } from '@/lib/constants';
 import { IconPhone, IconWhatsApp } from '@/components/icons/Icons';
 import { cn } from '@/lib/utils';
 
-const NAV_LINKS = [
-  { href: '/services', label: 'Services' },
-  { href: '/products', label: 'Products' },
-  { href: '/results', label: 'Results' },
-  { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
-];
+const NAV_HREFS = ['/services', '/products', '/results', '/about', '/blog', '/contact'] as const;
 
 export function Navbar() {
+  const t = useTranslations('nav');
+  const tCommon = useTranslations('common');
+  const locale = useLocale();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
+  const navLinks = [
+    { href: '/services' as const, label: t('services') },
+    { href: '/products' as const, label: t('products') },
+    { href: '/results' as const, label: t('results') },
+    { href: '/about' as const, label: t('about') },
+    { href: '/blog' as const, label: t('blog') },
+    { href: '/contact' as const, label: t('contact') },
+  ];
+
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
@@ -34,11 +36,15 @@ export function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
+  function switchLocale(newLocale: 'en' | 'es') {
+    router.replace(pathname, { locale: newLocale });
+  }
+
   return (
     <header className="bg-white sticky top-0 z-100 border-b border-border">
-      <nav aria-label="Main navigation" className="px-8 max-md:px-4">
-        <div className="container-site flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center gap-2.5 no-underline text-text" aria-label="360 Radiance — Home">
+      <nav aria-label={t('ariaLabel')}>
+        <div className="container-site flex justify-between items-center h-16 gap-6">
+          <Link href="/" className="flex items-center gap-2.5 no-underline text-text shrink-0" aria-label={t('homeAria')}>
             <Image
               src="/images/360-radiance-logo.png"
               alt=""
@@ -49,8 +55,8 @@ export function Navbar() {
             <span className="font-serif text-xl">360 Radiance</span>
           </Link>
 
-          <div className="flex gap-7 items-center max-md:hidden" role="list">
-            {NAV_LINKS.map((link) => (
+          <div className="flex gap-6 items-center max-lg:hidden" role="list">
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -66,40 +72,53 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
+            {/* Language switcher */}
+            <div className="flex items-center gap-1 max-md:hidden text-[.78rem] font-semibold" role="group" aria-label={t('language')}>
+              <button
+                type="button"
+                onClick={() => switchLocale('en')}
+                className={cn('px-2 py-1 rounded transition-colors cursor-pointer', locale === 'en' ? 'text-teal' : 'text-text-light hover:text-teal')}
+                aria-current={locale === 'en' ? 'true' : undefined}
+                aria-label="English"
+              >
+                EN
+              </button>
+              <span className="text-text-faint" aria-hidden="true">/</span>
+              <button
+                type="button"
+                onClick={() => switchLocale('es')}
+                className={cn('px-2 py-1 rounded transition-colors cursor-pointer', locale === 'es' ? 'text-teal' : 'text-text-light hover:text-teal')}
+                aria-current={locale === 'es' ? 'true' : undefined}
+                aria-label="Español"
+              >
+                ES
+              </button>
+            </div>
+
             <a
               href={`tel:${BUSINESS.phoneRaw}`}
-              className="text-text-mid no-underline text-[.82rem] font-medium flex items-center gap-1 max-md:hidden"
-              aria-label={`Call us at ${BUSINESS.phone}`}
+              className="text-text-mid no-underline text-[.82rem] font-medium flex items-center gap-1 max-lg:hidden"
+              aria-label={t('callUs', { phone: BUSINESS.phone })}
             >
               <IconPhone size={14} className="text-text-mid" />
               {BUSINESS.phone}
             </a>
-            <span className="max-md:hidden">
-              <a
-                href={BUSINESS.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 bg-whatsapp text-white rounded-lg font-semibold text-[.82rem] px-5 py-2.5 transition-all cursor-pointer hover:bg-whatsapp-dark"
-                aria-label="Chat with us on WhatsApp"
-              >
-                <IconWhatsApp size={16} className="fill-white" />
-                WhatsApp
-              </a>
-            </span>
+
             <Link
               href="/contact"
               className="inline-flex items-center gap-1.5 bg-teal text-white rounded-lg font-semibold text-[.82rem] px-5 py-2.5 transition-all cursor-pointer hover:bg-teal-dark hover:-translate-y-px hover:shadow-md no-underline"
             >
-              Book Now
+              {tCommon('bookNow')}
             </Link>
+
             <button
               type="button"
-              className="hidden max-md:flex flex-col justify-center items-center w-10 h-10 gap-1.5 bg-transparent border-none cursor-pointer p-1"
+              className="hidden max-lg:flex flex-col justify-center items-center w-10 h-10 gap-1.5 bg-transparent border-none cursor-pointer p-1"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-label={mobileOpen ? t('closeMenu') : t('openMenu')}
             >
               <span className={`block w-5 h-0.5 bg-text transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-1' : ''}`} />
               <span className={`block w-5 h-0.5 bg-text transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
@@ -112,17 +131,17 @@ export function Navbar() {
       <div
         id="mobile-menu"
         role="dialog"
-        aria-label="Mobile navigation"
+        aria-label={t('mobileMenu')}
         aria-hidden={!mobileOpen}
-        className={`hidden max-md:block fixed inset-0 top-16 z-90 transition-all duration-300 ${mobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+        className={`hidden max-lg:block fixed inset-0 top-16 z-90 transition-all duration-300 ${mobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
       >
         <div className="absolute inset-0 bg-black/30" onClick={() => setMobileOpen(false)} />
         <nav
-          aria-label="Mobile navigation links"
+          aria-label={t('mobileMenu')}
           className={`relative bg-white border-t border-border shadow-lg transition-transform duration-300 ${mobileOpen ? 'translate-y-0' : '-translate-y-4'}`}
         >
           <div className="flex flex-col p-6 gap-1">
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -136,10 +155,28 @@ export function Navbar() {
               </Link>
             ))}
             <hr className="border-border my-2" />
+            {/* Mobile language switcher */}
+            <div className="flex items-center gap-2 px-4 py-3" role="group" aria-label={t('language')}>
+              <span className="text-[.78rem] text-text-light font-medium">{t('language')}:</span>
+              <button
+                type="button"
+                onClick={() => switchLocale('en')}
+                className={cn('px-3 py-1 rounded text-[.82rem] font-semibold transition-colors', locale === 'en' ? 'bg-teal text-white' : 'text-text-mid hover:bg-teal-pale')}
+              >
+                English
+              </button>
+              <button
+                type="button"
+                onClick={() => switchLocale('es')}
+                className={cn('px-3 py-1 rounded text-[.82rem] font-semibold transition-colors', locale === 'es' ? 'bg-teal text-white' : 'text-text-mid hover:bg-teal-pale')}
+              >
+                Español
+              </button>
+            </div>
             <a
               href={`tel:${BUSINESS.phoneRaw}`}
               className="text-text-mid no-underline text-[.88rem] font-medium flex items-center gap-2 py-3 px-4"
-              aria-label={`Call us at ${BUSINESS.phone}`}
+              aria-label={t('callUs', { phone: BUSINESS.phone })}
             >
               <IconPhone size={16} className="text-text-mid" />
               {BUSINESS.phone}
@@ -149,10 +186,10 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-whatsapp text-white rounded-lg text-[.85rem] font-semibold py-3 px-4 hover:bg-whatsapp-dark transition-all mt-1"
-              aria-label="Chat with us on WhatsApp"
+              aria-label="WhatsApp"
             >
               <IconWhatsApp size={18} className="fill-white" />
-              WhatsApp — we reply fast
+              WhatsApp
             </a>
           </div>
         </nav>
