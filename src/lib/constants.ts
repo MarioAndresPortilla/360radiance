@@ -77,10 +77,16 @@ export const WHY_CARDS: WhyCard[] = [
 export const SERVICES: Service[] = [
   {
     icon: 'science',
-    title: 'Face Reality Acne Program',
-    description: 'Clinical acne management for hormonal, cystic, and rosacea acne. Professional treatments + custom home-care.',
-    tag: 'Results in 2–4 weeks',
+    title: 'Acne Treatment Program',
+    description: 'Complete 12-week clinical program: consultation, acne facial, custom home-care regimen, and bi-monthly monitoring. Starting at $280.',
+    tag: '12-Week Program',
     featured: true,
+  },
+  {
+    icon: 'care',
+    title: 'Back Facial',
+    description: 'Professional deep-cleansing treatment for back acne and congestion. Extractions, exfoliation, and targeted serums.',
+    tag: 'Specialty',
   },
   {
     icon: 'sparkle',
@@ -97,8 +103,8 @@ export const SERVICES: Service[] = [
   {
     icon: 'scan',
     title: 'Skin Analysis & Consultation',
-    description: 'Comprehensive evaluation of your skin type, conditions, and lifestyle. Your treatment roadmap starts here.',
-    tag: 'Free with booking',
+    description: 'Comprehensive evaluation of your skin type, conditions, and lifestyle. Your treatment roadmap starts here. $50.',
+    tag: 'Starting Point',
   },
   {
     icon: 'leaf',
@@ -126,29 +132,29 @@ export const JOURNEY_STEPS: JourneyStep[] = [
   {
     number: '01',
     weekLabel: 'Week 1',
-    title: 'Consultation',
-    description: 'Skin analysis, first treatment, custom regimen begins.',
-    progress: 20,
+    title: 'Consultation & First Facial',
+    description: 'Health history, skin analysis, sensitivity test, acne facial, and your custom home-care regimen. $50 consultation + $50 facial.',
+    progress: 15,
   },
   {
     number: '02',
-    weekLabel: 'Week 2',
+    weekLabel: 'Weeks 2–4',
     title: 'First Signs',
-    description: 'Inflammation drops. 30–50% improvement for most clients.',
-    progress: 45,
+    description: 'Home-care regimen takes effect. Inflammation drops. 30–50% improvement for most clients. Bi-monthly visit ($80).',
+    progress: 40,
   },
   {
     number: '03',
-    weekLabel: 'Week 4',
+    weekLabel: 'Weeks 4–8',
     title: 'Breakthrough',
-    description: 'Dramatic clearing. Rosacea clients often fully clear.',
-    progress: 75,
+    description: 'Dramatic clearing. Rosacea clients often fully clear. Acne facial + regimen adjustment at bi-monthly visit.',
+    progress: 70,
   },
   {
     number: '04',
-    weekLabel: 'Week 8',
-    title: 'Radiance',
-    description: '90%+ improvement. Go out makeup-free with confidence.',
+    weekLabel: 'Weeks 8–12',
+    title: 'Clear Skin',
+    description: '90%+ improvement. Maintenance phase begins. Final visit to lock in results and transition to long-term care.',
     progress: 95,
   },
 ];
@@ -218,28 +224,65 @@ export interface ServiceDetail {
   idealFor: string[];
 }
 
+export const ACNE_PROGRAM_PRICING = {
+  consultation: 50,
+  acneFacial: 50,
+  homeCareProducts: 180,
+  totalStarting: 280,
+  biMonthlyVisit: 80,
+  programLength: '12 weeks',
+  visitFrequency: 'Bi-monthly for 3 months',
+} as const;
+
+export const ACNE_PROGRAM_CONTRAINDICATIONS = [
+  'You must not be currently under Accutane, nor have used it within the last 30 days.',
+  'You must not be currently using, nor used within the past 2 weeks: Retin-A, Tazorac, or Differin.',
+  'You must not be currently using topical or oral antibiotics such as tetracycline, doxycycline, erythromycin, or clindamycin.',
+] as const;
+
 export const SERVICE_DETAILS: ServiceDetail[] = [
   {
-    slug: 'face-reality-acne-program',
+    slug: 'acne-treatment-program',
     icon: 'science',
-    title: 'Face Reality Acne Program',
-    tagline: 'Clinical acne management with a proven protocol — not guesswork.',
-    tag: 'Results in 2–4 weeks',
+    title: 'Acne Treatment Program',
+    tagline: 'A complete 12-week clinical program to clear your skin — starting at $280.',
+    tag: '12-Week Program',
     featured: true,
     description: [
-      'The Face Reality Acne Program is a comprehensive, clinical approach to clearing acne — developed by Dr. James E. Fulton, the pioneer of Retin-A. Marta is personally certified under this protocol and has used it to transform hundreds of clients\' skin.',
-      'Unlike store-bought products that treat symptoms, Face Reality addresses the root causes of acne: excess sebum, dead skin cell buildup, and bacterial overgrowth. Each client receives a customized combination of professional in-office treatments and a tailored home-care regimen.',
-      'Most clients see a 30–50% improvement within the first two weeks. Rosacea clients frequently clear completely within four weeks. The program includes bi-weekly professional treatments, custom product selection, and ongoing regimen adjustments as your skin responds.',
+      'The Acne Treatment Program is a comprehensive 12-week clinical protocol designed to create clear skin. Built on the Face Reality method — developed by Dr. James E. Fulton, the pioneer of Retin-A — this program combines professional in-office treatments with a custom home-care regimen tailored to your specific acne type.',
+      'Your program begins with an initial consultation ($50) that includes a full health history review, allergy and medication screening, lifestyle assessment, skin analysis to determine your skin type, acne type, and a sensitivity test. You\'ll then receive your first acne facial ($50), customized to your specific condition, followed by a complete take-home package with home-care products (approximately $180) and lifestyle recommendations.',
+      'Over the following 12 weeks, you\'ll have bi-monthly visits ($80 each) for 3 months. Each visit includes progress monitoring and an acne facial to prepare your skin for the next phase of your home-care regimen. Most clients see 30–50% improvement within the first two weeks, and 90%+ improvement by the end of the program.',
     ],
     benefits: [
-      'Addresses hormonal, cystic, and rosacea acne',
-      'Bi-weekly professional treatments in-office',
-      'Custom home-care regimen with medical-grade products',
-      'Progress tracking and regimen adjustments',
-      'Most clients see 90%+ improvement by week 8',
-      'Certified protocol — backed by clinical research',
+      'Initial consultation with health history & skin analysis — $50',
+      'First acne facial customized to your condition — $50',
+      '12 weeks of home-care products — approximately $180',
+      'Bi-monthly monitoring visits with acne facial — $80 each',
+      'Complete take-home package with lifestyle guidelines',
+      'Total program starting at $280 + bi-monthly visits',
     ],
     idealFor: ['Hormonal acne', 'Cystic acne', 'Rosacea', 'Persistent breakouts', 'Adult acne', 'Teen acne'],
+  },
+  {
+    slug: 'back-facial',
+    icon: 'care',
+    title: 'Back Facial',
+    tagline: 'Professional deep-cleansing treatment for back acne, congestion, and uneven texture.',
+    tag: 'Specialty',
+    description: [
+      'The back is one of the most acne-prone areas of the body — and one of the hardest to treat at home. Our Back Facial is a professional-grade treatment that addresses back acne, congestion, blackheads, and uneven texture with the same clinical precision we apply to facial treatments.',
+      'The treatment includes thorough cleansing, steam, professional extractions, enzyme or chemical exfoliation based on your skin sensitivity, and targeted serums to calm inflammation and prevent future breakouts. We finish with a soothing mask and hydrating treatment.',
+      'Whether you\'re dealing with active back acne, post-inflammatory scarring, or simply want smoother, clearer skin on your back and shoulders — this treatment delivers visible results in a single session.',
+    ],
+    benefits: [
+      'Deep cleansing and professional extractions',
+      'Enzyme or chemical exfoliation based on skin type',
+      'Targeted anti-acne and anti-inflammatory serums',
+      'Soothing mask and hydrating finish',
+      'Addresses blackheads, congestion, and scarring',
+      'Visible improvement after a single session',
+    ],
+    idealFor: ['Back acne', 'Shoulder breakouts', 'Blackheads & congestion', 'Post-inflammatory scarring', 'Pre-event skin prep', 'Athletes & active lifestyles'],
   },
   {
     slug: 'microdermabrasion',
@@ -638,9 +681,10 @@ export const BLOG_POSTS: BlogPost[] = [
 ];
 
 export const BOOKING_SERVICES = [
-  'Acne Consultation',
+  'Acne Treatment Program',
+  'Back Facial',
   'Microdermabrasion',
-  'Skin Analysis',
+  'Skin Analysis & Consultation',
   'Botanical Treatment',
   'Rosacea Program',
   'Custom Regimen',
