@@ -8,12 +8,12 @@ import { HeroStats } from './HeroStats';
 export function Hero() {
   const t = useTranslations('hero');
   return (
-    <section className="py-24 max-md:py-14 bg-cream" aria-labelledby="hero-heading">
+    <section className="py-24 max-md:py-12 bg-cream" aria-labelledby="hero-heading">
       <div className="container-site">
-        <div className="grid grid-cols-[1.1fr_1fr] gap-20 max-lg:gap-12 items-center max-lg:grid-cols-1 max-lg:text-center">
+        <div className="grid grid-cols-[1.1fr_1fr] gap-20 max-lg:gap-10 items-center max-lg:grid-cols-1 max-lg:text-center">
           <div className="max-lg:order-2">
-            <div className="inline-flex items-center gap-2.5 bg-white border border-border py-2 px-5 rounded-full text-[.73rem] font-semibold text-teal mb-7 shadow-sm">
-              <span className="w-1.5 h-1.5 bg-teal rounded-full" aria-hidden="true" />
+            <div className="inline-flex items-center gap-2.5 bg-white border border-border py-2 px-5 rounded-full text-[.73rem] max-md:text-[.68rem] font-semibold text-teal mb-7 max-md:mb-5 shadow-sm whitespace-nowrap">
+              <span className="w-1.5 h-1.5 bg-teal rounded-full shrink-0" aria-hidden="true" />
               {t('badge')}
             </div>
             <h1 id="hero-heading" className="font-serif text-[clamp(2.2rem,4.5vw,3.4rem)] leading-[1.12] mb-6">
@@ -50,7 +50,7 @@ export function Hero() {
             <HeroStats />
           </div>
 
-          <div className="relative max-lg:order-1 max-lg:max-w-85 max-lg:mx-auto">
+          <div className="relative w-full max-lg:order-1 max-lg:max-w-80 max-lg:mx-auto">
             <div className="w-full aspect-[3/4] rounded-3xl overflow-hidden relative shadow-lg ring-1 ring-black/5">
               <Image
                 src="/images/marta-nazzar.jpg"
@@ -58,16 +58,16 @@ export function Hero() {
                 fill
                 className="object-cover object-top"
                 priority
-                sizes="(max-width: 1024px) 340px, 45vw"
+                sizes="(max-width: 1024px) 320px, 45vw"
               />
               <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-linear-to-t from-[rgba(26,35,50,.8)] to-transparent z-1" aria-hidden="true" />
-              <div className="absolute bottom-7 left-7 z-2 text-white">
+              <div className="absolute bottom-7 left-7 right-7 z-2 text-white text-left">
                 <h3 className="font-serif text-[1.3rem] mb-1.5">{t('photoTitle')}</h3>
                 <p className="text-[.78rem] opacity-90 font-medium tracking-wide">{t('photoSubtitle')}</p>
               </div>
             </div>
-            <div className="absolute top-5 right-5 bg-white/95 backdrop-blur-sm rounded-2xl py-3 px-5 shadow-lg z-2 flex items-center gap-2.5 text-[.76rem] font-semibold text-teal">
-              <IconScience size={18} className="text-teal" aria-hidden="true" />
+            <div className="absolute top-5 right-5 max-md:top-3 max-md:right-3 bg-white/95 backdrop-blur-sm rounded-2xl py-3 px-5 max-md:py-2 max-md:px-3.5 shadow-lg z-2 inline-flex items-center gap-2.5 max-md:gap-1.5 text-[.76rem] max-md:text-[.65rem] font-semibold text-teal whitespace-nowrap">
+              <IconScience size={16} className="text-teal shrink-0" aria-hidden="true" />
               {t('certBadge')}
             </div>
             {/* Decorative accent */}
