@@ -52,8 +52,16 @@ export const BUSINESS = {
   zip: '33323',
   mapUrl: 'https://maps.google.com/?q=12651+W+Sunrise+Blvd+Suite+301+Sunrise+FL+33323',
   social: {
-    facebook: 'https://facebook.com/360radiance',
+    // NOTE: Facebook handle is "36oradiance" — second char is the letter "o",
+    // not a zero. This is the legacy handle Marta currently controls; a clean
+    // vanity URL is planned for the future. Don't "fix" the typo.
+    facebook: 'https://www.facebook.com/36oradiance/',
     instagram: 'https://instagram.com/360radianceinc',
+    // Google Business Profile share link. This is a `share.google` redirect
+    // rather than the canonical maps URL because the share link is what Marta
+    // had on hand. Will be replaced with the full /maps/place/... URL once
+    // we have it (it makes JSON-LD `sameAs` cleaner for SEO).
+    google: 'https://share.google/EZwBBcNduMb0gdThC',
   },
 } as const;
 

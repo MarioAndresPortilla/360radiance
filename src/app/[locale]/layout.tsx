@@ -189,7 +189,7 @@ function buildJsonLd(locale: string) {
     },
     memberOf: { '@type': 'Organization', name: 'Associated Skin Care Professionals' },
     award: 'Best of 2026 Skin Care Clinic — BusinessRate',
-    sameAs: [BUSINESS.social.facebook, BUSINESS.social.instagram],
+    sameAs: [BUSINESS.social.facebook, BUSINESS.social.instagram, BUSINESS.social.google],
     knowsLanguage: ['en', 'es'],
     areaServed: [
       { '@type': 'City', name: 'Sunrise', containedInPlace: { '@type': 'State', name: 'Florida' } },

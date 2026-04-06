@@ -31,6 +31,7 @@ export function Footer() {
         { label: BUSINESS.phone, href: `tel:${BUSINESS.phoneRaw}`, tel: true },
         { label: 'Instagram', href: BUSINESS.social.instagram, external: true },
         { label: 'Facebook', href: BUSINESS.social.facebook, external: true },
+        { label: 'Google', href: BUSINESS.social.google, external: true },
         { label: tNav('contact'), href: '/contact' },
       ],
     },
