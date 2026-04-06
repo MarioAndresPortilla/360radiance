@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -39,8 +41,11 @@ export default function BlogPage() {
                       {featured.category}
                     </span>
                   </div>
-                  <h2 id="featured-article-heading" className="font-serif text-[1.8rem] leading-[1.2] mb-4">{featured.title}</h2>
+                  <h2 id="featured-article-heading" className="font-serif text-[1.8rem] leading-[1.2] mb-4">
+                    <Link href={`/blog/${featured.slug}`} className="no-underline text-text hover:text-teal transition-colors">{featured.title}</Link>
+                  </h2>
                   <p className="text-text-mid text-[.95rem] leading-[1.85] mb-6">{featured.excerpt}</p>
+                  <Link href={`/blog/${featured.slug}`} className="text-teal text-[.88rem] font-semibold no-underline hover:underline">Read full article &rarr;</Link>
                   <div className="flex items-center gap-4 text-[.78rem] text-text-light mb-6">
                     <time dateTime={featured.date}>
                       {new Date(featured.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
@@ -56,11 +61,14 @@ export default function BlogPage() {
                     ))}
                   </div>
                 </div>
-                <div className="bg-linear-to-br from-teal-pale to-cream rounded-2xl aspect-4/3 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="font-serif text-[3rem] text-teal/15 mb-2" aria-hidden="true">01</div>
-                    <div className="text-[.68rem] text-text-light tracking-[1.5px] uppercase">Featured Article</div>
-                  </div>
+                <div className="rounded-2xl overflow-hidden aspect-4/3 relative">
+                  <Image
+                    src={`/images/blog/${featured.slug}.jpg`}
+                    alt={featured.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                  />
                 </div>
               </div>
             </ScrollReveal>
