@@ -42,10 +42,10 @@ export function AboutSection() {
               <h2 id="about-heading" className="font-serif text-[1.9rem] mb-5 leading-[1.2]">
                 {t('titleText')} <em className="text-teal not-italic">{t('titleHighlight')}</em>
               </h2>
-              <p className="text-text-mid leading-[1.85] mb-5 text-[.92rem]">
+              <p className="text-text-mid mb-5 text-[.92rem]/[1.85]">
                 {t('p1')}
               </p>
-              <p className="text-text-mid leading-[1.85] mb-5 text-[.92rem]">
+              <p className="text-text-mid mb-5 text-[.92rem]/[1.85]">
                 {t('p2')}
               </p>
               <div className="flex items-center gap-4 mt-6 mb-6">

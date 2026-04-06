@@ -154,7 +154,7 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
             <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1">
               <div>
                 <h2 id="expect-heading" className="font-serif text-[1.9rem] mb-4 leading-[1.2]">{t('expectHeading')}</h2>
-                <p className="text-text-mid leading-[1.85] mb-6 text-[.92rem]">
+                <p className="text-text-mid mb-6 text-[.92rem]/[1.85]">
                   {t('expectBody')}
                 </p>
                 <ul className="flex flex-col gap-3 list-none">

@@ -22,7 +22,7 @@ export function ProductsSection() {
                 {t('tag')}
               </span>
               <h2 id="products-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-5">{t('title')}</h2>
-              <p className="text-text-mid leading-[1.85] mb-8 text-[.92rem]">
+              <p className="text-text-mid mb-8 text-[.92rem]/[1.85]">
                 {t('description')}
               </p>
               <ul className="flex flex-col gap-4 list-none" aria-label="Product features">

@@ -62,11 +62,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <div>
                 <h2 id="bio-heading" className="sr-only">{t('bioHeadingSr')}</h2>
                 <h3 className="font-serif text-[1.6rem] mb-4 leading-[1.2]">{t('bioHeading')}</h3>
-                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">{t('p1')}</p>
-                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">{t('p2')}</p>
-                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">{t('p3')}</p>
-                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">{t('p4')}</p>
-                <p className="text-text-mid leading-[1.85] text-[.92rem]">{t('p5')}</p>
+                <p className="text-text-mid mb-4 text-[.92rem]/[1.85]">{t('p1')}</p>
+                <p className="text-text-mid mb-4 text-[.92rem]/[1.85]">{t('p2')}</p>
+                <p className="text-text-mid mb-4 text-[.92rem]/[1.85]">{t('p3')}</p>
+                <p className="text-text-mid mb-4 text-[.92rem]/[1.85]">{t('p4')}</p>
+                <p className="text-text-mid text-[.92rem]/[1.85]">{t('p5')}</p>
               </div>
             </ScrollReveal>
           </div>

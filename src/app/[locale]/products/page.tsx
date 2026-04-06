@@ -111,13 +111,13 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
                 <h2 id="philosophy-heading" className="font-serif text-[1.9rem] mb-4 leading-[1.2]">
                   {t('ingredientHeading')}
                 </h2>
-                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
+                <p className="text-text-mid mb-4 text-[.92rem]/[1.85]">
                   {t.rich('ingredient.p1', { strong: (chunks) => <strong>{chunks}</strong> })}
                 </p>
-                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
+                <p className="text-text-mid mb-4 text-[.92rem]/[1.85]">
                   {t('ingredient.p2')}
                 </p>
-                <p className="text-text-mid leading-[1.85] text-[.92rem]">
+                <p className="text-text-mid text-[.92rem]/[1.85]">
                   {t('ingredient.p3')}
                 </p>
               </div>

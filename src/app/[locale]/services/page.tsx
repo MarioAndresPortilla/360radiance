@@ -85,7 +85,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                       </div>
                       <p className="text-teal font-medium text-[.95rem] mb-6">{svc.tagline}</p>
                       {svc.description.map((p, j) => (
-                        <p key={j} className="text-text-mid leading-[1.85] mb-5 text-[.92rem]">{p}</p>
+                        <p key={j} className="text-text-mid mb-5 text-[.92rem]/[1.85]">{p}</p>
                       ))}
 
                       {/* Contraindications for acne program */}
