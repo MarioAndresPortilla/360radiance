@@ -57,12 +57,31 @@ export const BUSINESS = {
   },
 } as const;
 
-// Cal.com booking is intentionally not wired up: Marta does not yet have a
-// Cal.com account. When she signs up, add a `CAL` const here with her real
-// `username/event-slug`, then re-introduce a popup-mode embed in
-// BookingSection.tsx + FloatingButtons.tsx (see TODO comments there). Avoid
-// the inline iframe — it produces preload/reflow warnings from Cal.com's
-// own bundle that can't be suppressed from our origin.
+// Cal.com booking — popup mode only. Inline iframe was tried and rolled back
+// because it emits preload/forced-reflow warnings from Cal.com's own bundle
+// that we cannot suppress from our origin. Click-to-open modal avoids that.
+//
+// Marta exposes two free consultation event types: a 15-minute quick chat
+// and a 30-minute full consultation. Both surfaces (home BookingSection and
+// /contact schedule card) show both so visitors can self-select. Default in
+// places where only one button fits (FloatingButtons) is the 30-min event.
+const CAL_USERNAME = '360radianceskincare';
+export const CAL = {
+  username: CAL_USERNAME,
+  // Single namespace per surface so the same Cal modal can be opened from
+  // any button on the page without re-initializing the embed.
+  namespace: 'booking',
+  events: {
+    quick: { slug: '15min', minutes: 15, link: `${CAL_USERNAME}/15min` },
+    full: { slug: '30min', minutes: 30, link: `${CAL_USERNAME}/30min` },
+  },
+  // Default link for single-button surfaces (FloatingButtons FAB).
+  get defaultLink() {
+    return this.events.full.link;
+  },
+} as const;
+
+export type CalEventKey = keyof typeof CAL.events;
 
 // Instagram showcase: each entry is one card on the homepage.
 // To swap in real content: replace `image` with the file under

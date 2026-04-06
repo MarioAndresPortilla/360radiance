@@ -1,15 +1,51 @@
+'use client';
+
+import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { BUSINESS } from '@/lib/constants';
+import { getCalApi } from '@calcom/embed-react';
+import { BUSINESS, CAL } from '@/lib/constants';
 import { IconPhone, IconWhatsApp } from '@/components/icons/Icons';
 
-// When Marta gets a Cal.com account, the phone button can be replaced with a
-// `data-cal-link` button + `getCalApi` popup namespace. Until then, "tel:" is
-// the booking pathway and avoids any third-party iframe noise.
+// Floating action stack: Cal.com booking (primary), phone (tel:), and
+// WhatsApp. The Cal popup is initialized once on mount via getCalApi so the
+// data-cal-link button just opens the modal — no per-click setup.
 export function FloatingButtons() {
   const tCommon = useTranslations('common');
 
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const cal = await getCalApi({ namespace: CAL.namespace });
+      if (cancelled) return;
+      cal('ui', {
+        theme: 'light',
+        cssVarsPerTheme: {
+          light: { 'cal-brand': '#1A7F7E' },
+          dark: { 'cal-brand': '#1A7F7E' },
+        },
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      });
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
   return (
     <div className="fixed bottom-6 right-6 max-md:bottom-4 max-md:right-4 z-90 flex flex-col gap-3 items-end print:hidden" role="group">
+      <button
+        type="button"
+        data-cal-link={CAL.defaultLink}
+        data-cal-namespace={CAL.namespace}
+        data-cal-config={JSON.stringify({ layout: 'month_view', theme: 'light' })}
+        className="bg-gold text-white w-13 h-13 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-250 hover:bg-gold-dark hover:-translate-y-0.5 cursor-pointer"
+        aria-label={tCommon('bookFreeConsultation')}
+      >
+        {/* Calendar icon */}
+        <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" />
+          <path d="M16 2v4M8 2v4M3 10h18" />
+        </svg>
+      </button>
       <a
         href={`tel:${BUSINESS.phoneRaw}`}
         className="bg-teal text-white w-13 h-13 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-250 hover:bg-teal-dark hover:-translate-y-0.5 no-underline"
