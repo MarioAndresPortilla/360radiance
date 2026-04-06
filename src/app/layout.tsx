@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     'European serums',
     'acne specialist',
   ],
-  metadataBase: new URL('https://360radiance.com'),
+  metadataBase: new URL('https://360radianceskincare.com'),
   alternates: {
     canonical: '/',
   },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: '360 Radiance | Paramedical Skincare',
     description:
       'Clear skin in as little as 2 weeks. Face Reality Acne Certified. European serums. Book free consultation.',
-    url: 'https://360radiance.com',
+    url: 'https://360radianceskincare.com',
     siteName: '360 Radiance',
     locale: 'en_US',
     type: 'website',
@@ -85,9 +85,9 @@ const jsonLd = {
   name: BUSINESS.name,
   description:
     'Paramedical skincare clinic specializing in acne treatment, microdermabrasion, and botanical skincare.',
-  url: 'https://360radiance.com',
+  url: 'https://360radianceskincare.com',
   telephone: '+15616328218',
-  image: 'https://360radiance.com/og-image.png',
+  image: 'https://360radianceskincare.com/og-image.png',
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',

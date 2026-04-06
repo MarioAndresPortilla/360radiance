@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://360radiance.com/sitemap.xml',
+    sitemap: 'https://360radianceskincare.com/sitemap.xml',
   };
 }
