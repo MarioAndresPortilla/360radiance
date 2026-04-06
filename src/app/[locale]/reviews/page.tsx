@@ -20,13 +20,14 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('testimonials');
+  const tr = await getTranslations('reviews');
 
   return (
     <PageShell>
       <PageHeader
         tag={t('tag')}
         title={t('title')}
-        subtitle="Real testimonials from real people who transformed their skin. Every review is from a verified 360 Radiance client."
+        subtitle={tr('pageSubtitle')}
       />
 
       {/* Rating summary */}
@@ -41,17 +42,17 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
                     <IconStar key={i} size={18} className="text-gold" aria-hidden="true" />
                   ))}
                 </div>
-                <div className="text-[.78rem] text-text-mid">Based on client reviews</div>
+                <div className="text-[.78rem] text-text-mid">{tr('basedOn')}</div>
               </div>
               <div className="w-px h-16 bg-border max-md:hidden" aria-hidden="true" />
               <div className="text-center">
                 <div className="font-serif text-[2rem] text-teal">100%</div>
-                <div className="text-[.78rem] text-text-mid">Would recommend to a friend</div>
+                <div className="text-[.78rem] text-text-mid">{tr('wouldRecommend')}</div>
               </div>
               <div className="w-px h-16 bg-border max-md:hidden" aria-hidden="true" />
               <div className="text-center">
                 <div className="font-serif text-[2rem] text-teal">90%+</div>
-                <div className="text-[.78rem] text-text-mid">Average skin improvement</div>
+                <div className="text-[.78rem] text-text-mid">{tr('avgImprovement')}</div>
               </div>
             </div>
           </ScrollReveal>
@@ -61,7 +62,7 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
       {/* All testimonials */}
       <section className="py-20 max-md:py-14" aria-labelledby="all-reviews-heading">
         <div className="container-site">
-          <h2 id="all-reviews-heading" className="sr-only">All Reviews</h2>
+          <h2 id="all-reviews-heading" className="sr-only">{tr('allReviews')}</h2>
           <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
             {TESTIMONIALS.map((t) => (
               <ScrollReveal key={t.name}>
@@ -92,9 +93,9 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
       <section className="py-16 bg-cream" aria-labelledby="share-heading">
         <div className="container-site text-center">
           <ScrollReveal>
-            <h2 id="share-heading" className="font-serif text-[1.6rem] mb-3">Are You a 360 Radiance Client?</h2>
+            <h2 id="share-heading" className="font-serif text-[1.6rem] mb-3">{tr('shareTitle')}</h2>
             <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7] mb-6">
-              We&apos;d love to hear about your experience. Share your skin transformation story and help others discover the confidence of clear, radiant skin.
+              {tr('shareBody')}
             </p>
             <a
               href="https://g.page/r/360radiance/review"
@@ -102,15 +103,15 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-teal text-teal rounded-lg font-semibold text-[.85rem] px-6 py-3 transition-all hover:bg-teal hover:text-white no-underline"
             >
-              Leave a Review
+              {tr('leaveReview')}
             </a>
           </ScrollReveal>
         </div>
       </section>
 
       <CtaBanner
-        heading="Ready for Your Transformation?"
-        subtitle="Join hundreds of happy clients. Book your free consultation and start your journey to clear skin."
+        heading={tr('ctaHeading')}
+        subtitle={tr('ctaSubtitle')}
       />
     </PageShell>
   );

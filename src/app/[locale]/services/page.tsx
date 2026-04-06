@@ -164,9 +164,9 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       </section>
 
       <CtaBanner
-        heading="Not Sure Which Treatment Is Right?"
-        subtitle="Book a consultation ($50) and Marta will design a treatment plan tailored to your unique needs."
-        buttonText="Book Your Consultation"
+        heading={t('ctaHeading')}
+        subtitle={t('ctaSubtitle')}
+        buttonText={t('ctaButton')}
       />
     </PageShell>
   );

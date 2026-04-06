@@ -114,7 +114,10 @@
     "biMonthly": "Bi-Monthly Visits",
     "perVisit": "per visit · 3 months",
     "biMonthlyDesc": "Includes progress monitoring and an acne facial to prepare your skin for the next phase of treatment.",
-    "contraindicationsTitle": "Important: Before Beginning Treatment"
+    "contraindicationsTitle": "Important: Before Beginning Treatment",
+    "ctaHeading": "Not Sure Which Treatment Is Right?",
+    "ctaSubtitle": "Book a consultation ($50) and Marta will design a treatment plan tailored to your unique needs.",
+    "ctaButton": "Book Your Consultation"
   },
   "award": {
     "tag": "Award Winner",
@@ -137,7 +140,31 @@
     "pageSubtitle": "25+ years of medical expertise, a deep passion for skincare science, and a commitment to results that change lives.",
     "bioHeading": "From Medical Science to Skincare Artistry",
     "credentialsHeading": "Credentials & Certifications",
-    "philosophyHeading": "The 360 Radiance Philosophy"
+    "philosophyHeading": "The 360 Radiance Philosophy",
+    "p3": "Certified under renowned acne expert Dr. James E. Fulton through the Face Reality program, Marta evaluates diverse skin types to determine the best solution for each individual. Dr. Fulton pioneered Retin-A — and his clinical protocol is the foundation of Marta's acne treatment approach.",
+    "p4": "She created the Radiance Skin Care Line — a proprietary collection of botanical formulas free of toxins, parabens, and sulfates. Every product blends clinical science with nature's most beneficial ingredients, designed for real skin conditions and real results.",
+    "p5": "Fluent in English and Spanish, Marta ensures every client feels understood and confident in their treatment plan. Her practice isn't just about clearing skin — it's about restoring confidence and changing lives.",
+    "bioHeadingSr": "About Marta Nazzar",
+    "philosophy": {
+      "scienceFirst": {
+        "title": "Science-First Approach",
+        "desc": "Every recommendation is backed by clinical research and 25+ years of medical experience. No trends, no guesswork — just proven results."
+      },
+      "personalized": {
+        "title": "Personalized Care",
+        "desc": "No two skin types are the same. Every client receives a custom treatment roadmap and take-home protocol designed for their unique needs."
+      },
+      "cleanIngredients": {
+        "title": "Clean Ingredients",
+        "desc": "The Radiance line is toxin-free, paraben-free, and sulfate-free. We believe effective skincare should never compromise your health."
+      },
+      "longTerm": {
+        "title": "Long-Term Health",
+        "desc": "We treat the root cause, not just symptoms. Our goal is lasting skin health and the confidence that comes with it."
+      }
+    },
+    "ctaHeading": "Ready to Meet Marta?",
+    "ctaSubtitle": "Book a free consultation and experience the difference that real expertise makes."
   },
   "results": {
     "tag": "Real Results",
@@ -154,6 +181,22 @@
     "readAllReviews": "Read All Reviews →",
     "ctaHeading": "Ready to Start Your Journey?",
     "ctaSubtitle": "Most clients see visible improvement within 2 weeks. Book your free consultation today.",
+    "expectBody": "Your journey to clear skin is a partnership. Marta guides you every step of the way with professional treatments, custom home-care, and ongoing adjustments based on your skin's response.",
+    "expect": {
+      "item1": "Comprehensive skin analysis at your first visit",
+      "item2": "Bi-weekly professional treatments in-office",
+      "item3": "Custom home-care regimen with medical-grade products",
+      "item4": "Progress tracking and regimen adjustments",
+      "item5": "Bilingual support in English and Spanish",
+      "item6": "Ongoing care after clearing for maintenance"
+    },
+    "avgImprovementCaption": "Average improvement by week 8",
+    "quote": "\"After 2 weeks — 50% better. After 2 months — 90%. After 2 years of hiding behind makeup, I can finally go out with clear skin.\"",
+    "quoteAttribution": "— Marissa C., Cystic Acne",
+    "storiesSubtitle": "Real stories from real clients who transformed their skin.",
+    "beforeAfterLabel": "Before & After",
+    "acneTreatmentLabel": "Acne Treatment",
+    "twelveWeekLabel": "12-Week Program",
     "stats": {
       "improvement": "Average client improvement by week 8",
       "weeks": "Typical time to see first visible results",
@@ -165,6 +208,18 @@
     "tag": "Client Stories",
     "title": "What Our Clients Say",
     "starRating": "Rated 5 out of 5 stars"
+  },
+  "reviews": {
+    "pageSubtitle": "Real testimonials from real people who transformed their skin. Every review is from a verified 360 Radiance client.",
+    "allReviews": "All Reviews",
+    "basedOn": "Based on client reviews",
+    "wouldRecommend": "Would recommend to a friend",
+    "avgImprovement": "Average skin improvement",
+    "shareTitle": "Are You a 360 Radiance Client?",
+    "shareBody": "We'd love to hear about your experience. Share your skin transformation story and help others discover the confidence of clear, radiant skin.",
+    "leaveReview": "Leave a Review",
+    "ctaHeading": "Ready for Your Transformation?",
+    "ctaSubtitle": "Join hundreds of happy clients. Book your free consultation and start your journey to clear skin."
   },
   "instagram": {
     "tag": "Follow Us",
@@ -184,7 +239,33 @@
     "matcherTitle": "Find Your Perfect Products",
     "matcherSubtitle": "Select your primary skin concern and we'll show you the products formulated specifically for you.",
     "catalogTitle": "The Full Collection",
-    "catalogSubtitle": "Browse by category or explore the entire line. Every product is designed to work together."
+    "catalogSubtitle": "Browse by category or explore the entire line. Every product is designed to work together.",
+    "howHeading": "How Our Products Are Different",
+    "how": {
+      "clinician": {
+        "title": "Clinician-Formulated",
+        "desc": "Every product is created by Marta Nazzar — not a marketing team. Formulas are built on 25+ years of medical expertise and real clinical outcomes."
+      },
+      "treatmentPaired": {
+        "title": "Treatment-Paired",
+        "desc": "Products are designed to extend and amplify your in-office results. Each is calibrated to work with our professional treatment protocols."
+      },
+      "ingredient": {
+        "title": "Ingredient-First",
+        "desc": "We select actives based on clinical research — not trends. European-sourced, glass ampule-sealed, and concentrated for maximum efficacy."
+      }
+    },
+    "scienceTag": "The Science",
+    "ingredientHeading": "Why Ingredients Matter More Than Brands",
+    "ingredient": {
+      "p1": "The skincare industry spends billions on packaging and marketing. We spend ours on ingredients. Every formula in the Radiance Collection starts with a single question: <strong>what does the clinical data say?</strong>",
+      "p2": "Our European glass ampule serums contain 4-10x higher concentrations of active ingredients than their retail counterparts. Single-use packaging eliminates oxidation — meaning every drop is as potent as the day it was formulated.",
+      "p3": "We publish every key ingredient and its clinical benefit because we believe informed clients make better skincare decisions. No proprietary blends hiding behind fancy names — just transparent, evidence-based formulas."
+    },
+    "ampuleTech": "European Glass Ampule Technology",
+    "ctaHeading": "Not Sure Which Products Are Right for You?",
+    "ctaSubtitle": "Book a free skin analysis. Marta will design a personalized regimen with products tailored to your skin's specific needs.",
+    "ctaButton": "Get Your Custom Regimen"
   },
   "booking": {
     "title": "Ready for Clear, Radiant Skin?",
@@ -250,6 +331,33 @@
       "skinHealth": "Skin Health",
       "treatments": "Treatments",
       "productGuides": "Product Guides"
+    },
+    "topics": {
+      "articleCount": "{count, plural, one {# article} other {# articles}}",
+      "acneScience": {
+        "title": "Acne Science",
+        "desc": "Clinical research on what causes acne, why certain treatments work, and how to break the cycle for good."
+      },
+      "ingredients": {
+        "title": "Ingredients",
+        "desc": "Deep dives into active ingredients — what the clinical data says, how they work, and which ones are worth your money."
+      },
+      "skinHealth": {
+        "title": "Skin Health",
+        "desc": "Your skin barrier, microbiome, inflammation, and the fundamentals that determine whether any product or treatment will work."
+      },
+      "treatments": {
+        "title": "Treatments",
+        "desc": "How professional treatments work at a cellular level. Microdermabrasion, chemical peels, LED therapy, and more."
+      },
+      "productGuides": {
+        "title": "Product Guides",
+        "desc": "How to build routines, layer products correctly, and choose formulas based on your skin type — not marketing."
+      },
+      "comingSoon": {
+        "title": "Coming Soon",
+        "desc": "Nutrition & skin, hormonal health, seasonal skincare, and interviews with dermatology researchers."
+      }
     }
   },
   "footer": {

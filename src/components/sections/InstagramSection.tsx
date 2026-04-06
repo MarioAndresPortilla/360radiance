@@ -1,15 +1,16 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { BUSINESS } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 
 const INSTAGRAM_POSTS = [
-  { id: 1, caption: 'Acne transformation — 12-week program results', tag: 'Before & After' },
-  { id: 2, caption: 'Glass ampule serum application technique', tag: 'Treatment' },
-  { id: 3, caption: 'Radiance Skin Care Line — new arrivals', tag: 'Products' },
-  { id: 4, caption: 'HydraFacial glow — instant results', tag: 'Treatment' },
-  { id: 5, caption: 'Client testimonial — rosacea cleared in 4 weeks', tag: 'Results' },
-  { id: 6, caption: 'Behind the scenes at 360 Radiance', tag: 'Clinic Life' },
+  { id: 1, alt: 'Acne transformation results from 12-week program at 360 Radiance' },
+  { id: 2, alt: 'HydraFacial treatment at 360 Radiance' },
+  { id: 3, alt: 'Radiance Skin Care Line products' },
+  { id: 4, alt: 'Client rosacea results at 360 Radiance' },
+  { id: 5, alt: 'Behind the scenes at 360 Radiance clinic' },
+  { id: 6, alt: 'Marta Nazzar, paramedical aesthetician' },
 ];
 
 export function InstagramSection() {
@@ -33,29 +34,26 @@ export function InstagramSection() {
                 href={BUSINESS.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block relative rounded-2xl overflow-hidden aspect-square bg-linear-to-br from-teal-pale to-cream border border-border hover:border-teal transition-all hover:shadow-lg no-underline"
-                aria-label={`Instagram post: ${post.caption}`}
+                className="group block relative rounded-2xl overflow-hidden aspect-square border border-border hover:border-teal transition-all hover:shadow-lg no-underline"
+                aria-label={post.alt}
               >
-                {/* Placeholder gradient — replace with real IG embeds or images */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
-                  <div className="font-serif text-[2.5rem] text-teal/10" aria-hidden="true">
-                    {String(post.id).padStart(2, '0')}
-                  </div>
-                  <span className="text-[.6rem] font-bold uppercase tracking-[1px] text-teal bg-white/80 py-1 px-2.5 rounded-md">
-                    {post.tag}
-                  </span>
-                  <p className="text-[.78rem] text-text-mid leading-[1.5] max-w-40">{post.caption}</p>
-                </div>
+                <Image
+                  src={`/images/instagram/${post.id}.jpg`}
+                  alt={post.alt}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 33vw"
+                />
 
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-teal/0 group-hover:bg-teal/80 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-teal/0 group-hover:bg-teal/85 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                   <div className="text-white text-center">
-                    <svg width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-2">
+                    <svg width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-2.5">
                       <rect x="2" y="2" width="20" height="20" rx="5" />
                       <circle cx="12" cy="12" r="5" />
                       <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
                     </svg>
-                    <span className="text-[.75rem] font-semibold">{t('viewOnInstagram')}</span>
+                    <span className="text-[.78rem] font-semibold">{t('viewOnInstagram')}</span>
                   </div>
                 </div>
               </a>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -9,21 +10,29 @@ import { BLOG_POSTS } from '@/lib/constants';
 import { BlogGrid } from './BlogGrid';
 import { NewsletterSignup } from './NewsletterSignup';
 
-export const metadata: Metadata = {
-  title: 'Blog — Skincare Science & Expert Insights',
-  description: 'Expert skincare articles from 360 Radiance. Acne science, ingredient guides, treatment breakdowns, and product education from a licensed paramedical aesthetician.',
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'blog' });
+  return {
+    title: t('pageTitle'),
+    description: t('pageSubtitle'),
+  };
+}
 
 const featured = BLOG_POSTS.find((p) => p.featured);
 const rest = BLOG_POSTS.filter((p) => !p.featured);
 
-export default function BlogPage() {
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('blog');
+
   return (
     <PageShell>
       <PageHeader
-        tag="The Radiance Journal"
-        title="Skincare Science & Expert Insights"
-        subtitle="Evidence-based articles from Marta Nazzar and the 360 Radiance team. No fluff, no trends — just the science behind your best skin."
+        tag={t('pageTag')}
+        title={t('pageTitle')}
+        subtitle={t('pageSubtitle')}
       />
 
       {/* Featured article */}
@@ -35,7 +44,7 @@ export default function BlogPage() {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-[.6rem] font-bold uppercase tracking-[1px] text-gold-dark bg-gold-pale py-1 px-2.5 rounded-md">
-                      Featured
+                      {t('featured')}
                     </span>
                     <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-teal bg-teal-pale py-1 px-2.5 rounded-md">
                       {featured.category}
@@ -45,7 +54,7 @@ export default function BlogPage() {
                     <Link href={`/blog/${featured.slug}`} className="no-underline text-text hover:text-teal transition-colors">{featured.title}</Link>
                   </h2>
                   <p className="text-text-mid text-[.95rem] leading-[1.85] mb-6">{featured.excerpt}</p>
-                  <Link href={`/blog/${featured.slug}`} className="text-teal text-[.88rem] font-semibold no-underline hover:underline">Read full article &rarr;</Link>
+                  <Link href={`/blog/${featured.slug}`} className="text-teal text-[.88rem] font-semibold no-underline hover:underline">{t('readFullArticle')}</Link>
                   <div className="flex items-center gap-4 text-[.78rem] text-text-light mb-6">
                     <time dateTime={featured.date}>
                       {new Date(featured.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
@@ -80,9 +89,9 @@ export default function BlogPage() {
       <section className="py-20 max-md:py-14" aria-labelledby="articles-heading">
         <div className="container-site">
           <ScrollReveal>
-            <h2 id="articles-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] text-center mb-2.5">All Articles</h2>
+            <h2 id="articles-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] text-center mb-2.5">{t('allArticles')}</h2>
             <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7] text-center mb-10">
-              Browse by category or explore our full library of skincare science.
+              {t('allArticlesSubtitle')}
             </p>
           </ScrollReveal>
           <BlogGrid posts={rest} />
@@ -94,9 +103,9 @@ export default function BlogPage() {
         <div className="container-site">
           <ScrollReveal>
             <div className="max-w-150 mx-auto text-center">
-              <h2 id="newsletter-heading" className="font-serif text-[1.6rem] mb-3">Get Skincare Science in Your Inbox</h2>
+              <h2 id="newsletter-heading" className="font-serif text-[1.6rem] mb-3">{t('newsletterTitle')}</h2>
               <p className="text-text-mid text-[.95rem] leading-[1.7] mb-8">
-                One article per week. No spam, no sales pitches — just evidence-based insights from a clinician who&apos;s been in the field for 25+ years.
+                {t('newsletterSubtitle')}
               </p>
               <NewsletterSignup />
             </div>
@@ -108,42 +117,42 @@ export default function BlogPage() {
       <section className="py-20 max-md:py-14" aria-labelledby="topics-heading">
         <div className="container-site">
           <ScrollReveal>
-            <h2 id="topics-heading" className="font-serif text-[1.6rem] text-center mb-10">Explore by Topic</h2>
+            <h2 id="topics-heading" className="font-serif text-[1.6rem] text-center mb-10">{t('topicsHeading')}</h2>
             <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
               {[
                 {
-                  title: 'Acne Science',
-                  desc: 'Clinical research on what causes acne, why certain treatments work, and how to break the cycle for good.',
+                  title: t('topics.acneScience.title'),
+                  desc: t('topics.acneScience.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Acne Science').length,
                   color: 'bg-teal-pale text-teal',
                 },
                 {
-                  title: 'Ingredients',
-                  desc: 'Deep dives into active ingredients — what the clinical data says, how they work, and which ones are worth your money.',
+                  title: t('topics.ingredients.title'),
+                  desc: t('topics.ingredients.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Ingredients').length,
                   color: 'bg-gold-pale text-gold-dark',
                 },
                 {
-                  title: 'Skin Health',
-                  desc: 'Your skin barrier, microbiome, inflammation, and the fundamentals that determine whether any product or treatment will work.',
+                  title: t('topics.skinHealth.title'),
+                  desc: t('topics.skinHealth.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Skin Health').length,
                   color: 'bg-teal-pale text-teal',
                 },
                 {
-                  title: 'Treatments',
-                  desc: 'How professional treatments work at a cellular level. Microdermabrasion, chemical peels, LED therapy, and more.',
+                  title: t('topics.treatments.title'),
+                  desc: t('topics.treatments.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Treatments').length,
                   color: 'bg-gold-pale text-gold-dark',
                 },
                 {
-                  title: 'Product Guides',
-                  desc: 'How to build routines, layer products correctly, and choose formulas based on your skin type — not marketing.',
+                  title: t('topics.productGuides.title'),
+                  desc: t('topics.productGuides.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Product Guides').length,
                   color: 'bg-teal-pale text-teal',
                 },
                 {
-                  title: 'Coming Soon',
-                  desc: 'Nutrition & skin, hormonal health, seasonal skincare, and interviews with dermatology researchers.',
+                  title: t('topics.comingSoon.title'),
+                  desc: t('topics.comingSoon.desc'),
                   count: 0,
                   color: 'bg-cream-dark text-text-light',
                 },
@@ -155,7 +164,7 @@ export default function BlogPage() {
                     </span>
                     {topic.count > 0 && (
                       <span className="text-[.72rem] font-semibold text-text-light">
-                        {topic.count} article{topic.count !== 1 ? 's' : ''}
+                        {t('topics.articleCount', { count: topic.count })}
                       </span>
                     )}
                   </div>
@@ -168,8 +177,8 @@ export default function BlogPage() {
       </section>
 
       <CtaBanner
-        heading="Knowledge Is the First Step to Clear Skin"
-        subtitle="Ready to put the science into practice? Book a free consultation and let Marta design a plan for your skin."
+        heading={t('ctaHeading')}
+        subtitle={t('ctaSubtitle')}
       />
     </PageShell>
   );

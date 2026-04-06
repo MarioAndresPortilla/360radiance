@@ -114,7 +114,10 @@
     "biMonthly": "Visitas Quincenales",
     "perVisit": "por visita · 3 meses",
     "biMonthlyDesc": "Incluye monitoreo del progreso y un facial para acné para preparar su piel para la siguiente fase del tratamiento.",
-    "contraindicationsTitle": "Importante: Antes de Comenzar el Tratamiento"
+    "contraindicationsTitle": "Importante: Antes de Comenzar el Tratamiento",
+    "ctaHeading": "¿No Está Segura Cuál Tratamiento Es el Adecuado?",
+    "ctaSubtitle": "Reserve una consulta ($50) y Marta diseñará un plan de tratamiento adaptado a sus necesidades únicas.",
+    "ctaButton": "Reserve Su Consulta"
   },
   "award": {
     "tag": "Ganadora del Premio",
@@ -137,7 +140,31 @@
     "pageSubtitle": "Más de 25 años de experiencia médica, una profunda pasión por la ciencia del cuidado de la piel, y un compromiso con resultados que cambian vidas.",
     "bioHeading": "De la Ciencia Médica al Arte del Cuidado de la Piel",
     "credentialsHeading": "Credenciales y Certificaciones",
-    "philosophyHeading": "La Filosofía de 360 Radiance"
+    "philosophyHeading": "La Filosofía de 360 Radiance",
+    "p3": "Certificada bajo el reconocido experto en acné Dr. James E. Fulton a través del programa Face Reality, Marta evalúa diversos tipos de piel para determinar la mejor solución para cada persona. El Dr. Fulton fue pionero del Retin-A — y su protocolo clínico es la base del enfoque de Marta para el tratamiento del acné.",
+    "p4": "Creó la línea Radiance Skin Care — una colección exclusiva de fórmulas botánicas libres de toxinas, parabenos y sulfatos. Cada producto combina ciencia clínica con los ingredientes más beneficiosos de la naturaleza, diseñado para condiciones reales de la piel y resultados reales.",
+    "p5": "Fluida en inglés y español, Marta se asegura de que cada cliente se sienta comprendido y seguro en su plan de tratamiento. Su práctica no se trata solo de aclarar la piel — se trata de restaurar la confianza y cambiar vidas.",
+    "bioHeadingSr": "Acerca de Marta Nazzar",
+    "philosophy": {
+      "scienceFirst": {
+        "title": "Enfoque Basado en la Ciencia",
+        "desc": "Cada recomendación está respaldada por investigación clínica y más de 25 años de experiencia médica. Sin tendencias, sin conjeturas — solo resultados comprobados."
+      },
+      "personalized": {
+        "title": "Cuidado Personalizado",
+        "desc": "No hay dos tipos de piel iguales. Cada cliente recibe una hoja de ruta de tratamiento personalizada y un protocolo para el hogar diseñado para sus necesidades únicas."
+      },
+      "cleanIngredients": {
+        "title": "Ingredientes Limpios",
+        "desc": "La línea Radiance está libre de toxinas, parabenos y sulfatos. Creemos que el cuidado efectivo de la piel nunca debe comprometer su salud."
+      },
+      "longTerm": {
+        "title": "Salud a Largo Plazo",
+        "desc": "Tratamos la causa raíz, no solo los síntomas. Nuestro objetivo es una salud duradera de la piel y la confianza que la acompaña."
+      }
+    },
+    "ctaHeading": "¿Lista para Conocer a Marta?",
+    "ctaSubtitle": "Reserve una consulta gratuita y experimente la diferencia que hace la verdadera experiencia."
   },
   "results": {
     "tag": "Resultados Reales",
@@ -154,6 +181,22 @@
     "readAllReviews": "Leer Todas las Reseñas →",
     "ctaHeading": "¿Lista para Comenzar Su Camino?",
     "ctaSubtitle": "La mayoría de las clientas ven mejoras visibles en 2 semanas. Reserve su consulta gratuita hoy.",
+    "expectBody": "Su camino hacia una piel clara es una colaboración. Marta le guía en cada paso con tratamientos profesionales, cuidado personalizado en el hogar, y ajustes continuos basados en la respuesta de su piel.",
+    "expect": {
+      "item1": "Análisis completo de la piel en su primera visita",
+      "item2": "Tratamientos profesionales quincenales en el consultorio",
+      "item3": "Régimen personalizado para el hogar con productos de grado médico",
+      "item4": "Seguimiento del progreso y ajustes del régimen",
+      "item5": "Atención bilingüe en inglés y español",
+      "item6": "Cuidado continuo después de la limpieza para mantenimiento"
+    },
+    "avgImprovementCaption": "Mejora promedio para la semana 8",
+    "quote": "\"Después de 2 semanas — 50% mejor. Después de 2 meses — 90%. Después de 2 años escondiéndome detrás del maquillaje, finalmente puedo salir con la piel clara.\"",
+    "quoteAttribution": "— Marissa C., Acné Quístico",
+    "storiesSubtitle": "Historias reales de clientas reales que transformaron su piel.",
+    "beforeAfterLabel": "Antes y Después",
+    "acneTreatmentLabel": "Tratamiento de Acné",
+    "twelveWeekLabel": "Programa de 12 Semanas",
     "stats": {
       "improvement": "Mejora promedio del cliente para la semana 8",
       "weeks": "Tiempo típico para ver los primeros resultados visibles",
@@ -165,6 +208,18 @@
     "tag": "Historias de Clientas",
     "title": "Lo Que Dicen Nuestras Clientas",
     "starRating": "Calificado 5 de 5 estrellas"
+  },
+  "reviews": {
+    "pageSubtitle": "Testimonios reales de personas reales que transformaron su piel. Cada reseña es de una cliente verificada de 360 Radiance.",
+    "allReviews": "Todas las Reseñas",
+    "basedOn": "Basado en reseñas de clientas",
+    "wouldRecommend": "Recomendaría a una amiga",
+    "avgImprovement": "Mejora promedio de la piel",
+    "shareTitle": "¿Es Usted Cliente de 360 Radiance?",
+    "shareBody": "Nos encantaría conocer su experiencia. Comparta su historia de transformación y ayude a otros a descubrir la confianza de una piel clara y radiante.",
+    "leaveReview": "Dejar una Reseña",
+    "ctaHeading": "¿Lista para Su Transformación?",
+    "ctaSubtitle": "Únase a cientos de clientas felices. Reserve su consulta gratuita y comience su camino hacia una piel clara."
   },
   "instagram": {
     "tag": "Síganos",
@@ -184,7 +239,33 @@
     "matcherTitle": "Encuentre Sus Productos Perfectos",
     "matcherSubtitle": "Seleccione su preocupación principal de la piel y le mostraremos los productos formulados específicamente para usted.",
     "catalogTitle": "La Colección Completa",
-    "catalogSubtitle": "Explore por categoría o vea toda la línea. Cada producto está diseñado para trabajar en conjunto."
+    "catalogSubtitle": "Explore por categoría o vea toda la línea. Cada producto está diseñado para trabajar en conjunto.",
+    "howHeading": "Por Qué Nuestros Productos Son Diferentes",
+    "how": {
+      "clinician": {
+        "title": "Formulados por Clínica",
+        "desc": "Cada producto es creado por Marta Nazzar — no por un equipo de marketing. Las fórmulas se basan en más de 25 años de experiencia médica y resultados clínicos reales."
+      },
+      "treatmentPaired": {
+        "title": "Combinados con Tratamientos",
+        "desc": "Los productos están diseñados para extender y amplificar sus resultados en el consultorio. Cada uno está calibrado para trabajar con nuestros protocolos de tratamiento profesional."
+      },
+      "ingredient": {
+        "title": "Ingredientes Primero",
+        "desc": "Seleccionamos activos basados en investigación clínica — no en tendencias. De origen europeo, sellados en ampollas de vidrio, y concentrados para máxima eficacia."
+      }
+    },
+    "scienceTag": "La Ciencia",
+    "ingredientHeading": "Por Qué los Ingredientes Importan Más Que las Marcas",
+    "ingredient": {
+      "p1": "La industria del cuidado de la piel gasta miles de millones en empaques y marketing. Nosotros gastamos en ingredientes. Cada fórmula de la Colección Radiance comienza con una sola pregunta: <strong>¿qué dicen los datos clínicos?</strong>",
+      "p2": "Nuestros sueros europeos en ampollas de vidrio contienen concentraciones de ingredientes activos entre 4 y 10 veces mayores que sus equivalentes minoristas. El empaque de un solo uso elimina la oxidación — lo que significa que cada gota es tan potente como el día en que se formuló.",
+      "p3": "Publicamos cada ingrediente clave y su beneficio clínico porque creemos que los clientes informados toman mejores decisiones sobre el cuidado de su piel. Sin mezclas exclusivas ocultas tras nombres elegantes — solo fórmulas transparentes y basadas en evidencia."
+    },
+    "ampuleTech": "Tecnología Europea de Ampollas de Vidrio",
+    "ctaHeading": "¿No Está Segura Cuáles Productos Son Para Usted?",
+    "ctaSubtitle": "Reserve un análisis gratuito de su piel. Marta diseñará un régimen personalizado con productos adaptados a las necesidades específicas de su piel.",
+    "ctaButton": "Obtenga Su Régimen Personalizado"
   },
   "booking": {
     "title": "¿Lista para una Piel Clara y Radiante?",
@@ -250,6 +331,33 @@
       "skinHealth": "Salud de la Piel",
       "treatments": "Tratamientos",
       "productGuides": "Guías de Productos"
+    },
+    "topics": {
+      "articleCount": "{count, plural, one {# artículo} other {# artículos}}",
+      "acneScience": {
+        "title": "Ciencia del Acné",
+        "desc": "Investigación clínica sobre lo que causa el acné, por qué funcionan ciertos tratamientos, y cómo romper el ciclo para siempre."
+      },
+      "ingredients": {
+        "title": "Ingredientes",
+        "desc": "Análisis profundos de ingredientes activos — qué dicen los datos clínicos, cómo funcionan, y cuáles valen su dinero."
+      },
+      "skinHealth": {
+        "title": "Salud de la Piel",
+        "desc": "Su barrera cutánea, microbioma, inflamación, y los fundamentos que determinan si cualquier producto o tratamiento funcionará."
+      },
+      "treatments": {
+        "title": "Tratamientos",
+        "desc": "Cómo funcionan los tratamientos profesionales a nivel celular. Microdermoabrasión, peelings químicos, terapia LED y más."
+      },
+      "productGuides": {
+        "title": "Guías de Productos",
+        "desc": "Cómo construir rutinas, aplicar productos por capas correctamente, y elegir fórmulas basadas en su tipo de piel — no en marketing."
+      },
+      "comingSoon": {
+        "title": "Próximamente",
+        "desc": "Nutrición y piel, salud hormonal, cuidado estacional de la piel, y entrevistas con investigadores de dermatología."
+      }
     }
   },
   "footer": {

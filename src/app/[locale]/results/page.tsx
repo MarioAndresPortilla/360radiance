@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { JOURNEY_STEPS, TESTIMONIALS } from '@/lib/constants';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
@@ -9,25 +10,33 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { IconStar, IconCheck } from '@/components/icons/Icons';
 
-export const metadata: Metadata = {
-  title: 'Results',
-  description: 'See real results from 360 Radiance clients. Most see 30-50% improvement in 2 weeks and 90%+ improvement in 8 weeks with the Face Reality acne program.',
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'results' });
+  return {
+    title: 'Results',
+    description: t('pageSubtitle'),
+  };
+}
 
-const STATS = [
-  { value: '90%+', label: 'Average client improvement by week 8' },
-  { value: '2 Weeks', label: 'Typical time to see first visible results' },
-  { value: '500+', label: 'Clients treated with the Face Reality protocol' },
-  { value: '25+', label: 'Years of medical expertise behind every treatment' },
-];
+export default async function ResultsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('results');
 
-export default function ResultsPage() {
+  const STATS = [
+    { value: '90%+', label: t('stats.improvement') },
+    { value: '2 Weeks', label: t('stats.weeks') },
+    { value: '500+', label: t('stats.clients') },
+    { value: '25+', label: t('stats.years') },
+  ];
+
   return (
     <PageShell>
       <PageHeader
-        tag="Real Results"
-        title="Your Clear Skin Journey"
-        subtitle="From first consultation to radiant confidence — here's what clients experience with the Face Reality program and our expert treatments."
+        tag={t('tag')}
+        title={t('title')}
+        subtitle={t('pageSubtitle')}
       />
 
       {/* Stats bar */}
@@ -51,9 +60,9 @@ export default function ResultsPage() {
         <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 id="timeline-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">The Treatment Timeline</h2>
+              <h2 id="timeline-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">{t('timelineHeading')}</h2>
               <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7]">
-                Every client&apos;s skin is different, but here&apos;s the typical progression with the Face Reality program.
+                {t('timelineSubtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -89,11 +98,11 @@ export default function ResultsPage() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-teal mb-3 bg-teal-pale px-4 py-1.5 rounded-full">
-                Proof in Photos
+                {t('beforeAfterTag')}
               </span>
-              <h2 id="before-after-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-3">Before &amp; After</h2>
+              <h2 id="before-after-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-3">{t('beforeAfterTitle')}</h2>
               <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7]">
-                Real clients, real results. These transformations were achieved with the Acne Treatment Program.
+                {t('beforeAfterSubtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -110,8 +119,8 @@ export default function ResultsPage() {
                 />
                 <div className="p-5 bg-white">
                   <div className="flex justify-between items-center">
-                    <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">Before &amp; After</span>
-                    <span className="text-[.68rem] font-semibold text-teal bg-teal-pale py-1 px-2.5 rounded-md">Acne Treatment</span>
+                    <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">{t('beforeAfterLabel')}</span>
+                    <span className="text-[.68rem] font-semibold text-teal bg-teal-pale py-1 px-2.5 rounded-md">{t('acneTreatmentLabel')}</span>
                   </div>
                 </div>
               </div>
@@ -128,8 +137,8 @@ export default function ResultsPage() {
                 />
                 <div className="p-5 bg-white">
                   <div className="flex justify-between items-center">
-                    <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">Before &amp; After</span>
-                    <span className="text-[.68rem] font-semibold text-teal bg-teal-pale py-1 px-2.5 rounded-md">12-Week Program</span>
+                    <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">{t('beforeAfterLabel')}</span>
+                    <span className="text-[.68rem] font-semibold text-teal bg-teal-pale py-1 px-2.5 rounded-md">{t('twelveWeekLabel')}</span>
                   </div>
                 </div>
               </div>
@@ -144,18 +153,18 @@ export default function ResultsPage() {
           <ScrollReveal>
             <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1">
               <div>
-                <h2 id="expect-heading" className="font-serif text-[1.9rem] mb-4 leading-[1.2]">What to Expect During Treatment</h2>
+                <h2 id="expect-heading" className="font-serif text-[1.9rem] mb-4 leading-[1.2]">{t('expectHeading')}</h2>
                 <p className="text-text-mid leading-[1.85] mb-6 text-[.92rem]">
-                  Your journey to clear skin is a partnership. Marta guides you every step of the way with professional treatments, custom home-care, and ongoing adjustments based on your skin&apos;s response.
+                  {t('expectBody')}
                 </p>
                 <ul className="flex flex-col gap-3 list-none">
                   {[
-                    'Comprehensive skin analysis at your first visit',
-                    'Bi-weekly professional treatments in-office',
-                    'Custom home-care regimen with medical-grade products',
-                    'Progress tracking and regimen adjustments',
-                    'Bilingual support in English and Spanish',
-                    'Ongoing care after clearing for maintenance',
+                    t('expect.item1'),
+                    t('expect.item2'),
+                    t('expect.item3'),
+                    t('expect.item4'),
+                    t('expect.item5'),
+                    t('expect.item6'),
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-[.88rem] text-text-mid">
                       <span className="w-5 h-5 rounded-md bg-teal-pale flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
@@ -168,11 +177,11 @@ export default function ResultsPage() {
               </div>
               <div className="bg-teal-pale rounded-2xl p-10 text-center">
                 <div className="font-serif text-[3rem] text-teal mb-2">90%+</div>
-                <div className="text-[.85rem] text-text-mid mb-6">Average improvement by week 8</div>
+                <div className="text-[.85rem] text-text-mid mb-6">{t('avgImprovementCaption')}</div>
                 <p className="text-text-mid text-[.88rem] leading-[1.7] italic">
-                  &ldquo;After 2 weeks — 50% better. After 2 months — 90%. After 2 years of hiding behind makeup, I can finally go out with clear skin.&rdquo;
+                  {t('quote')}
                 </p>
-                <div className="mt-4 text-[.78rem] font-semibold text-teal">— Marissa C., Cystic Acne</div>
+                <div className="mt-4 text-[.78rem] font-semibold text-teal">{t('quoteAttribution')}</div>
               </div>
             </div>
           </ScrollReveal>
@@ -184,29 +193,29 @@ export default function ResultsPage() {
         <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 id="stories-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">Client Success Stories</h2>
+              <h2 id="stories-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">{t('stories')}</h2>
               <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7]">
-                Real stories from real clients who transformed their skin.
+                {t('storiesSubtitle')}
               </p>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
-            {TESTIMONIALS.slice(0, 3).map((t) => (
-              <ScrollReveal key={t.name}>
+            {TESTIMONIALS.slice(0, 3).map((testimonial) => (
+              <ScrollReveal key={testimonial.name}>
                 <blockquote className="bg-white border border-border rounded-2xl p-7 transition-all duration-300 hover:shadow-md hover:border-border-hover">
                   <div className="flex gap-0.5 mb-3" aria-label="Rated 5 out of 5 stars">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <IconStar key={i} size={14} className="text-gold" aria-hidden="true" />
                     ))}
                   </div>
-                  <p className="text-text-mid text-[.85rem] leading-[1.8] italic mb-5">{t.text}</p>
+                  <p className="text-text-mid text-[.85rem] leading-[1.8] italic mb-5">{testimonial.text}</p>
                   <footer className="flex items-center gap-2.5">
-                    <div className={`w-9 h-9 rounded-full flex items-center justify-center text-[.7rem] font-bold text-white shrink-0 ${t.avatarColor}`} aria-hidden="true">
-                      {t.initial}
+                    <div className={`w-9 h-9 rounded-full flex items-center justify-center text-[.7rem] font-bold text-white shrink-0 ${testimonial.avatarColor}`} aria-hidden="true">
+                      {testimonial.initial}
                     </div>
                     <div>
-                      <cite className="font-semibold text-[.82rem] not-italic">{t.name}</cite>
-                      <div className="text-[.68rem] text-text-light">{t.condition}</div>
+                      <cite className="font-semibold text-[.82rem] not-italic">{testimonial.name}</cite>
+                      <div className="text-[.68rem] text-text-light">{testimonial.condition}</div>
                     </div>
                   </footer>
                 </blockquote>
@@ -215,15 +224,15 @@ export default function ResultsPage() {
           </div>
           <div className="text-center mt-10">
             <Link href="/reviews" className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-teal text-teal rounded-lg font-semibold text-[.85rem] px-6 py-3 transition-all hover:bg-teal hover:text-white no-underline">
-              Read All Reviews &rarr;
+              {t('readAllReviews')}
             </Link>
           </div>
         </div>
       </section>
 
       <CtaBanner
-        heading="Ready to Start Your Journey?"
-        subtitle="Most clients see visible improvement within 2 weeks. Book your free consultation today."
+        heading={t('ctaHeading')}
+        subtitle={t('ctaSubtitle')}
       />
     </PageShell>
   );

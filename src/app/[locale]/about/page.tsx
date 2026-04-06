@@ -60,19 +60,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
             <ScrollReveal>
               <div>
-                <h2 id="bio-heading" className="sr-only">About Marta Nazzar</h2>
+                <h2 id="bio-heading" className="sr-only">{t('bioHeadingSr')}</h2>
                 <h3 className="font-serif text-[1.6rem] mb-4 leading-[1.2]">{t('bioHeading')}</h3>
                 <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">{t('p1')}</p>
                 <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">{t('p2')}</p>
-                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
-                  Certified under renowned acne expert Dr. James E. Fulton through the Face Reality program, Marta evaluates diverse skin types to determine the best solution for each individual. Dr. Fulton pioneered Retin-A — and his clinical protocol is the foundation of Marta&apos;s acne treatment approach.
-                </p>
-                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
-                  She created the Radiance Skin Care Line — a proprietary collection of botanical formulas free of toxins, parabens, and sulfates. Every product blends clinical science with nature&apos;s most beneficial ingredients, designed for real skin conditions and real results.
-                </p>
-                <p className="text-text-mid leading-[1.85] text-[.92rem]">
-                  Fluent in English and Spanish, Marta ensures every client feels understood and confident in their treatment plan. Her practice isn&apos;t just about clearing skin — it&apos;s about restoring confidence and changing lives.
-                </p>
+                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">{t('p3')}</p>
+                <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">{t('p4')}</p>
+                <p className="text-text-mid leading-[1.85] text-[.92rem]">{t('p5')}</p>
               </div>
             </ScrollReveal>
           </div>
@@ -119,10 +113,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <h2 id="philosophy-heading" className="font-serif text-[1.6rem] text-center mb-8">{t('philosophyHeading')}</h2>
               <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1">
                 {[
-                  { title: 'Science-First Approach', desc: 'Every recommendation is backed by clinical research and 25+ years of medical experience. No trends, no guesswork — just proven results.' },
-                  { title: 'Personalized Care', desc: 'No two skin types are the same. Every client receives a custom treatment roadmap and take-home protocol designed for their unique needs.' },
-                  { title: 'Clean Ingredients', desc: 'The Radiance line is toxin-free, paraben-free, and sulfate-free. We believe effective skincare should never compromise your health.' },
-                  { title: 'Long-Term Health', desc: 'We treat the root cause, not just symptoms. Our goal is lasting skin health and the confidence that comes with it.' },
+                  { title: t('philosophy.scienceFirst.title'), desc: t('philosophy.scienceFirst.desc') },
+                  { title: t('philosophy.personalized.title'), desc: t('philosophy.personalized.desc') },
+                  { title: t('philosophy.cleanIngredients.title'), desc: t('philosophy.cleanIngredients.desc') },
+                  { title: t('philosophy.longTerm.title'), desc: t('philosophy.longTerm.desc') },
                 ].map((item) => (
                   <div key={item.title} className="bg-cream rounded-2xl p-6">
                     <h3 className="font-serif text-[1rem] mb-2">{item.title}</h3>
@@ -136,8 +130,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </section>
 
       <CtaBanner
-        heading="Ready to Meet Marta?"
-        subtitle="Book a free consultation and experience the difference that real expertise makes."
+        heading={t('ctaHeading')}
+        subtitle={t('ctaSubtitle')}
       />
     </PageShell>
   );

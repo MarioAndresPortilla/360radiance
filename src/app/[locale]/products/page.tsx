@@ -81,24 +81,12 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
       <section className="py-16 bg-cream" aria-labelledby="how-heading">
         <div className="container-site">
           <ScrollReveal>
-            <h2 id="how-heading" className="font-serif text-[1.6rem] text-center mb-10">How Our Products Are Different</h2>
+            <h2 id="how-heading" className="font-serif text-[1.6rem] text-center mb-10">{t('howHeading')}</h2>
             <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
               {[
-                {
-                  num: '01',
-                  title: 'Clinician-Formulated',
-                  desc: 'Every product is created by Marta Nazzar — not a marketing team. Formulas are built on 25+ years of medical expertise and real clinical outcomes.',
-                },
-                {
-                  num: '02',
-                  title: 'Treatment-Paired',
-                  desc: 'Products are designed to extend and amplify your in-office results. Each is calibrated to work with our professional treatment protocols.',
-                },
-                {
-                  num: '03',
-                  title: 'Ingredient-First',
-                  desc: 'We select actives based on clinical research — not trends. European-sourced, glass ampule-sealed, and concentrated for maximum efficacy.',
-                },
+                { num: '01', title: t('how.clinician.title'), desc: t('how.clinician.desc') },
+                { num: '02', title: t('how.treatmentPaired.title'), desc: t('how.treatmentPaired.desc') },
+                { num: '03', title: t('how.ingredient.title'), desc: t('how.ingredient.desc') },
               ].map((item) => (
                 <div key={item.num} className="bg-white rounded-2xl p-8 border border-border">
                   <div className="font-serif text-[2rem] text-teal/20 mb-3">{item.num}</div>
@@ -118,24 +106,24 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
             <div className="grid grid-cols-[1.2fr_1fr] gap-16 items-center max-lg:grid-cols-1">
               <div>
                 <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-teal mb-3 bg-teal-pale px-3 py-1 rounded-full">
-                  The Science
+                  {t('scienceTag')}
                 </span>
                 <h2 id="philosophy-heading" className="font-serif text-[1.9rem] mb-4 leading-[1.2]">
-                  Why Ingredients Matter More Than Brands
+                  {t('ingredientHeading')}
                 </h2>
                 <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
-                  The skincare industry spends billions on packaging and marketing. We spend ours on ingredients. Every formula in the Radiance Collection starts with a single question: <strong>what does the clinical data say?</strong>
+                  {t.rich('ingredient.p1', { strong: (chunks) => <strong>{chunks}</strong> })}
                 </p>
                 <p className="text-text-mid leading-[1.85] mb-4 text-[.92rem]">
-                  Our European glass ampule serums contain 4-10x higher concentrations of active ingredients than their retail counterparts. Single-use packaging eliminates oxidation — meaning every drop is as potent as the day it was formulated.
+                  {t('ingredient.p2')}
                 </p>
                 <p className="text-text-mid leading-[1.85] text-[.92rem]">
-                  We publish every key ingredient and its clinical benefit because we believe informed clients make better skincare decisions. No proprietary blends hiding behind fancy names — just transparent, evidence-based formulas.
+                  {t('ingredient.p3')}
                 </p>
               </div>
               <div className="bg-teal-pale rounded-2xl aspect-4/3 flex items-center justify-center flex-col gap-4" role="img" aria-label="Radiance Skin Care product line">
                 <IconDropper size={64} className="text-teal" aria-hidden="true" />
-                <span className="text-[.65rem] font-bold text-teal tracking-[2px] uppercase">European Glass Ampule Technology</span>
+                <span className="text-[.65rem] font-bold text-teal tracking-[2px] uppercase">{t('ampuleTech')}</span>
                 <div className="flex gap-3 mt-2">
                   {['Germany', 'Spain', 'Switzerland', 'Italy'].map((c) => (
                     <span key={c} className="bg-white/70 text-teal-dark text-[.6rem] font-semibold py-1 px-2.5 rounded-full">{c}</span>
@@ -148,9 +136,9 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
       </section>
 
       <CtaBanner
-        heading="Not Sure Which Products Are Right for You?"
-        subtitle="Book a free skin analysis. Marta will design a personalized regimen with products tailored to your skin's specific needs."
-        buttonText="Get Your Custom Regimen"
+        heading={t('ctaHeading')}
+        subtitle={t('ctaSubtitle')}
+        buttonText={t('ctaButton')}
       />
     </PageShell>
   );
