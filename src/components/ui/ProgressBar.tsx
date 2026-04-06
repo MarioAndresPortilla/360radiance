@@ -27,7 +27,7 @@ export function ProgressBar({ targetWidth }: Props) {
   }, [targetWidth]);
 
   return (
-    <div ref={ref} className="h-1 bg-cream-dark rounded-sm mt-3 overflow-hidden">
+    <div ref={ref} className="h-1 bg-cream-dark rounded-sm mt-5 overflow-hidden">
       <div
         className="h-full rounded-sm bg-teal transition-[width] duration-[1200ms] ease-out"
         style={{ width: `${width}%` }}
