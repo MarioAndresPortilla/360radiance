@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { BUSINESS, HOURS } from '@/lib/constants';
+import { BUSINESS } from '@/lib/constants';
 import { PageShell } from '@/components/layout/PageShell';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
@@ -22,22 +22,22 @@ export default function ContactPage() {
       />
 
       {/* Contact methods */}
-      <section className="py-16 bg-white border-b border-border" aria-labelledby="contact-methods-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+      <section className="py-20 max-md:py-14 bg-white" aria-labelledby="contact-methods-heading">
+        <div className="max-w-250 mx-auto px-8 max-md:px-5">
           <h2 id="contact-methods-heading" className="sr-only">Ways to reach us</h2>
-          <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
+          <div className="grid grid-cols-3 gap-8 max-md:grid-cols-1 max-md:gap-5">
             <ScrollReveal>
               <a
                 href={`tel:${BUSINESS.phoneRaw}`}
-                className="group block bg-cream rounded-2xl p-8 text-center no-underline transition-all hover:shadow-md hover:-translate-y-1"
+                className="group block bg-cream rounded-2xl p-10 max-md:p-8 text-center no-underline transition-all hover:shadow-md hover:-translate-y-1"
                 aria-label={`Call us at ${BUSINESS.phone}`}
               >
-                <div className="w-14 h-14 bg-teal-pale rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal/12 transition-colors" aria-hidden="true">
-                  <IconPhone size={26} className="text-teal" />
+                <div className="w-16 h-16 bg-teal-pale rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-teal/12 transition-colors" aria-hidden="true">
+                  <IconPhone size={28} className="text-teal" />
                 </div>
-                <h3 className="font-serif text-[1.1rem] mb-1 text-text">Call Us</h3>
-                <p className="text-teal font-semibold text-[.95rem]">{BUSINESS.phone}</p>
-                <p className="text-text-light text-[.78rem] mt-1">Mon–Sat during business hours</p>
+                <h3 className="font-serif text-[1.15rem] mb-2 text-text">Call Us</h3>
+                <p className="text-teal font-semibold text-[1rem] mb-2">{BUSINESS.phone}</p>
+                <p className="text-text-light text-[.82rem]">Mon-Sat during business hours</p>
               </a>
             </ScrollReveal>
 
@@ -46,15 +46,15 @@ export default function ContactPage() {
                 href={BUSINESS.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block bg-cream rounded-2xl p-8 text-center no-underline transition-all hover:shadow-md hover:-translate-y-1"
+                className="group block bg-cream rounded-2xl p-10 max-md:p-8 text-center no-underline transition-all hover:shadow-md hover:-translate-y-1"
                 aria-label="Chat with us on WhatsApp"
               >
-                <div className="w-14 h-14 bg-[#e8f8ed] rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-whatsapp/15 transition-colors" aria-hidden="true">
-                  <IconWhatsApp size={26} className="fill-whatsapp" />
+                <div className="w-16 h-16 bg-[#e8f8ed] rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-whatsapp/15 transition-colors" aria-hidden="true">
+                  <IconWhatsApp size={28} className="fill-whatsapp" />
                 </div>
-                <h3 className="font-serif text-[1.1rem] mb-1 text-text">WhatsApp</h3>
-                <p className="text-whatsapp-dark font-semibold text-[.95rem]">Message us anytime</p>
-                <p className="text-text-light text-[.78rem] mt-1">We reply fast — usually within minutes</p>
+                <h3 className="font-serif text-[1.15rem] mb-2 text-text">WhatsApp</h3>
+                <p className="text-whatsapp-dark font-semibold text-[1rem] mb-2">Message us anytime</p>
+                <p className="text-text-light text-[.82rem]">We reply fast — usually within minutes</p>
               </a>
             </ScrollReveal>
 
@@ -63,18 +63,18 @@ export default function ContactPage() {
                 href={BUSINESS.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block bg-cream rounded-2xl p-8 text-center no-underline transition-all hover:shadow-md hover:-translate-y-1"
+                className="group block bg-cream rounded-2xl p-10 max-md:p-8 text-center no-underline transition-all hover:shadow-md hover:-translate-y-1"
                 aria-label="Get directions to our office"
               >
-                <div className="w-14 h-14 bg-gold-pale rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/15 transition-colors" aria-hidden="true">
-                  <svg width={26} height={26} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="text-gold-dark">
+                <div className="w-16 h-16 bg-gold-pale rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold/15 transition-colors" aria-hidden="true">
+                  <svg width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="text-gold-dark">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
                     <circle cx="12" cy="9" r="2.5" />
                   </svg>
                 </div>
-                <h3 className="font-serif text-[1.1rem] mb-1 text-text">Visit Us</h3>
-                <p className="text-text-mid font-medium text-[.88rem]">{BUSINESS.address}</p>
-                <p className="text-text-light text-[.78rem] mt-1">{BUSINESS.city}, {BUSINESS.state} {BUSINESS.zip}</p>
+                <h3 className="font-serif text-[1.15rem] mb-2 text-text">Visit Us</h3>
+                <p className="text-text-mid font-medium text-[.95rem] mb-2">{BUSINESS.address}</p>
+                <p className="text-text-light text-[.82rem]">{BUSINESS.city}, {BUSINESS.state} {BUSINESS.zip}</p>
               </a>
             </ScrollReveal>
           </div>
@@ -84,15 +84,15 @@ export default function ContactPage() {
       <BookingSection />
       <HoursSection />
 
-      {/* Map placeholder */}
-      <section className="bg-white" aria-label="Location map">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5 pb-16">
+      {/* Map */}
+      <section className="bg-white py-16 max-md:py-10" aria-label="Location map">
+        <div className="max-w-250 mx-auto px-8 max-md:px-5">
           <ScrollReveal>
             <div className="rounded-2xl overflow-hidden border border-border">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.5!2d-80.2581!3d26.1368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s12651+W+Sunrise+Blvd+Suite+301+Sunrise+FL+33323!5e0!3m2!1sen!2sus!4v1"
                 width="100%"
-                height="400"
+                height="450"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
