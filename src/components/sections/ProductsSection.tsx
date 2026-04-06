@@ -5,7 +5,7 @@ import { IconDropper, IconCheck } from '@/components/icons/Icons';
 export function ProductsSection() {
   return (
     <section className="py-24 max-md:py-16 bg-cream" aria-labelledby="products-heading">
-      <div className="max-w-300 mx-auto px-8 max-md:px-5">
+      <div className="container-site">
         <div className="grid grid-cols-[1.2fr_1fr] gap-20 max-lg:gap-12 items-center max-lg:grid-cols-1">
           <ScrollReveal>
             <div className="bg-teal-pale rounded-2xl aspect-4/3 flex items-center justify-center flex-col gap-5 relative" role="img" aria-label="Radiance Skin Care product line">

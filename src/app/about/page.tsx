@@ -24,7 +24,7 @@ export default function AboutPage() {
 
       {/* Main bio */}
       <section className="py-20 max-md:py-14" aria-labelledby="bio-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <div className="grid grid-cols-[1fr_1.4fr] gap-16 items-start max-lg:grid-cols-1">
             <ScrollReveal>
               <div className="relative max-lg:max-w-75 max-lg:mx-auto">
@@ -76,7 +76,7 @@ export default function AboutPage() {
 
       {/* Credentials */}
       <section className="py-16 bg-cream" aria-labelledby="cred-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <h2 id="cred-heading" className="font-serif text-[1.6rem] text-center mb-10">Credentials &amp; Certifications</h2>
           </ScrollReveal>
@@ -108,7 +108,7 @@ export default function AboutPage() {
 
       {/* Philosophy */}
       <section className="py-20 max-md:py-14" aria-labelledby="philosophy-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="max-w-175 mx-auto">
               <h2 id="philosophy-heading" className="font-serif text-[1.6rem] text-center mb-8">The 360 Radiance Philosophy</h2>

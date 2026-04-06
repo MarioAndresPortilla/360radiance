@@ -22,7 +22,7 @@ export default function ReviewsPage() {
 
       {/* Rating summary */}
       <section className="bg-white border-b border-border py-10">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="flex items-center justify-center gap-8 max-md:flex-col max-md:gap-4">
               <div className="text-center">
@@ -51,7 +51,7 @@ export default function ReviewsPage() {
 
       {/* All testimonials */}
       <section className="py-20 max-md:py-14" aria-labelledby="all-reviews-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <h2 id="all-reviews-heading" className="sr-only">All Reviews</h2>
           <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
             {TESTIMONIALS.map((t, i) => (
@@ -81,7 +81,7 @@ export default function ReviewsPage() {
 
       {/* Share your story */}
       <section className="py-16 bg-cream" aria-labelledby="share-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5 text-center">
+        <div className="container-site text-center">
           <ScrollReveal>
             <h2 id="share-heading" className="font-serif text-[1.6rem] mb-3">Are You a 360 Radiance Client?</h2>
             <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7] mb-6">

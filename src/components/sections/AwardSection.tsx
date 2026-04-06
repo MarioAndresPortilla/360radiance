@@ -5,7 +5,7 @@ import { IconStar } from '@/components/icons/Icons';
 export function AwardSection() {
   return (
     <section className="py-24 max-md:py-16 bg-text overflow-hidden" aria-labelledby="award-heading">
-      <div className="max-w-300 mx-auto px-8 max-md:px-5">
+      <div className="container-site">
         <div className="grid grid-cols-[1fr_1.2fr] gap-16 max-lg:gap-10 items-center max-lg:grid-cols-1">
           <ScrollReveal>
             <div className="max-lg:max-w-80 max-lg:mx-auto">

@@ -23,7 +23,7 @@ export default function ContactPage() {
 
       {/* Contact methods */}
       <section className="py-20 max-md:py-14 bg-white" aria-labelledby="contact-methods-heading">
-        <div className="max-w-250 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <h2 id="contact-methods-heading" className="sr-only">Ways to reach us</h2>
           <div className="grid grid-cols-3 gap-8 max-md:grid-cols-1 max-md:gap-5">
             <ScrollReveal>
@@ -86,7 +86,7 @@ export default function ContactPage() {
 
       {/* Map */}
       <section className="bg-white py-16 max-md:py-10" aria-label="Location map">
-        <div className="max-w-250 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="rounded-2xl overflow-hidden border border-border">
               <iframe

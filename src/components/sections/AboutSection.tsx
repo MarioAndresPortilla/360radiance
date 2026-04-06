@@ -7,7 +7,7 @@ import { IconDiploma } from '@/components/icons/Icons';
 export function AboutSection() {
   return (
     <section className="py-24 max-md:py-16" id="about" aria-labelledby="about-heading">
-      <div className="max-w-300 mx-auto px-8 max-md:px-5">
+      <div className="container-site">
         <div className="grid grid-cols-[1fr_1.4fr] gap-20 max-lg:gap-12 items-center max-lg:grid-cols-1">
           <ScrollReveal>
             <div className="relative max-lg:max-w-75 max-lg:mx-auto">

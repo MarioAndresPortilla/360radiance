@@ -39,7 +39,7 @@ const FOOTER_LINKS = [
 export function Footer() {
   return (
     <footer className="bg-text text-white/50 pt-16 pb-8" role="contentinfo">
-      <div className="max-w-300 mx-auto px-8 max-md:px-5">
+      <div className="container-site">
         <div className="grid grid-cols-[2.5fr_1fr_1fr_1fr] gap-12 pb-12 border-b border-white/8 max-lg:grid-cols-2 max-lg:gap-10 max-md:grid-cols-1 max-md:gap-8">
           {/* Brand column */}
           <div>

@@ -14,7 +14,7 @@ const INSTAGRAM_POSTS = [
 export function InstagramSection() {
   return (
     <section className="py-24 max-md:py-16" aria-labelledby="instagram-heading">
-      <div className="max-w-300 mx-auto px-8 max-md:px-5">
+      <div className="container-site">
         <ScrollReveal>
           <SectionHeader
             id="instagram-heading"

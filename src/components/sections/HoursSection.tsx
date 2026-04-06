@@ -10,7 +10,7 @@ export function HoursSection() {
 
   return (
     <section className="py-24 max-md:py-16 bg-cream" id="contact" aria-labelledby="hours-heading">
-      <div className="max-w-300 mx-auto px-8 max-md:px-5">
+      <div className="container-site">
         <ScrollReveal>
           <SectionHeader id="hours-heading" tag="Visit Us" title="Office Hours" />
         </ScrollReveal>

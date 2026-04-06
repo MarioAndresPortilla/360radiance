@@ -27,7 +27,7 @@ export default function BlogPage() {
       {/* Featured article */}
       {featured && (
         <section className="py-16 bg-white border-b border-border" aria-labelledby="featured-article-heading">
-          <div className="max-w-300 mx-auto px-8 max-md:px-5">
+          <div className="container-site">
             <ScrollReveal>
               <div className="grid grid-cols-[1.3fr_1fr] gap-12 items-center max-lg:grid-cols-1">
                 <div>
@@ -70,7 +70,7 @@ export default function BlogPage() {
 
       {/* Category filter + article grid */}
       <section className="py-20 max-md:py-14" aria-labelledby="articles-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <h2 id="articles-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] text-center mb-2.5">All Articles</h2>
             <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7] text-center mb-10">
@@ -83,7 +83,7 @@ export default function BlogPage() {
 
       {/* Newsletter */}
       <section className="py-16 bg-cream" aria-labelledby="newsletter-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="max-w-150 mx-auto text-center">
               <h2 id="newsletter-heading" className="font-serif text-[1.6rem] mb-3">Get Skincare Science in Your Inbox</h2>
@@ -98,7 +98,7 @@ export default function BlogPage() {
 
       {/* Topics deep dive */}
       <section className="py-20 max-md:py-14" aria-labelledby="topics-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <h2 id="topics-heading" className="font-serif text-[1.6rem] text-center mb-10">Explore by Topic</h2>
             <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">

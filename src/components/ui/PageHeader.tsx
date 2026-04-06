@@ -9,7 +9,7 @@ interface PageHeaderProps {
 export function PageHeader({ tag, title, subtitle }: PageHeaderProps) {
   return (
     <section className="bg-cream py-20 max-md:py-14">
-      <div className="max-w-300 mx-auto px-8 max-md:px-5 text-center">
+      <div className="container-site text-center">
         <ScrollReveal>
           <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-teal mb-4 bg-teal-pale px-4 py-1.5 rounded-full">
             {tag}

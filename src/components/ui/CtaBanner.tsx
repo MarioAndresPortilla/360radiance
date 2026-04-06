@@ -15,7 +15,7 @@ export function CtaBanner({
 }: CtaBannerProps) {
   return (
     <section className="py-16 bg-teal">
-      <div className="max-w-300 mx-auto px-8 max-md:px-5 text-center text-white">
+      <div className="container-site text-center text-white">
         <h2 className="font-serif text-[clamp(1.5rem,3vw,2rem)] mb-4">{heading}</h2>
         <p className="opacity-80 max-w-112.5 mx-auto mb-8 text-[.95rem] leading-[1.7]">{subtitle}</p>
         <Link

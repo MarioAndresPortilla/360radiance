@@ -17,7 +17,7 @@ export function BookingSection() {
 
   return (
     <section className="py-24 max-md:py-16" id="booking" aria-labelledby="booking-heading">
-      <div className="max-w-250 mx-auto px-8 max-md:px-5">
+      <div className="container-site">
         <ScrollReveal>
           <div className="bg-teal rounded-3xl px-8 py-16 sm:px-12 sm:py-20 lg:px-20 lg:py-24 text-center text-white relative overflow-hidden">
             <div className="absolute -top-[60%] -right-[15%] w-100 h-100 rounded-full bg-white/4" aria-hidden="true" />

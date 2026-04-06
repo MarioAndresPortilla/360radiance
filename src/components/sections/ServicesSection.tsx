@@ -12,7 +12,7 @@ export function ServicesSection() {
 
   return (
     <section className="py-24 max-md:py-16 bg-cream" id="services" aria-labelledby="services-heading">
-      <div className="max-w-300 mx-auto px-8 max-md:px-5">
+      <div className="container-site">
         <ScrollReveal>
           <SectionHeader
             id="services-heading"

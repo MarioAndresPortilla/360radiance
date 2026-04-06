@@ -25,7 +25,7 @@ export default function ServicesPage() {
 
       {/* Pricing overview */}
       <section className="bg-white border-b border-border py-10">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="grid grid-cols-4 gap-6 max-md:grid-cols-2 text-center">
               <div>
@@ -50,7 +50,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="py-24 max-md:py-16">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <div className="flex flex-col gap-24 max-md:gap-16">
             {SERVICE_DETAILS.map((svc, i) => (
               <ScrollReveal key={svc.slug}>

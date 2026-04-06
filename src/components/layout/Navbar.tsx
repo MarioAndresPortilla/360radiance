@@ -37,7 +37,7 @@ export function Navbar() {
   return (
     <header className="bg-white sticky top-0 z-100 border-b border-border">
       <nav aria-label="Main navigation" className="px-8 max-md:px-4">
-        <div className="max-w-300 mx-auto flex justify-between items-center h-16">
+        <div className="container-site flex justify-between items-center h-16">
           <Link href="/" className="flex items-center gap-2.5 no-underline text-text" aria-label="360 Radiance — Home">
             <Image
               src="/images/360-radiance-logo.png"

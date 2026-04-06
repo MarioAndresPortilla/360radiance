@@ -32,7 +32,7 @@ export default function ResultsPage() {
 
       {/* Stats bar */}
       <section className="bg-white border-b border-border py-10">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <div className="grid grid-cols-4 gap-8 max-md:grid-cols-2 max-md:gap-6">
             {STATS.map((stat) => (
               <ScrollReveal key={stat.label}>
@@ -48,7 +48,7 @@ export default function ResultsPage() {
 
       {/* Journey timeline */}
       <section className="py-20 max-md:py-14" aria-labelledby="timeline-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 id="timeline-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">The Treatment Timeline</h2>
@@ -85,7 +85,7 @@ export default function ResultsPage() {
 
       {/* Before & After */}
       <section className="py-20 max-md:py-14 bg-cream" aria-labelledby="before-after-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-12">
               <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-teal mb-3 bg-teal-pale px-4 py-1.5 rounded-full">
@@ -140,7 +140,7 @@ export default function ResultsPage() {
 
       {/* What to expect */}
       <section className="py-16 bg-cream" aria-labelledby="expect-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1">
               <div>
@@ -181,7 +181,7 @@ export default function ResultsPage() {
 
       {/* Featured testimonials */}
       <section className="py-20 max-md:py-14" aria-labelledby="stories-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 id="stories-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">Client Success Stories</h2>

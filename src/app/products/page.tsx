@@ -24,7 +24,7 @@ export default function ProductsPage() {
 
       {/* Promise bar */}
       <section className="bg-white border-b border-border py-8">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ul className="flex justify-center gap-10 flex-wrap list-none max-md:gap-4 max-md:justify-start" aria-label="Product promises">
             {PRODUCT_FEATURES.map((f) => (
               <li key={f.text} className="flex items-center gap-2 text-[.82rem] font-medium text-text-mid">
@@ -40,7 +40,7 @@ export default function ProductsPage() {
 
       {/* Skin concern matcher */}
       <section className="py-16 bg-cream" aria-labelledby="matcher-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-10">
               <h2 id="matcher-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">Find Your Perfect Products</h2>
@@ -55,7 +55,7 @@ export default function ProductsPage() {
 
       {/* Full product catalog */}
       <section className="py-20 max-md:py-14" aria-labelledby="catalog-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 id="catalog-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">The Full Collection</h2>
@@ -70,7 +70,7 @@ export default function ProductsPage() {
 
       {/* How it works */}
       <section className="py-16 bg-cream" aria-labelledby="how-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <h2 id="how-heading" className="font-serif text-[1.6rem] text-center mb-10">How Our Products Are Different</h2>
             <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
@@ -104,7 +104,7 @@ export default function ProductsPage() {
 
       {/* Ingredient philosophy */}
       <section className="py-20 max-md:py-14" aria-labelledby="philosophy-heading">
-        <div className="max-w-300 mx-auto px-8 max-md:px-5">
+        <div className="container-site">
           <ScrollReveal>
             <div className="grid grid-cols-[1.2fr_1fr] gap-16 items-center max-lg:grid-cols-1">
               <div>

@@ -6,7 +6,7 @@ import { IconStar } from '@/components/icons/Icons';
 export function TestimonialsSection() {
   return (
     <section className="py-24 max-md:py-16" id="reviews" aria-labelledby="reviews-heading">
-      <div className="max-w-300 mx-auto px-8 max-md:px-5">
+      <div className="container-site">
         <ScrollReveal>
           <SectionHeader id="reviews-heading" tag="Client Stories" title="What Our Clients Say" />
         </ScrollReveal>
