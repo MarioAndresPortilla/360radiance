@@ -1,18 +1,19 @@
+import Link from 'next/link';
 import { BUSINESS } from '@/lib/constants';
 import { IconRadiance, IconWhatsApp } from '@/components/icons/Icons';
 
 const FOOTER_SERVICES = [
-  { label: 'Acne Treatment', href: '#services' },
-  { label: 'Microdermabrasion', href: '#services' },
-  { label: 'Skin Analysis', href: '#services' },
-  { label: 'Botanical Care', href: '#services' },
-  { label: 'Rosacea Program', href: '#services' },
+  { label: 'Acne Treatment', href: '/services#face-reality-acne-program' },
+  { label: 'Microdermabrasion', href: '/services#microdermabrasion' },
+  { label: 'Skin Analysis', href: '/services#skin-analysis-consultation' },
+  { label: 'Botanical Care', href: '/services#botanical-treatments' },
+  { label: 'Rosacea Program', href: '/services#face-reality-acne-program' },
 ];
 
 const FOOTER_COMPANY = [
-  { label: 'About Marta', href: '#about' },
-  { label: 'Results', href: '#results' },
-  { label: 'Reviews', href: '#reviews' },
+  { label: 'About Marta', href: '/about' },
+  { label: 'Results', href: '/results' },
+  { label: 'Reviews', href: '/reviews' },
   { label: 'Blog', href: '#' },
 ];
 
@@ -21,7 +22,7 @@ const FOOTER_CONTACT = [
   { label: 'WhatsApp', href: BUSINESS.whatsapp, external: true },
   { label: 'Instagram', href: BUSINESS.social.instagram, external: true },
   { label: 'Facebook', href: BUSINESS.social.facebook, external: true },
-  { label: 'Book Online', href: '#booking' },
+  { label: 'Book Online', href: '/contact' },
 ];
 
 export function Footer() {
@@ -30,12 +31,12 @@ export function Footer() {
       <div className="max-w-300 mx-auto px-8 max-md:px-5">
         <div className="grid grid-cols-[2.2fr_1fr_1fr_1fr] gap-10 pb-10 border-b border-white/6 max-lg:grid-cols-2 max-md:grid-cols-1">
           <div>
-            <a href="#" className="inline-flex items-center gap-2.5 no-underline text-white mb-3" aria-label="360 Radiance — Home">
+            <Link href="/" className="inline-flex items-center gap-2.5 no-underline text-white mb-3" aria-label="360 Radiance — Home">
               <div className="w-9.5 h-9.5 bg-teal rounded-2.5 flex items-center justify-center">
                 <IconRadiance size={24} className="text-white" />
               </div>
               <span className="font-serif text-xl">360 Radiance</span>
-            </a>
+            </Link>
             <p className="text-[.82rem] leading-[1.7] max-w-70 mb-4">
               Advanced paramedical skincare in Sunrise, FL. European serums, certified acne treatment, and proprietary botanical formulas.
             </p>
@@ -75,13 +76,24 @@ function FooterCol({ title, links }: { title: string; links: { label: string; hr
       <ul className="list-none">
         {links.map((link) => (
           <li key={link.label}>
-            <a
-              href={link.href}
-              className="block text-white/40 no-underline text-[.82rem] mb-1.5 hover:text-teal-light transition-colors"
-              {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-            >
-              {link.label}
-            </a>
+            {link.external ? (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-white/40 no-underline text-[.82rem] mb-1.5 hover:text-teal-light transition-colors"
+              >
+                {link.label}
+              </a>
+            ) : link.href.startsWith('tel:') || link.href === '#' ? (
+              <a href={link.href} className="block text-white/40 no-underline text-[.82rem] mb-1.5 hover:text-teal-light transition-colors">
+                {link.label}
+              </a>
+            ) : (
+              <Link href={link.href} className="block text-white/40 no-underline text-[.82rem] mb-1.5 hover:text-teal-light transition-colors">
+                {link.label}
+              </Link>
+            )}
           </li>
         ))}
       </ul>

@@ -1,20 +1,23 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { BUSINESS } from '@/lib/constants';
 import { IconRadiance, IconPhone, IconWhatsApp } from '@/components/icons/Icons';
-import { Button } from '@/components/ui/Button';
+import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
-  { href: '#services', label: 'Services' },
-  { href: '#results', label: 'Results' },
-  { href: '#about', label: 'About' },
-  { href: '#reviews', label: 'Reviews' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/services', label: 'Services' },
+  { href: '/results', label: 'Results' },
+  { href: '/about', label: 'About' },
+  { href: '/reviews', label: 'Reviews' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (mobileOpen) {
@@ -25,27 +28,35 @@ export function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   return (
     <header className="bg-white sticky top-0 z-100 border-b border-border">
       <nav aria-label="Main navigation" className="px-8 max-md:px-4">
         <div className="max-w-300 mx-auto flex justify-between items-center h-16">
-          <a href="#" className="flex items-center gap-2.5 no-underline text-text" aria-label="360 Radiance — Home">
+          <Link href="/" className="flex items-center gap-2.5 no-underline text-text" aria-label="360 Radiance — Home">
             <div className="w-9.5 h-9.5 bg-teal rounded-2.5 flex items-center justify-center">
               <IconRadiance size={24} className="text-white" />
             </div>
             <span className="font-serif text-xl">360 Radiance</span>
-          </a>
+          </Link>
 
           <div className="flex gap-7 items-center max-md:hidden" role="list">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 role="listitem"
-                className="text-text-mid no-underline text-[.85rem] font-medium transition-colors duration-200 hover:text-teal"
+                className={cn(
+                  'no-underline text-[.85rem] font-medium transition-colors duration-200 hover:text-teal',
+                  pathname === link.href ? 'text-teal' : 'text-text-mid'
+                )}
+                aria-current={pathname === link.href ? 'page' : undefined}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -59,13 +70,23 @@ export function Navbar() {
               {BUSINESS.phone}
             </a>
             <span className="max-md:hidden">
-              <Button variant="whatsapp" href={BUSINESS.whatsapp} external>
+              <a
+                href={BUSINESS.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 bg-whatsapp text-white rounded-lg font-semibold text-[.82rem] px-5 py-2.5 transition-all cursor-pointer hover:bg-whatsapp-dark"
+                aria-label="Chat with us on WhatsApp"
+              >
+                <IconWhatsApp size={16} className="fill-white" />
                 WhatsApp
-              </Button>
+              </a>
             </span>
-            <Button variant="teal" href="#booking">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-1.5 bg-teal text-white rounded-lg font-semibold text-[.82rem] px-5 py-2.5 transition-all cursor-pointer hover:bg-teal-dark hover:-translate-y-px hover:shadow-md no-underline"
+            >
               Book Now
-            </Button>
+            </Link>
             <button
               type="button"
               className="hidden max-md:flex flex-col justify-center items-center w-10 h-10 gap-1.5 bg-transparent border-none cursor-pointer p-1"
@@ -82,7 +103,6 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       <div
         id="mobile-menu"
         role="dialog"
@@ -97,14 +117,17 @@ export function Navbar() {
         >
           <div className="flex flex-col p-6 gap-1">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-text no-underline text-base font-medium py-3 px-4 rounded-lg hover:bg-teal-pale hover:text-teal transition-colors"
+                className={cn(
+                  'no-underline text-base font-medium py-3 px-4 rounded-lg hover:bg-teal-pale hover:text-teal transition-colors',
+                  pathname === link.href ? 'text-teal bg-teal-pale' : 'text-text'
+                )}
+                aria-current={pathname === link.href ? 'page' : undefined}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <hr className="border-border my-2" />
             <a

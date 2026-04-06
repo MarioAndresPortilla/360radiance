@@ -1,19 +1,19 @@
 'use client';
 
+import Link from 'next/link';
 import { BUSINESS } from '@/lib/constants';
 import { IconCalendar, IconWhatsApp } from '@/components/icons/Icons';
 
 export function FloatingButtons() {
   return (
     <div className="fixed bottom-5 right-5 z-90 flex flex-col gap-2.5 items-end print:hidden" role="group" aria-label="Quick actions">
-      <button
-        type="button"
-        onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-        className="bg-teal text-white w-[50px] h-[50px] rounded-[12px] flex items-center justify-center cursor-pointer shadow-lg transition-all duration-250 border-none hover:bg-teal-dark hover:-translate-y-0.5"
+      <Link
+        href="/contact"
+        className="bg-teal text-white w-[50px] h-[50px] rounded-[12px] flex items-center justify-center cursor-pointer shadow-lg transition-all duration-250 border-none hover:bg-teal-dark hover:-translate-y-0.5 no-underline"
         aria-label="Book an appointment"
       >
         <IconCalendar size={22} className="text-white" />
-      </button>
+      </Link>
       <a
         href={BUSINESS.whatsapp}
         target="_blank"

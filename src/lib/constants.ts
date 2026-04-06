@@ -206,6 +206,148 @@ export const PRODUCT_FEATURES: ProductFeature[] = [
   { text: 'Created by Marta Nazzar' },
 ];
 
+export interface ServiceDetail {
+  slug: string;
+  icon: string;
+  title: string;
+  tagline: string;
+  tag: string;
+  featured?: boolean;
+  description: string[];
+  benefits: string[];
+  idealFor: string[];
+}
+
+export const SERVICE_DETAILS: ServiceDetail[] = [
+  {
+    slug: 'face-reality-acne-program',
+    icon: 'science',
+    title: 'Face Reality Acne Program',
+    tagline: 'Clinical acne management with a proven protocol — not guesswork.',
+    tag: 'Results in 2–4 weeks',
+    featured: true,
+    description: [
+      'The Face Reality Acne Program is a comprehensive, clinical approach to clearing acne — developed by Dr. James E. Fulton, the pioneer of Retin-A. Marta is personally certified under this protocol and has used it to transform hundreds of clients\' skin.',
+      'Unlike store-bought products that treat symptoms, Face Reality addresses the root causes of acne: excess sebum, dead skin cell buildup, and bacterial overgrowth. Each client receives a customized combination of professional in-office treatments and a tailored home-care regimen.',
+      'Most clients see a 30–50% improvement within the first two weeks. Rosacea clients frequently clear completely within four weeks. The program includes bi-weekly professional treatments, custom product selection, and ongoing regimen adjustments as your skin responds.',
+    ],
+    benefits: [
+      'Addresses hormonal, cystic, and rosacea acne',
+      'Bi-weekly professional treatments in-office',
+      'Custom home-care regimen with medical-grade products',
+      'Progress tracking and regimen adjustments',
+      'Most clients see 90%+ improvement by week 8',
+      'Certified protocol — backed by clinical research',
+    ],
+    idealFor: ['Hormonal acne', 'Cystic acne', 'Rosacea', 'Persistent breakouts', 'Adult acne', 'Teen acne'],
+  },
+  {
+    slug: 'microdermabrasion',
+    icon: 'sparkle',
+    title: 'Microdermabrasion',
+    tagline: 'Non-invasive exfoliation that reveals smoother, brighter skin instantly.',
+    tag: 'Anti-Aging',
+    description: [
+      'Microdermabrasion is a non-invasive exfoliation treatment that removes the outer layer of dead skin cells, revealing the fresher, younger skin beneath. It stimulates collagen production and improves overall skin texture.',
+      'Marta\'s approach to microdermabrasion is the most thorough in the industry — clients consistently report it\'s the best they\'ve ever experienced. The treatment is painless with zero downtime, and results are visible immediately after your first session.',
+      'Regular microdermabrasion treatments help reduce fine lines, minimize pores, even out skin tone, and enhance the absorption of your skincare products by up to 50%.',
+    ],
+    benefits: [
+      'Immediate visible improvement after first session',
+      'Stimulates collagen and elastin production',
+      'Reduces appearance of fine lines and wrinkles',
+      'Minimizes enlarged pores',
+      'Evens out skin tone and reduces hyperpigmentation',
+      'Zero downtime — return to daily activities immediately',
+    ],
+    idealFor: ['Fine lines & wrinkles', 'Dull complexion', 'Enlarged pores', 'Uneven skin tone', 'Sun damage', 'Age spots'],
+  },
+  {
+    slug: 'glass-ampule-serums',
+    icon: 'vial',
+    title: 'Glass Ampule Serums',
+    tagline: 'Concentrated European actives for precision-targeted skin treatment.',
+    tag: 'European Grade',
+    description: [
+      'Our glass ampule serums are sourced from the finest laboratories in Germany, Spain, Switzerland, and Italy. Each ampule contains a highly concentrated dose of active ingredients — far more potent than anything available in retail stores.',
+      'Glass ampules preserve the integrity of active ingredients by eliminating exposure to air and light. Each ampule is a single-use dose, ensuring maximum freshness and potency with every application.',
+      'Marta selects specific ampule formulations based on each client\'s unique skin analysis, targeting concerns like dehydration, hyperpigmentation, redness, and aging with clinical precision.',
+    ],
+    benefits: [
+      'Premium serums from Germany, Spain, Switzerland, and Italy',
+      'Single-use glass ampules preserve ingredient potency',
+      'Concentrated actives unavailable in retail products',
+      'Targeted treatment for specific skin concerns',
+      'Paired with in-office treatments for enhanced results',
+      'Professional-grade ingredients with clinical efficacy',
+    ],
+    idealFor: ['Dehydrated skin', 'Hyperpigmentation', 'Redness & sensitivity', 'Aging concerns', 'Dull complexion', 'Post-treatment recovery'],
+  },
+  {
+    slug: 'skin-analysis-consultation',
+    icon: 'scan',
+    title: 'Skin Analysis & Consultation',
+    tagline: 'Your treatment roadmap starts with a comprehensive skin evaluation.',
+    tag: 'Free with booking',
+    description: [
+      'Every successful skin treatment begins with understanding. Marta\'s comprehensive skin analysis evaluates your skin type, current conditions, lifestyle factors, and treatment history to develop a personalized roadmap to your best skin.',
+      'Using her 25 years of medical expertise and B.S. in Biology, Marta examines your skin at a deeper level than most aestheticians. She identifies underlying causes — not just symptoms — and creates a treatment plan that addresses the root of your concerns.',
+      'The consultation is completely free when you book a treatment. You\'ll leave with a clear understanding of your skin, a customized treatment plan, and product recommendations tailored specifically to you.',
+    ],
+    benefits: [
+      'Comprehensive evaluation of skin type and conditions',
+      'Analysis of lifestyle factors affecting your skin',
+      'Personalized treatment roadmap',
+      'Product recommendations tailored to your needs',
+      'Free with any treatment booking',
+      'Bilingual consultation available (English/Spanish)',
+    ],
+    idealFor: ['First-time clients', 'Unsure which treatment to choose', 'Multiple skin concerns', 'Sensitive skin types', 'Product-overwhelmed clients', 'Anyone seeking expert guidance'],
+  },
+  {
+    slug: 'botanical-treatments',
+    icon: 'leaf',
+    title: 'Botanical Treatments',
+    tagline: 'Science meets nature in proprietary toxin-free formulas.',
+    tag: 'Proprietary',
+    description: [
+      'The Radiance Skin Care Line was created by Marta Nazzar herself — a proprietary collection of botanical formulas that blend clinical science with nature\'s most beneficial ingredients.',
+      'Every product in the line is free of toxins, parabens, and sulfates. These aren\'t just "clean" products — they\'re clinically formulated to deliver real results while being gentle enough for even the most sensitive skin types.',
+      'Botanical treatments at 360 Radiance use these proprietary formulas in combination with professional techniques, resulting in healthier, younger-looking skin without the harsh chemicals found in many commercial products.',
+    ],
+    benefits: [
+      'Proprietary formulas created by Marta Nazzar',
+      'Free of toxins, parabens, and sulfates',
+      'Clinically formulated botanical ingredients',
+      'Gentle enough for sensitive skin',
+      'Paired with professional in-office application',
+      'Take-home products available for continued care',
+    ],
+    idealFor: ['Sensitive skin', 'Chemical-free preference', 'Redness & irritation', 'Eczema-prone skin', 'Post-procedure care', 'Holistic skincare approach'],
+  },
+  {
+    slug: 'custom-regimen-design',
+    icon: 'clipboard',
+    title: 'Custom Regimen Design',
+    tagline: 'A personalized take-home protocol built for your skin and your life.',
+    tag: 'Ongoing Care',
+    description: [
+      'No two skin types are the same — and your skincare routine shouldn\'t be either. Marta designs a custom regimen for every client that includes product selection, application schedules, and clear instructions for at-home care.',
+      'Your regimen is built around your skin analysis results, treatment plan, lifestyle, and budget. It evolves with you — as your skin improves, Marta adjusts your products and protocol to maintain and build on your progress.',
+      'This isn\'t a one-time recommendation. Clients receive ongoing support, progress check-ins, and regimen modifications as needed. The goal is long-term skin health, not just short-term results.',
+    ],
+    benefits: [
+      'Completely personalized to your skin type',
+      'Product selection based on professional analysis',
+      'Clear application schedules and instructions',
+      'Ongoing adjustments as your skin improves',
+      'Budget-conscious product recommendations',
+      'Long-term skin health, not just quick fixes',
+    ],
+    idealFor: ['Clients finishing a treatment program', 'Inconsistent skincare routines', 'Product-overwhelmed clients', 'Maintenance after clearing', 'Budget-conscious skincare', 'Anyone wanting expert guidance'],
+  },
+];
+
 export const BOOKING_SERVICES = [
   'Acne Consultation',
   'Microdermabrasion',

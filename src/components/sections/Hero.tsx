@@ -20,10 +20,10 @@ export function Hero() {
               Paramedical skincare backed by 25 years of medical expertise, European-grade serums, and a proven acne treatment protocol. Real results in as little as 2 weeks.
             </p>
             <div className="flex gap-3 flex-wrap mb-4 max-lg:justify-center">
-              <Button variant="teal" href="#booking" className="py-3! px-7! text-[.88rem]!">
+              <Button variant="teal" href="/contact" className="py-3! px-7! text-[.88rem]!">
                 Book Free Consultation &rarr;
               </Button>
-              <Button variant="outline-teal" href="#results" className="py-2.5! px-6! text-[.88rem]!">
+              <Button variant="outline-teal" href="/results" className="py-2.5! px-6! text-[.88rem]!">
                 See Results
               </Button>
             </div>
