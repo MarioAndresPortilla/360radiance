@@ -269,7 +269,9 @@
   },
   "booking": {
     "title": "¿Lista para una Piel Clara y Radiante?",
-    "subtitle": "Reserve una consulta gratuita con Marta. Su hoja de ruta de tratamiento personalizada comienza con una sola conversación."
+    "subtitle": "Reserve una consulta gratuita con Marta. Su hoja de ruta de tratamiento personalizada comienza con una sola conversación.",
+    "callCta": "Llame para Reservar",
+    "whatsappCta": "o escríbanos por WhatsApp"
   },
   "hours": {
     "tag": "Visítenos",

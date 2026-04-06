@@ -57,15 +57,12 @@ export const BUSINESS = {
   },
 } as const;
 
-// Cal.com — Marta updates her availability/services in her cal.com dashboard.
-// Username + event slug compose into "marta-360radiance/free-consultation".
-// To change: update CAL.username after Marta signs up. Event slugs map to her
-// "Event Types" in cal.com (free-consultation is the default 15min intake).
-export const CAL = {
-  username: 'marta-360radiance',
-  defaultEvent: 'free-consultation',
-  link: 'marta-360radiance/free-consultation',
-} as const;
+// Cal.com booking is intentionally not wired up: Marta does not yet have a
+// Cal.com account. When she signs up, add a `CAL` const here with her real
+// `username/event-slug`, then re-introduce a popup-mode embed in
+// BookingSection.tsx + FloatingButtons.tsx (see TODO comments there). Avoid
+// the inline iframe — it produces preload/reflow warnings from Cal.com's
+// own bundle that can't be suppressed from our origin.
 
 // Instagram showcase: each entry is one card on the homepage.
 // To swap in real content: replace `image` with the file under

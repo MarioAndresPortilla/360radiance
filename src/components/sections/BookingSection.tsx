@@ -1,30 +1,15 @@
-'use client';
-
-import { useEffect } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
-import Cal, { getCalApi } from '@calcom/embed-react';
-import { BUSINESS, CAL } from '@/lib/constants';
+import { useTranslations } from 'next-intl';
+import { BUSINESS } from '@/lib/constants';
 import { IconPhone, IconWhatsApp } from '@/components/icons/Icons';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
+// When Marta has a real Cal.com account, swap these CTAs for a popup-mode
+// embed: add `data-cal-link` to the primary button and re-introduce
+// `getCalApi` from `@calcom/embed-react` for theming. Inline iframe mode is
+// avoided on purpose — it triggers preload/reflow warnings from Cal.com's
+// own bundle that we can't suppress from our origin.
 export function BookingSection() {
   const t = useTranslations('booking');
-  const locale = useLocale();
-
-  useEffect(() => {
-    (async () => {
-      const cal = await getCalApi({ namespace: 'booking-inline' });
-      cal('ui', {
-        theme: 'light',
-        cssVarsPerTheme: {
-          light: { 'cal-brand': '#1A7F7E' },
-          dark: { 'cal-brand': '#1A7F7E' },
-        },
-        hideEventTypeDetails: false,
-        layout: 'month_view',
-      });
-    })();
-  }, []);
 
   return (
     <section className="py-24 max-md:py-16" id="booking" aria-labelledby="booking-heading">
@@ -40,33 +25,26 @@ export function BookingSection() {
               {t('subtitle')}
             </p>
 
-            <div className="bg-white rounded-2xl overflow-hidden relative z-1 mx-auto max-w-3xl shadow-xl">
-              <Cal
-                namespace="booking-inline"
-                calLink={CAL.link}
-                style={{ width: '100%', height: '100%', overflow: 'scroll' }}
-                config={{ layout: 'month_view', theme: 'light', language: locale }}
-              />
-            </div>
-
-            <div className="mt-10 flex justify-center gap-8 relative z-1 flex-wrap max-md:gap-6">
+            <div className="relative z-1 flex flex-col items-center gap-6">
               <a
                 href={`tel:${BUSINESS.phoneRaw}`}
-                className="text-white/80 text-[.88rem] no-underline flex items-center gap-2 hover:text-white transition-colors"
-                aria-label={`Call us at ${BUSINESS.phone}`}
+                className="inline-flex items-center gap-3 bg-white text-teal font-semibold text-[1.05rem] px-9 py-4 rounded-xl shadow-xl no-underline transition-all hover:scale-[1.03] hover:shadow-2xl"
+                aria-label={`${t('callCta')} — ${BUSINESS.phone}`}
               >
-                <IconPhone size={18} className="text-current" />
-                {BUSINESS.phone}
+                <IconPhone size={20} className="text-current" />
+                <span>{t('callCta')}</span>
+                <span className="opacity-50" aria-hidden="true">·</span>
+                <span>{BUSINESS.phone}</span>
               </a>
+
               <a
                 href={BUSINESS.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/80 text-[.88rem] no-underline flex items-center gap-2 hover:text-white transition-colors"
-                aria-label="Chat with us on WhatsApp"
+                className="inline-flex items-center gap-2 text-white/85 text-[.9rem] no-underline hover:text-white transition-colors"
               >
                 <IconWhatsApp size={18} className="fill-current" />
-                WhatsApp
+                <span>{t('whatsappCta')}</span>
               </a>
             </div>
           </div>

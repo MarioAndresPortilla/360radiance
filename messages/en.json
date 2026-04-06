@@ -269,7 +269,9 @@
   },
   "booking": {
     "title": "Ready for Clear, Radiant Skin?",
-    "subtitle": "Book a free consultation with Marta. Your personalized treatment roadmap starts with a single conversation."
+    "subtitle": "Book a free consultation with Marta. Your personalized treatment roadmap starts with a single conversation.",
+    "callCta": "Call to Book",
+    "whatsappCta": "or message us on WhatsApp"
   },
   "hours": {
     "tag": "Visit Us",
