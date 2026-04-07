@@ -43,15 +43,23 @@ export function Navbar() {
   return (
     <header className="bg-white sticky top-0 z-100 border-b border-border">
       <nav aria-label={t('ariaLabel')}>
-        <div className="container-site flex justify-between items-center h-16 gap-6">
-          <Link href="/" className="flex items-center no-underline shrink-0" aria-label={t('homeAria')}>
+        <div className="container-site flex justify-between items-center h-16 gap-6 max-lg:gap-3 max-md:gap-2">
+          <Link href="/" className="flex items-center no-underline min-w-0" aria-label={t('homeAria')}>
+            {/*
+              The horizontal lotus logo has an 8:1 aspect ratio (480x60), so at
+              h-9 it renders ~288px wide — wider than half a 360px Samsung viewport.
+              We CAP the rendered width on small mobiles (max-w-[160px]) and let
+              the height auto-derive, so the logo always fits next to the
+              "Book Now" + hamburger cluster without clipping. On lg+ we let it
+              breathe at its natural h-9 size.
+            */}
             <Image
               src="/logo-horizontal-purple-light.svg"
               alt="360 Radiance"
               width={240}
               height={30}
               priority
-              className="h-9 w-auto max-md:h-8"
+              className="h-9 w-auto max-lg:h-8 max-md:h-7 max-md:max-w-40 max-[380px]:max-w-35"
             />
           </Link>
 
@@ -72,7 +80,7 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-3 max-md:gap-1.5 shrink-0">
             {/* Language switcher */}
             <div className="flex items-center gap-1 max-md:hidden text-[.78rem] font-semibold" role="group" aria-label={t('language')}>
               <button
@@ -107,14 +115,14 @@ export function Navbar() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 bg-navy text-white rounded-lg font-semibold text-[.82rem] px-5 py-2.5 transition-all cursor-pointer hover:bg-navy-deep hover:-translate-y-px hover:shadow-md no-underline"
+              className="inline-flex items-center gap-1.5 bg-navy text-white rounded-lg font-semibold text-[.82rem] max-md:text-[.74rem] px-5 py-2.5 max-md:px-3 max-md:py-2 transition-all cursor-pointer hover:bg-navy-deep hover:-translate-y-px hover:shadow-md no-underline whitespace-nowrap"
             >
               {tCommon('bookNow')}
             </Link>
 
             <button
               type="button"
-              className="hidden max-lg:flex flex-col justify-center items-center w-10 h-10 gap-1.5 bg-transparent border-none cursor-pointer p-1"
+              className="hidden max-lg:flex flex-col justify-center items-center w-10 h-10 max-md:w-9 max-md:h-9 gap-1.5 bg-transparent border-none cursor-pointer p-1 shrink-0"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"

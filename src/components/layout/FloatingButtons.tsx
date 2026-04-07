@@ -33,7 +33,7 @@ export function FloatingButtons() {
   }, []);
 
   return (
-    <div className="fixed bottom-6 right-6 max-md:bottom-4 max-md:right-4 z-90 flex flex-col gap-3 items-end print:hidden" role="group">
+    <div className="fab-stack fixed z-90 flex flex-col gap-3 items-end print:hidden" role="group">
       <button
         type="button"
         data-cal-link={CAL.defaultLink}
