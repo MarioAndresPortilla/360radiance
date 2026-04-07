@@ -1,30 +1,72 @@
 @import "tailwindcss";
 
+/*
+ * 360 Radiance brand color system.
+ *
+ * The palette is navy + gold + purple. The legacy `teal-*` and `cream-*` token
+ * NAMES are preserved (so all existing components keep compiling) but their
+ * VALUES have been swapped to the new brand. New code should prefer the
+ * properly-named aliases (`navy`, `navy-deep`, `purple`, `purple-soft`,
+ * `gold-a11y`, `gold-highlight`, `gold-muted`) added below.
+ *
+ * Token VALUE map (legacy name → new value):
+ *   teal       → navy primary    #2F3269
+ *   teal-dark  → navy deep       #21244F
+ *   teal-light → purple soft     #52357D
+ *   teal-pale  → pale navy bg    #ECECF5
+ *   teal-bg    → pale navy bg-2  #F2F2FA
+ *   gold       → gold primary    #E7C27E (decorative; do NOT use as text on white)
+ *   gold-light → gold light      #F3D38C
+ *   gold-dark  → gold dark       #9F8449 (AA-Large only, ≥18px)
+ *   gold-pale  → gold highlight  #FFF4C1
+ *
+ * A11y rules:
+ *   - #E7C27E / #F3D38C / #FFF4C1 fail WCAG as text on white. For gold-tinted
+ *     READABLE TEXT on light backgrounds, use `gold-a11y` (#7A6830, 5.2:1 AA).
+ *   - Icons (aria-hidden) and decorative borders may use any gold value.
+ *   - Gold buttons on light bg should have navy text inside, not white.
+ *
+ * Dark mode tokens are defined in the `.dark` block at the end of this file.
+ * They are intentionally dormant — no toggle, no `prefers-color-scheme`
+ * auto-apply. Apple/NVIDIA approach: design controls dark sections, not the
+ * OS. To opt a future surface in, add `class="dark"` to its root element.
+ */
 @theme inline {
-  --color-teal: #1A7F7E;
-  --color-teal-dark: #156766;
-  --color-teal-light: #2BA5A3;
-  --color-teal-pale: #EAF5F4;
-  --color-teal-bg: #F4FAFA;
-  --color-gold: #B8935A;
-  --color-gold-light: #D4B87E;
-  --color-gold-dark: #9A7842;
-  --color-gold-pale: #FBF5EC;
-  --color-cream: #FAF8F5;
-  --color-cream-dark: #F0EBE3;
-  --color-text: #1A2332;
-  --color-text-mid: #475669;
-  --color-text-light: #7F8FA0;
-  --color-text-faint: #B0BDCA;
-  --color-border: rgba(26, 35, 50, 0.07);
-  --color-border-hover: rgba(26, 127, 126, 0.18);
+  /* Legacy aliases — same NAMES, NEW values (full rebrand without 60-file edit) */
+  --color-teal: #2F3269;            /* was #1A7F7E — now navy primary */
+  --color-teal-dark: #21244F;       /* was #156766 — now navy deep */
+  --color-teal-light: #52357D;      /* was #2BA5A3 — now purple soft */
+  --color-teal-pale: #ECECF5;       /* was #EAF5F4 — pale navy-tinted bg */
+  --color-teal-bg: #F2F2FA;         /* was #F4FAFA — featured-card pale navy */
+  --color-gold: #E7C27E;            /* was #B8935A — gold primary, decorative */
+  --color-gold-light: #F3D38C;      /* was #D4B87E */
+  --color-gold-dark: #9F8449;       /* was #9A7842 — AA-Large only */
+  --color-gold-pale: #FFF4C1;       /* was #FBF5EC — gold highlight */
+  --color-cream: #FAF8F2;           /* warm off-white, near-unchanged */
+  --color-cream-dark: #EFEAE0;      /* warm off-white border, near-unchanged */
+  --color-text: #2F3269;            /* was #1A2332 — navy primary text */
+  --color-text-mid: #4A4F7A;        /* was #475669 — navy mid */
+  --color-text-light: #7E83A6;      /* was #7F8FA0 — navy light */
+  --color-text-faint: #BABCD2;      /* was #B0BDCA — navy faint */
+  --color-border: rgba(47, 50, 105, 0.10);        /* navy-tinted at 10% */
+  --color-border-hover: rgba(47, 50, 105, 0.22);  /* navy-tinted hover */
   --color-whatsapp: #25D366;
   --color-whatsapp-dark: #1EBE57;
+
+  /* New brand tokens — properly named. Prefer these in new code. */
+  --color-navy: #2F3269;
+  --color-navy-deep: #21244F;
+  --color-purple: #442F69;          /* AAA on white (10.8:1) — safe for text */
+  --color-purple-soft: #52357D;     /* dark-theme hover/active */
+  --color-gold-a11y: #7A6830;       /* AA on white (5.2:1) — safe for text */
+  --color-gold-highlight: #FFF4C1;  /* primary text on dark theme */
+  --color-gold-muted: #BE9D47;      /* decorative only */
+
   --font-serif: var(--font-dm-serif-display), Georgia, serif;
   --font-sans: var(--font-plus-jakarta-sans), "Helvetica Neue", sans-serif;
-  --shadow-sm: 0 1px 2px rgba(26, 35, 50, 0.04);
-  --shadow-md: 0 4px 12px rgba(26, 35, 50, 0.05), 0 1px 3px rgba(26, 35, 50, 0.03);
-  --shadow-lg: 0 12px 32px rgba(26, 35, 50, 0.07), 0 4px 8px rgba(26, 35, 50, 0.03);
+  --shadow-sm: 0 1px 2px rgba(47, 50, 105, 0.05);
+  --shadow-md: 0 4px 12px rgba(47, 50, 105, 0.06), 0 1px 3px rgba(47, 50, 105, 0.04);
+  --shadow-lg: 0 12px 32px rgba(47, 50, 105, 0.09), 0 4px 8px rgba(47, 50, 105, 0.04);
   --radius-default: 14px;
   --radius-lg: 20px;
 }
@@ -104,4 +146,54 @@ body {
   .float-btns, nav, .announcement, .skip-link { display: none !important; }
   body { color: black; background: white; }
   .reveal, .vis { opacity: 1 !important; transform: none !important; }
+}
+
+/*
+ * Dark theme — defined but DORMANT.
+ *
+ * This block redefines the brand tokens for any subtree that opts in via
+ * `class="dark"`. There is no automatic toggle, no `prefers-color-scheme`
+ * media query, and no UI control. We follow Apple/NVIDIA's marketing-site
+ * pattern: design controls dark surfaces deliberately, not the OS.
+ *
+ * To use: wrap a section/page in `<div class="dark">…</div>`. Tailwind v4
+ * resolves utilities through CSS variables, so every existing `bg-teal`,
+ * `text-cream`, etc. will automatically pick up these dark-theme values
+ * inside that subtree, without needing a `dark:` variant on every class.
+ *
+ * Spec contrast pairings (all AAA unless noted):
+ *   gold-highlight on navy-deep  → 13.3:1
+ *   gold on navy-deep            →  8.7:1
+ *   gold on navy card            →  7.0:1 (AA)
+ *   gold-highlight on purple     → 10.2:1
+ */
+.dark {
+  --color-teal: #E7C27E;            /* primary surface accent → gold (readable on dark) */
+  --color-teal-dark: #BE9D47;       /* gold muted */
+  --color-teal-light: #F3D38C;      /* gold light */
+  --color-teal-pale: #2F3269;       /* navy primary as "pale" container */
+  --color-teal-bg: #2F3269;
+  --color-gold: #E7C27E;
+  --color-gold-light: #F3D38C;
+  --color-gold-dark: #BE9D47;       /* swap to gold-muted on dark — gold-dark is too low contrast */
+  --color-gold-pale: #FFF4C1;
+  --color-cream: #2F3269;           /* card surface */
+  --color-cream-dark: #21244F;      /* deeper card surface */
+  --color-text: #FFF4C1;            /* gold highlight as primary text on dark */
+  --color-text-mid: #F3D38C;
+  --color-text-light: #E7C27E;
+  --color-text-faint: rgba(255, 244, 193, 0.55);
+  --color-border: rgba(231, 194, 126, 0.18);
+  --color-border-hover: rgba(231, 194, 126, 0.35);
+
+  --color-navy: #FFF4C1;            /* "navy" inverts to gold-highlight on dark */
+  --color-navy-deep: #F3D38C;
+  --color-purple: #52357D;          /* purple soft becomes the active accent on dark */
+  --color-purple-soft: #442F69;
+  --color-gold-a11y: #E7C27E;       /* on dark, plain gold is readable */
+  --color-gold-highlight: #FFF4C1;
+  --color-gold-muted: #BE9D47;
+
+  background: #21244F;
+  color: #FFF4C1;
 }

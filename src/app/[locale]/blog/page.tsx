@@ -46,7 +46,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
               <div className="grid grid-cols-[1.3fr_1fr] gap-12 items-center max-lg:grid-cols-1">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-[.6rem] font-bold uppercase tracking-[1px] text-gold-dark bg-gold-pale py-1 px-2.5 rounded-md">
+                    <span className="text-[.6rem] font-bold uppercase tracking-[1px] text-gold-a11y bg-gold-pale py-1 px-2.5 rounded-md">
                       {t('featured')}
                     </span>
                     <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-teal bg-teal-pale py-1 px-2.5 rounded-md">
@@ -133,7 +133,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                   title: t('topics.ingredients.title'),
                   desc: t('topics.ingredients.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Ingredients').length,
-                  color: 'bg-gold-pale text-gold-dark',
+                  color: 'bg-gold-pale text-gold-a11y',
                 },
                 {
                   title: t('topics.skinHealth.title'),
@@ -145,7 +145,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                   title: t('topics.treatments.title'),
                   desc: t('topics.treatments.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Treatments').length,
-                  color: 'bg-gold-pale text-gold-dark',
+                  color: 'bg-gold-pale text-gold-a11y',
                 },
                 {
                   title: t('topics.productGuides.title'),

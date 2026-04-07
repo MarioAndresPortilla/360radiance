@@ -22,7 +22,7 @@ export function JourneySection() {
             <ScrollReveal key={step.number}>
               <li className="bg-white border border-border rounded-2xl p-7 max-md:p-6 text-center transition-all duration-300 hover:border-teal hover:shadow-md">
                 <div className="font-serif text-[1.8rem] text-teal mb-2" aria-hidden="true">{step.number}</div>
-                <div className="text-[.62rem] font-bold uppercase tracking-[1.5px] text-gold-dark mb-3">{step.weekLabel}</div>
+                <div className="text-[.62rem] font-bold uppercase tracking-[1.5px] text-gold-a11y mb-3">{step.weekLabel}</div>
                 <h4 className="font-serif text-[.98rem] mb-2">{step.title}</h4>
                 <p className="text-text-mid text-[.82rem] leading-[1.65]">{step.description}</p>
                 <ProgressBar targetWidth={step.progress} />

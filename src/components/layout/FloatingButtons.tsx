@@ -20,8 +20,10 @@ export function FloatingButtons() {
       cal('ui', {
         theme: 'light',
         cssVarsPerTheme: {
-          light: { 'cal-brand': '#1A7F7E' },
-          dark: { 'cal-brand': '#1A7F7E' },
+          // Cal.com modal accent — must match the brand navy primary so the
+          // embedded picker doesn't flash a foreign color when it opens.
+          light: { 'cal-brand': '#2F3269' },
+          dark: { 'cal-brand': '#2F3269' },
         },
         hideEventTypeDetails: false,
         layout: 'month_view',
@@ -37,7 +39,7 @@ export function FloatingButtons() {
         data-cal-link={CAL.defaultLink}
         data-cal-namespace={CAL.namespace}
         data-cal-config={JSON.stringify({ layout: 'month_view', theme: 'light' })}
-        className="bg-gold text-white w-13 h-13 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-250 hover:bg-gold-dark hover:-translate-y-0.5 cursor-pointer"
+        className="bg-gold text-navy w-13 h-13 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-250 hover:bg-gold-light hover:-translate-y-0.5 cursor-pointer"
         aria-label={tCommon('bookFreeConsultation')}
       >
         {/* Calendar icon */}

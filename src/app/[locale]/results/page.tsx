@@ -75,7 +75,7 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
                 <div className="grid grid-cols-[80px_1fr] gap-8 max-md:gap-4 mb-12 last:mb-0">
                   <div className="text-center">
                     <div className="font-serif text-[2.5rem] text-teal leading-none">{step.number}</div>
-                    <div className="text-[.6rem] font-bold uppercase tracking-[1.5px] text-gold-dark mt-1">{step.weekLabel}</div>
+                    <div className="text-[.6rem] font-bold uppercase tracking-[1.5px] text-gold-a11y mt-1">{step.weekLabel}</div>
                   </div>
                   <div className="bg-cream rounded-2xl p-6">
                     <h3 className="font-serif text-[1.1rem] mb-2">{step.title}</h3>

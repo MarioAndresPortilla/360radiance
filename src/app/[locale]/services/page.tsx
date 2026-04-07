@@ -53,7 +53,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                 <div className="text-[.78rem] text-text-mid mt-1">{t('homeCare')}</div>
               </div>
               <div>
-                <div className="font-serif text-[1.8rem] text-gold">${ACNE_PROGRAM_PRICING.totalStarting}</div>
+                <div className="font-serif text-[1.8rem] text-gold-a11y">${ACNE_PROGRAM_PRICING.totalStarting}</div>
                 <div className="text-[.78rem] text-text-mid mt-1">{t('totalStarting')}</div>
               </div>
             </div>
@@ -94,10 +94,10 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                       {/* Contraindications for acne program */}
                       {svc.slug === 'acne-treatment-program' && (
                         <div className="bg-gold-pale border border-gold-light/30 rounded-2xl p-6 mt-6">
-                          <h3 className="font-serif text-[1rem] text-gold-dark mb-3">{t('contraindicationsTitle')}</h3>
+                          <h3 className="font-serif text-[1rem] text-gold-a11y mb-3">{t('contraindicationsTitle')}</h3>
                           <ul className="flex flex-col gap-2.5 list-none">
                             {ACNE_PROGRAM_CONTRAINDICATIONS.map((item) => (
-                              <li key={item} className="flex items-start gap-2.5 text-[.82rem] text-gold-dark/80 leading-[1.6]">
+                              <li key={item} className="flex items-start gap-2.5 text-[.82rem] text-gold-a11y/80 leading-[1.6]">
                                 <span className="w-1.5 h-1.5 rounded-full bg-gold-dark mt-2 shrink-0" aria-hidden="true" />
                                 {item}
                               </li>

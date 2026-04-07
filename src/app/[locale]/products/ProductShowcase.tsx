@@ -55,13 +55,13 @@ export function ProductShowcase() {
                         {product.category}
                       </span>
                       {product.origin && (
-                        <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-gold-dark bg-gold-pale py-0.5 px-2 rounded-md">
+                        <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-gold-a11y bg-gold-pale py-0.5 px-2 rounded-md">
                           {product.origin}
                         </span>
                       )}
                     </div>
                     {product.badge && (
-                      <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-white bg-gold py-0.5 px-2.5 rounded-full">
+                      <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-navy bg-gold py-0.5 px-2.5 rounded-full">
                         {product.badge}
                       </span>
                     )}
@@ -122,7 +122,7 @@ export function ProductShowcase() {
                     <h4 className="font-serif text-[.95rem] mb-2">Pairs Best With</h4>
                     <div className="flex flex-wrap gap-2">
                       {product.pairsWith.map((p) => (
-                        <span key={p} className="text-[.72rem] font-semibold text-gold-dark bg-gold-pale py-1.5 px-3 rounded-lg">
+                        <span key={p} className="text-[.72rem] font-semibold text-gold-a11y bg-gold-pale py-1.5 px-3 rounded-lg">
                           {p}
                         </span>
                       ))}

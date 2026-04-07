@@ -16,7 +16,7 @@ interface ButtonProps {
 
 const variantStyles: Record<ButtonVariant, string> = {
   teal: 'bg-teal text-white hover:bg-teal-dark hover:-translate-y-px hover:shadow-md',
-  gold: 'bg-gold text-white hover:bg-gold-dark hover:-translate-y-0.5',
+  gold: 'bg-gold text-navy hover:bg-gold-light hover:-translate-y-0.5',
   'outline-teal': 'bg-transparent border-[1.5px] border-teal text-teal hover:bg-teal hover:text-white',
   whatsapp: 'bg-whatsapp text-white hover:bg-whatsapp-dark',
 };

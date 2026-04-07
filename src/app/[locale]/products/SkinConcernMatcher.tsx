@@ -53,7 +53,7 @@ export function SkinConcernMatcher() {
                     {product.category}
                   </span>
                   {product.badge && (
-                    <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-gold bg-gold-pale py-0.5 px-2 rounded-md">
+                    <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-gold-a11y bg-gold-pale py-0.5 px-2 rounded-md">
                       {product.badge}
                     </span>
                   )}

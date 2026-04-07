@@ -34,7 +34,7 @@ export function ServicesSection() {
                 )}
               >
                 {svc.featured && (
-                  <span className="absolute -top-3 right-5 bg-gold text-white text-[.6rem] font-bold py-1 px-3 rounded-full uppercase tracking-[.5px]">
+                  <span className="absolute -top-3 right-5 bg-gold text-navy text-[.6rem] font-bold py-1 px-3 rounded-full uppercase tracking-[.5px]">
                     Signature
                   </span>
                 )}
