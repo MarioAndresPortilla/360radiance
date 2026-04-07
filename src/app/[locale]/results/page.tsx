@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { JOURNEY_STEPS, TESTIMONIALS } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -13,10 +14,12 @@ import { IconStar, IconCheck } from '@/components/icons/Icons';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'results' });
-  return {
-    title: 'Results',
+  return buildPageMetadata({
+    locale,
+    path: '/results',
+    title: locale === 'es' ? 'Resultados' : 'Results',
     description: t('pageSubtitle'),
-  };
+  });
 }
 
 export default async function ResultsPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -26,8 +29,8 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
 
   const STATS = [
     { value: '90%+', label: t('stats.improvement') },
-    { value: '2 Weeks', label: t('stats.weeks') },
-    { value: '500+', label: t('stats.clients') },
+    { value: t('stats.weeksValue'), label: t('stats.weeks') },
+    { value: t('stats.visitsValue'), label: t('stats.visits') },
     { value: '25+', label: t('stats.years') },
   ];
 

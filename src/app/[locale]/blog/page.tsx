@@ -7,16 +7,19 @@ import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { BLOG_POSTS } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo';
 import { BlogGrid } from './BlogGrid';
 import { NewsletterSignup } from './NewsletterSignup';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'blog' });
-  return {
+  return buildPageMetadata({
+    locale,
+    path: '/blog',
     title: t('pageTitle'),
     description: t('pageSubtitle'),
-  };
+  });
 }
 
 const featured = BLOG_POSTS.find((p) => p.featured);

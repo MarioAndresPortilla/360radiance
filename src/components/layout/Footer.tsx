@@ -35,12 +35,19 @@ export function Footer() {
         { label: tNav('contact'), href: '/contact' },
       ],
     },
+    {
+      title: t('legal'),
+      links: [
+        { label: t('privacy'), href: '/privacy' },
+        { label: t('terms'), href: '/terms' },
+      ],
+    },
   ];
 
   return (
     <footer className="bg-[#141C27] text-white/45 pt-20 pb-10" role="contentinfo">
       <div className="container-site">
-        <div className="grid grid-cols-[2fr_1fr_1fr_1fr] gap-14 pb-14 border-b border-white/8 max-lg:grid-cols-2 max-lg:gap-10 max-md:grid-cols-1 max-md:gap-8">
+        <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-12 pb-14 border-b border-white/8 max-lg:grid-cols-2 max-lg:gap-10 max-md:grid-cols-1 max-md:gap-8">
           <div>
             <Link href="/" className="inline-flex items-center gap-2 no-underline text-white mb-6" aria-label={tNav('homeAria')}>
               <span className="font-serif text-[1.3rem]">360 Radiance</span>
@@ -71,7 +78,7 @@ export function Footer() {
                         {link.label}
                       </a>
                     ) : (
-                      <Link href={link.href as '/services' | '/about' | '/results' | '/blog' | '/products' | '/contact'} className="text-white/40 no-underline text-[.88rem] hover:text-teal-light transition-colors">
+                      <Link href={link.href as '/services' | '/about' | '/results' | '/blog' | '/products' | '/contact' | '/privacy' | '/terms'} className="text-white/40 no-underline text-[.88rem] hover:text-teal-light transition-colors">
                         {link.label}
                       </Link>
                     )}

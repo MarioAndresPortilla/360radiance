@@ -4,6 +4,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { BUSINESS } from '@/lib/constants';
+import { SITE_URL, buildPageMetadata } from '@/lib/seo';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
 
@@ -23,8 +24,6 @@ const jakarta = Plus_Jakarta_Sans({
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
-
-const SITE_URL = 'https://360radianceskincare.com';
 
 const META = {
   en: {
@@ -93,32 +92,40 @@ const META = {
   },
 } as const;
 
+// Layout-level metadata sets site-wide defaults that every page inherits:
+// metadataBase, the title template, the keyword list, twitter card, robots
+// directives, and the geo meta tags. Per-page generateMetadata calls (via
+// `buildPageMetadata` from src/lib/seo.ts) override `alternates`, `openGraph`,
+// `title`, and `description` with the page-specific values. We do NOT set a
+// canonical here because Next.js does not auto-resolve `alternates.canonical`
+// per route — without per-page overrides every URL would canonicalize to '/'.
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const m = META[locale as keyof typeof META] ?? META.en;
-  const localePath = locale === 'en' ? '' : `/${locale}`;
+  // Home page metadata: build alternates/openGraph for the root path so the
+  // homepage itself has the right canonical even if its page.tsx doesn't
+  // export its own generateMetadata.
+  const home = buildPageMetadata({
+    locale,
+    path: '/',
+    title: m.title,
+    description: m.description,
+  });
   return {
     title: { default: m.title, template: '%s | 360 Radiance' },
     description: m.description,
     keywords: [...m.keywords],
     metadataBase: new URL(SITE_URL),
-    alternates: {
-      canonical: locale === 'en' ? '/' : `/${locale}`,
-      languages: {
-        en: '/',
-        es: '/es',
-        'x-default': '/',
-      },
-    },
+    applicationName: '360 Radiance',
+    authors: [{ name: 'Marta Nazzar' }],
+    creator: '360 Radiance Inc',
+    publisher: '360 Radiance Inc',
+    alternates: home.alternates,
     openGraph: {
+      ...home.openGraph,
       title: m.ogTitle,
       description: m.ogDescription,
-      url: `${SITE_URL}${localePath}`,
       siteName: '360 Radiance',
-      locale: m.locale,
-      alternateLocale: locale === 'en' ? ['es_US'] : ['en_US'],
-      type: 'website',
-      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: '360 Radiance — Paramedical Skincare in Sunrise, FL' }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -157,7 +164,8 @@ function buildJsonLd(locale: string) {
     '@type': ['MedicalBusiness', 'BeautySalon'],
     '@id': `${SITE_URL}/#business`,
     name: BUSINESS.name,
-    alternateName: '360 Radiance Skin Care Clinic',
+    legalName: BUSINESS.legalName,
+    alternateName: ['360 Radiance Inc', '360 Radiance Skin Care Clinic'],
     description,
     inLanguage,
     url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}`,

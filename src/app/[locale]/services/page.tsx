@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { SERVICE_DETAILS, ACNE_PROGRAM_PRICING, ACNE_PROGRAM_CONTRAINDICATIONS } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -13,10 +14,12 @@ import { cn } from '@/lib/utils';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'services' });
-  return {
+  return buildPageMetadata({
+    locale,
+    path: '/services',
     title: t('pageTitle'),
     description: t('pageSubtitle'),
-  };
+  });
 }
 
 export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -38,7 +41,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           <ScrollReveal>
             <div className="grid grid-cols-4 gap-6 max-md:grid-cols-2 text-center">
               <div>
-                <div className="font-serif text-[1.8rem] text-teal">${ACNE_PROGRAM_PRICING.consultation}</div>
+                <div className="font-serif text-[1.8rem] text-teal">{t('free')}</div>
                 <div className="text-[.78rem] text-text-mid mt-1">{t('consultation')}</div>
               </div>
               <div>
@@ -127,16 +130,16 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                           ))}
                         </ul>
 
-                        {/* Bi-monthly pricing for acne program */}
+                        {/* Bi-weekly visit pricing for acne program */}
                         {svc.slug === 'acne-treatment-program' && (
                           <div className="bg-white rounded-xl p-5 mb-6 border border-border">
-                            <div className="text-[.78rem] font-semibold text-text mb-2">{t('biMonthly')}</div>
+                            <div className="text-[.78rem] font-semibold text-text mb-2">{t('biWeekly')}</div>
                             <div className="flex items-baseline gap-1">
-                              <span className="font-serif text-[1.5rem] text-teal">${ACNE_PROGRAM_PRICING.biMonthlyVisit}</span>
+                              <span className="font-serif text-[1.5rem] text-teal">${ACNE_PROGRAM_PRICING.biWeeklyVisit}</span>
                               <span className="text-[.78rem] text-text-light">{t('perVisit')}</span>
                             </div>
                             <p className="text-[.75rem] text-text-mid mt-2 leading-[1.6]">
-                              {t('biMonthlyDesc')}
+                              {t('biWeeklyDesc')}
                             </p>
                           </div>
                         )}

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { CREDENTIALS } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -12,10 +13,12 @@ import { IconDiploma } from '@/components/icons/Icons';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'about' });
-  return {
-    title: 'About Marta Nazzar',
+  return buildPageMetadata({
+    locale,
+    path: '/about',
+    title: locale === 'es' ? 'Acerca de Marta Nazzar' : 'About Marta Nazzar',
     description: t('pageSubtitle'),
-  };
+  });
 }
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {

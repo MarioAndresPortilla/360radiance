@@ -132,7 +132,7 @@ export async function sendContactEmail(
       from,
       to,
       replyTo: email,
-      subject: `New consultation request — ${name}`,
+      subject: `360 Radiance Inc — New consultation request — ${name}`,
       text: lines.join('\n'),
       html,
     });

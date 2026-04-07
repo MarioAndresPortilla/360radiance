@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { TESTIMONIALS } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -10,10 +11,13 @@ import { IconStar } from '@/components/icons/Icons';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'testimonials' });
-  return {
+  const tr = await getTranslations({ locale, namespace: 'reviews' });
+  return buildPageMetadata({
+    locale,
+    path: '/reviews',
     title: t('title'),
-    description: 'Real testimonials from real people who transformed their skin with Marta\'s expert treatments.',
-  };
+    description: tr('pageSubtitle'),
+  });
 }
 
 export default async function ReviewsPage({ params }: { params: Promise<{ locale: string }> }) {

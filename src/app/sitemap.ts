@@ -3,7 +3,11 @@ import { BLOG_POSTS } from '@/lib/constants';
 
 const BASE = 'https://360radianceskincare.com';
 const LOCALES = ['en', 'es'] as const;
+// Marketing routes — high SEO priority, refreshed weekly.
 const ROUTES = ['', '/services', '/results', '/about', '/products', '/reviews', '/blog', '/contact'];
+// Legal pages — included for completeness and link discoverability, but kept
+// at a lower priority/frequency since they rarely change.
+const LEGAL_ROUTES = ['/privacy', '/terms'];
 
 function buildAlternates(path: string) {
   return {
@@ -25,6 +29,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
+  const legalPages: MetadataRoute.Sitemap = LEGAL_ROUTES.flatMap((route) =>
+    LOCALES.map((locale) => ({
+      url: locale === 'en' ? `${BASE}${route}` : `${BASE}/${locale}${route}`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+      alternates: buildAlternates(route),
+    }))
+  );
+
   const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.flatMap((post) =>
     LOCALES.map((locale) => ({
       url: locale === 'en' ? `${BASE}/blog/${post.slug}` : `${BASE}/${locale}/blog/${post.slug}`,
@@ -35,5 +49,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...pages, ...blogPages];
+  return [...pages, ...blogPages, ...legalPages];
 }

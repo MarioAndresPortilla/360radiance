@@ -29,7 +29,7 @@ export const BLOG_CONTENT: Record<string, BlogSection[]> = {
     {
       heading: 'What the 12-Week Program at 360 Radiance Looks Like',
       body: [
-        'At 360 Radiance, I offer a structured 12-week Face Reality acne program for $280. This includes bi-monthly professional treatment sessions and ongoing home-care guidance. During each in-clinic visit, I perform extractions, apply professional-strength enzyme or acid treatments to address the buildup of dead cells and sebum within the follicles, and assess how your skin is progressing.',
+        'At 360 Radiance, I offer a structured 12-week / 3-month Face Reality acne program starting at $230, with a free consultation. The program includes bi-weekly professional treatment sessions — every two weeks, for a total of 6 in-clinic visits — and ongoing home-care guidance. During each visit, I perform extractions, apply professional-strength enzyme or acid treatments to address the buildup of dead cells and sebum within the follicles, and assess how your skin is progressing.',
         'Between visits, you follow a customized home-care routine using Face Reality products that I select based on your skin analysis. This is not a one-size-fits-all kit. I evaluate your skin at every appointment and adjust product strengths, frequencies, and combinations. If a particular acid is causing dryness, we scale back. If your skin is tolerating the current regimen well and breakouts are persisting, we increase potency. This adaptive process is what separates a clinical acne program from simply buying products off a shelf.',
         'Most clients begin to see significant improvement within four to six weeks. By week eight, the majority of active breakouts have resolved, and we shift focus to post-inflammatory hyperpigmentation and texture. By week twelve, you have not only clearer skin but a maintenance routine that keeps it that way long-term. The goal is never just temporary clearance but sustainable results that you maintain on your own.',
       ],
@@ -44,7 +44,7 @@ export const BLOG_CONTENT: Record<string, BlogSection[]> = {
     {
       heading: 'Your Skin Can Clear. Let Us Show You How.',
       body: [
-        'If you have been struggling with acne and feel like you have tried everything, I encourage you to consider a different approach. At 360 Radiance in Sunrise, Florida, I, Marta Nazzar, have guided hundreds of clients through the Face Reality protocol with consistent, lasting results. Our 12-week program at $280 is an investment in skin that stays clear, not just skin that clears temporarily. Book your acne consultation today and take the first step toward ending the cycle for good.',
+        'If you have been struggling with acne and feel like you have tried everything, I encourage you to consider a different approach. At 360 Radiance in Sunrise, Florida, I, Marta Nazzar, have guided hundreds of clients through the Face Reality protocol with consistent, lasting results. Our 12-week / 3-month program — starting at $230, with bi-weekly visits and a free consultation — is an investment in skin that stays clear, not just skin that clears temporarily. Book your free acne consultation today and take the first step toward ending the cycle for good.',
       ],
     },
   ],

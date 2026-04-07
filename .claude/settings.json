@@ -14,7 +14,11 @@
       "Bash(npx vercel:*)",
       "Bash(grep -l \"from '@/components/layout/PageShell'\" src/app/[locale]/*/page.tsx)",
       "Bash(ls -la src/lib/blog-content*es*.ts)",
-      "Bash(wc -l src/lib/blog-content*es*.ts)"
+      "Bash(wc -l src/lib/blog-content*es*.ts)",
+      "Bash(npm run:*)",
+      "Bash(curl -s \"http://localhost:3456/_next/image?url=%2Fimages%2Fmarta-nazzar.jpg&w=640&q=75\" -o /dev/null -w \"%{http_code} %{content_type} %{size_download}\\\\n\")",
+      "Bash(curl -s \"https://cal.com/360radianceskincare/30min\")",
+      "Bash(curl -s http://localhost:3456/robots.txt)"
     ]
   }
 }

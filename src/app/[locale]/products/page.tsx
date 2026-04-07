@@ -6,16 +6,19 @@ import { PageHeader } from '@/components/ui/PageHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { IconCheck, IconDropper } from '@/components/icons/Icons';
 import { PRODUCT_FEATURES } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo';
 import { ProductShowcase } from './ProductShowcase';
 import { SkinConcernMatcher } from './SkinConcernMatcher';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'products' });
-  return {
-    title: 'Products',
+  return buildPageMetadata({
+    locale,
+    path: '/products',
+    title: locale === 'es' ? 'Productos' : 'Products',
     description: t('pageSubtitle'),
-  };
+  });
 }
 
 export default async function ProductsPage({ params }: { params: Promise<{ locale: string }> }) {

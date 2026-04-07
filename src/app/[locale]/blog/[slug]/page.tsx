@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { BLOG_POSTS } from '@/lib/constants';
+import { buildPageMetadata } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 
@@ -19,18 +20,28 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return {};
-  return {
+  const meta = buildPageMetadata({
+    locale,
+    path: `/blog/${post.slug}`,
     title: post.title,
     description: post.excerpt,
+    ogImage: `/images/blog/${post.slug}.jpg`,
+    ogType: 'article',
+  });
+  // Articles get an extra `publishedTime` on openGraph that the helper
+  // doesn't know about. Merge it in without dropping the helper-provided
+  // url/locale/images. Re-asserting `type: 'article'` is required so the
+  // OpenGraph union narrows to OpenGraphArticle (which is the only variant
+  // that allows `publishedTime`).
+  return {
+    ...meta,
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      ...meta.openGraph,
       type: 'article',
       publishedTime: post.date,
-      images: [`/images/blog/${post.slug}.jpg`],
     },
   };
 }

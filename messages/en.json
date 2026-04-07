@@ -108,15 +108,16 @@
     "benefits": "Benefits",
     "idealFor": "Ideal For",
     "consultation": "Consultation",
+    "free": "Free",
     "acneFacial": "Acne Facial",
     "homeCare": "Home-Care Products",
     "totalStarting": "Total Starting At",
-    "biMonthly": "Bi-Monthly Visits",
-    "perVisit": "per visit · 3 months",
-    "biMonthlyDesc": "Includes progress monitoring and an acne facial to prepare your skin for the next phase of treatment.",
+    "biWeekly": "Bi-Weekly Visits",
+    "perVisit": "per visit · every 2 weeks · 6 visits",
+    "biWeeklyDesc": "Bi-weekly visits over 12 weeks (6 total). Each visit includes progress monitoring and an acne facial to prepare your skin for the next phase of treatment.",
     "contraindicationsTitle": "Important: Before Beginning Treatment",
     "ctaHeading": "Not Sure Which Treatment Is Right?",
-    "ctaSubtitle": "Book a consultation ($50) and Marta will design a treatment plan tailored to your unique needs.",
+    "ctaSubtitle": "Book a free 15-min chat or a $35 30-min consultation and Marta will design a treatment plan tailored to your unique needs. The consultation is always free for the Acne Treatment Program.",
     "ctaButton": "Book Your Consultation"
   },
   "award": {
@@ -169,24 +170,24 @@
   "results": {
     "tag": "Real Results",
     "title": "Your Clear Skin Journey",
-    "subtitle": "What clients typically experience with the Face Reality program.",
-    "pageSubtitle": "From first consultation to radiant confidence — here's what clients experience with the Face Reality program and our expert treatments.",
+    "subtitle": "What clients typically experience with the Face Reality program — a 12-week / 3-month program with bi-weekly appointments.",
+    "pageSubtitle": "A 12-week / 3-month program with bi-weekly appointments. From your free first consultation to radiant confidence — here's what clients experience with the Face Reality program and our expert treatments.",
     "timelineHeading": "The Treatment Timeline",
-    "timelineSubtitle": "Every client's skin is different, but here's the typical progression with the Face Reality program.",
+    "timelineSubtitle": "Every client's skin is different, but here's the typical progression: 6 bi-weekly visits over 12 weeks (3 months), starting with a free consultation.",
     "beforeAfterTag": "Proof in Photos",
     "beforeAfterTitle": "Before & After",
-    "beforeAfterSubtitle": "Real clients, real results. These transformations were achieved with the Acne Treatment Program.",
+    "beforeAfterSubtitle": "Real clients, real results. These transformations were achieved with the 12-week Acne Treatment Program.",
     "expectHeading": "What to Expect During Treatment",
     "stories": "Client Success Stories",
     "readAllReviews": "Read All Reviews →",
     "ctaHeading": "Ready to Start Your Journey?",
-    "ctaSubtitle": "Most clients see visible improvement within 2 weeks. Book your free consultation today.",
-    "expectBody": "Your journey to clear skin is a partnership. Marta guides you every step of the way with professional treatments, custom home-care, and ongoing adjustments based on your skin's response.",
+    "ctaSubtitle": "Most clients see visible improvement within 2 weeks. The acne consultation is always free — book yours today.",
+    "expectBody": "Your journey to clear skin is a 12-week partnership with bi-weekly appointments. Marta guides you every step of the way with professional treatments, custom home-care, and ongoing adjustments based on your skin's response.",
     "expect": {
-      "item1": "Comprehensive skin analysis at your first visit",
-      "item2": "Bi-weekly professional treatments in-office",
+      "item1": "Free comprehensive skin analysis at your first visit",
+      "item2": "6 bi-weekly professional treatments in-office over 3 months",
       "item3": "Custom home-care regimen with medical-grade products",
-      "item4": "Progress tracking and regimen adjustments",
+      "item4": "Progress tracking and regimen adjustments at every visit",
       "item5": "Bilingual support in English and Spanish",
       "item6": "Ongoing care after clearing for maintenance"
     },
@@ -199,8 +200,10 @@
     "twelveWeekLabel": "12-Week Program",
     "stats": {
       "improvement": "Average client improvement by week 8",
-      "weeks": "Typical time to see first visible results",
-      "clients": "Clients treated with the Face Reality protocol",
+      "weeksValue": "12 Weeks",
+      "weeks": "Full program length · 3 months",
+      "visitsValue": "6 Visits",
+      "visits": "Bi-weekly in-clinic visits over the program",
       "years": "Years of medical expertise behind every treatment"
     }
   },
@@ -269,9 +272,9 @@
   },
   "booking": {
     "title": "Ready for Clear, Radiant Skin?",
-    "subtitle": "Book a free consultation with Marta. Your personalized treatment roadmap starts with a single conversation.",
-    "scheduleCtaFull": "Book 30-min Consultation",
-    "scheduleCtaQuick": "Or 15-min Quick Chat",
+    "subtitle": "Book a free 15-min chat or a $35 30-min consultation with Marta — the consultation is always free for clients booking the Acne Treatment Program. Your personalized treatment roadmap starts with a single conversation.",
+    "scheduleCtaFull": "Book 30-min Consultation · $35",
+    "scheduleCtaQuick": "Or Free 15-min Quick Chat",
     "callCta": "Or call",
     "whatsappCta": "or message us on WhatsApp"
   },
@@ -300,10 +303,10 @@
     "visitTitle": "Visit Us",
     "scheduleTag": "Self-Serve Booking",
     "scheduleTitle": "Pick a time that works for you",
-    "scheduleSubtitle": "See real-time openings on Marta's calendar and lock in your free consultation in under a minute. Both options below are 100% free — no phone tag.",
-    "scheduleCtaFull": "Book 30-min Consultation",
-    "scheduleCtaQuick": "Or 15-min Quick Chat",
-    "scheduleBullet1": "Free — no card required",
+    "scheduleSubtitle": "See real-time openings on Marta's calendar and lock in your spot in under a minute. The 15-min quick chat is 100% free. The 30-min consultation is $35 — and always free if you're booking the Acne Treatment Program.",
+    "scheduleCtaFull": "Book 30-min Consultation · $35",
+    "scheduleCtaQuick": "Or Free 15-min Quick Chat",
+    "scheduleBullet1": "15-min chat is free · 30-min is $35 (free for the Acne Program)",
     "scheduleBullet2": "Personalized treatment roadmap",
     "scheduleBullet3": "Confirmation + reminder by email",
     "formTag": "Send a Message",
@@ -403,10 +406,131 @@
     "services": "Services",
     "company": "Company",
     "contact": "Contact",
-    "copyright": "© 2026 360 Radiance. All rights reserved.",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2026 360 Radiance Inc. All rights reserved.",
     "credentials": "ASCP Member · Best of 2026 Award Winner"
   },
   "ctaBanner": {
     "default": "Book Free Consultation"
+  },
+  "privacy": {
+    "tag": "Legal",
+    "title": "Privacy Policy",
+    "subtitle": "How 360 Radiance Inc collects, uses, and protects your personal information.",
+    "lastUpdated": "Last updated: April 6, 2026",
+    "intro": "360 Radiance Inc (\"360 Radiance,\" \"we,\" \"us,\" or \"our\") respects your privacy. This Privacy Policy explains how we collect, use, share, and protect personal information when you visit 360radianceskincare.com, book an appointment, or otherwise interact with our paramedical skincare clinic in Sunrise, Florida.",
+    "sections": {
+      "infoCollect": {
+        "heading": "Information We Collect",
+        "body": "We collect information you provide directly: your name, email address, phone number, preferred contact method, and any details about your skin concerns when you submit our contact form, schedule a consultation through Cal.com, or message us via WhatsApp. When you visit our clinic, we may collect health-history information relevant to your treatment (allergies, medications, prior procedures). We also collect limited technical information automatically when you visit our website — IP address, browser type, pages viewed, and referring URL — through standard server logs and privacy-respecting analytics."
+      },
+      "howUse": {
+        "heading": "How We Use Your Information",
+        "body": "We use your information to respond to inquiries, schedule and confirm appointments, design personalized treatment plans, send appointment reminders, process payments, and comply with health and safety regulations. With your permission, we may also send occasional educational content about skincare. We do not sell your personal information."
+      },
+      "sharing": {
+        "heading": "Who We Share Information With",
+        "body": "We share information only with service providers that help us operate the business, under contractual confidentiality obligations: Cal.com (appointment scheduling), Resend (transactional email delivery), our payment processor, and our website hosting provider. We may disclose information when required by law, to protect our legal rights, or to respond to a verified legal request."
+      },
+      "cookies": {
+        "heading": "Cookies and Tracking",
+        "body": "Our website uses essential cookies needed for site functionality and may use privacy-respecting analytics to understand which content is helpful. We do not use third-party advertising cookies. You can disable cookies in your browser settings, though some site features may not work as intended."
+      },
+      "rights": {
+        "heading": "Your Rights",
+        "body": "You have the right to access, correct, or delete personal information we hold about you. California residents have additional rights under the CCPA, including the right to know what personal information we collect and the right to opt out of any sale (we do not sell personal information). To exercise any of these rights, contact us using the information below — we will respond within 30 days."
+      },
+      "retention": {
+        "heading": "Data Retention",
+        "body": "We keep client treatment records for as long as required by Florida health-regulation guidelines for licensed estheticians. Contact-form submissions and marketing data are kept only as long as needed to serve you, and you can request deletion at any time."
+      },
+      "security": {
+        "heading": "Security",
+        "body": "We use industry-standard safeguards to protect your information, including encrypted connections (HTTPS) and access controls on stored records. No method of transmission over the internet is 100% secure, but we take reasonable steps to protect your data."
+      },
+      "minors": {
+        "heading": "Minors",
+        "body": "Clients under 18 must have a parent or legal guardian present at the initial consultation and provide written consent for treatment. We do not knowingly collect personal information online from children under 13."
+      },
+      "changes": {
+        "heading": "Changes to This Policy",
+        "body": "We may update this Privacy Policy from time to time. The \"Last updated\" date at the top reflects the most recent revision. Material changes will be highlighted on this page."
+      },
+      "contact": {
+        "heading": "Contact Us",
+        "body": "Questions about this policy or your personal information? Contact 360 Radiance Inc at info@360radianceskincare.com or call (561) 632-8218. Our office is located at 12651 W. Sunrise Blvd, Suite 301, Sunrise, FL 33323."
+      }
+    }
+  },
+  "terms": {
+    "tag": "Legal",
+    "title": "Terms of Service",
+    "subtitle": "The rules that govern your use of 360radianceskincare.com and 360 Radiance Inc services.",
+    "lastUpdated": "Last updated: April 6, 2026",
+    "intro": "Welcome to 360 Radiance Inc. By accessing 360radianceskincare.com or booking any service with us, you agree to these Terms of Service. Please read them carefully — they contain important information about your rights and responsibilities.",
+    "sections": {
+      "acceptance": {
+        "heading": "Acceptance of Terms",
+        "body": "By using this website or booking a service, you confirm that you are at least 18 years old (or have parental consent) and agree to be legally bound by these terms. If you do not agree, please do not use the site or book a service."
+      },
+      "services": {
+        "heading": "Services Provided",
+        "body": "360 Radiance Inc offers paramedical skincare services in Sunrise, Florida, including the Face Reality acne treatment program, facials, microdermabrasion, chemical peels, microneedling, laser treatments, and other professional aesthetician services. All services are provided by Marta Nazzar, a licensed Paramedical Aesthetician, or under her direct supervision. We are not a medical practice and do not provide medical diagnoses or prescriptions."
+      },
+      "noMedicalAdvice": {
+        "heading": "Not Medical Advice",
+        "body": "Information on this website and provided during consultations is for general educational purposes about skincare, not a substitute for medical advice, diagnosis, or treatment. Always consult a qualified physician or dermatologist for serious skin conditions, medication interactions, or any concern that requires medical care."
+      },
+      "booking": {
+        "heading": "Booking, Cancellations & No-Shows",
+        "body": "Appointments may be booked through our website, Cal.com, by phone, or by WhatsApp. Please give at least 24 hours notice if you need to cancel or reschedule. No-shows or late cancellations may result in a fee at our discretion. The 15-minute quick chat is free. The 30-minute consultation is $35 — and is always free for clients booking the Acne Treatment Program."
+      },
+      "contraindications": {
+        "heading": "Contraindications & Disclosures",
+        "body": "You must disclose all medications, recent treatments (including Accutane, Retin-A, Tazorac, Differin, oral or topical antibiotics), allergies, pregnancy status, and relevant health conditions before any treatment. Failure to disclose may put your safety at risk and may result in refusal of service. We reserve the right to decline or modify any treatment based on your health profile."
+      },
+      "results": {
+        "heading": "Results Disclaimer",
+        "body": "Skincare results vary from person to person based on skin type, condition severity, adherence to home-care regimens, lifestyle factors, and individual biology. Testimonials, before-and-after photos, and outcome statistics on this site reflect real client experiences but are not a guarantee. We do not guarantee specific results."
+      },
+      "payments": {
+        "heading": "Payments & Refunds",
+        "body": "Payment is due at the time of service unless otherwise agreed in writing. We accept cash and major credit/debit cards. Treatment programs and packages are generally non-refundable once started, though we will work with you in good faith if exceptional circumstances arise. Product purchases may be returned within 14 days if unopened."
+      },
+      "ip": {
+        "heading": "Intellectual Property",
+        "body": "All content on 360radianceskincare.com — including text, images, logos, the Radiance Skin Care Line branding, blog articles, and treatment protocols — is the property of 360 Radiance Inc or its licensors and is protected by U.S. and international copyright and trademark law. You may not copy, reproduce, distribute, or create derivative works without our written permission."
+      },
+      "userConduct": {
+        "heading": "Acceptable Use",
+        "body": "You agree not to misuse the website or our services — no scraping, no automated submissions to our contact form, no impersonation, no posting of unlawful or harassing content, and no interference with site security. We may suspend access if these terms are violated."
+      },
+      "thirdParty": {
+        "heading": "Third-Party Services & Links",
+        "body": "Our site links to and integrates with third-party services (Cal.com for booking, WhatsApp for messaging, Google Maps, Instagram, Facebook). We are not responsible for the content, privacy practices, or terms of those third parties. Use them at your own risk and review their respective policies."
+      },
+      "liability": {
+        "heading": "Limitation of Liability",
+        "body": "To the fullest extent permitted by Florida law, 360 Radiance Inc and its owners, employees, and affiliates are not liable for indirect, incidental, special, or consequential damages arising from your use of the website or our services. Our total liability for any claim shall not exceed the amount you paid us in the 12 months preceding the claim."
+      },
+      "indemnity": {
+        "heading": "Indemnification",
+        "body": "You agree to indemnify and hold harmless 360 Radiance Inc from any claim, loss, or damage (including reasonable attorneys' fees) arising from your violation of these terms, your misuse of our services, or your failure to disclose health information relevant to your treatment."
+      },
+      "law": {
+        "heading": "Governing Law & Disputes",
+        "body": "These terms are governed by the laws of the State of Florida, without regard to conflict-of-law principles. Any dispute shall be resolved exclusively in the state or federal courts located in Broward County, Florida, and you consent to that jurisdiction."
+      },
+      "changes": {
+        "heading": "Changes to These Terms",
+        "body": "We may update these Terms of Service from time to time. The \"Last updated\" date at the top reflects the most recent revision. Continued use of the site after changes are posted constitutes acceptance of the updated terms."
+      },
+      "contact": {
+        "heading": "Contact Us",
+        "body": "Questions about these terms? Contact 360 Radiance Inc at info@360radianceskincare.com or call (561) 632-8218. Our office is located at 12651 W. Sunrise Blvd, Suite 301, Sunrise, FL 33323."
+      }
+    }
   }
 }

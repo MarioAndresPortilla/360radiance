@@ -13,25 +13,25 @@ export const BLOG_CONTENT_BY_LOCALE: Record<string, typeof ALL_BLOG_CONTENT_EN> 
 };
 
 const BLOG_CTAS_EN: Record<string, string> = {
-  'why-face-reality-works-when-everything-else-fails': 'Ready to break the cycle of failed acne treatments? Book a consultation at 360 Radiance in Sunrise, FL. Marta\'s 12-week Face Reality program has helped hundreds of clients finally achieve clear skin — starting at $280.',
+  'why-face-reality-works-when-everything-else-fails': 'Ready to break the cycle of failed acne treatments? Book a free consultation at 360 Radiance in Sunrise, FL. Marta\'s 12-week Face Reality program has helped hundreds of clients finally achieve clear skin — starting at $230, with bi-weekly visits over 3 months.',
   'the-science-of-glass-ampule-serums': 'Experience European glass ampule serums in person. Book a treatment at 360 Radiance and feel the difference clinical-grade actives make.',
-  'rosacea-triggers-complete-guide': 'Struggling with rosacea? Marta has cleared rosacea clients in as little as 4 weeks. Book a consultation at 360 Radiance in Sunrise, FL.',
+  'rosacea-triggers-complete-guide': 'Struggling with rosacea? Marta has cleared rosacea clients in as little as 4 weeks. Book a free consultation at 360 Radiance in Sunrise, FL.',
   'microdermabrasion-what-actually-happens': 'Experience the most thorough microdermabrasion in South Florida. Book your treatment with Marta at 360 Radiance.',
   'your-skin-barrier-explained': 'Not sure if your skin barrier is damaged? Book a free skin analysis at 360 Radiance and get a personalized barrier-repair plan.',
   'retinol-vs-bakuchiol': 'Get a personalized anti-aging assessment with Marta at 360 Radiance. We use the best of both retinol and bakuchiol in our Retinol Renewal Treatment.',
-  'hormonal-acne-root-cause': 'Hormonal acne is treatable — with the right protocol. Book the 12-week Face Reality program at 360 Radiance in Sunrise, FL. Starting at $280.',
+  'hormonal-acne-root-cause': 'Hormonal acne is treatable — with the right protocol. Book the free consultation for our 12-week Face Reality program at 360 Radiance in Sunrise, FL. Starting at $230, with bi-weekly visits.',
   'building-a-morning-routine-that-works': 'Stop guessing. Get a Custom Regimen Design from Marta and learn exactly which products to use, in what order, and why.',
   'parabens-sulfates-toxins-what-to-actually-avoid': 'Try the Radiance Skin Care Line — clinically formulated, free of genuinely concerning ingredients, and designed to actually work. Available at 360 Radiance.',
 };
 
 const BLOG_CTAS_ES: Record<string, string> = {
-  'why-face-reality-works-when-everything-else-fails': '¿Lista para romper el ciclo de tratamientos de acné fallidos? Reserve una consulta en 360 Radiance en Sunrise, FL. El programa Face Reality de 12 semanas de Marta ha ayudado a cientos de clientes a finalmente lograr una piel clara — desde $280.',
+  'why-face-reality-works-when-everything-else-fails': '¿Lista para romper el ciclo de tratamientos de acné fallidos? Reserve una consulta gratuita en 360 Radiance en Sunrise, FL. El programa Face Reality de 12 semanas de Marta ha ayudado a cientos de clientes a finalmente lograr una piel clara — desde $230, con visitas quincenales durante 3 meses.',
   'the-science-of-glass-ampule-serums': 'Experimente los sueros europeos en ampollas de vidrio en persona. Reserve un tratamiento en 360 Radiance y sienta la diferencia que hacen los activos de grado clínico.',
-  'rosacea-triggers-complete-guide': '¿Sufre de rosácea? Marta ha aclarado clientes con rosácea en tan solo 4 semanas. Reserve una consulta en 360 Radiance en Sunrise, FL.',
+  'rosacea-triggers-complete-guide': '¿Sufre de rosácea? Marta ha aclarado clientes con rosácea en tan solo 4 semanas. Reserve una consulta gratuita en 360 Radiance en Sunrise, FL.',
   'microdermabrasion-what-actually-happens': 'Experimente la microdermoabrasión más completa del sur de la Florida. Reserve su tratamiento con Marta en 360 Radiance.',
   'your-skin-barrier-explained': '¿No está segura de si su barrera cutánea está dañada? Reserve un análisis gratuito de la piel en 360 Radiance y obtenga un plan personalizado de reparación.',
   'retinol-vs-bakuchiol': 'Obtenga una evaluación antienvejecimiento personalizada con Marta en 360 Radiance. Usamos lo mejor del retinol y el bakuchiol en nuestro Tratamiento de Renovación con Retinol.',
-  'hormonal-acne-root-cause': 'El acné hormonal es tratable — con el protocolo correcto. Reserve el programa Face Reality de 12 semanas en 360 Radiance en Sunrise, FL. Desde $280.',
+  'hormonal-acne-root-cause': 'El acné hormonal es tratable — con el protocolo correcto. Reserve la consulta gratuita del programa Face Reality de 12 semanas en 360 Radiance en Sunrise, FL. Desde $230, con visitas quincenales.',
   'building-a-morning-routine-that-works': 'Deje de adivinar. Obtenga un Diseño de Régimen Personalizado de Marta y aprenda exactamente qué productos usar, en qué orden y por qué.',
   'parabens-sulfates-toxins-what-to-actually-avoid': 'Pruebe la línea Radiance Skin Care — formulada clínicamente, libre de ingredientes genuinamente preocupantes, y diseñada para realmente funcionar. Disponible en 360 Radiance.',
 };
@@ -42,7 +42,13 @@ export const BLOG_CTAS_BY_LOCALE: Record<string, Record<string, string>> = {
 };
 
 export const BUSINESS = {
+  // Display name used throughout the UI (logo wordmark, footer, etc.).
   name: '360 Radiance',
+  // Full registered legal entity. Use this in JSON-LD `legalName`, the footer
+  // copyright line, contact-form email subject lines, the privacy policy, and
+  // anywhere else a legal-grade attribution is required. Marketing copy should
+  // continue to use `name` (shorter, friendlier).
+  legalName: '360 Radiance Inc',
   phone: '(561) 632-8218',
   phoneRaw: '5616328218',
   whatsapp: 'https://wa.me/15616328218',
@@ -69,10 +75,16 @@ export const BUSINESS = {
 // because it emits preload/forced-reflow warnings from Cal.com's own bundle
 // that we cannot suppress from our origin. Click-to-open modal avoids that.
 //
-// Marta exposes two free consultation event types: a 15-minute quick chat
-// and a 30-minute full consultation. Both surfaces (home BookingSection and
-// /contact schedule card) show both so visitors can self-select. Default in
-// places where only one button fits (FloatingButtons) is the 30-min event.
+// Marta exposes two consultation event types: a 15-minute quick chat (free)
+// and a 30-minute full consultation ($35 — under the ~$50 industry average for
+// a paid 30-min esthetician consult, e.g. Clear Beauty Skincare in Frisco TX
+// charges $50). The 30-min fee is waived for clients booking the Acne Treatment
+// Program — that consultation is always free. Both surfaces (home
+// BookingSection and /contact schedule card) show both event types so visitors
+// can self-select. Default in places where only one button fits
+// (FloatingButtons) is the 30-min event. NOTE: the paid status of the 30-min
+// event must also be configured in Cal.com's dashboard (Stripe app) — this
+// constant only governs how we *describe* the price in our own UI.
 const CAL_USERNAME = '360radianceskincare';
 export const CAL = {
   username: CAL_USERNAME,
@@ -90,6 +102,18 @@ export const CAL = {
 } as const;
 
 export type CalEventKey = keyof typeof CAL.events;
+
+// Pricing for the general consultation event types (NOT the Acne Program — that
+// consultation is always free; see ACNE_PROGRAM_PRICING below). The 15-min
+// quick chat is free as a low-friction entry point. The 30-min consult is
+// priced under the ~$50 industry average so we beat it without cheapening the
+// service. Update both Cal.com and this constant in lockstep.
+export const CONSULTATION_PRICING = {
+  quickChatMinutes: 15,
+  quickChatPrice: 0,
+  fullConsultMinutes: 30,
+  fullConsultPrice: 35,
+} as const;
 
 // Instagram showcase: each entry is one card on the homepage.
 // To swap in real content: replace `image` with the file under
@@ -201,7 +225,7 @@ export const SERVICES: Service[] = [
   {
     icon: 'science',
     title: 'Acne Treatment Program',
-    description: 'Complete 12-week clinical program: consultation, acne facial, custom home-care regimen, and bi-monthly monitoring. Starting at $280.',
+    description: 'Complete 12-week clinical program: free consultation, acne facial, custom home-care regimen, and bi-weekly visits over 3 months. Starting at $230.',
     tag: '12-Week Program',
     featured: true,
   },
@@ -226,7 +250,7 @@ export const SERVICES: Service[] = [
   {
     icon: 'scan',
     title: 'Skin Analysis & Consultation',
-    description: 'Comprehensive evaluation of your skin type, conditions, and lifestyle. Your treatment roadmap starts here. $50.',
+    description: 'Comprehensive evaluation of your skin type, conditions, and lifestyle. Your treatment roadmap starts here. Free 15-min chat or $35 30-min deep dive (free with the Acne Program).',
     tag: 'Starting Point',
   },
   {
@@ -309,29 +333,29 @@ export const JOURNEY_STEPS: JourneyStep[] = [
   {
     number: '01',
     weekLabel: 'Week 1',
-    title: 'Consultation & First Facial',
-    description: 'Health history, skin analysis, sensitivity test, acne facial, and your custom home-care regimen. $50 consultation + $50 facial.',
+    title: 'Free Consultation & First Facial',
+    description: 'Free consultation: health history, skin analysis, and sensitivity test. Followed by your first acne facial and custom home-care regimen. Visit 1 of 6.',
     progress: 15,
   },
   {
     number: '02',
     weekLabel: 'Weeks 2–4',
     title: 'First Signs',
-    description: 'Home-care regimen takes effect. Inflammation drops. 30–50% improvement for most clients. Bi-monthly visit ($80).',
+    description: 'Bi-weekly visits begin. Home-care regimen takes effect, inflammation drops, 30–50% improvement for most clients. Visits 2–3 of 6 ($80 each).',
     progress: 40,
   },
   {
     number: '03',
     weekLabel: 'Weeks 4–8',
     title: 'Breakthrough',
-    description: 'Dramatic clearing. Rosacea clients often fully clear. Acne facial + regimen adjustment at bi-monthly visit.',
+    description: 'Dramatic clearing. Rosacea clients often fully clear. Acne facial + regimen adjustment at every bi-weekly visit. Visits 4–5 of 6.',
     progress: 70,
   },
   {
     number: '04',
     weekLabel: 'Weeks 8–12',
     title: 'Clear Skin',
-    description: '90%+ improvement. Maintenance phase begins. Final visit to lock in results and transition to long-term care.',
+    description: '90%+ improvement. Final bi-weekly visit (6 of 6) locks in results and transitions you to long-term maintenance care.',
     progress: 95,
   },
 ];
@@ -402,13 +426,22 @@ export interface ServiceDetail {
 }
 
 export const ACNE_PROGRAM_PRICING = {
-  consultation: 50,
+  // Consultation is FREE for the Acne Program (was $50). Marta waives it as a
+  // commitment to anyone serious about clearing their skin — first
+  // appointment includes the consultation and the first acne facial.
+  consultation: 0,
   acneFacial: 50,
   homeCareProducts: 180,
-  totalStarting: 280,
-  biMonthlyVisit: 80,
+  // 0 (consult) + 50 (first facial) + ~180 (home-care kit) = 230
+  totalStarting: 230,
+  // Bi-WEEKLY (every 2 weeks) — 6 visits over the 12-week / 3-month program.
+  // Earlier copy mistakenly said "bi-monthly" which would be only ~1.5 visits
+  // in 12 weeks. The Spanish copy already used "quincenal" (every 15 days)
+  // which is correct.
+  biWeeklyVisit: 80,
+  totalVisits: 6,
   programLength: '12 weeks',
-  visitFrequency: 'Bi-monthly for 3 months',
+  visitFrequency: 'Bi-weekly for 3 months',
 } as const;
 
 export const ACNE_PROGRAM_CONTRAINDICATIONS = [
@@ -422,21 +455,21 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
     slug: 'acne-treatment-program',
     icon: 'science',
     title: 'Acne Treatment Program',
-    tagline: 'A complete 12-week clinical program to clear your skin — starting at $280.',
+    tagline: 'A complete 12-week / 3-month clinical program to clear your skin — free consultation, starting at $230.',
     tag: '12-Week Program',
     featured: true,
     description: [
       'The Acne Treatment Program is a comprehensive 12-week clinical protocol designed to create clear skin. Built on the Face Reality method — developed by Dr. James E. Fulton, the pioneer of Retin-A — this program combines professional in-office treatments with a custom home-care regimen tailored to your specific acne type.',
-      'Your program begins with an initial consultation ($50) that includes a full health history review, allergy and medication screening, lifestyle assessment, skin analysis to determine your skin type, acne type, and a sensitivity test. You\'ll then receive your first acne facial ($50), customized to your specific condition, followed by a complete take-home package with home-care products (approximately $180) and lifestyle recommendations.',
-      'Over the following 12 weeks, you\'ll have bi-monthly visits ($80 each) for 3 months. Each visit includes progress monitoring and an acne facial to prepare your skin for the next phase of your home-care regimen. Most clients see 30–50% improvement within the first two weeks, and 90%+ improvement by the end of the program.',
+      'Your program begins with a completely free consultation that includes a full health history review, allergy and medication screening, lifestyle assessment, skin analysis to determine your skin type, acne type, and a sensitivity test. There is no charge for the consultation when you commit to the program. You\'ll then receive your first acne facial ($50), customized to your specific condition, followed by a complete take-home package with home-care products (approximately $180) and lifestyle recommendations.',
+      'Over the following 12 weeks (3 months), you\'ll have bi-weekly visits — every two weeks, for a total of 6 in-clinic appointments — at $80 each. Each visit includes progress monitoring and an acne facial to prepare your skin for the next phase of your home-care regimen. Most clients see 30–50% improvement within the first two weeks, and 90%+ improvement by the end of the program.',
     ],
     benefits: [
-      'Initial consultation with health history & skin analysis — $50',
+      'Free consultation with health history & skin analysis (no charge for the Acne Program)',
       'First acne facial customized to your condition — $50',
       '12 weeks of home-care products — approximately $180',
-      'Bi-monthly monitoring visits with acne facial — $80 each',
+      'Bi-weekly monitoring visits with acne facial — $80 each (6 visits over 3 months)',
       'Complete take-home package with lifestyle guidelines',
-      'Total program starting at $280 + bi-monthly visits',
+      'Total program starting at $230 + bi-weekly visits',
     ],
     idealFor: ['Hormonal acne', 'Cystic acne', 'Rosacea', 'Persistent breakouts', 'Adult acne', 'Teen acne'],
   },
