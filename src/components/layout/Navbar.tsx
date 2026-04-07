@@ -44,15 +44,15 @@ export function Navbar() {
     <header className="bg-white sticky top-0 z-100 border-b border-border">
       <nav aria-label={t('ariaLabel')}>
         <div className="container-site flex justify-between items-center h-16 gap-6">
-          <Link href="/" className="flex items-center gap-2.5 no-underline text-text shrink-0" aria-label={t('homeAria')}>
+          <Link href="/" className="flex items-center no-underline shrink-0" aria-label={t('homeAria')}>
             <Image
-              src="/images/360-radiance-logo.png"
-              alt=""
-              width={40}
-              height={40}
-              className="rounded-lg object-contain"
+              src="/logo-horizontal-purple-light.svg"
+              alt="360 Radiance"
+              width={240}
+              height={30}
+              priority
+              className="h-9 w-auto max-md:h-8"
             />
-            <span className="font-serif text-xl">360 Radiance</span>
           </Link>
 
           <div className="flex gap-6 items-center max-lg:hidden" role="list">

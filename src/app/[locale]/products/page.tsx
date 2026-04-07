@@ -51,7 +51,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
       </section>
 
       {/* Skin concern matcher */}
-      <section className="py-16 bg-cream" aria-labelledby="matcher-heading">
+      <section className="py-16 bg-white" aria-labelledby="matcher-heading">
         <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-10">
@@ -81,7 +81,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
       </section>
 
       {/* How it works */}
-      <section className="py-16 bg-cream" aria-labelledby="how-heading">
+      <section className="py-16 bg-white" aria-labelledby="how-heading">
         <div className="container-site">
           <ScrollReveal>
             <h2 id="how-heading" className="font-serif text-[1.6rem] text-center mb-10">{t('howHeading')}</h2>

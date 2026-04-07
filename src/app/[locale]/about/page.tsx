@@ -77,7 +77,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </section>
 
       {/* Credentials */}
-      <section className="py-16 bg-cream" aria-labelledby="cred-heading">
+      <section className="py-16 bg-white" aria-labelledby="cred-heading">
         <div className="container-site">
           <ScrollReveal>
             <h2 id="cred-heading" className="font-serif text-[1.6rem] text-center mb-10">{t('credentialsHeading')}</h2>

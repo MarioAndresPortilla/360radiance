@@ -60,7 +60,7 @@ export default async function BlogArticlePage({ params }: Props) {
   return (
     <PageShell>
       {/* Header */}
-      <section className="bg-cream py-16 max-md:py-10">
+      <section className="bg-white py-16 max-md:py-10">
         <div className="container-site">
           <div className="max-w-175 mx-auto">
             <nav className="flex items-center gap-2.5 mb-8 text-[.82rem]" aria-label="Breadcrumb">
@@ -149,7 +149,7 @@ export default async function BlogArticlePage({ params }: Props) {
 
       {/* Related */}
       {related.length > 0 && (
-        <section className="py-16 bg-cream" aria-labelledby="related-heading">
+        <section className="py-16 bg-white" aria-labelledby="related-heading">
           <div className="container-site">
             <h2 id="related-heading" className="font-serif text-[1.4rem] text-center mb-10">{t('moreIn', { category: post.category })}</h2>
             <div className="grid grid-cols-2 gap-7 max-w-175 mx-auto max-md:grid-cols-1">

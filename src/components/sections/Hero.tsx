@@ -8,7 +8,7 @@ import { HeroStats } from './HeroStats';
 export function Hero() {
   const t = useTranslations('hero');
   return (
-    <section className="py-24 max-md:py-12 bg-cream" aria-labelledby="hero-heading">
+    <section className="py-24 max-md:py-12 bg-white" aria-labelledby="hero-heading">
       <div className="container-site">
         {/*
           Mobile flow (default, single column): intro → image → actions.

@@ -96,7 +96,7 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* Before & After */}
-      <section className="py-20 max-md:py-14 bg-cream" aria-labelledby="before-after-heading">
+      <section className="py-20 max-md:py-14 bg-white" aria-labelledby="before-after-heading">
         <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -151,7 +151,7 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* What to expect */}
-      <section className="py-16 bg-cream" aria-labelledby="expect-heading">
+      <section className="py-16 bg-white" aria-labelledby="expect-heading">
         <div className="container-site">
           <ScrollReveal>
             <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1">

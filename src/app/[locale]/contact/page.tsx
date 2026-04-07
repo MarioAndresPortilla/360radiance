@@ -134,7 +134,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* Contact form */}
-      <section className="py-20 max-md:py-14 bg-cream" aria-labelledby="contact-form-heading">
+      <section className="py-20 max-md:py-14 bg-white" aria-labelledby="contact-form-heading">
         <div className="container-site">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto">

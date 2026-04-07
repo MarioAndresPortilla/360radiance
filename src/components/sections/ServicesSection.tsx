@@ -13,7 +13,7 @@ export function ServicesSection() {
   const featured = SERVICES.slice(0, FEATURED_COUNT);
 
   return (
-    <section className="py-24 max-md:py-16 bg-cream" id="services" aria-labelledby="services-heading">
+    <section className="py-24 max-md:py-16 bg-white" id="services" aria-labelledby="services-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader

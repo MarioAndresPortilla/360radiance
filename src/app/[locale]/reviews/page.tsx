@@ -94,7 +94,7 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* Share your story */}
-      <section className="py-16 bg-cream" aria-labelledby="share-heading">
+      <section className="py-16 bg-white" aria-labelledby="share-heading">
         <div className="container-site text-center">
           <ScrollReveal>
             <h2 id="share-heading" className="font-serif text-[1.6rem] mb-3">{tr('shareTitle')}</h2>

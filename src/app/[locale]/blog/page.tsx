@@ -102,7 +102,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 bg-cream" aria-labelledby="newsletter-heading">
+      <section className="py-16 bg-white" aria-labelledby="newsletter-heading">
         <div className="container-site">
           <ScrollReveal>
             <div className="max-w-150 mx-auto text-center">
