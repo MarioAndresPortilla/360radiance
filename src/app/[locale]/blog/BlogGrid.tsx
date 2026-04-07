@@ -42,12 +42,21 @@ export function BlogGrid({ posts }: { posts: BlogPost[] }) {
             <Link href={`/blog/${post.slug}`} className="no-underline">
               <article className="group bg-white rounded-2xl border border-border hover:border-navy hover:shadow-md transition-all duration-300 overflow-hidden h-full flex flex-col">
                 <div className="aspect-video relative overflow-hidden">
+                  {/*
+                    Inline blog hero uses the bespoke SVG (per-article unique
+                    editorial illustration). The matching `.jpg` rasterization
+                    is still emitted by `scripts/rasterize-blog-images.mjs` and
+                    referenced from the OG/Twitter metadata in
+                    [src/app/[locale]/blog/[slug]/page.tsx], because social
+                    platforms don't render SVG.
+                  */}
                   <Image
-                    src={`/images/blog/${post.slug}.jpg`}
+                    src={`/images/blog/${post.slug}.svg`}
                     alt={post.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    unoptimized
                   />
                   <div className="absolute top-3 left-3">
                     <span className="text-[.62rem] font-bold uppercase tracking-[.5px] text-white bg-black/40 py-1 px-2.5 rounded-lg backdrop-blur-sm">

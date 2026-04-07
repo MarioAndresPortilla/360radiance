@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Microdermabrasion — cellular cross-section of skin layers being polished">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ECECF5"/>
+      <stop offset="1" stop-color="#F2F2FA"/>
+    </linearGradient>
+    <linearGradient id="layer4a" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF4C1"/>
+      <stop offset="1" stop-color="#E7C27E"/>
+    </linearGradient>
+    <linearGradient id="layer4b" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3D38C"/>
+      <stop offset="1" stop-color="#9F8449"/>
+    </linearGradient>
+    <linearGradient id="layer4c" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#52357D"/>
+      <stop offset="1" stop-color="#2F3269"/>
+    </linearGradient>
+    <linearGradient id="layer4d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2F3269"/>
+      <stop offset="1" stop-color="#21244F"/>
+    </linearGradient>
+    <pattern id="grit4" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.2" fill="#2F3269" fill-opacity=".25"/>
+      <circle cx="13" cy="9" r="0.8" fill="#2F3269" fill-opacity=".18"/>
+      <circle cx="7" cy="15" r="1" fill="#2F3269" fill-opacity=".22"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg4)"/>
+
+  <!-- Skin layer cross-section, stacked -->
+  <g>
+    <!-- Stratum corneum (top, being polished off) -->
+    <path d="M 100 280 Q 300 250 500 285 T 900 280 Q 1100 260 1300 285 T 1500 290 L 1500 360 L 100 360 Z" fill="url(#layer4a)" stroke="#9F8449" stroke-width="1.5"/>
+    <rect x="100" y="280" width="1400" height="80" fill="url(#grit4)"/>
+
+    <!-- Epidermis -->
+    <rect x="100" y="360" width="1400" height="120" fill="url(#layer4b)" stroke="#9F8449" stroke-opacity=".5" stroke-width="1"/>
+
+    <!-- Papillary dermis -->
+    <rect x="100" y="480" width="1400" height="160" fill="url(#layer4c)" opacity=".85"/>
+
+    <!-- Reticular dermis -->
+    <rect x="100" y="640" width="1400" height="180" fill="url(#layer4d)"/>
+  </g>
+
+  <!-- Crystals being lifted off -->
+  <g>
+    <circle cx="320" cy="180" r="6" fill="#2F3269" opacity=".5"/>
+    <circle cx="380" cy="150" r="4" fill="#442F69" opacity=".55"/>
+    <circle cx="440" cy="200" r="5" fill="#2F3269" opacity=".5"/>
+    <circle cx="510" cy="130" r="3" fill="#52357D" opacity=".55"/>
+    <circle cx="580" cy="170" r="6" fill="#2F3269" opacity=".5"/>
+    <circle cx="650" cy="140" r="4" fill="#442F69" opacity=".55"/>
+    <circle cx="720" cy="190" r="5" fill="#2F3269" opacity=".5"/>
+    <circle cx="800" cy="120" r="3" fill="#52357D" opacity=".55"/>
+    <circle cx="880" cy="160" r="6" fill="#2F3269" opacity=".5"/>
+    <circle cx="960" cy="200" r="4" fill="#442F69" opacity=".55"/>
+    <circle cx="1040" cy="140" r="5" fill="#2F3269" opacity=".5"/>
+    <circle cx="1120" cy="180" r="3" fill="#52357D" opacity=".55"/>
+    <circle cx="1200" cy="160" r="6" fill="#2F3269" opacity=".5"/>
+    <circle cx="1280" cy="190" r="4" fill="#442F69" opacity=".55"/>
+  </g>
+
+  <!-- Microderm wand (suction tip) -->
+  <g transform="translate(800 80)">
+    <rect x="-25" y="-50" width="50" height="180" rx="14" fill="#2F3269" stroke="#FFF4C1" stroke-opacity=".25" stroke-width="2"/>
+    <rect x="-18" y="-40" width="36" height="60" rx="3" fill="#52357D"/>
+    <circle cx="0" cy="40" r="4" fill="#E7C27E"/>
+    <path d="M -25 130 L 25 130 L 18 165 L -18 165 Z" fill="#21244F"/>
+    <ellipse cx="0" cy="170" rx="22" ry="6" fill="#FFF4C1" opacity=".4"/>
+  </g>
+
+  <!-- Direction arrow -->
+  <g stroke="#2F3269" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <line x1="180" y1="240" x2="280" y2="240"/>
+    <path d="M 270 232 L 282 240 L 270 248"/>
+  </g>
+
+  <!-- Layer labels -->
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#2F3269" letter-spacing="1.5">
+    <text x="120" y="325">STRATUM CORNEUM</text>
+    <text x="120" y="425" fill="#FFF4C1">EPIDERMIS</text>
+    <text x="120" y="565" fill="#FFF4C1">PAPILLARY DERMIS</text>
+    <text x="120" y="735" fill="#FFF4C1">RETICULAR DERMIS</text>
+  </g>
+
+  <text x="800" y="860" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" fill="#2F3269" letter-spacing="3" fill-opacity=".7">CRYSTAL EXFOLIATION · LAYER BY LAYER</text>
+</svg>

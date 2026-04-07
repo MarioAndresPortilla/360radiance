@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="The science of glass ampule serums — European single-dose technology">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#21244F"/>
+      <stop offset="1" stop-color="#2F3269"/>
+    </linearGradient>
+    <radialGradient id="spot2" cx=".5" cy=".25" r=".55">
+      <stop offset="0" stop-color="#FFF4C1" stop-opacity=".4"/>
+      <stop offset=".7" stop-color="#E7C27E" stop-opacity=".06"/>
+      <stop offset="1" stop-color="#E7C27E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="liquid2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF4C1"/>
+      <stop offset=".4" stop-color="#E7C27E"/>
+      <stop offset="1" stop-color="#9F8449"/>
+    </linearGradient>
+    <linearGradient id="glass2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFF4C1" stop-opacity=".18"/>
+      <stop offset=".5" stop-color="#FFF4C1" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#FFF4C1" stop-opacity=".25"/>
+    </linearGradient>
+    <pattern id="grid2" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#FFF4C1" stroke-opacity=".045" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <rect width="1600" height="900" fill="url(#grid2)"/>
+  <rect width="1600" height="900" fill="url(#spot2)"/>
+
+  <!-- Five glass ampules in a row, alternating heights -->
+  <g>
+    <!-- Ampule template: round bottom + neck + tip -->
+    <g transform="translate(380 250)">
+      <path d="M 0 0 Q 0 -30 25 -30 L 35 -30 L 30 -60 L 50 -60 L 45 -30 L 55 -30 Q 80 -30 80 0 L 80 320 Q 80 380 40 380 Q 0 380 0 320 Z"
+            fill="url(#glass2)" stroke="#FFF4C1" stroke-opacity=".4" stroke-width="2"/>
+      <path d="M 12 100 Q 12 240 12 320 Q 12 360 40 360 Q 68 360 68 320 Q 68 240 68 100 Z" fill="url(#liquid2)" opacity=".82"/>
+      <ellipse cx="40" cy="100" rx="28" ry="4" fill="#FFF4C1" fill-opacity=".5"/>
+      <path d="M 22 130 Q 28 250 22 340" stroke="#FFF4C1" stroke-opacity=".55" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <g transform="translate(580 200)">
+      <path d="M 0 0 Q 0 -30 25 -30 L 35 -30 L 30 -60 L 50 -60 L 45 -30 L 55 -30 Q 80 -30 80 0 L 80 380 Q 80 440 40 440 Q 0 440 0 380 Z"
+            fill="url(#glass2)" stroke="#FFF4C1" stroke-opacity=".4" stroke-width="2"/>
+      <path d="M 12 130 Q 12 300 12 380 Q 12 420 40 420 Q 68 420 68 380 Q 68 300 68 130 Z" fill="url(#liquid2)" opacity=".82"/>
+      <ellipse cx="40" cy="130" rx="28" ry="4" fill="#FFF4C1" fill-opacity=".5"/>
+      <path d="M 22 160 Q 28 320 22 400" stroke="#FFF4C1" stroke-opacity=".55" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <g transform="translate(780 230)">
+      <path d="M 0 0 Q 0 -30 25 -30 L 35 -30 L 30 -60 L 50 -60 L 45 -30 L 55 -30 Q 80 -30 80 0 L 80 350 Q 80 410 40 410 Q 0 410 0 350 Z"
+            fill="url(#glass2)" stroke="#FFF4C1" stroke-opacity=".5" stroke-width="2.5"/>
+      <path d="M 12 110 Q 12 270 12 350 Q 12 390 40 390 Q 68 390 68 350 Q 68 270 68 110 Z" fill="url(#liquid2)"/>
+      <ellipse cx="40" cy="110" rx="28" ry="4" fill="#FFF4C1" fill-opacity=".55"/>
+      <path d="M 22 140 Q 28 290 22 370" stroke="#FFF4C1" stroke-opacity=".6" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <g transform="translate(980 200)">
+      <path d="M 0 0 Q 0 -30 25 -30 L 35 -30 L 30 -60 L 50 -60 L 45 -30 L 55 -30 Q 80 -30 80 0 L 80 380 Q 80 440 40 440 Q 0 440 0 380 Z"
+            fill="url(#glass2)" stroke="#FFF4C1" stroke-opacity=".4" stroke-width="2"/>
+      <path d="M 12 130 Q 12 300 12 380 Q 12 420 40 420 Q 68 420 68 380 Q 68 300 68 130 Z" fill="url(#liquid2)" opacity=".82"/>
+      <ellipse cx="40" cy="130" rx="28" ry="4" fill="#FFF4C1" fill-opacity=".5"/>
+      <path d="M 22 160 Q 28 320 22 400" stroke="#FFF4C1" stroke-opacity=".55" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <g transform="translate(1180 250)">
+      <path d="M 0 0 Q 0 -30 25 -30 L 35 -30 L 30 -60 L 50 -60 L 45 -30 L 55 -30 Q 80 -30 80 0 L 80 320 Q 80 380 40 380 Q 0 380 0 320 Z"
+            fill="url(#glass2)" stroke="#FFF4C1" stroke-opacity=".4" stroke-width="2"/>
+      <path d="M 12 100 Q 12 240 12 320 Q 12 360 40 360 Q 68 360 68 320 Q 68 240 68 100 Z" fill="url(#liquid2)" opacity=".82"/>
+      <ellipse cx="40" cy="100" rx="28" ry="4" fill="#FFF4C1" fill-opacity=".5"/>
+      <path d="M 22 130 Q 28 250 22 340" stroke="#FFF4C1" stroke-opacity=".55" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- Origin labels arc -->
+  <g font-family="ui-sans-serif, system-ui, sans-serif" fill="#FFF4C1" fill-opacity=".7" font-size="12" font-weight="700" letter-spacing="2" text-anchor="middle">
+    <text x="420" y="780">GERMANY</text>
+    <text x="620" y="780">SPAIN</text>
+    <text x="820" y="780">SWITZERLAND</text>
+    <text x="1020" y="780">ITALY</text>
+    <text x="1220" y="780">EUROPE</text>
+  </g>
+
+  <!-- Hairline beneath labels -->
+  <line x1="380" y1="800" x2="1260" y2="800" stroke="#FFF4C1" stroke-opacity=".25" stroke-width="1"/>
+
+  <text x="800" y="845" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="700" fill="#FFF4C1" fill-opacity=".85" letter-spacing="3">SINGLE-DOSE GLASS AMPULE TECHNOLOGY</text>
+</svg>

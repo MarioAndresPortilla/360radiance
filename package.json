@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "sync:reviews": "node scripts/sync-google-reviews.mjs"
+    "sync:reviews": "node scripts/sync-google-reviews.mjs",
+    "rasterize:blog": "node scripts/rasterize-blog-images.mjs"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",

@@ -82,18 +82,21 @@ export default async function BlogArticlePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Image */}
+      {/* Image — uses the bespoke SVG hero (per-article unique editorial
+          illustration). The matching .jpg is reserved for OG/Twitter metadata
+          (above) because social platforms don't render SVG. */}
       <div className="container-site">
         <div className="max-w-175 mx-auto">
           <div className="rounded-2xl overflow-hidden -mt-2 mb-12">
             <Image
-              src={`/images/blog/${post.slug}.jpg`}
+              src={`/images/blog/${post.slug}.svg`}
               alt={post.title}
-              width={800}
-              height={450}
+              width={1600}
+              height={900}
               className="w-full h-auto"
               priority
               sizes="(max-width: 768px) 100vw, 700px"
+              unoptimized
             />
           </div>
         </div>
@@ -158,11 +161,12 @@ export default async function BlogArticlePage({ params }: Props) {
                   <article className="bg-white rounded-2xl border border-border overflow-hidden hover:border-navy hover:shadow-md transition-all">
                     <div className="aspect-video relative overflow-hidden">
                       <Image
-                        src={`/images/blog/${r.slug}.jpg`}
+                        src={`/images/blog/${r.slug}.svg`}
                         alt={r.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                         sizes="350px"
+                        unoptimized
                       />
                     </div>
                     <div className="p-6">

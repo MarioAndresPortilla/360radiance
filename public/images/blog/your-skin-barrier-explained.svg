@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Your skin barrier explained — hexagonal cell matrix with lipid mortar">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FAF8F2"/>
+      <stop offset="1" stop-color="#EFEAE0"/>
+    </linearGradient>
+    <radialGradient id="strong5" cx=".5" cy=".5" r=".4">
+      <stop offset="0" stop-color="#FFF4C1" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#E7C27E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cell5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF4C1"/>
+      <stop offset="1" stop-color="#F3D38C"/>
+    </linearGradient>
+    <linearGradient id="cell5strong" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E7C27E"/>
+      <stop offset="1" stop-color="#9F8449"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg5)"/>
+
+  <!-- Hexagonal honeycomb pattern (skin cells with lipid mortar)
+       Hex flat-top, side ~70px, vertical pitch = side*sqrt(3)*0.5 ~= 60.6 -->
+  <g stroke="#9F8449" stroke-width="2" fill="url(#cell5)">
+    <!-- Row 1 -->
+    <polygon points="100,180 145,155 190,180 190,230 145,255 100,230"/>
+    <polygon points="190,180 235,155 280,180 280,230 235,255 190,230"/>
+    <polygon points="280,180 325,155 370,180 370,230 325,255 280,230"/>
+    <polygon points="370,180 415,155 460,180 460,230 415,255 370,230"/>
+    <polygon points="460,180 505,155 550,180 550,230 505,255 460,230"/>
+    <polygon points="550,180 595,155 640,180 640,230 595,255 550,230"/>
+    <polygon points="640,180 685,155 730,180 730,230 685,255 640,230"/>
+    <polygon points="730,180 775,155 820,180 820,230 775,255 730,230"/>
+    <polygon points="820,180 865,155 910,180 910,230 865,255 820,230"/>
+    <polygon points="910,180 955,155 1000,180 1000,230 955,255 910,230"/>
+    <polygon points="1000,180 1045,155 1090,180 1090,230 1045,255 1000,230"/>
+    <polygon points="1090,180 1135,155 1180,180 1180,230 1135,255 1090,230"/>
+    <polygon points="1180,180 1225,155 1270,180 1270,230 1225,255 1180,230"/>
+    <polygon points="1270,180 1315,155 1360,180 1360,230 1315,255 1270,230"/>
+    <polygon points="1360,180 1405,155 1450,180 1450,230 1405,255 1360,230"/>
+    <polygon points="1450,180 1495,155 1540,180 1540,230 1495,255 1450,230"/>
+
+    <!-- Row 2 (offset down 75) -->
+    <polygon points="100,330 145,305 190,330 190,380 145,405 100,380"/>
+    <polygon points="190,330 235,305 280,330 280,380 235,405 190,380"/>
+    <polygon points="280,330 325,305 370,330 370,380 325,405 280,380"/>
+    <polygon points="370,330 415,305 460,330 460,380 415,405 370,380"/>
+    <polygon points="460,330 505,305 550,330 550,380 505,405 460,380"/>
+    <polygon points="550,330 595,305 640,330 640,380 595,405 550,380"/>
+    <polygon points="640,330 685,305 730,330 730,380 685,405 640,380"/>
+    <polygon points="730,330 775,305 820,330 820,380 775,405 730,380"/>
+    <polygon points="820,330 865,305 910,330 910,380 865,405 820,380"/>
+    <polygon points="910,330 955,305 1000,330 1000,380 955,405 910,380"/>
+    <polygon points="1000,330 1045,305 1090,330 1090,380 1045,405 1000,380"/>
+    <polygon points="1090,330 1135,305 1180,330 1180,380 1135,405 1090,380"/>
+    <polygon points="1180,330 1225,305 1270,330 1270,380 1225,405 1180,380"/>
+    <polygon points="1270,330 1315,305 1360,330 1360,380 1315,405 1270,380"/>
+    <polygon points="1360,330 1405,305 1450,330 1450,380 1405,405 1360,380"/>
+    <polygon points="1450,330 1495,305 1540,330 1540,380 1495,405 1450,380"/>
+
+    <!-- Row 3 -->
+    <polygon points="100,480 145,455 190,480 190,530 145,555 100,530"/>
+    <polygon points="190,480 235,455 280,480 280,530 235,555 190,530"/>
+    <polygon points="280,480 325,455 370,480 370,530 325,555 280,530"/>
+    <polygon points="370,480 415,455 460,480 460,530 415,555 370,530"/>
+    <polygon points="460,480 505,455 550,480 550,530 505,555 460,530"/>
+    <polygon points="550,480 595,455 640,480 640,530 595,555 550,530"/>
+    <polygon points="640,480 685,455 730,480 730,530 685,555 640,530"/>
+    <polygon points="730,480 775,455 820,480 820,530 775,555 730,530"/>
+    <polygon points="820,480 865,455 910,480 910,530 865,555 820,530"/>
+    <polygon points="910,480 955,455 1000,480 1000,530 955,555 910,530"/>
+    <polygon points="1000,480 1045,455 1090,480 1090,530 1045,555 1000,530"/>
+    <polygon points="1090,480 1135,455 1180,480 1180,530 1135,555 1090,530"/>
+    <polygon points="1180,480 1225,455 1270,480 1270,530 1225,555 1180,530"/>
+    <polygon points="1270,480 1315,455 1360,480 1360,530 1315,555 1270,530"/>
+    <polygon points="1360,480 1405,455 1450,480 1450,530 1405,555 1360,530"/>
+    <polygon points="1450,480 1495,455 1540,480 1540,530 1495,555 1450,530"/>
+
+    <!-- Row 4 -->
+    <polygon points="100,630 145,605 190,630 190,680 145,705 100,680"/>
+    <polygon points="190,630 235,605 280,630 280,680 235,705 190,680"/>
+    <polygon points="280,630 325,605 370,630 370,680 325,705 280,680"/>
+    <polygon points="370,630 415,605 460,630 460,680 415,705 370,680"/>
+    <polygon points="460,630 505,605 550,630 550,680 505,705 460,680"/>
+    <polygon points="550,630 595,605 640,630 640,680 595,705 550,680"/>
+    <polygon points="640,630 685,605 730,630 730,680 685,705 640,680"/>
+    <polygon points="730,630 775,605 820,630 820,680 775,705 730,680"/>
+    <polygon points="820,630 865,605 910,630 910,680 865,705 820,680"/>
+    <polygon points="910,630 955,605 1000,630 1000,680 955,705 910,680"/>
+    <polygon points="1000,630 1045,605 1090,630 1090,680 1045,705 1000,680"/>
+    <polygon points="1090,630 1135,605 1180,630 1180,680 1135,705 1090,680"/>
+    <polygon points="1180,630 1225,605 1270,630 1270,680 1225,705 1180,680"/>
+    <polygon points="1270,630 1315,605 1360,630 1360,680 1315,705 1270,680"/>
+    <polygon points="1360,630 1405,605 1450,630 1450,680 1405,705 1360,680"/>
+    <polygon points="1450,630 1495,605 1540,630 1540,680 1495,705 1450,680"/>
+  </g>
+
+  <!-- Highlighted "strong barrier" cluster in the middle (gold core cells) -->
+  <g stroke="#7A6830" stroke-width="2.5" fill="url(#cell5strong)">
+    <polygon points="730,330 775,305 820,330 820,380 775,405 730,380"/>
+    <polygon points="820,330 865,305 910,330 910,380 865,405 820,380"/>
+    <polygon points="730,480 775,455 820,480 820,530 775,555 730,530"/>
+    <polygon points="820,480 865,455 910,480 910,530 865,555 820,530"/>
+    <polygon points="685,405 730,380 775,405 775,455 730,480 685,455"/>
+    <polygon points="865,405 910,380 955,405 955,455 910,480 865,455"/>
+  </g>
+
+  <!-- Soft overlay glow at the strong cluster -->
+  <ellipse cx="820" cy="430" rx="280" ry="180" fill="url(#strong5)"/>
+
+  <text x="800" y="845" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="700" fill="#2F3269" letter-spacing="3">CERAMIDES · LIPIDS · THE BARRIER MATRIX</text>
+</svg>
