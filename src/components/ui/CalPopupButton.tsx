@@ -1,9 +1,11 @@
 'use client';
 
-import { useEffect, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, type ReactNode } from 'react';
 import { getCalApi } from '@calcom/embed-react';
 import { CAL, type CalEventKey } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+
+type CalApi = Awaited<ReturnType<typeof getCalApi>>;
 
 interface CalPopupButtonProps {
   children: ReactNode;
@@ -29,9 +31,12 @@ const variantStyles: Record<NonNullable<CalPopupButtonProps['variant']>, string>
 const base =
   'inline-flex items-center justify-center gap-2 rounded-xl font-semibold text-[.95rem] px-8 py-4 transition-all duration-250 cursor-pointer no-underline';
 
-// Click-to-open Cal.com modal. The actual modal is opened by Cal's embed
-// script via the `data-cal-*` attributes — we just have to make sure the
-// namespace is initialized once on mount, which `getCalApi` does.
+// Click-to-open Cal.com modal. We warm up the embed namespace on mount and
+// open the modal via an explicit onClick that calls the cal stub function
+// directly. The stub queues commands until embed.js finishes downloading,
+// so the very first click is honored even if the user clicks before the
+// embed script has loaded — relying on data-cal-link click delegation
+// (attached only after embed.js loads) drops the first click.
 export function CalPopupButton({
   children,
   className,
@@ -39,11 +44,14 @@ export function CalPopupButton({
   event = 'full',
   ariaLabel,
 }: CalPopupButtonProps) {
+  const calRef = useRef<CalApi | null>(null);
+
   useEffect(() => {
     let cancelled = false;
     (async () => {
       const cal = await getCalApi({ namespace: CAL.namespace });
       if (cancelled) return;
+      calRef.current = cal;
       // Theme the modal so it matches our brand. Light mode only — the site
       // doesn't have a dark theme so we lock it down to avoid OS-level flips.
       cal('ui', {
@@ -63,12 +71,22 @@ export function CalPopupButton({
     };
   }, []);
 
+  const openModal = useCallback(async () => {
+    let cal = calRef.current;
+    if (!cal) {
+      cal = await getCalApi({ namespace: CAL.namespace });
+      calRef.current = cal;
+    }
+    cal('modal', {
+      calLink: CAL.events[event].link,
+      config: { layout: 'month_view', theme: 'light' },
+    });
+  }, [event]);
+
   return (
     <button
       type="button"
-      data-cal-link={CAL.events[event].link}
-      data-cal-namespace={CAL.namespace}
-      data-cal-config={JSON.stringify({ layout: 'month_view', theme: 'light' })}
+      onClick={openModal}
       className={cn(base, variantStyles[variant], className)}
       aria-label={ariaLabel}
     >

@@ -1,22 +1,30 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { getCalApi } from '@calcom/embed-react';
 import { BUSINESS, CAL } from '@/lib/constants';
 import { IconPhone, IconWhatsApp } from '@/components/icons/Icons';
 
+type CalApi = Awaited<ReturnType<typeof getCalApi>>;
+
 // Floating action stack: Cal.com booking (primary), phone (tel:), and
-// WhatsApp. The Cal popup is initialized once on mount via getCalApi so the
-// data-cal-link button just opens the modal — no per-click setup.
+// WhatsApp. We warm up the Cal embed on mount AND open the modal via an
+// explicit onClick that calls the cal stub function directly. The stub
+// queues commands until embed.js finishes downloading, so the very first
+// click is honored even if the user taps the FAB before the embed script
+// has loaded — fixing a bug where data-cal-link click delegation (which is
+// only attached after embed.js loads) silently dropped the first click.
 export function FloatingButtons() {
   const tCommon = useTranslations('common');
+  const calRef = useRef<CalApi | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       const cal = await getCalApi({ namespace: CAL.namespace });
       if (cancelled) return;
+      calRef.current = cal;
       cal('ui', {
         theme: 'light',
         cssVarsPerTheme: {
@@ -32,13 +40,23 @@ export function FloatingButtons() {
     return () => { cancelled = true; };
   }, []);
 
+  const openBooking = useCallback(async () => {
+    let cal = calRef.current;
+    if (!cal) {
+      cal = await getCalApi({ namespace: CAL.namespace });
+      calRef.current = cal;
+    }
+    cal('modal', {
+      calLink: CAL.defaultLink,
+      config: { layout: 'month_view', theme: 'light' },
+    });
+  }, []);
+
   return (
     <div className="fab-stack fixed z-90 flex flex-col gap-3 items-end print:hidden" role="group">
       <button
         type="button"
-        data-cal-link={CAL.defaultLink}
-        data-cal-namespace={CAL.namespace}
-        data-cal-config={JSON.stringify({ layout: 'month_view', theme: 'light' })}
+        onClick={openBooking}
         className="bg-gold text-navy w-13 h-13 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-250 hover:bg-gold-light hover:-translate-y-0.5 cursor-pointer"
         aria-label={tCommon('bookFreeConsultation')}
       >

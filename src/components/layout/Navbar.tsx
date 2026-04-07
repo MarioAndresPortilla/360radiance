@@ -136,19 +136,26 @@ export function Navbar() {
         </div>
       </nav>
 
+      {/*
+        Mobile menu is anchored directly under the navbar (top-16 = h-16).
+        overflow-hidden on the dialog masks the slide so the white nav can't
+        peek above its anchor and overlap the navbar during the transition.
+        The inner nav has no top border — the navbar's existing border-b
+        already provides the seam, and stacking two borders looked chunky.
+      */}
       <div
         id="mobile-menu"
         role="dialog"
         aria-label={t('mobileMenu')}
         aria-hidden={!mobileOpen}
-        className={`hidden max-lg:block fixed inset-0 top-16 z-90 transition-all duration-300 ${mobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+        className={`hidden max-lg:block fixed inset-0 top-16 z-90 overflow-hidden transition-opacity duration-250 ease-out ${mobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
       >
-        <div className="absolute inset-0 bg-black/30" onClick={() => setMobileOpen(false)} />
+        <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
         <nav
           aria-label={t('mobileMenu')}
-          className={`relative bg-white border-t border-border shadow-lg transition-transform duration-300 ${mobileOpen ? 'translate-y-0' : '-translate-y-4'}`}
+          className={`relative w-full bg-white shadow-lg transition-transform duration-250 ease-out ${mobileOpen ? 'translate-y-0' : '-translate-y-full'}`}
         >
-          <div className="flex flex-col p-6 gap-1">
+          <div className="flex flex-col px-5 py-4 gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
