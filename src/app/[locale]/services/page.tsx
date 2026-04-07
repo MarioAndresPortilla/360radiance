@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { SERVICE_DETAILS, ACNE_PROGRAM_PRICING, ACNE_PROGRAM_CONTRAINDICATIONS } from '@/lib/constants';
@@ -115,7 +116,18 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                     </div>
 
                     <div className={cn(i % 2 === 1 && 'max-lg:order-none lg:order-1')}>
-                      <div className="bg-cream rounded-2xl p-8 max-md:p-6">
+                      <div className="bg-cream rounded-2xl p-8 max-md:p-6 overflow-hidden">
+                        {svc.image && (
+                          <div className="relative aspect-4/3 rounded-xl overflow-hidden mb-6 -mx-2 -mt-2 shadow-sm border border-border">
+                            <Image
+                              src={svc.image}
+                              alt={svc.imageAlt ?? svc.title}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 1024px) 100vw, 45vw"
+                            />
+                          </div>
+                        )}
                         <h3 className="font-serif text-[1.1rem] mb-5">
                           {svc.slug === 'acne-treatment-program' ? t('programIncludes') : t('benefits')}
                         </h3>

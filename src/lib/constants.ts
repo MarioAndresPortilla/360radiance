@@ -69,6 +69,15 @@ export const BUSINESS = {
     // we have it (it makes JSON-LD `sameAs` cleaner for SEO).
     google: 'https://share.google/EZwBBcNduMb0gdThC',
   },
+  // Google review surfaces. Both currently point at the verified share-link
+  // because we don't yet have the Google Place ID for 360 Radiance. Once Marta
+  // provides it, swap `googleReviewWrite` to the canonical write-review deep
+  // link: `https://search.google.com/local/writereview?placeid={PLACE_ID}` —
+  // that opens the "Write a review" sheet directly without an extra click.
+  // `googleProfile` can stay as the share link (or upgrade to the full
+  // /maps/place/... URL for cleaner JSON-LD `sameAs`).
+  googleReviewWrite: 'https://share.google/EZwBBcNduMb0gdThC',
+  googleProfile: 'https://share.google/EZwBBcNduMb0gdThC',
 } as const;
 
 // Cal.com booking — popup mode only. Inline iframe was tried and rolled back
@@ -116,50 +125,70 @@ export const CONSULTATION_PRICING = {
 } as const;
 
 // Instagram showcase: each entry is one card on the homepage.
-// To swap in real content: replace `image` with the file under
-// /public/images/instagram/ and `postUrl` with the actual instagram.com/p/... URL.
+// Real client transformations and treatment shots from the @360radianceinc feed.
 export const INSTAGRAM_POSTS: { id: number; image: string; postUrl: string; alt: string; caption: string }[] = [
   {
     id: 1,
-    image: '/images/instagram/1.jpg',
+    image: '/images/instagram/before-after-acne-1.jpg',
     postUrl: 'https://instagram.com/360radianceinc',
-    alt: 'Acne transformation results from 12-week program at 360 Radiance',
-    caption: '12-week acne transformation',
+    alt: 'Real client acne transformation — clearer skin and a confident smile after the 12-week Acne Treatment Program at 360 Radiance',
+    caption: 'Acne transformation',
   },
   {
     id: 2,
-    image: '/images/instagram/2.jpg',
+    image: '/images/instagram/treatment-microneedling.jpg',
     postUrl: 'https://instagram.com/360radianceinc',
-    alt: 'HydraFacial treatment at 360 Radiance',
-    caption: 'HydraFacial in progress',
+    alt: 'Microneedling treatment in progress at 360 Radiance — Marta performing the procedure',
+    caption: 'Microneedling in progress',
   },
   {
     id: 3,
-    image: '/images/instagram/3.jpg',
+    image: '/images/instagram/radiance-serums-five.jpg',
     postUrl: 'https://instagram.com/360radianceinc',
-    alt: 'Radiance Skin Care Line products',
-    caption: 'The Radiance Collection',
+    alt: 'The Radiance Skin Care Line — five signature serums including Peptide, Radian-C, Glycolic, Collagen, and Eye Rescue',
+    caption: 'The Radiance Serums',
   },
   {
     id: 4,
-    image: '/images/instagram/4.jpg',
+    image: '/images/instagram/before-after-rosacea-2.jpg',
     postUrl: 'https://instagram.com/360radianceinc',
-    alt: 'Client rosacea results at 360 Radiance',
-    caption: 'Rosacea cleared in 4 weeks',
+    alt: 'Rosacea before and after — calmed redness and even tone after treatment at 360 Radiance',
+    caption: 'Rosacea cleared',
   },
   {
     id: 5,
-    image: '/images/instagram/5.jpg',
+    image: '/images/instagram/treatment-mesotherapy-serums.jpg',
     postUrl: 'https://instagram.com/360radianceinc',
-    alt: 'Behind the scenes at 360 Radiance clinic',
-    caption: 'Behind the scenes',
+    alt: 'Mesotherapy facial serum treatment in progress at 360 Radiance',
+    caption: 'Mesotherapy serums',
   },
   {
     id: 6,
-    image: '/images/instagram/6.jpg',
+    image: '/images/instagram/before-after-pigmentation.jpg',
     postUrl: 'https://instagram.com/360radianceinc',
-    alt: 'Marta Nazzar, paramedical aesthetician',
-    caption: 'Meet Marta',
+    alt: 'Hyperpigmentation and sun damage cleared — before and after at 360 Radiance',
+    caption: 'Pigmentation cleared',
+  },
+  {
+    id: 7,
+    image: '/images/instagram/before-after-acne-2.jpg',
+    postUrl: 'https://instagram.com/360radianceinc',
+    alt: 'Dramatic acne transformation — before and after the 12-week Acne Treatment Program',
+    caption: '12-week transformation',
+  },
+  {
+    id: 8,
+    image: '/images/instagram/radiance-glycolic-trio.jpg',
+    postUrl: 'https://instagram.com/360radianceinc',
+    alt: 'Radiance Skin Care Glycolic line — Gentle Glycolic Cleanser, Glycolic Serum, and Equalizing Moisture Gel',
+    caption: 'The Glycolic line',
+  },
+  {
+    id: 9,
+    image: '/images/instagram/treatment-ultrasonic-extractions.jpg',
+    postUrl: 'https://instagram.com/360radianceinc',
+    alt: 'Ultrasonic extractions facial treatment in progress at 360 Radiance',
+    caption: 'Ultrasonic extractions',
   },
 ];
 
@@ -423,6 +452,9 @@ export interface ServiceDetail {
   description: string[];
   benefits: string[];
   idealFor: string[];
+  /** Optional treatment photo from /public/images/instagram/ — shown above the benefits box on /services. */
+  image?: string;
+  imageAlt?: string;
 }
 
 export const ACNE_PROGRAM_PRICING = {
@@ -472,6 +504,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Total program starting at $230 + bi-weekly visits',
     ],
     idealFor: ['Hormonal acne', 'Cystic acne', 'Rosacea', 'Persistent breakouts', 'Adult acne', 'Teen acne'],
+    image: '/images/instagram/before-after-acne-3.jpg',
+    imageAlt: 'Real client before and after the 12-week Acne Treatment Program at 360 Radiance',
   },
   {
     slug: 'back-facial',
@@ -535,6 +569,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Professional-grade ingredients with clinical efficacy',
     ],
     idealFor: ['Dehydrated skin', 'Hyperpigmentation', 'Redness & sensitivity', 'Aging concerns', 'Dull complexion', 'Post-treatment recovery'],
+    image: '/images/instagram/treatment-tranelux-serum.jpg',
+    imageAlt: 'European glass ampule serum (Tranelux mesotherapy booster) being prepared during a treatment at 360 Radiance',
   },
   {
     slug: 'skin-analysis-consultation',
@@ -640,6 +676,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Amplifies results when paired with other treatments',
     ],
     idealFor: ['Active acne', 'Anti-aging', 'Post-procedure healing', 'Rosacea & redness', 'Inflammation', 'Collagen stimulation'],
+    image: '/images/instagram/treatment-led-light-therapy.jpg',
+    imageAlt: 'Medical-grade LED light therapy treatment in progress at 360 Radiance',
   },
   {
     slug: 'chemical-peels',
@@ -682,6 +720,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Visible improvement after first session',
     ],
     idealFor: ['Acne scarring', 'Fine lines & wrinkles', 'Enlarged pores', 'Skin laxity', 'Stretch marks', 'Dull, textured skin'],
+    image: '/images/instagram/treatment-microneedling.jpg',
+    imageAlt: 'Microneedling collagen induction therapy in progress at 360 Radiance',
   },
   {
     slug: 'tattoo-removal-laser',
@@ -745,6 +785,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Zero downtime — the perfect lunch-hour treatment',
     ],
     idealFor: ['Oily skin', 'Enlarged pores', 'Dull complexion', 'Uneven skin tone', 'Pre-event prep', 'Acne-prone skin'],
+    image: '/images/instagram/treatment-laser-pigmentation.jpg',
+    imageAlt: 'Q-switched Nd:YAG laser treatment for pigmentation and the Carbon Hollywood Peel at 360 Radiance',
   },
   {
     slug: 'sulwhasoo-korean-facial',
@@ -787,6 +829,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Suitable for all skin types, including sensitive',
     ],
     idealFor: ['All skin types', 'Monthly maintenance', 'Congested pores', 'Dull complexion', 'First-time clients', 'Skin in need of a reset'],
+    image: '/images/instagram/treatment-dermal-filler.jpg',
+    imageAlt: 'Signature deep-cleansing facial treatment in progress at 360 Radiance',
   },
 ];
 

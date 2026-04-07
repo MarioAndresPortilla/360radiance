@@ -109,43 +109,59 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
               </p>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1 max-w-200 mx-auto">
-            <ScrollReveal>
-              <div className="rounded-2xl overflow-hidden shadow-md border border-border">
-                <Image
-                  src="/images/before-after-1.jpg"
-                  alt="Client before and after acne treatment — significant reduction in cystic acne and inflammation"
-                  width={800}
-                  height={500}
-                  className="w-full h-auto"
-                  sizes="(max-width: 768px) 100vw, 400px"
-                />
-                <div className="p-5 bg-white">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">{t('beforeAfterLabel')}</span>
-                    <span className="text-[.68rem] font-semibold text-navy bg-navy-pale py-1 px-2.5 rounded-md">{t('acneTreatmentLabel')}</span>
+          <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1 max-w-260 mx-auto">
+            {[
+              {
+                src: '/images/instagram/before-after-acne-1.jpg',
+                alt: 'Client before and after acne treatment — clearer skin and a confident smile after the 12-week program',
+                label: t('acneTreatmentLabel'),
+              },
+              {
+                src: '/images/instagram/before-after-rosacea-2.jpg',
+                alt: 'Client before and after rosacea treatment — calmed redness and even skin tone',
+                label: t('rosaceaLabel'),
+              },
+              {
+                src: '/images/instagram/before-after-melasma.jpg',
+                alt: 'Client before and after melasma and hyperpigmentation treatment — even, brighter skin tone',
+                label: t('melasmaLabel'),
+              },
+              {
+                src: '/images/instagram/before-after-acne-2.jpg',
+                alt: 'Client before and after the 12-week Acne Treatment Program — dramatic clearing of persistent acne',
+                label: t('twelveWeekLabel'),
+              },
+              {
+                src: '/images/instagram/before-after-aging.jpg',
+                alt: 'Client before and after anti-aging facial treatment — firmer, more lifted appearance',
+                label: t('antiAgingLabel'),
+              },
+              {
+                src: '/images/instagram/before-after-eye-area.jpg',
+                alt: 'Client before and after eye area treatment — reduced fine lines and brighter under-eye',
+                label: t('eyeAreaLabel'),
+              },
+            ].map((item) => (
+              <ScrollReveal key={item.src}>
+                <div className="rounded-2xl overflow-hidden shadow-md border border-border h-full flex flex-col">
+                  <div className="relative aspect-square">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="p-5 bg-white">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">{t('beforeAfterLabel')}</span>
+                      <span className="text-[.68rem] font-semibold text-navy bg-navy-pale py-1 px-2.5 rounded-md">{item.label}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal>
-              <div className="rounded-2xl overflow-hidden shadow-md border border-border">
-                <Image
-                  src="/images/before-after-2.jpg"
-                  alt="Client before and after acne treatment — dramatic clearing of persistent acne and scarring"
-                  width={800}
-                  height={500}
-                  className="w-full h-auto"
-                  sizes="(max-width: 768px) 100vw, 400px"
-                />
-                <div className="p-5 bg-white">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">{t('beforeAfterLabel')}</span>
-                    <span className="text-[.68rem] font-semibold text-navy bg-navy-pale py-1 px-2.5 rounded-md">{t('twelveWeekLabel')}</span>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>

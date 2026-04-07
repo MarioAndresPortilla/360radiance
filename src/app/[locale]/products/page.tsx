@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { IconCheck, IconDropper } from '@/components/icons/Icons';
+import { IconCheck } from '@/components/icons/Icons';
 import { PRODUCT_FEATURES } from '@/lib/constants';
 import { buildPageMetadata } from '@/lib/seo';
 import { ProductShowcase } from './ProductShowcase';
@@ -124,13 +125,20 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
                   {t('ingredient.p3')}
                 </p>
               </div>
-              <div className="bg-navy-pale rounded-2xl aspect-4/3 flex items-center justify-center flex-col gap-4" role="img" aria-label="Radiance Skin Care product line">
-                <IconDropper size={64} className="text-navy" aria-hidden="true" />
-                <span className="text-[.65rem] font-bold text-navy tracking-[2px] uppercase">{t('ampuleTech')}</span>
-                <div className="flex gap-3 mt-2">
-                  {['Germany', 'Spain', 'Switzerland', 'Italy'].map((c) => (
-                    <span key={c} className="bg-white/70 text-navy-deep text-[.6rem] font-semibold py-1 px-2.5 rounded-full">{c}</span>
-                  ))}
+              <div className="relative">
+                <div className="rounded-2xl aspect-4/3 relative overflow-hidden shadow-md border border-border">
+                  <Image
+                    src="/images/instagram/product-line-natural.jpg"
+                    alt="The full Radiance Skin Care product line — 100% natural botanical formulas"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                  />
+                </div>
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white border border-border rounded-full py-1.5 px-4 shadow-sm flex items-center gap-2 whitespace-nowrap">
+                  <span className="text-[.62rem] font-bold text-navy tracking-[1.5px] uppercase">{t('ampuleTech')}</span>
+                  <span className="w-1 h-1 bg-navy/30 rounded-full" aria-hidden="true" />
+                  <span className="text-[.62rem] font-semibold text-text-mid">Germany · Spain · Switzerland · Italy</span>
                 </div>
               </div>
             </div>

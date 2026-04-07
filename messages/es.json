@@ -198,6 +198,10 @@
     "beforeAfterLabel": "Antes y Después",
     "acneTreatmentLabel": "Tratamiento de Acné",
     "twelveWeekLabel": "Programa de 12 Semanas",
+    "rosaceaLabel": "Rosácea",
+    "melasmaLabel": "Melasma",
+    "antiAgingLabel": "Antienvejecimiento",
+    "eyeAreaLabel": "Área de Ojos",
     "stats": {
       "improvement": "Mejora promedio del cliente para la semana 8",
       "weeksValue": "12 Semanas",
@@ -210,7 +214,9 @@
   "testimonials": {
     "tag": "Historias de Clientas",
     "title": "Lo Que Dicen Nuestras Clientas",
-    "starRating": "Calificado 5 de 5 estrellas"
+    "starRating": "Calificado 5 de 5 estrellas",
+    "readAll": "Leer todas las reseñas →",
+    "leaveGoogleReview": "Dejar una reseña en Google"
   },
   "reviews": {
     "pageSubtitle": "Testimonios reales de personas reales que transformaron su piel. Cada reseña es de una cliente verificada de 360 Radiance.",
@@ -218,9 +224,10 @@
     "basedOn": "Basado en reseñas de clientas",
     "wouldRecommend": "Recomendaría a una amiga",
     "avgImprovement": "Mejora promedio de la piel",
+    "viewOnGoogle": "Ver nuestro perfil en Google",
     "shareTitle": "¿Es Usted Cliente de 360 Radiance?",
     "shareBody": "Nos encantaría conocer su experiencia. Comparta su historia de transformación y ayude a otros a descubrir la confianza de una piel clara y radiante.",
-    "leaveReview": "Dejar una Reseña",
+    "leaveReview": "Dejar una reseña en Google",
     "ctaHeading": "¿Lista para Su Transformación?",
     "ctaSubtitle": "Únase a cientos de clientas felices. Reserve su consulta gratuita y comience su camino hacia una piel clara."
   },

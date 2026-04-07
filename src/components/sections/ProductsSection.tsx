@@ -1,7 +1,8 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { PRODUCT_FEATURES } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { IconDropper, IconCheck } from '@/components/icons/Icons';
+import { IconCheck } from '@/components/icons/Icons';
 
 export function ProductsSection() {
   const t = useTranslations('products');
@@ -10,9 +11,14 @@ export function ProductsSection() {
       <div className="container-site">
         <div className="grid grid-cols-[1.2fr_1fr] gap-20 max-lg:gap-12 items-center max-lg:grid-cols-1">
           <ScrollReveal>
-            <div className="bg-navy-pale rounded-2xl aspect-4/3 flex items-center justify-center flex-col gap-5 relative" role="img" aria-label="Radiance Skin Care product line">
-              <IconDropper size={64} className="text-navy" aria-hidden="true" />
-              <span className="text-[.65rem] font-bold text-navy tracking-[2px] uppercase">{t('lineLabel')}</span>
+            <div className="rounded-2xl aspect-4/3 relative overflow-hidden shadow-md border border-border">
+              <Image
+                src="/images/instagram/glow-with-radiance-line.jpg"
+                alt="The Radiance Skin Care Line — botanical serums and clinical formulas created by Marta Nazzar"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 55vw"
+              />
             </div>
           </ScrollReveal>
 

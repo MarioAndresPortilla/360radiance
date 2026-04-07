@@ -198,6 +198,10 @@
     "beforeAfterLabel": "Before & After",
     "acneTreatmentLabel": "Acne Treatment",
     "twelveWeekLabel": "12-Week Program",
+    "rosaceaLabel": "Rosacea",
+    "melasmaLabel": "Melasma",
+    "antiAgingLabel": "Anti-Aging",
+    "eyeAreaLabel": "Eye Area",
     "stats": {
       "improvement": "Average client improvement by week 8",
       "weeksValue": "12 Weeks",
@@ -210,7 +214,9 @@
   "testimonials": {
     "tag": "Client Stories",
     "title": "What Our Clients Say",
-    "starRating": "Rated 5 out of 5 stars"
+    "starRating": "Rated 5 out of 5 stars",
+    "readAll": "Read all reviews →",
+    "leaveGoogleReview": "Leave a Google review"
   },
   "reviews": {
     "pageSubtitle": "Real testimonials from real people who transformed their skin. Every review is from a verified 360 Radiance client.",
@@ -218,9 +224,10 @@
     "basedOn": "Based on client reviews",
     "wouldRecommend": "Would recommend to a friend",
     "avgImprovement": "Average skin improvement",
+    "viewOnGoogle": "View our profile on Google",
     "shareTitle": "Are You a 360 Radiance Client?",
     "shareBody": "We'd love to hear about your experience. Share your skin transformation story and help others discover the confidence of clear, radiant skin.",
-    "leaveReview": "Leave a Review",
+    "leaveReview": "Leave a Google review",
     "ctaHeading": "Ready for Your Transformation?",
     "ctaSubtitle": "Join hundreds of happy clients. Book your free consultation and start your journey to clear skin."
   },
