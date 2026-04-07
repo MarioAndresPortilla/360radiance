@@ -50,10 +50,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   />
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-white rounded-xl py-3 px-4 shadow-lg flex items-center gap-2">
-                  <div className="w-8 h-8 bg-gold-pale rounded-2.5 flex items-center justify-center" aria-hidden="true">
+                  <div className="w-8 h-8 bg-gold-highlight rounded-2.5 flex items-center justify-center" aria-hidden="true">
                     <IconDiploma size={18} className="text-gold-dark" />
                   </div>
-                  <div className="text-[.7rem] font-semibold text-teal">
+                  <div className="text-[.7rem] font-semibold text-navy">
                     {t('yearsBadge')}
                     <span className="block font-normal text-text-light text-[.6rem]">{t('yearsBadgeSub')}</span>
                   </div>
@@ -86,8 +86,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             {CREDENTIALS.map((cred) => (
               <ScrollReveal key={cred.label}>
                 <div className="bg-white rounded-2xl p-6 text-center border border-border hover:border-border-hover hover:shadow-md transition-all">
-                  <div className="w-12 h-12 bg-teal-pale rounded-xl flex items-center justify-center mx-auto mb-3" aria-hidden="true">
-                    <Icon name={cred.icon as IconName} size={24} className="text-teal" />
+                  <div className="w-12 h-12 bg-navy-pale rounded-xl flex items-center justify-center mx-auto mb-3" aria-hidden="true">
+                    <Icon name={cred.icon as IconName} size={24} className="text-navy" />
                   </div>
                   <div className="font-semibold text-[.82rem]">{cred.label}</div>
                 </div>

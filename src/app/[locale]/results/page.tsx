@@ -49,7 +49,7 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
             {STATS.map((stat) => (
               <ScrollReveal key={stat.label}>
                 <div className="text-center">
-                  <div className="font-serif text-[2rem] text-teal mb-1">{stat.value}</div>
+                  <div className="font-serif text-[2rem] text-navy mb-1">{stat.value}</div>
                   <div className="text-[.78rem] text-text-mid leading-[1.5]">{stat.label}</div>
                 </div>
               </ScrollReveal>
@@ -74,7 +74,7 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
               <ScrollReveal key={step.number}>
                 <div className="grid grid-cols-[80px_1fr] gap-8 max-md:gap-4 mb-12 last:mb-0">
                   <div className="text-center">
-                    <div className="font-serif text-[2.5rem] text-teal leading-none">{step.number}</div>
+                    <div className="font-serif text-[2.5rem] text-navy leading-none">{step.number}</div>
                     <div className="text-[.6rem] font-bold uppercase tracking-[1.5px] text-gold-a11y mt-1">{step.weekLabel}</div>
                   </div>
                   <div className="bg-cream rounded-2xl p-6">
@@ -100,7 +100,7 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
         <div className="container-site">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-teal mb-3 bg-teal-pale px-4 py-1.5 rounded-full">
+              <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-navy mb-3 bg-navy-pale px-4 py-1.5 rounded-full">
                 {t('beforeAfterTag')}
               </span>
               <h2 id="before-after-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-3">{t('beforeAfterTitle')}</h2>
@@ -123,7 +123,7 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
                 <div className="p-5 bg-white">
                   <div className="flex justify-between items-center">
                     <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">{t('beforeAfterLabel')}</span>
-                    <span className="text-[.68rem] font-semibold text-teal bg-teal-pale py-1 px-2.5 rounded-md">{t('acneTreatmentLabel')}</span>
+                    <span className="text-[.68rem] font-semibold text-navy bg-navy-pale py-1 px-2.5 rounded-md">{t('acneTreatmentLabel')}</span>
                   </div>
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
                 <div className="p-5 bg-white">
                   <div className="flex justify-between items-center">
                     <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-text-light">{t('beforeAfterLabel')}</span>
-                    <span className="text-[.68rem] font-semibold text-teal bg-teal-pale py-1 px-2.5 rounded-md">{t('twelveWeekLabel')}</span>
+                    <span className="text-[.68rem] font-semibold text-navy bg-navy-pale py-1 px-2.5 rounded-md">{t('twelveWeekLabel')}</span>
                   </div>
                 </div>
               </div>
@@ -170,21 +170,21 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
                     t('expect.item6'),
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-[.88rem] text-text-mid">
-                      <span className="w-5 h-5 rounded-md bg-teal-pale flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
-                        <IconCheck size={12} className="text-teal" />
+                      <span className="w-5 h-5 rounded-md bg-navy-pale flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
+                        <IconCheck size={12} className="text-navy" />
                       </span>
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="bg-teal-pale rounded-2xl p-10 text-center">
-                <div className="font-serif text-[3rem] text-teal mb-2">90%+</div>
+              <div className="bg-navy-pale rounded-2xl p-10 text-center">
+                <div className="font-serif text-[3rem] text-navy mb-2">90%+</div>
                 <div className="text-[.85rem] text-text-mid mb-6">{t('avgImprovementCaption')}</div>
                 <p className="text-text-mid text-[.88rem] leading-[1.7] italic">
                   {t('quote')}
                 </p>
-                <div className="mt-4 text-[.78rem] font-semibold text-teal">{t('quoteAttribution')}</div>
+                <div className="mt-4 text-[.78rem] font-semibold text-navy">{t('quoteAttribution')}</div>
               </div>
             </div>
           </ScrollReveal>
@@ -226,7 +226,7 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link href="/reviews" className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-teal text-teal rounded-lg font-semibold text-[.85rem] px-6 py-3 transition-all hover:bg-teal hover:text-white no-underline">
+            <Link href="/reviews" className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-navy text-navy rounded-lg font-semibold text-[.85rem] px-6 py-3 transition-all hover:bg-navy hover:text-white no-underline">
               {t('readAllReviews')}
             </Link>
           </div>

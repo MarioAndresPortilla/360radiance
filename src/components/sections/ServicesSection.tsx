@@ -29,8 +29,8 @@ export function ServicesSection() {
               <article
                 role="listitem"
                 className={cn(
-                  'bg-white border rounded-2xl p-6 transition-all duration-300 relative hover:border-teal hover:shadow-md h-full',
-                  svc.featured ? 'border-teal bg-teal-bg' : 'border-border'
+                  'bg-white border rounded-2xl p-6 transition-all duration-300 relative hover:border-navy hover:shadow-md h-full',
+                  svc.featured ? 'border-navy bg-navy-bg' : 'border-border'
                 )}
               >
                 {svc.featured && (
@@ -40,13 +40,13 @@ export function ServicesSection() {
                 )}
                 <div className={cn(
                   'w-11 h-11 rounded-xl flex items-center justify-center mb-3',
-                  svc.featured ? 'bg-teal/12' : 'bg-teal-pale'
+                  svc.featured ? 'bg-navy/12' : 'bg-navy-pale'
                 )} aria-hidden="true">
-                  <Icon name={svc.icon as IconName} size={20} className="text-teal" />
+                  <Icon name={svc.icon as IconName} size={20} className="text-navy" />
                 </div>
                 <h3 className="font-serif text-[.98rem] mb-1.5">{svc.title}</h3>
                 <p className="text-text-mid text-[.82rem] leading-[1.7] mb-3">{svc.description}</p>
-                <span className="inline-block bg-teal-pale text-teal py-1 px-3 rounded-lg text-[.62rem] font-bold uppercase tracking-[.5px]">
+                <span className="inline-block bg-navy-pale text-navy py-1 px-3 rounded-lg text-[.62rem] font-bold uppercase tracking-[.5px]">
                   {svc.tag}
                 </span>
               </article>
@@ -57,7 +57,7 @@ export function ServicesSection() {
           <div className="text-center mt-10">
             <Link
               href="/services"
-              className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-teal text-teal rounded-xl font-semibold text-[.88rem] px-7 py-3 transition-all hover:bg-teal hover:text-white no-underline"
+              className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-navy text-navy rounded-xl font-semibold text-[.88rem] px-7 py-3 transition-all hover:bg-navy hover:text-white no-underline"
             >
               {t('viewAll', { count: SERVICES.length })}
             </Link>

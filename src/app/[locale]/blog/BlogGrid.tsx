@@ -27,8 +27,8 @@ export function BlogGrid({ posts }: { posts: BlogPost[] }) {
             className={cn(
               'py-2.5 px-6 rounded-xl text-[.84rem] font-semibold transition-all cursor-pointer border',
               category === cat
-                ? 'bg-teal text-white border-teal'
-                : 'bg-white text-text-mid border-border hover:border-teal hover:text-teal'
+                ? 'bg-navy text-white border-navy'
+                : 'bg-white text-text-mid border-border hover:border-navy hover:text-navy'
             )}
           >
             {cat}
@@ -40,7 +40,7 @@ export function BlogGrid({ posts }: { posts: BlogPost[] }) {
         {filtered.map((post) => (
           <ScrollReveal key={post.slug}>
             <Link href={`/blog/${post.slug}`} className="no-underline">
-              <article className="group bg-white rounded-2xl border border-border hover:border-teal hover:shadow-md transition-all duration-300 overflow-hidden h-full flex flex-col">
+              <article className="group bg-white rounded-2xl border border-border hover:border-navy hover:shadow-md transition-all duration-300 overflow-hidden h-full flex flex-col">
                 <div className="aspect-video relative overflow-hidden">
                   <Image
                     src={`/images/blog/${post.slug}.jpg`}
@@ -65,13 +65,13 @@ export function BlogGrid({ posts }: { posts: BlogPost[] }) {
                   <time dateTime={post.date} className="text-[.72rem] text-text-light mb-2.5 block">
                     {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                   </time>
-                  <h3 className="font-serif text-[1.05rem] leading-[1.3] mb-3 text-text group-hover:text-teal transition-colors">
+                  <h3 className="font-serif text-[1.05rem] leading-[1.3] mb-3 text-text group-hover:text-navy transition-colors">
                     {post.title}
                   </h3>
                   <p className="text-text-mid text-[.84rem] leading-[1.75] mb-5 flex-1 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  <span className="text-teal text-[.82rem] font-semibold group-hover:underline">
+                  <span className="text-navy text-[.82rem] font-semibold group-hover:underline">
                     Read article &rarr;
                   </span>
                 </div>

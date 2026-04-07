@@ -11,7 +11,7 @@ export function CtaBanner({ heading, subtitle, buttonText }: CtaBannerProps) {
   const tCommon = useTranslations('common');
   const label = buttonText ?? tCommon('bookFreeConsultation');
   return (
-    <section className="py-16 bg-teal">
+    <section className="py-16 bg-navy">
       <div className="container-site text-center text-white">
         <h2 className="font-serif text-[clamp(1.5rem,3vw,2rem)] mb-4">{heading}</h2>
         <p className="opacity-80 max-w-112.5 mx-auto mb-8 text-[.95rem] leading-[1.7]">{subtitle}</p>

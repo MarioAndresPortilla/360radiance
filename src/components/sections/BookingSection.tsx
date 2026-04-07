@@ -11,7 +11,7 @@ export function BookingSection() {
     <section className="py-24 max-md:py-16" id="booking" aria-labelledby="booking-heading">
       <div className="container-site">
         <ScrollReveal>
-          <div className="bg-teal rounded-3xl px-8 py-16 sm:px-12 sm:py-20 lg:px-16 lg:py-20 text-center text-white relative overflow-hidden">
+          <div className="bg-navy rounded-3xl px-8 py-16 sm:px-12 sm:py-20 lg:px-16 lg:py-20 text-center text-white relative overflow-hidden">
             <div className="absolute -top-[60%] -right-[15%] w-100 h-100 rounded-full bg-white/4" aria-hidden="true" />
 
             <h2 id="booking-heading" className="font-serif text-[clamp(1.5rem,4vw,2.2rem)] mb-5 relative z-1">

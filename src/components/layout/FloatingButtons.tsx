@@ -50,7 +50,7 @@ export function FloatingButtons() {
       </button>
       <a
         href={`tel:${BUSINESS.phoneRaw}`}
-        className="bg-teal text-white w-13 h-13 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-250 hover:bg-teal-dark hover:-translate-y-0.5 no-underline"
+        className="bg-navy text-white w-13 h-13 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-250 hover:bg-navy-deep hover:-translate-y-0.5 no-underline"
         aria-label={`${tCommon('bookConsultation')} — ${BUSINESS.phone}`}
       >
         <IconPhone size={22} className="text-white" />

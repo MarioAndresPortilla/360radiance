@@ -64,9 +64,9 @@ export default async function BlogArticlePage({ params }: Props) {
         <div className="container-site">
           <div className="max-w-175 mx-auto">
             <nav className="flex items-center gap-2.5 mb-8 text-[.82rem]" aria-label="Breadcrumb">
-              <Link href="/blog" className="text-text-light no-underline hover:text-teal transition-colors">&larr; {t('allArticles')}</Link>
+              <Link href="/blog" className="text-text-light no-underline hover:text-navy transition-colors">&larr; {t('allArticles')}</Link>
               <span className="text-text-faint">/</span>
-              <span className="font-bold uppercase tracking-[1px] text-teal bg-teal-pale py-1 px-3 rounded-lg text-[.68rem]">{post.category}</span>
+              <span className="font-bold uppercase tracking-[1px] text-navy bg-navy-pale py-1 px-3 rounded-lg text-[.68rem]">{post.category}</span>
             </nav>
             <h1 className="font-serif text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.15] mb-6">{post.title}</h1>
             <div className="flex flex-wrap items-center gap-4 text-[.84rem] text-text-light">
@@ -124,11 +124,11 @@ export default async function BlogArticlePage({ params }: Props) {
 
             {/* CTA within article */}
             {post.cta && (
-              <div className="bg-teal-pale rounded-2xl p-8 mt-12 text-center">
+              <div className="bg-navy-pale rounded-2xl p-8 mt-12 text-center">
                 <p className="text-[.98rem] text-text leading-[1.8] mb-5">{post.cta}</p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 bg-teal text-white rounded-xl font-semibold text-[.9rem] px-7 py-3.5 transition-all hover:bg-teal-dark hover:-translate-y-px hover:shadow-md no-underline"
+                  className="inline-flex items-center gap-1.5 bg-navy text-white rounded-xl font-semibold text-[.9rem] px-7 py-3.5 transition-all hover:bg-navy-deep hover:-translate-y-px hover:shadow-md no-underline"
                 >
                   {tCommon('bookConsultation')} &rarr;
                 </Link>
@@ -155,7 +155,7 @@ export default async function BlogArticlePage({ params }: Props) {
             <div className="grid grid-cols-2 gap-7 max-w-175 mx-auto max-md:grid-cols-1">
               {related.map((r) => (
                 <Link key={r.slug} href={`/blog/${r.slug}`} className="group no-underline">
-                  <article className="bg-white rounded-2xl border border-border overflow-hidden hover:border-teal hover:shadow-md transition-all">
+                  <article className="bg-white rounded-2xl border border-border overflow-hidden hover:border-navy hover:shadow-md transition-all">
                     <div className="aspect-video relative overflow-hidden">
                       <Image
                         src={`/images/blog/${r.slug}.jpg`}
@@ -166,7 +166,7 @@ export default async function BlogArticlePage({ params }: Props) {
                       />
                     </div>
                     <div className="p-6">
-                      <h3 className="font-serif text-[1.05rem] group-hover:text-teal transition-colors leading-[1.3]">{r.title}</h3>
+                      <h3 className="font-serif text-[1.05rem] group-hover:text-navy transition-colors leading-[1.3]">{r.title}</h3>
                       <p className="text-[.8rem] text-text-light mt-2">{r.readTime} {tCommon('minRead')}</p>
                     </div>
                   </article>

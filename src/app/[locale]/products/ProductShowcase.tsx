@@ -28,8 +28,8 @@ export function ProductShowcase() {
             className={cn(
               'py-2 px-5 rounded-lg text-[.82rem] font-semibold transition-all cursor-pointer border',
               activeCategory === cat.id
-                ? 'bg-teal text-white border-teal'
-                : 'bg-white text-text-mid border-border hover:border-teal hover:text-teal'
+                ? 'bg-navy text-white border-navy'
+                : 'bg-white text-text-mid border-border hover:border-navy hover:text-navy'
             )}
           >
             {cat.label}
@@ -45,17 +45,17 @@ export function ProductShowcase() {
             <ScrollReveal key={product.slug}>
               <article className={cn(
                 'bg-white rounded-2xl border transition-all duration-300',
-                isExpanded ? 'border-teal shadow-md' : 'border-border hover:border-border-hover hover:shadow-sm'
+                isExpanded ? 'border-navy shadow-md' : 'border-border hover:border-border-hover hover:shadow-sm'
               )}>
                 {/* Card header */}
                 <div className="p-7">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex gap-2">
-                      <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-teal bg-teal-pale py-0.5 px-2 rounded-md">
+                      <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-navy bg-navy-pale py-0.5 px-2 rounded-md">
                         {product.category}
                       </span>
                       {product.origin && (
-                        <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-gold-a11y bg-gold-pale py-0.5 px-2 rounded-md">
+                        <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-gold-a11y bg-gold-highlight py-0.5 px-2 rounded-md">
                           {product.origin}
                         </span>
                       )}
@@ -68,7 +68,7 @@ export function ProductShowcase() {
                   </div>
 
                   <h3 className="font-serif text-[1.2rem] mb-1">{product.name}</h3>
-                  <p className="text-teal text-[.85rem] font-medium mb-3">{product.tagline}</p>
+                  <p className="text-navy text-[.85rem] font-medium mb-3">{product.tagline}</p>
 
                   {/* Key ingredients preview */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
@@ -82,7 +82,7 @@ export function ProductShowcase() {
                   {/* Concern tags */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {product.concerns.map((c) => (
-                      <span key={c} className="text-[.6rem] uppercase tracking-[.5px] font-bold text-teal-dark bg-teal-pale py-0.5 px-2 rounded-md">
+                      <span key={c} className="text-[.6rem] uppercase tracking-[.5px] font-bold text-navy-deep bg-navy-pale py-0.5 px-2 rounded-md">
                         {c}
                       </span>
                     ))}
@@ -91,7 +91,7 @@ export function ProductShowcase() {
                   <button
                     type="button"
                     onClick={() => setExpandedSlug(isExpanded ? null : product.slug)}
-                    className="text-teal text-[.82rem] font-semibold bg-transparent border-none cursor-pointer hover:underline p-0"
+                    className="text-navy text-[.82rem] font-semibold bg-transparent border-none cursor-pointer hover:underline p-0"
                     aria-expanded={isExpanded}
                   >
                     {isExpanded ? 'Show less' : 'View ingredient science & usage'} &darr;
@@ -105,8 +105,8 @@ export function ProductShowcase() {
                     <div className="flex flex-col gap-3 mb-6">
                       {product.keyIngredients.map((ing) => (
                         <div key={ing.name} className="flex items-start gap-2.5">
-                          <span className="w-5 h-5 rounded-md bg-teal-pale flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
-                            <IconCheck size={12} className="text-teal" />
+                          <span className="w-5 h-5 rounded-md bg-navy-pale flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
+                            <IconCheck size={12} className="text-navy" />
                           </span>
                           <div>
                             <strong className="text-[.82rem] text-text">{ing.name}</strong>
@@ -122,7 +122,7 @@ export function ProductShowcase() {
                     <h4 className="font-serif text-[.95rem] mb-2">Pairs Best With</h4>
                     <div className="flex flex-wrap gap-2">
                       {product.pairsWith.map((p) => (
-                        <span key={p} className="text-[.72rem] font-semibold text-gold-a11y bg-gold-pale py-1.5 px-3 rounded-lg">
+                        <span key={p} className="text-[.72rem] font-semibold text-gold-a11y bg-gold-highlight py-1.5 px-3 rounded-lg">
                           {p}
                         </span>
                       ))}

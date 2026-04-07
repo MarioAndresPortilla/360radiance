@@ -41,15 +41,15 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           <ScrollReveal>
             <div className="grid grid-cols-4 gap-6 max-md:grid-cols-2 text-center">
               <div>
-                <div className="font-serif text-[1.8rem] text-teal">{t('free')}</div>
+                <div className="font-serif text-[1.8rem] text-navy">{t('free')}</div>
                 <div className="text-[.78rem] text-text-mid mt-1">{t('consultation')}</div>
               </div>
               <div>
-                <div className="font-serif text-[1.8rem] text-teal">${ACNE_PROGRAM_PRICING.acneFacial}</div>
+                <div className="font-serif text-[1.8rem] text-navy">${ACNE_PROGRAM_PRICING.acneFacial}</div>
                 <div className="text-[.78rem] text-text-mid mt-1">{t('acneFacial')}</div>
               </div>
               <div>
-                <div className="font-serif text-[1.8rem] text-teal">~${ACNE_PROGRAM_PRICING.homeCareProducts}</div>
+                <div className="font-serif text-[1.8rem] text-navy">~${ACNE_PROGRAM_PRICING.homeCareProducts}</div>
                 <div className="text-[.78rem] text-text-mid mt-1">{t('homeCare')}</div>
               </div>
               <div>
@@ -75,25 +75,25 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                       <div className="flex items-center gap-4 mb-5">
                         <div className={cn(
                           'w-14 h-14 rounded-2xl flex items-center justify-center',
-                          svc.featured ? 'bg-teal/12' : 'bg-teal-pale'
+                          svc.featured ? 'bg-navy/12' : 'bg-navy-pale'
                         )} aria-hidden="true">
-                          <Icon name={svc.icon as IconName} size={26} className="text-teal" />
+                          <Icon name={svc.icon as IconName} size={26} className="text-navy" />
                         </div>
                         <div>
-                          <span className="inline-block bg-teal-pale text-teal py-1 px-3 rounded-lg text-[.62rem] font-bold uppercase tracking-[.5px] mb-1.5">
+                          <span className="inline-block bg-navy-pale text-navy py-1 px-3 rounded-lg text-[.62rem] font-bold uppercase tracking-[.5px] mb-1.5">
                             {svc.tag}
                           </span>
                           <h2 className="font-serif text-[1.5rem] leading-tight">{svc.title}</h2>
                         </div>
                       </div>
-                      <p className="text-teal font-medium text-[.95rem] mb-6">{svc.tagline}</p>
+                      <p className="text-navy font-medium text-[.95rem] mb-6">{svc.tagline}</p>
                       {svc.description.map((p, j) => (
                         <p key={j} className="text-text-mid mb-5 text-[.92rem]/[1.85]">{p}</p>
                       ))}
 
                       {/* Contraindications for acne program */}
                       {svc.slug === 'acne-treatment-program' && (
-                        <div className="bg-gold-pale border border-gold-light/30 rounded-2xl p-6 mt-6">
+                        <div className="bg-gold-highlight border border-gold-light/30 rounded-2xl p-6 mt-6">
                           <h3 className="font-serif text-[1rem] text-gold-a11y mb-3">{t('contraindicationsTitle')}</h3>
                           <ul className="flex flex-col gap-2.5 list-none">
                             {ACNE_PROGRAM_CONTRAINDICATIONS.map((item) => (
@@ -108,7 +108,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
 
                       <Link
                         href="/contact"
-                        className="inline-flex items-center gap-1.5 bg-teal text-white rounded-xl font-semibold text-[.88rem] px-7 py-3.5 transition-all hover:bg-teal-dark hover:-translate-y-px hover:shadow-md no-underline mt-6"
+                        className="inline-flex items-center gap-1.5 bg-navy text-white rounded-xl font-semibold text-[.88rem] px-7 py-3.5 transition-all hover:bg-navy-deep hover:-translate-y-px hover:shadow-md no-underline mt-6"
                       >
                         {t('bookTreatment')}
                       </Link>
@@ -122,8 +122,8 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                         <ul className="flex flex-col gap-3.5 list-none mb-8">
                           {svc.benefits.map((b) => (
                             <li key={b} className="flex items-start gap-3 text-[.88rem] text-text-mid">
-                              <span className="w-5.5 h-5.5 rounded-lg bg-teal-pale flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
-                                <IconCheck size={13} className="text-teal" />
+                              <span className="w-5.5 h-5.5 rounded-lg bg-navy-pale flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
+                                <IconCheck size={13} className="text-navy" />
                               </span>
                               {b}
                             </li>
@@ -135,7 +135,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                           <div className="bg-white rounded-xl p-5 mb-6 border border-border">
                             <div className="text-[.78rem] font-semibold text-text mb-2">{t('biWeekly')}</div>
                             <div className="flex items-baseline gap-1">
-                              <span className="font-serif text-[1.5rem] text-teal">${ACNE_PROGRAM_PRICING.biWeeklyVisit}</span>
+                              <span className="font-serif text-[1.5rem] text-navy">${ACNE_PROGRAM_PRICING.biWeeklyVisit}</span>
                               <span className="text-[.78rem] text-text-light">{t('perVisit')}</span>
                             </div>
                             <p className="text-[.75rem] text-text-mid mt-2 leading-[1.6]">
@@ -147,7 +147,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                         <h3 className="font-serif text-[1.1rem] mb-4">{t('idealFor')}</h3>
                         <div className="flex flex-wrap gap-2.5">
                           {svc.idealFor.map((item) => (
-                            <span key={item} className="bg-teal-pale text-teal-dark py-2 px-3.5 rounded-lg text-[.72rem] font-semibold">
+                            <span key={item} className="bg-navy-pale text-navy-deep py-2 px-3.5 rounded-lg text-[.72rem] font-semibold">
                               {item}
                             </span>
                           ))}

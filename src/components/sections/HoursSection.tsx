@@ -28,13 +28,13 @@ export function HoursSection() {
                 key={h.day}
                 role="row"
                 className={cn(
-                  'flex justify-between items-center py-4 px-6 rounded-xl text-[.9rem] transition-colors hover:bg-teal-pale',
+                  'flex justify-between items-center py-4 px-6 rounded-xl text-[.9rem] transition-colors hover:bg-navy-pale',
                   h.closed && 'opacity-45',
-                  i === today && 'bg-teal-pale font-semibold border border-border-hover'
+                  i === today && 'bg-navy-pale font-semibold border border-border-hover'
                 )}
               >
                 <span role="cell" className="font-medium flex items-center gap-2.5">
-                  <span className={cn('w-2 h-2 rounded-full', h.closed ? 'bg-text-faint' : 'bg-teal')} aria-hidden="true" />
+                  <span className={cn('w-2 h-2 rounded-full', h.closed ? 'bg-text-faint' : 'bg-navy')} aria-hidden="true" />
                   {t(dayKey)}
                   {i === today && <span className="sr-only">(today)</span>}
                 </span>
@@ -50,7 +50,7 @@ export function HoursSection() {
             {BUSINESS.address} &middot; {BUSINESS.city}, {BUSINESS.state} {BUSINESS.zip}
           </address>
           {' '}&middot;{' '}
-          <a href={BUSINESS.mapUrl} target="_blank" rel="noopener noreferrer" className="text-teal no-underline font-semibold">
+          <a href={BUSINESS.mapUrl} target="_blank" rel="noopener noreferrer" className="text-navy no-underline font-semibold">
             Get Directions &rarr;
           </a>
         </div>

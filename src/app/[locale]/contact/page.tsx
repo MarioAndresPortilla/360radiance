@@ -41,7 +41,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <ScrollReveal>
             <div className="grid grid-cols-[1.4fr_1fr] gap-10 max-lg:grid-cols-1 max-lg:gap-6">
               {/* Cal.com scheduler card */}
-              <div className="bg-teal text-white rounded-3xl p-10 max-md:p-7 relative overflow-hidden">
+              <div className="bg-navy text-white rounded-3xl p-10 max-md:p-7 relative overflow-hidden">
                 <div className="absolute -top-[40%] -right-[15%] w-80 h-80 rounded-full bg-white/5" aria-hidden="true" />
                 <div className="relative z-1">
                   <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-white/70 mb-4 bg-white/10 px-3 py-1.5 rounded-full">
@@ -81,12 +81,12 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   className="group flex items-center gap-4 bg-cream rounded-2xl p-5 no-underline transition-all hover:shadow-md hover:-translate-y-0.5"
                   aria-label={tNav('callUs', { phone: BUSINESS.phone })}
                 >
-                  <div className="w-12 h-12 bg-teal-pale rounded-xl flex items-center justify-center shrink-0 group-hover:bg-teal/15 transition-colors" aria-hidden="true">
-                    <IconPhone size={22} className="text-teal" />
+                  <div className="w-12 h-12 bg-navy-pale rounded-xl flex items-center justify-center shrink-0 group-hover:bg-navy/15 transition-colors" aria-hidden="true">
+                    <IconPhone size={22} className="text-navy" />
                   </div>
                   <div className="min-w-0">
                     <h3 className="font-serif text-[1rem] text-text mb-0.5">{t('callUsTitle')}</h3>
-                    <p className="text-teal font-semibold text-[.92rem] truncate">{BUSINESS.phone}</p>
+                    <p className="text-navy font-semibold text-[.92rem] truncate">{BUSINESS.phone}</p>
                     <p className="text-text-light text-[.75rem]">{t('callUsSub')}</p>
                   </div>
                 </a>
@@ -115,7 +115,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   className="group flex items-center gap-4 bg-cream rounded-2xl p-5 no-underline transition-all hover:shadow-md hover:-translate-y-0.5"
                   aria-label="Get directions to our office"
                 >
-                  <div className="w-12 h-12 bg-gold-pale rounded-xl flex items-center justify-center shrink-0 group-hover:bg-gold/15 transition-colors" aria-hidden="true">
+                  <div className="w-12 h-12 bg-gold-highlight rounded-xl flex items-center justify-center shrink-0 group-hover:bg-gold/15 transition-colors" aria-hidden="true">
                     <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="text-gold-dark">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
                       <circle cx="12" cy="9" r="2.5" />
@@ -139,7 +139,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <ScrollReveal>
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-10 max-md:mb-8">
-                <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-teal mb-4 bg-teal-pale px-4 py-1.5 rounded-full">
+                <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-navy mb-4 bg-navy-pale px-4 py-1.5 rounded-full">
                   {t('formTag')}
                 </span>
                 <h2 id="contact-form-heading" className="font-serif text-[clamp(1.6rem,3.6vw,2.2rem)] mb-4 leading-[1.2]">

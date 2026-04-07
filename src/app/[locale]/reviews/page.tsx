@@ -40,7 +40,7 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
           <ScrollReveal>
             <div className="flex items-center justify-center gap-8 max-md:flex-col max-md:gap-4">
               <div className="text-center">
-                <div className="font-serif text-[3rem] text-teal leading-none">5.0</div>
+                <div className="font-serif text-[3rem] text-navy leading-none">5.0</div>
                 <div className="flex gap-0.5 justify-center my-2">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <IconStar key={i} size={18} className="text-gold" aria-hidden="true" />
@@ -50,12 +50,12 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
               </div>
               <div className="w-px h-16 bg-border max-md:hidden" aria-hidden="true" />
               <div className="text-center">
-                <div className="font-serif text-[2rem] text-teal">100%</div>
+                <div className="font-serif text-[2rem] text-navy">100%</div>
                 <div className="text-[.78rem] text-text-mid">{tr('wouldRecommend')}</div>
               </div>
               <div className="w-px h-16 bg-border max-md:hidden" aria-hidden="true" />
               <div className="text-center">
-                <div className="font-serif text-[2rem] text-teal">90%+</div>
+                <div className="font-serif text-[2rem] text-navy">90%+</div>
                 <div className="text-[.78rem] text-text-mid">{tr('avgImprovement')}</div>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
               href="https://g.page/r/360radiance/review"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-teal text-teal rounded-lg font-semibold text-[.85rem] px-6 py-3 transition-all hover:bg-teal hover:text-white no-underline"
+              className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-navy text-navy rounded-lg font-semibold text-[.85rem] px-6 py-3 transition-all hover:bg-navy hover:text-white no-underline"
             >
               {tr('leaveReview')}
             </a>

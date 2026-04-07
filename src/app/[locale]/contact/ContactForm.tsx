@@ -9,11 +9,11 @@ import { cn } from '@/lib/utils';
 const initialState: ContactFormState = { ok: false };
 
 const inputBase =
-  'w-full rounded-xl border border-border bg-white px-4 py-3 text-[.95rem] text-text placeholder:text-text-faint transition-colors focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/15';
+  'w-full rounded-xl border border-border bg-white px-4 py-3 text-[.95rem] text-text placeholder:text-text-faint transition-colors focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/15';
 
 const labelBase = 'block text-[.78rem] font-semibold text-text mb-2';
 const errorText = 'mt-1.5 text-[.75rem] text-red-600';
-const requiredMark = <span className="text-teal" aria-hidden="true">*</span>;
+const requiredMark = <span className="text-navy" aria-hidden="true">*</span>;
 
 function SubmitButton({ label, sendingLabel }: { label: string; sendingLabel: string }) {
   const { pending } = useFormStatus();
@@ -22,8 +22,8 @@ function SubmitButton({ label, sendingLabel }: { label: string; sendingLabel: st
       type="submit"
       disabled={pending}
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-xl bg-teal px-8 py-4 text-[.95rem] font-semibold text-white shadow-md transition-all',
-        'hover:bg-teal-dark hover:-translate-y-px hover:shadow-lg',
+        'inline-flex items-center justify-center gap-2 rounded-xl bg-navy px-8 py-4 text-[.95rem] font-semibold text-white shadow-md transition-all',
+        'hover:bg-navy-deep hover:-translate-y-px hover:shadow-lg',
         'disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0',
       )}
       aria-busy={pending}
@@ -57,9 +57,9 @@ export function ContactForm() {
       <div
         role="status"
         aria-live="polite"
-        className="bg-teal-pale border border-teal/20 rounded-2xl p-8 text-center"
+        className="bg-navy-pale border border-navy/20 rounded-2xl p-8 text-center"
       >
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-teal text-white">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-navy text-white">
           <svg width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="m5 12 5 5L20 7" />
           </svg>
@@ -177,7 +177,7 @@ export function ContactForm() {
             {(['phone', 'whatsapp', 'email'] as const).map((opt) => (
               <label
                 key={opt}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-border bg-white px-3.5 py-2 text-[.82rem] font-medium text-text-mid transition-colors has-[:checked]:border-teal has-[:checked]:bg-teal-pale has-[:checked]:text-teal-dark"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-border bg-white px-3.5 py-2 text-[.82rem] font-medium text-text-mid transition-colors has-[:checked]:border-navy has-[:checked]:bg-navy-pale has-[:checked]:text-navy-deep"
               >
                 <input type="radio" name="preferredContact" value={opt} className="sr-only" />
                 {t(`preferredContact_${opt}` as 'preferredContact_phone')}
@@ -192,7 +192,7 @@ export function ContactForm() {
             {(['morning', 'afternoon', 'evening', 'anytime'] as const).map((opt) => (
               <label
                 key={opt}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-border bg-white px-3.5 py-2 text-[.82rem] font-medium text-text-mid transition-colors has-[:checked]:border-teal has-[:checked]:bg-teal-pale has-[:checked]:text-teal-dark"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-border bg-white px-3.5 py-2 text-[.82rem] font-medium text-text-mid transition-colors has-[:checked]:border-navy has-[:checked]:bg-navy-pale has-[:checked]:text-navy-deep"
               >
                 <input type="radio" name="bestTime" value={opt} className="sr-only" />
                 {t(`bestTime_${opt}` as 'bestTime_morning')}
@@ -230,7 +230,7 @@ export function ContactForm() {
         <p
           id={`${formId}-status`}
           aria-live="polite"
-          className={cn('text-[.85rem]', state.ok ? 'text-teal-dark' : 'text-red-600')}
+          className={cn('text-[.85rem]', state.ok ? 'text-navy-deep' : 'text-red-600')}
         >
           {!state.ok && state.message ? state.message : ''}
         </p>

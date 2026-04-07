@@ -46,18 +46,18 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
               <div className="grid grid-cols-[1.3fr_1fr] gap-12 items-center max-lg:grid-cols-1">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-[.6rem] font-bold uppercase tracking-[1px] text-gold-a11y bg-gold-pale py-1 px-2.5 rounded-md">
+                    <span className="text-[.6rem] font-bold uppercase tracking-[1px] text-gold-a11y bg-gold-highlight py-1 px-2.5 rounded-md">
                       {t('featured')}
                     </span>
-                    <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-teal bg-teal-pale py-1 px-2.5 rounded-md">
+                    <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-navy bg-navy-pale py-1 px-2.5 rounded-md">
                       {featured.category}
                     </span>
                   </div>
                   <h2 id="featured-article-heading" className="font-serif text-[1.8rem] leading-[1.2] mb-4">
-                    <Link href={`/blog/${featured.slug}`} className="no-underline text-text hover:text-teal transition-colors">{featured.title}</Link>
+                    <Link href={`/blog/${featured.slug}`} className="no-underline text-text hover:text-navy transition-colors">{featured.title}</Link>
                   </h2>
                   <p className="text-text-mid text-[.95rem] leading-[1.85] mb-6">{featured.excerpt}</p>
-                  <Link href={`/blog/${featured.slug}`} className="text-teal text-[.88rem] font-semibold no-underline hover:underline">{t('readFullArticle')}</Link>
+                  <Link href={`/blog/${featured.slug}`} className="text-navy text-[.88rem] font-semibold no-underline hover:underline">{t('readFullArticle')}</Link>
                   <div className="flex items-center gap-4 text-[.78rem] text-text-light mb-6">
                     <time dateTime={featured.date}>
                       {new Date(featured.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
@@ -127,31 +127,31 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                   title: t('topics.acneScience.title'),
                   desc: t('topics.acneScience.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Acne Science').length,
-                  color: 'bg-teal-pale text-teal',
+                  color: 'bg-navy-pale text-navy',
                 },
                 {
                   title: t('topics.ingredients.title'),
                   desc: t('topics.ingredients.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Ingredients').length,
-                  color: 'bg-gold-pale text-gold-a11y',
+                  color: 'bg-gold-highlight text-gold-a11y',
                 },
                 {
                   title: t('topics.skinHealth.title'),
                   desc: t('topics.skinHealth.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Skin Health').length,
-                  color: 'bg-teal-pale text-teal',
+                  color: 'bg-navy-pale text-navy',
                 },
                 {
                   title: t('topics.treatments.title'),
                   desc: t('topics.treatments.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Treatments').length,
-                  color: 'bg-gold-pale text-gold-a11y',
+                  color: 'bg-gold-highlight text-gold-a11y',
                 },
                 {
                   title: t('topics.productGuides.title'),
                   desc: t('topics.productGuides.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Product Guides').length,
-                  color: 'bg-teal-pale text-teal',
+                  color: 'bg-navy-pale text-navy',
                 },
                 {
                   title: t('topics.comingSoon.title'),

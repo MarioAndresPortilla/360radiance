@@ -8,20 +8,20 @@ import { cn } from '@/lib/utils';
 interface CalPopupButtonProps {
   children: ReactNode;
   className?: string;
-  // Allow callers to override the variant; default matches the site's primary teal CTA.
-  variant?: 'teal' | 'white' | 'outline-teal' | 'outline-white';
+  // Allow callers to override the variant; default matches the site's primary navy CTA.
+  variant?: 'navy' | 'white' | 'outline-navy' | 'outline-white';
   // Which Cal event type to open. Defaults to the 30-minute full consultation.
   event?: CalEventKey;
   ariaLabel?: string;
 }
 
 const variantStyles: Record<NonNullable<CalPopupButtonProps['variant']>, string> = {
-  teal:
-    'bg-teal text-white hover:bg-teal-dark hover:-translate-y-px hover:shadow-md',
+  navy:
+    'bg-navy text-white hover:bg-navy-deep hover:-translate-y-px hover:shadow-md',
   white:
-    'bg-white text-teal hover:scale-[1.03] hover:shadow-2xl shadow-xl',
-  'outline-teal':
-    'bg-transparent border-[1.5px] border-teal text-teal hover:bg-teal hover:text-white',
+    'bg-white text-navy hover:scale-[1.03] hover:shadow-2xl shadow-xl',
+  'outline-navy':
+    'bg-transparent border-[1.5px] border-navy text-navy hover:bg-navy hover:text-white',
   'outline-white':
     'bg-transparent border-[1.5px] border-white/60 text-white hover:bg-white/10 hover:border-white',
 };
@@ -35,7 +35,7 @@ const base =
 export function CalPopupButton({
   children,
   className,
-  variant = 'teal',
+  variant = 'navy',
   event = 'full',
   ariaLabel,
 }: CalPopupButtonProps) {

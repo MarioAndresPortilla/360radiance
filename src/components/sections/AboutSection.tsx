@@ -23,10 +23,10 @@ export function AboutSection() {
                 />
               </div>
               <div className="absolute -bottom-5 -right-5 bg-white rounded-xl py-4 px-5 shadow-lg flex items-center gap-3">
-                <div className="w-9 h-9 bg-gold-pale rounded-2.5 flex items-center justify-center" aria-hidden="true">
+                <div className="w-9 h-9 bg-gold-highlight rounded-2.5 flex items-center justify-center" aria-hidden="true">
                   <IconDiploma size={18} className="text-gold-dark" />
                 </div>
-                <div className="text-[.75rem] font-semibold text-teal">
+                <div className="text-[.75rem] font-semibold text-navy">
                   {t('yearsBadge')}
                   <span className="block font-normal text-text-light text-[.65rem] mt-0.5">{t('yearsBadgeSub')}</span>
                 </div>
@@ -36,11 +36,11 @@ export function AboutSection() {
 
           <ScrollReveal>
             <div>
-              <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-teal mb-4 bg-teal-pale px-4 py-1.5 rounded-full">
+              <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-navy mb-4 bg-navy-pale px-4 py-1.5 rounded-full">
                 {t('tag')}
               </span>
               <h2 id="about-heading" className="font-serif text-[1.9rem] mb-5 leading-[1.2]">
-                {t('titleText')} <em className="text-teal not-italic">{t('titleHighlight')}</em>
+                {t('titleText')} <em className="text-navy not-italic">{t('titleHighlight')}</em>
               </h2>
               <p className="text-text-mid mb-5 text-[.92rem]/[1.85]">
                 {t('p1')}
@@ -60,8 +60,8 @@ export function AboutSection() {
               <ul className="flex flex-wrap gap-3 list-none" aria-label="Professional credentials">
                 {CREDENTIALS.map((cred) => (
                   <li key={cred.label}>
-                    <span className="bg-teal-pale text-teal-dark py-2 px-4 rounded-lg text-[.72rem] font-semibold flex items-center gap-2">
-                      <Icon name={cred.icon as IconName} size={14} className="text-teal" aria-hidden="true" />
+                    <span className="bg-navy-pale text-navy-deep py-2 px-4 rounded-lg text-[.72rem] font-semibold flex items-center gap-2">
+                      <Icon name={cred.icon as IconName} size={14} className="text-navy" aria-hidden="true" />
                       {cred.label}
                     </span>
                   </li>

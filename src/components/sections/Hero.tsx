@@ -23,13 +23,13 @@ export function Hero() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-x-20 lg:gap-y-0 lg:items-center max-lg:text-center">
           {/* 1. Intro — mobile: first; desktop: top-left */}
           <div className="lg:col-start-1 lg:row-start-1">
-            <div className="inline-flex items-center gap-2.5 bg-white border border-border py-2 px-5 rounded-full text-[.73rem] max-md:text-[.68rem] font-semibold text-teal mb-7 max-md:mb-5 shadow-sm whitespace-nowrap">
-              <span className="w-1.5 h-1.5 bg-teal rounded-full shrink-0" aria-hidden="true" />
+            <div className="inline-flex items-center gap-2.5 bg-white border border-border py-2 px-5 rounded-full text-[.73rem] max-md:text-[.68rem] font-semibold text-navy mb-7 max-md:mb-5 shadow-sm whitespace-nowrap">
+              <span className="w-1.5 h-1.5 bg-navy rounded-full shrink-0" aria-hidden="true" />
               {t('badge')}
             </div>
             <h1 id="hero-heading" className="font-serif text-[clamp(2.2rem,4.5vw,3.4rem)] leading-[1.12] mb-6">
               {t('headline1')}{' '}
-              <span className="text-teal relative">
+              <span className="text-navy relative">
                 {t('headline2')}
                 <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gold/40 rounded-full" aria-hidden="true" />
               </span>
@@ -56,22 +56,22 @@ export function Hero() {
                 <p className="text-[.78rem] opacity-90 font-medium tracking-wide">{t('photoSubtitle')}</p>
               </div>
             </div>
-            <div className="absolute top-5 right-5 max-md:top-3 max-md:right-3 bg-white/95 backdrop-blur-sm rounded-2xl py-3 px-5 max-md:py-2 max-md:px-3.5 shadow-lg z-2 inline-flex items-center gap-2.5 max-md:gap-1.5 text-[.76rem] max-md:text-[.65rem] font-semibold text-teal whitespace-nowrap">
-              <IconScience size={16} className="text-teal shrink-0" aria-hidden="true" />
+            <div className="absolute top-5 right-5 max-md:top-3 max-md:right-3 bg-white/95 backdrop-blur-sm rounded-2xl py-3 px-5 max-md:py-2 max-md:px-3.5 shadow-lg z-2 inline-flex items-center gap-2.5 max-md:gap-1.5 text-[.76rem] max-md:text-[.65rem] font-semibold text-navy whitespace-nowrap">
+              <IconScience size={16} className="text-navy shrink-0" aria-hidden="true" />
               {t('certBadge')}
             </div>
             {/* Decorative accent */}
             <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-gold/10 rounded-3xl -z-1 max-lg:hidden" aria-hidden="true" />
-            <div className="absolute -top-3 -left-3 w-16 h-16 bg-teal/8 rounded-2xl -z-1 max-lg:hidden" aria-hidden="true" />
+            <div className="absolute -top-3 -left-3 w-16 h-16 bg-navy/8 rounded-2xl -z-1 max-lg:hidden" aria-hidden="true" />
           </div>
 
           {/* 3. Actions — mobile: third; desktop: bottom-left */}
           <div className="lg:col-start-1 lg:row-start-2 lg:mt-9">
             <div className="flex gap-4 flex-wrap mb-6 max-lg:justify-center max-md:flex-col max-md:items-stretch">
-              <Button variant="teal" href="/contact" className="py-4! px-9! text-[.92rem]! rounded-xl! justify-center">
+              <Button variant="navy" href="/contact" className="py-4! px-9! text-[.92rem]! rounded-xl! justify-center">
                 {t('ctaPrimary')}
               </Button>
-              <Button variant="outline-teal" href="/results" className="py-3.5! px-8! text-[.92rem]! rounded-xl! justify-center">
+              <Button variant="outline-navy" href="/results" className="py-3.5! px-8! text-[.92rem]! rounded-xl! justify-center">
                 {t('ctaSecondary')}
               </Button>
             </div>

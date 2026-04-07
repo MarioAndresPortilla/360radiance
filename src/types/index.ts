@@ -16,7 +16,7 @@ export interface Testimonial {
 
 export interface WhyCard {
   icon: string;
-  iconTheme: 'teal' | 'gold';
+  iconTheme: 'navy' | 'gold';
   title: string;
   description: string;
 }

@@ -185,7 +185,7 @@ export const TRUST_ITEMS: TrustItem[] = [
 export const WHY_CARDS: WhyCard[] = [
   {
     icon: 'medical',
-    iconTheme: 'teal',
+    iconTheme: 'navy',
     title: 'Medical-Grade Expertise',
     description: ' 25+ years of medical background with a B.S. in Biology and A.S. in Lab Sciences. Clinical precision in every consultation.',
   },
@@ -197,7 +197,7 @@ export const WHY_CARDS: WhyCard[] = [
   },
   {
     icon: 'globe',
-    iconTheme: 'teal',
+    iconTheme: 'navy',
     title: 'European-Grade Serums',
     description: 'Premium glass ampule serums from Germany, Spain, Switzerland, and Italy. Concentrated actives unavailable in stores.',
   },
@@ -209,7 +209,7 @@ export const WHY_CARDS: WhyCard[] = [
   },
   {
     icon: 'clipboard',
-    iconTheme: 'teal',
+    iconTheme: 'navy',
     title: 'Personalized Regimens',
     description: 'No two skin types are the same. Every client receives a custom treatment roadmap and take-home protocol.',
   },
@@ -365,7 +365,7 @@ export const TESTIMONIALS: Testimonial[] = [
     text: 'Within the first week, many of my inflamed cysts had reduced. This regime has my skin controlled — I would have never believed it.',
     name: 'Carla',
     condition: 'Hormonal Acne',
-    avatarColor: 'bg-teal',
+    avatarColor: 'bg-navy',
     initial: 'C',
   },
   {
@@ -379,7 +379,7 @@ export const TESTIMONIALS: Testimonial[] = [
     text: "Truly a GEM. EXTREMELY knowledgeable, professional, and AMAZING. She's giving me the radiant skin I always dreamed of.",
     name: 'Karen K.',
     condition: 'Acne Rosacea',
-    avatarColor: 'bg-teal-dark',
+    avatarColor: 'bg-navy-deep',
     initial: 'K',
   },
   {
@@ -393,7 +393,7 @@ export const TESTIMONIALS: Testimonial[] = [
     text: 'She got to the source of my acne. Within weeks — total transformation. Clear skin, scar free.',
     name: 'Vanessa P.',
     condition: 'Persistent Acne',
-    avatarColor: 'bg-teal-light',
+    avatarColor: 'bg-purple-soft',
     initial: 'V',
   },
   {

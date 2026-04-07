@@ -62,8 +62,8 @@ export function Navbar() {
                 href={link.href}
                 role="listitem"
                 className={cn(
-                  'no-underline text-[.85rem] font-medium transition-colors duration-200 hover:text-teal',
-                  pathname === link.href ? 'text-teal' : 'text-text-mid'
+                  'no-underline text-[.85rem] font-medium transition-colors duration-200 hover:text-navy',
+                  pathname === link.href ? 'text-navy' : 'text-text-mid'
                 )}
                 aria-current={pathname === link.href ? 'page' : undefined}
               >
@@ -78,7 +78,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => switchLocale('en')}
-                className={cn('px-2 py-1 rounded transition-colors cursor-pointer', locale === 'en' ? 'text-teal' : 'text-text-light hover:text-teal')}
+                className={cn('px-2 py-1 rounded transition-colors cursor-pointer', locale === 'en' ? 'text-navy' : 'text-text-light hover:text-navy')}
                 aria-current={locale === 'en' ? 'true' : undefined}
                 aria-label="English"
               >
@@ -88,7 +88,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => switchLocale('es')}
-                className={cn('px-2 py-1 rounded transition-colors cursor-pointer', locale === 'es' ? 'text-teal' : 'text-text-light hover:text-teal')}
+                className={cn('px-2 py-1 rounded transition-colors cursor-pointer', locale === 'es' ? 'text-navy' : 'text-text-light hover:text-navy')}
                 aria-current={locale === 'es' ? 'true' : undefined}
                 aria-label="Español"
               >
@@ -107,7 +107,7 @@ export function Navbar() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 bg-teal text-white rounded-lg font-semibold text-[.82rem] px-5 py-2.5 transition-all cursor-pointer hover:bg-teal-dark hover:-translate-y-px hover:shadow-md no-underline"
+              className="inline-flex items-center gap-1.5 bg-navy text-white rounded-lg font-semibold text-[.82rem] px-5 py-2.5 transition-all cursor-pointer hover:bg-navy-deep hover:-translate-y-px hover:shadow-md no-underline"
             >
               {tCommon('bookNow')}
             </Link>
@@ -146,8 +146,8 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'no-underline text-base font-medium py-3 px-4 rounded-lg hover:bg-teal-pale hover:text-teal transition-colors',
-                  pathname === link.href ? 'text-teal bg-teal-pale' : 'text-text'
+                  'no-underline text-base font-medium py-3 px-4 rounded-lg hover:bg-navy-pale hover:text-navy transition-colors',
+                  pathname === link.href ? 'text-navy bg-navy-pale' : 'text-text'
                 )}
                 aria-current={pathname === link.href ? 'page' : undefined}
               >
@@ -161,14 +161,14 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => switchLocale('en')}
-                className={cn('px-3 py-1 rounded text-[.82rem] font-semibold transition-colors', locale === 'en' ? 'bg-teal text-white' : 'text-text-mid hover:bg-teal-pale')}
+                className={cn('px-3 py-1 rounded text-[.82rem] font-semibold transition-colors', locale === 'en' ? 'bg-navy text-white' : 'text-text-mid hover:bg-navy-pale')}
               >
                 English
               </button>
               <button
                 type="button"
                 onClick={() => switchLocale('es')}
-                className={cn('px-3 py-1 rounded text-[.82rem] font-semibold transition-colors', locale === 'es' ? 'bg-teal text-white' : 'text-text-mid hover:bg-teal-pale')}
+                className={cn('px-3 py-1 rounded text-[.82rem] font-semibold transition-colors', locale === 'es' ? 'bg-navy text-white' : 'text-text-mid hover:bg-navy-pale')}
               >
                 Español
               </button>

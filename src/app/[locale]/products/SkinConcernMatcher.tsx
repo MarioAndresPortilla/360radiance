@@ -26,8 +26,8 @@ export function SkinConcernMatcher() {
             className={cn(
               'flex items-center gap-2 py-3 px-5 rounded-xl border text-[.85rem] font-medium transition-all cursor-pointer',
               selected === concern.id
-                ? 'bg-teal text-white border-teal shadow-md'
-                : 'bg-white text-text-mid border-border hover:border-teal hover:text-teal'
+                ? 'bg-navy text-white border-navy shadow-md'
+                : 'bg-white text-text-mid border-border hover:border-navy hover:text-navy'
             )}
           >
             <Icon name={concern.icon as IconName} size={18} className={selected === concern.id ? 'text-white' : ''} />
@@ -39,21 +39,21 @@ export function SkinConcernMatcher() {
       {selected && (
         <div aria-live="polite" aria-atomic="true">
           <p className="text-center text-[.88rem] text-text-mid mb-6">
-            <strong className="text-teal">{matched.length} products</strong> recommended for{' '}
+            <strong className="text-navy">{matched.length} products</strong> recommended for{' '}
             <strong>{SKIN_CONCERNS.find((c) => c.id === selected)?.label}</strong>
           </p>
           <div className="grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-md:grid-cols-1">
             {matched.map((product) => (
               <div
                 key={product.slug}
-                className="bg-white rounded-2xl p-6 border border-border hover:border-teal hover:shadow-md transition-all"
+                className="bg-white rounded-2xl p-6 border border-border hover:border-navy hover:shadow-md transition-all"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-teal bg-teal-pale py-0.5 px-2 rounded-md">
+                  <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-navy bg-navy-pale py-0.5 px-2 rounded-md">
                     {product.category}
                   </span>
                   {product.badge && (
-                    <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-gold-a11y bg-gold-pale py-0.5 px-2 rounded-md">
+                    <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-gold-a11y bg-gold-highlight py-0.5 px-2 rounded-md">
                       {product.badge}
                     </span>
                   )}
@@ -70,7 +70,7 @@ export function SkinConcernMatcher() {
           <div className="text-center mt-8">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 bg-teal text-white rounded-lg font-semibold text-[.85rem] px-6 py-3 transition-all hover:bg-teal-dark hover:-translate-y-px hover:shadow-md no-underline"
+              className="inline-flex items-center gap-1.5 bg-navy text-white rounded-lg font-semibold text-[.85rem] px-6 py-3 transition-all hover:bg-navy-deep hover:-translate-y-px hover:shadow-md no-underline"
             >
               Get a Custom Regimen for {SKIN_CONCERNS.find((c) => c.id === selected)?.label} &rarr;
             </Link>

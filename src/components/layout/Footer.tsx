@@ -70,15 +70,15 @@ export function Footer() {
                 {col.links.map((link) => (
                   <li key={link.label}>
                     {link.external ? (
-                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/40 no-underline text-[.88rem] hover:text-teal-light transition-colors">
+                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/40 no-underline text-[.88rem] hover:text-purple-soft transition-colors">
                         {link.label}
                       </a>
                     ) : link.tel ? (
-                      <a href={link.href} className="text-white/40 no-underline text-[.88rem] hover:text-teal-light transition-colors">
+                      <a href={link.href} className="text-white/40 no-underline text-[.88rem] hover:text-purple-soft transition-colors">
                         {link.label}
                       </a>
                     ) : (
-                      <Link href={link.href as '/services' | '/about' | '/results' | '/blog' | '/products' | '/contact' | '/privacy' | '/terms'} className="text-white/40 no-underline text-[.88rem] hover:text-teal-light transition-colors">
+                      <Link href={link.href as '/services' | '/about' | '/results' | '/blog' | '/products' | '/contact' | '/privacy' | '/terms'} className="text-white/40 no-underline text-[.88rem] hover:text-purple-soft transition-colors">
                         {link.label}
                       </Link>
                     )}

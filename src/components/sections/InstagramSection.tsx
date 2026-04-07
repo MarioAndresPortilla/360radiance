@@ -25,7 +25,7 @@ export function InstagramSection() {
                 href={post.postUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block relative rounded-2xl overflow-hidden aspect-square border border-border hover:border-teal transition-all hover:shadow-lg no-underline"
+                className="group block relative rounded-2xl overflow-hidden aspect-square border border-border hover:border-navy transition-all hover:shadow-lg no-underline"
                 aria-label={post.alt}
               >
                 <Image
@@ -37,7 +37,7 @@ export function InstagramSection() {
                 />
 
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-teal/0 group-hover:bg-teal/85 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 p-4">
+                <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/85 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 p-4">
                   <div className="text-white text-center">
                     <svg width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-2.5">
                       <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -58,7 +58,7 @@ export function InstagramSection() {
             href={BUSINESS.social.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 bg-transparent border-[1.5px] border-teal text-teal rounded-xl font-semibold text-[.88rem] px-7 py-3.5 transition-all hover:bg-teal hover:text-white no-underline"
+            className="inline-flex items-center gap-2.5 bg-transparent border-[1.5px] border-navy text-navy rounded-xl font-semibold text-[.88rem] px-7 py-3.5 transition-all hover:bg-navy hover:text-white no-underline"
           >
             <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" />

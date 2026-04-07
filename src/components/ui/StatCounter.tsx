@@ -41,7 +41,7 @@ export function StatCounter({ target, suffix, label }: Props) {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="font-serif text-[2rem] text-teal">
+      <div className="font-serif text-[2rem] text-navy">
         {count}{suffix}
       </div>
       <div className="text-[.65rem] text-text-light font-semibold uppercase tracking-[.8px]">
