@@ -4,6 +4,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { BUSINESS } from '@/lib/constants';
+import { getGoogleReviews } from '@/lib/google-reviews';
 import { SITE_URL, buildPageMetadata } from '@/lib/seo';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
@@ -153,7 +154,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-function buildJsonLd(locale: string) {
+type AggregateRating = { ratingValue: string; reviewCount: string };
+
+function buildJsonLd(locale: string, aggregateRating: AggregateRating) {
   const inLanguage = locale === 'es' ? 'es-US' : 'en-US';
   const description = locale === 'es'
     ? 'Clínica de cuidado paramédico de la piel especializada en tratamiento del acné, microdermoabrasión, HydraFacial, microneedling, peelings químicos, y cuidado botánico de la piel.'
@@ -208,9 +211,9 @@ function buildJsonLd(locale: string) {
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '5.0',
+      ratingValue: aggregateRating.ratingValue,
       bestRating: '5',
-      reviewCount: '50',
+      reviewCount: aggregateRating.reviewCount,
     },
   };
 }
@@ -237,7 +240,15 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const m = META[locale as keyof typeof META] ?? META.en;
-  const businessJsonLd = buildJsonLd(locale);
+  // Pull live (or snapshotted) Google review numbers for the AggregateRating
+  // schema. Falls back to our hand-tracked baseline (5.0 / 50 reviews) when no
+  // live data is available, so the JSON-LD is always populated.
+  const reviews = await getGoogleReviews();
+  const aggregateRating: AggregateRating = {
+    ratingValue: reviews.rating != null ? reviews.rating.toFixed(1) : '5.0',
+    reviewCount: reviews.totalReviews != null ? String(reviews.totalReviews) : '50',
+  };
+  const businessJsonLd = buildJsonLd(locale, aggregateRating);
 
   return (
     <html lang={locale} className={`${dmSerif.variable} ${jakarta.variable}`}>

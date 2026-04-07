@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "sync:reviews": "node scripts/sync-google-reviews.mjs"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
