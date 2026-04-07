@@ -105,8 +105,12 @@ export const CAL = {
     full: { slug: '30min', minutes: 30, link: `${CAL_USERNAME}/30min` },
   },
   // Default link for single-button surfaces (FloatingButtons FAB).
+  // Points at the FREE 15-min quick chat to keep the entry-point friction as
+  // low as possible — the FAB is the click of last resort, so we don't want a
+  // $35 paywall in front of it. Visitors who want the deeper 30-min consult
+  // can still find it on /contact and the home BookingSection.
   get defaultLink() {
-    return this.events.full.link;
+    return this.events.quick.link;
   },
 } as const;
 
@@ -856,6 +860,20 @@ export interface Product {
   pairsWith: string[];
   badge?: string;
   origin?: string;
+  // Extended fields powering the rich product modal + bundle pricing.
+  // `accent` selects a brand-approved gradient for the modal hero so each
+  // category gets a distinct, recognizable look without needing per-product
+  // photography we don't have. `image` reuses the closest matching shot from
+  // the curated /images/instagram/ set.
+  price: number;
+  size: string;
+  description: string;
+  benefits: string[];
+  idealFor: string[];
+  routineStep: number; // 1=cleanse, 2=tone, 3=treat, 4=moisturize, 5=specialty
+  image: string;
+  imageAlt: string;
+  accent: 'navy' | 'purple' | 'gold' | 'sage' | 'rose';
 }
 
 export const PRODUCT_CATEGORIES = [
@@ -882,6 +900,21 @@ export const PRODUCTS: Product[] = [
     howToUse: 'Apply to damp skin morning and evening. Massage gently for 60 seconds, focusing on the T-zone. Rinse with lukewarm water.',
     pairsWith: ['Radiance Clarifying Toner', 'Acne Control Serum'],
     badge: 'Best Seller',
+    price: 42,
+    size: '5 fl oz · 150 ml',
+    description: 'A pH-balanced, sulfate-free gel that lifts pore-clogging debris and excess oil while leaving your barrier intact. Built around clinical-grade botanicals, it cleans the way your skin actually wants to be cleaned — thoroughly, but never harsh.',
+    benefits: [
+      'Removes makeup, sunscreen, and pollution in one step',
+      'Won\'t strip the acid mantle or trigger rebound oil',
+      'Calms post-breakout inflammation as it cleanses',
+      'Safe for daily use morning and evening',
+      'Fragrance-free, paraben-free, sulfate-free',
+    ],
+    idealFor: ['Acne-prone', 'Combination skin', 'Sensitive skin', 'Daily use'],
+    routineStep: 1,
+    image: '/images/instagram/product-line-natural.jpg',
+    imageAlt: 'Radiance Purifying Gel Cleanser — botanical sulfate-free formula',
+    accent: 'sage',
   },
   {
     slug: 'radiance-clarifying-toner',
@@ -896,6 +929,21 @@ export const PRODUCTS: Product[] = [
     ],
     howToUse: 'After cleansing, apply to a cotton pad and sweep across face and neck. Let absorb for 30 seconds before applying serum.',
     pairsWith: ['Purifying Gel Cleanser', 'Vitamin C Brightening Serum'],
+    price: 38,
+    size: '5 fl oz · 150 ml',
+    description: 'The bridge between cleanse and treat. This alcohol-free toner restores your skin\'s natural pH after cleansing, sweeps away the last traces of grime, and primes your skin to absorb up to 60% more of your serums.',
+    benefits: [
+      'Rebalances pH after cleansing in seconds',
+      'Visibly refines pore appearance over 4 weeks',
+      'Boosts serum absorption with hydration prep',
+      'Calms post-cleanse tightness instantly',
+      'Alcohol-free — never drying',
+    ],
+    idealFor: ['Enlarged pores', 'Uneven tone', 'Oily T-zone', 'All skin types'],
+    routineStep: 2,
+    image: '/images/instagram/radiance-serums-hydrangea.jpg',
+    imageAlt: 'Radiance Clarifying Botanical Toner with witch hazel and niacinamide',
+    accent: 'sage',
   },
   {
     slug: 'acne-control-serum',
@@ -911,6 +959,21 @@ export const PRODUCTS: Product[] = [
     howToUse: 'Apply 3-4 drops to clean skin in the evening. Focus on active breakout areas. Follow with moisturizer. Introduce gradually — every other night for the first week.',
     pairsWith: ['Purifying Gel Cleanser', 'Hydra-Repair Moisturizer'],
     badge: 'Face Reality Protocol',
+    price: 68,
+    size: '1 fl oz · 30 ml',
+    description: 'The serum we hand every Face Reality program client on day one. Salicylic acid dissolves the oil plugging your pores, mandelic acid fades the marks left behind, and zinc PCA tells your skin to stop overproducing sebum in the first place.',
+    benefits: [
+      'Visible reduction in active breakouts within 14 days',
+      'Fades post-acne dark marks (PIH) over 8 weeks',
+      'Regulates oil without overdrying',
+      'Compatible with the Face Reality protocol',
+      'Won\'t clog pores or trigger purging beyond week 2',
+    ],
+    idealFor: ['Active acne', 'Hormonal breakouts', 'Cystic acne', 'Oily skin', 'Post-acne marks'],
+    routineStep: 3,
+    image: '/images/instagram/treatment-non-inflamed-acne.jpg',
+    imageAlt: 'Acne Control Serum with salicylic acid, mandelic acid, and zinc PCA',
+    accent: 'navy',
   },
   {
     slug: 'vitamin-c-brightening-serum',
@@ -927,6 +990,21 @@ export const PRODUCTS: Product[] = [
     pairsWith: ['Clarifying Botanical Toner', 'Hydra-Repair Moisturizer'],
     badge: 'European Grade',
     origin: 'Germany',
+    price: 95,
+    size: '7 × 2 ml glass ampules',
+    description: 'Sealed in single-dose German glass ampules so every drop is as potent as the day it was formulated — no oxidation, no compromise. The Skoch ferulic + L-ascorbic complex is up to 4× more effective than the same actives in a bottled serum.',
+    benefits: [
+      'Visibly brightens dull skin in 7 days',
+      'Fades hyperpigmentation, melasma, and sun spots',
+      'Stimulates collagen — softens fine lines over 8 weeks',
+      'Photoprotective: amplifies your SPF',
+      'Air-sealed potency in every dose',
+    ],
+    idealFor: ['Dark spots', 'Sun damage', 'Dullness', 'Early signs of aging', 'Uneven tone'],
+    routineStep: 3,
+    image: '/images/instagram/radiance-serums-five.jpg',
+    imageAlt: 'Vitamin C Brightening Serum — German glass ampules with L-ascorbic acid',
+    accent: 'gold',
   },
   {
     slug: 'hyaluronic-hydration-serum',
@@ -942,6 +1020,21 @@ export const PRODUCTS: Product[] = [
     howToUse: 'Apply 4-5 drops to damp skin morning and evening. Pat gently — do not rub. Layer under moisturizer for best results.',
     pairsWith: ['Vitamin C Brightening Serum', 'Botanical Repair Cream'],
     origin: 'Switzerland',
+    price: 78,
+    size: '1 fl oz · 30 ml',
+    description: 'Three molecular weights of hyaluronic acid — each engineered to reach a different layer of your skin. The result: surface plumping, mid-layer hydration, and deep-tissue water retention from a single bottle. Lab-formulated in Switzerland.',
+    benefits: [
+      'Holds 1,000× its weight in water',
+      'Plumps fine lines on contact',
+      'Restores barrier strength in 2 weeks',
+      'Layers under any moisturizer',
+      'Safe for the most reactive skin',
+    ],
+    idealFor: ['Dehydration', 'Tight skin', 'Fine lines', 'Sensitive skin', 'Post-treatment recovery'],
+    routineStep: 3,
+    image: '/images/instagram/treatment-tranelux-serum.jpg',
+    imageAlt: 'Hyaluronic Hydration Serum — Swiss-formulated triple-weight HA',
+    accent: 'navy',
   },
   {
     slug: 'rosacea-calm-treatment',
@@ -956,6 +1049,21 @@ export const PRODUCTS: Product[] = [
     ],
     howToUse: 'Apply a thin layer to affected areas twice daily after cleansing. Can be used under moisturizer. Avoid direct sun exposure.',
     pairsWith: ['Purifying Gel Cleanser', 'Botanical Repair Cream'],
+    price: 72,
+    size: '1 fl oz · 30 ml',
+    description: 'A clinical-strength rosacea treatment built around 10% azelaic acid — the same hero ingredient dermatologists prescribe — softened with cica and licorice so you can actually use it daily without retreating from a flare-up.',
+    benefits: [
+      'Reduces visible redness in 4 weeks',
+      'Calms rosacea papules and pustules',
+      'Strengthens capillary walls long-term',
+      'Anti-inflammatory and brightening',
+      'Gentle enough for twice-daily use',
+    ],
+    idealFor: ['Rosacea', 'Persistent redness', 'Reactive skin', 'Couperose', 'Post-laser flush'],
+    routineStep: 3,
+    image: '/images/instagram/treatment-mesotherapy-serums.jpg',
+    imageAlt: 'Rosacea Calm Treatment with azelaic acid and centella asiatica',
+    accent: 'rose',
   },
   {
     slug: 'retinol-renewal-treatment',
@@ -971,6 +1079,21 @@ export const PRODUCTS: Product[] = [
     howToUse: 'Apply a pea-sized amount to clean, dry skin every other evening. Build to nightly use over 4 weeks. Always use SPF the following morning.',
     pairsWith: ['Hyaluronic Hydration Serum', 'Hydra-Repair Moisturizer'],
     origin: 'Spain',
+    price: 88,
+    size: '1 fl oz · 30 ml',
+    description: 'The most-requested retinol in the clinic. Encapsulated 0.5% retinol releases over 8 hours instead of all at once, paired with bakuchiol and squalane so you get full anti-aging results without the redness, peeling, or downtime.',
+    benefits: [
+      'Visibly smooths fine lines and wrinkles',
+      'Refines texture and minimizes pores',
+      'Fades sun damage and hyperpigmentation',
+      'Builds collagen — firmer skin over 12 weeks',
+      'No retinol burn, peeling, or downtime',
+    ],
+    idealFor: ['Fine lines', 'Loss of firmness', 'Texture concerns', 'Enlarged pores', 'Sun damage'],
+    routineStep: 3,
+    image: '/images/instagram/radiance-glycolic-trio.jpg',
+    imageAlt: 'Retinol Renewal Treatment — encapsulated retinol with bakuchiol',
+    accent: 'purple',
   },
   {
     slug: 'hydra-repair-moisturizer',
@@ -986,6 +1109,21 @@ export const PRODUCTS: Product[] = [
     howToUse: 'Apply generously to face and neck morning and evening as the final step in your routine. Can be used over serums and treatments.',
     pairsWith: ['Acne Control Serum', 'Hyaluronic Hydration Serum'],
     badge: 'Best Seller',
+    price: 58,
+    size: '1.7 fl oz · 50 ml',
+    description: 'The everyday moisturizer Marta recommends to almost every client — barrier-first, weightless, and engineered to lock in everything you applied underneath without ever feeling tacky or heavy.',
+    benefits: [
+      'Restores ceramide barrier in 14 days',
+      'Locks in serums for 8+ hours',
+      'Non-comedogenic — safe for acne-prone',
+      'Doubles as a soothing post-treatment cream',
+      'Layers under SPF and makeup invisibly',
+    ],
+    idealFor: ['Daily wear', 'Acne-prone', 'Sensitive skin', 'After actives', 'All ages'],
+    routineStep: 4,
+    image: '/images/instagram/product-line-holiday.jpg',
+    imageAlt: 'Hydra-Repair Moisturizer with ceramide complex and jojoba oil',
+    accent: 'sage',
   },
   {
     slug: 'botanical-repair-cream',
@@ -1000,6 +1138,21 @@ export const PRODUCTS: Product[] = [
     ],
     howToUse: 'Apply a generous layer to clean skin in the evening. Ideal as a sleeping mask after treatments. Use nightly or as needed for recovery.',
     pairsWith: ['Rosacea Calm Treatment', 'Hyaluronic Hydration Serum'],
+    price: 72,
+    size: '1.7 fl oz · 50 ml',
+    description: 'A luxurious overnight cream that repairs while you sleep. Calendula speeds tissue recovery, rosehip oil reduces scarring, and shea butter pulls moisture deep into the dermis. Wake up looking like you just left the treatment room.',
+    benefits: [
+      'Accelerates post-treatment recovery',
+      'Reduces scarring and dark marks over time',
+      'Deeply hydrates without clogging pores',
+      'Rebuilds elasticity in dehydrated skin',
+      'Works as a sleeping mask once a week',
+    ],
+    idealFor: ['Dry skin', 'Mature skin', 'Post-treatment', 'Reactive skin', 'Overnight repair'],
+    routineStep: 4,
+    image: '/images/instagram/glow-with-radiance-line.jpg',
+    imageAlt: 'Botanical Repair Cream with calendula, shea butter, and rosehip oil',
+    accent: 'gold',
   },
   {
     slug: 'microderm-polish',
@@ -1015,6 +1168,121 @@ export const PRODUCTS: Product[] = [
     howToUse: 'Use 1-2 times per week on damp skin. Massage in small circles for 2 minutes, avoiding the eye area. Rinse thoroughly.',
     pairsWith: ['Clarifying Botanical Toner', 'Vitamin C Brightening Serum'],
     badge: 'Professional Grade',
+    price: 52,
+    size: '3.4 fl oz · 100 ml',
+    description: 'Bring the in-clinic microdermabrasion result home, once a week. Same medical-grade aluminum oxide crystals we use in the treatment room, buffered by papaya enzyme so you get clinical-level resurfacing without the harsh edges.',
+    benefits: [
+      'Reveals smoother, brighter skin in 1 use',
+      'Stimulates collagen — like a mini in-office treatment',
+      'Refines pores and unclogs blackheads',
+      'Boosts the absorption of every product after',
+      'Use 1–2× per week as maintenance',
+    ],
+    idealFor: ['Dull skin', 'Texture concerns', 'Clogged pores', 'Pre-event glow', 'Maintenance'],
+    routineStep: 5,
+    image: '/images/instagram/treatment-ultrasonic-extractions.jpg',
+    imageAlt: 'Microderm Polish with aluminum oxide crystals and papaya enzyme',
+    accent: 'purple',
+  },
+];
+
+/**
+ * Curated bundle deals that show up on the products page beneath the catalog.
+ * Each bundle pulls real products from PRODUCTS by slug, then defines its own
+ * `bundlePrice` (the discounted total). Original price is computed at render
+ * time so it always stays consistent with each product's individual `price`.
+ *
+ * Pricing rule of thumb: ~15–20% off the sum of MSRPs. Don't go cheaper without
+ * checking margin with Marta — clinic product margin already accounts for the
+ * fact that these formulas are dispensed in-clinic, not retail.
+ */
+export interface ProductBundle {
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  productSlugs: string[];
+  bundlePrice: number;
+  badge?: string;
+  highlight?: boolean;
+  forConcern: string;
+  accent: 'navy' | 'purple' | 'gold' | 'sage' | 'rose';
+  image: string;
+}
+
+export const PRODUCT_BUNDLES: ProductBundle[] = [
+  {
+    slug: 'clear-skin-starter',
+    name: 'The Clear Skin Starter',
+    tagline: 'The exact 4-step routine Marta builds for new acne clients.',
+    description:
+      'Everything you need to break the breakout cycle — the cleanser that won\'t strip, the toner that primes, the serum dermatologists wish they could prescribe, and the moisturizer that lets you actually use the actives.',
+    productSlugs: [
+      'radiance-purifying-cleanser',
+      'radiance-clarifying-toner',
+      'acne-control-serum',
+      'hydra-repair-moisturizer',
+    ],
+    bundlePrice: 179,
+    badge: 'Save $27',
+    forConcern: 'Acne & Breakouts',
+    accent: 'navy',
+    image: '/images/instagram/before-after-acne-1.jpg',
+  },
+  {
+    slug: 'brightening-ritual',
+    name: 'The Brightening Ritual',
+    tagline: 'Even tone. Visible glow. The European-grade morning routine.',
+    description:
+      'Built around the German vitamin C ampules. Pair them with our Swiss-formulated hyaluronic and the daily moisturizer your skin already loves, and dark spots start fading in two weeks.',
+    productSlugs: [
+      'radiance-clarifying-toner',
+      'vitamin-c-brightening-serum',
+      'hyaluronic-hydration-serum',
+      'hydra-repair-moisturizer',
+    ],
+    bundlePrice: 229,
+    badge: 'Save $40',
+    highlight: true,
+    forConcern: 'Dark Spots & Dullness',
+    accent: 'gold',
+    image: '/images/instagram/before-after-pigmentation.jpg',
+  },
+  {
+    slug: 'anti-aging-system',
+    name: 'The Anti-Aging System',
+    tagline: 'Encapsulated retinol + collagen-building actives. No downtime.',
+    description:
+      'A complete day-and-night anti-aging protocol. Retinol stimulates collagen overnight without burning your skin, vitamin C protects you all day, and the rest of the system makes sure neither leaves you irritated.',
+    productSlugs: [
+      'vitamin-c-brightening-serum',
+      'retinol-renewal-treatment',
+      'hyaluronic-hydration-serum',
+      'botanical-repair-cream',
+    ],
+    bundlePrice: 279,
+    badge: 'Save $54',
+    forConcern: 'Fine Lines & Firmness',
+    accent: 'purple',
+    image: '/images/instagram/before-after-aging.jpg',
+  },
+  {
+    slug: 'sensitive-calm-set',
+    name: 'The Sensitive Skin Calm Set',
+    tagline: 'For rosacea, redness, and skin that overreacts to everything.',
+    description:
+      'A full reactive-skin protocol. The cleanser respects your barrier, the azelaic acid treatment quiets visible redness, and the botanical repair cream rebuilds you overnight.',
+    productSlugs: [
+      'radiance-purifying-cleanser',
+      'rosacea-calm-treatment',
+      'hyaluronic-hydration-serum',
+      'botanical-repair-cream',
+    ],
+    bundlePrice: 199,
+    badge: 'Save $35',
+    forConcern: 'Rosacea & Sensitivity',
+    accent: 'rose',
+    image: '/images/instagram/before-after-rosacea-1.jpg',
   },
 ];
 

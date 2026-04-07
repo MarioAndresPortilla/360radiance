@@ -1,18 +1,70 @@
 'use client';
 
-import { useState } from 'react';
-import { PRODUCTS, PRODUCT_CATEGORIES } from '@/lib/constants';
+import { useCallback, useMemo, useState } from 'react';
+import Image from 'next/image';
+import { PRODUCTS, PRODUCT_CATEGORIES, type Product } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { IconCheck } from '@/components/icons/Icons';
 import { cn } from '@/lib/utils';
+import { track } from '@/lib/analytics';
+import { ProductModal } from './ProductModal';
 
 export function ProductShowcase() {
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [expandedSlug, setExpandedSlug] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
-  const filtered = activeCategory === 'all'
-    ? PRODUCTS
-    : PRODUCTS.filter((p) => p.category === activeCategory);
+  // Quick slug→product lookup. Memoized so the modal hot-swap (clicking a
+  // "pairs with" product inside the modal) doesn't recompute on every render.
+  const bySlug = useMemo(() => {
+    return PRODUCTS.reduce<Record<string, Product>>((acc, p) => {
+      acc[p.slug] = p;
+      return acc;
+    }, {});
+  }, []);
+
+  const filtered = useMemo(
+    () => (activeCategory === 'all' ? PRODUCTS : PRODUCTS.filter((p) => p.category === activeCategory)),
+    [activeCategory]
+  );
+
+  const activeProduct = activeSlug ? bySlug[activeSlug] ?? null : null;
+
+  const handleFilterClick = useCallback((id: string) => {
+    setActiveCategory(id);
+    track('product_filter_change', { category: id, source: 'catalog_grid' });
+  }, []);
+
+  const handleOpenModal = useCallback((product: Product, position: number) => {
+    setActiveSlug(product.slug);
+    track('product_modal_open', {
+      product_slug: product.slug,
+      product_name: product.name,
+      product_category: product.category,
+      product_price: product.price,
+      position,
+      source: 'catalog_grid',
+    });
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    if (activeSlug) {
+      track('product_modal_close', { product_slug: activeSlug, source: 'catalog_grid' });
+    }
+    setActiveSlug(null);
+  }, [activeSlug]);
+
+  const handleSelectPair = useCallback((slug: string) => {
+    setActiveSlug(slug);
+    const next = bySlug[slug];
+    if (next) {
+      track('product_modal_open', {
+        product_slug: next.slug,
+        product_name: next.name,
+        product_category: next.category,
+        product_price: next.price,
+        source: 'catalog_grid_pair',
+      });
+    }
+  }, [bySlug]);
 
   return (
     <div>
@@ -24,7 +76,7 @@ export function ProductShowcase() {
             type="button"
             role="tab"
             aria-selected={activeCategory === cat.id}
-            onClick={() => { setActiveCategory(cat.id); setExpandedSlug(null); }}
+            onClick={() => handleFilterClick(cat.id)}
             className={cn(
               'py-2 px-5 rounded-lg text-[.82rem] font-semibold transition-all cursor-pointer border',
               activeCategory === cat.id
@@ -38,102 +90,88 @@ export function ProductShowcase() {
       </div>
 
       {/* Product grid */}
-      <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1" role="tabpanel">
-        {filtered.map((product) => {
-          const isExpanded = expandedSlug === product.slug;
-          return (
-            <ScrollReveal key={product.slug}>
-              <article className={cn(
-                'bg-white rounded-2xl border transition-all duration-300',
-                isExpanded ? 'border-navy shadow-md' : 'border-border hover:border-border-hover hover:shadow-sm'
-              )}>
-                {/* Card header */}
-                <div className="p-7">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex gap-2">
-                      <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-navy bg-navy-pale py-0.5 px-2 rounded-md">
-                        {product.category}
-                      </span>
-                      {product.origin && (
-                        <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-gold-a11y bg-gold-highlight py-0.5 px-2 rounded-md">
-                          {product.origin}
-                        </span>
-                      )}
-                    </div>
+      <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1" role="tabpanel">
+        {filtered.map((product, index) => (
+          <ScrollReveal key={product.slug} delay={(index % 3) * 60}>
+            <article
+              className={cn(
+                'group bg-white rounded-2xl border border-border overflow-hidden transition-all duration-300 h-full',
+                'hover:border-navy/40 hover:shadow-lg hover:-translate-y-1'
+              )}
+            >
+              <button
+                type="button"
+                onClick={() => handleOpenModal(product, index)}
+                className="block w-full text-left p-0 bg-transparent border-0 cursor-pointer"
+                aria-label={`View details for ${product.name}`}
+              >
+                {/* Image hero */}
+                <div className="relative aspect-[5/4] bg-cream overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.imageAlt}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true" />
+
+                  {/* Top badges */}
+                  <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2">
+                    <span className="text-[.58rem] font-bold uppercase tracking-[1px] text-white/95 bg-white/15 backdrop-blur px-2.5 py-1 rounded-full border border-white/25">
+                      {product.category}
+                    </span>
                     {product.badge && (
-                      <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-navy bg-gold py-0.5 px-2.5 rounded-full">
+                      <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-navy bg-gold py-1 px-2.5 rounded-full shadow-md">
                         {product.badge}
                       </span>
                     )}
                   </div>
+                </div>
 
-                  <h3 className="font-serif text-[1.2rem] mb-1">{product.name}</h3>
-                  <p className="text-navy text-[.85rem] font-medium mb-3">{product.tagline}</p>
+                {/* Card body */}
+                <div className="p-5">
+                  <h3 className="font-serif text-[1.1rem] mb-1 leading-tight">{product.name}</h3>
+                  <p className="text-text-mid text-[.78rem] leading-[1.5] mb-3 line-clamp-2">{product.tagline}</p>
 
-                  {/* Key ingredients preview */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {product.keyIngredients.map((ing) => (
-                      <span key={ing.name} className="text-[.68rem] font-semibold text-text-mid bg-cream py-1 px-2.5 rounded-md">
-                        {ing.name}
+                  <div className="flex items-baseline justify-between mb-3">
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-serif text-[1.2rem] text-navy">${product.price}</span>
+                      <span className="text-[.7rem] text-text-light">{product.size.split('·')[0].trim()}</span>
+                    </div>
+                    {product.origin && (
+                      <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-gold-a11y bg-gold-highlight py-1 px-2 rounded-md">
+                        {product.origin}
                       </span>
-                    ))}
+                    )}
                   </div>
 
                   {/* Concern tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {product.concerns.map((c) => (
-                      <span key={c} className="text-[.6rem] uppercase tracking-[.5px] font-bold text-navy-deep bg-navy-pale py-0.5 px-2 rounded-md">
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {product.concerns.slice(0, 3).map((c) => (
+                      <span key={c} className="text-[.58rem] uppercase tracking-[.5px] font-bold text-navy-deep bg-navy-pale py-0.5 px-2 rounded-md">
                         {c}
                       </span>
                     ))}
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setExpandedSlug(isExpanded ? null : product.slug)}
-                    className="text-navy text-[.82rem] font-semibold bg-transparent border-none cursor-pointer hover:underline p-0"
-                    aria-expanded={isExpanded}
-                  >
-                    {isExpanded ? 'Show less' : 'View ingredient science & usage'} &darr;
-                  </button>
+                  <span className="inline-flex items-center gap-1 text-navy text-[.78rem] font-semibold group-hover:gap-2 transition-all">
+                    View product details
+                    <span aria-hidden="true">&rarr;</span>
+                  </span>
                 </div>
-
-                {/* Expanded details */}
-                {isExpanded && (
-                  <div className="border-t border-border px-7 py-6 bg-cream/50 rounded-b-2xl">
-                    <h4 className="font-serif text-[.95rem] mb-4">Ingredient Science</h4>
-                    <div className="flex flex-col gap-3 mb-6">
-                      {product.keyIngredients.map((ing) => (
-                        <div key={ing.name} className="flex items-start gap-2.5">
-                          <span className="w-5 h-5 rounded-md bg-navy-pale flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
-                            <IconCheck size={12} className="text-navy" />
-                          </span>
-                          <div>
-                            <strong className="text-[.82rem] text-text">{ing.name}</strong>
-                            <p className="text-[.78rem] text-text-mid leading-[1.6]">{ing.benefit}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <h4 className="font-serif text-[.95rem] mb-2">How to Use</h4>
-                    <p className="text-[.82rem] text-text-mid leading-[1.7] mb-5">{product.howToUse}</p>
-
-                    <h4 className="font-serif text-[.95rem] mb-2">Pairs Best With</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {product.pairsWith.map((p) => (
-                        <span key={p} className="text-[.72rem] font-semibold text-gold-a11y bg-gold-highlight py-1.5 px-3 rounded-lg">
-                          {p}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </article>
-            </ScrollReveal>
-          );
-        })}
+              </button>
+            </article>
+          </ScrollReveal>
+        ))}
       </div>
+
+      <ProductModal
+        product={activeProduct}
+        source="catalog_grid"
+        onClose={handleCloseModal}
+        onSelectPair={handleSelectPair}
+      />
     </div>
   );
 }

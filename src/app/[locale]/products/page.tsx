@@ -10,6 +10,7 @@ import { PRODUCT_FEATURES } from '@/lib/constants';
 import { buildPageMetadata } from '@/lib/seo';
 import { ProductShowcase } from './ProductShowcase';
 import { SkinConcernMatcher } from './SkinConcernMatcher';
+import { PackageDeals } from './PackageDeals';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -78,6 +79,26 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
             </div>
           </ScrollReveal>
           <ProductShowcase />
+        </div>
+      </section>
+
+      {/* Curated bundles — package deals */}
+      <section className="py-20 max-md:py-14 bg-cream/40 border-y border-border" aria-labelledby="bundles-heading">
+        <div className="container-site">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-navy mb-3 bg-navy-pale px-3 py-1 rounded-full">
+                Save more · Better results
+              </span>
+              <h2 id="bundles-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">
+                Curated Bundles
+              </h2>
+              <p className="text-text-mid max-w-150 mx-auto text-[.95rem] leading-[1.7]">
+                Pre-built routines hand-selected by Marta — every product chosen to amplify the next. Save up to 19% versus buying individually.
+              </p>
+            </div>
+          </ScrollReveal>
+          <PackageDeals />
         </div>
       </section>
 
