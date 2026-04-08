@@ -12,6 +12,7 @@ import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { InstagramSection } from '@/components/sections/InstagramSection';
 import { ProductsSection } from '@/components/sections/ProductsSection';
 import { BookingSection } from '@/components/sections/BookingSection';
+import { NewsletterSection } from '@/components/sections/NewsletterSection';
 import { HoursSection } from '@/components/sections/HoursSection';
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
@@ -31,6 +32,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <InstagramSection />
       <ProductsSection />
       <BookingSection />
+      <NewsletterSection />
       <HoursSection />
     </PageShell>
   );

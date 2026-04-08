@@ -2,11 +2,23 @@
 
 import { useCallback, useMemo, useState } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { PRODUCTS, PRODUCT_CATEGORIES, type Product } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { cn } from '@/lib/utils';
 import { track } from '@/lib/analytics';
-import { ProductModal } from './ProductModal';
+
+// Dynamic import + conditional render so the ProductModal chunk (Cal embed,
+// focus trap, lightbox state — ~30KB minified) stays out of the initial
+// /products bundle. The chunk only downloads on first click. ssr:false because
+// the modal uses useId/useRef/document focus and has nothing to render server-
+// side anyway. The conditional `{activeProduct && ...}` below is what actually
+// defers the mount until interaction; without it, next/dynamic still mounts
+// the component on first render (rendering null) and pulls the chunk anyway.
+const ProductModal = dynamic(
+  () => import('./ProductModal').then((m) => m.ProductModal),
+  { ssr: false },
+);
 
 export function ProductShowcase() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -166,12 +178,14 @@ export function ProductShowcase() {
         ))}
       </div>
 
-      <ProductModal
-        product={activeProduct}
-        source="catalog_grid"
-        onClose={handleCloseModal}
-        onSelectPair={handleSelectPair}
-      />
+      {activeProduct && (
+        <ProductModal
+          product={activeProduct}
+          source="catalog_grid"
+          onClose={handleCloseModal}
+          onSelectPair={handleSelectPair}
+        />
+      )}
     </div>
   );
 }

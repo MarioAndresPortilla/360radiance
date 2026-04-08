@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { BUSINESS } from '@/lib/constants';
 import { Button } from '@/components/ui/Button';
-import { IconWhatsApp, IconScience } from '@/components/icons/Icons';
+import { IconWhatsApp, IconScience, IconStar } from '@/components/icons/Icons';
 import { HeroStats } from './HeroStats';
 
 export function Hero() {
@@ -37,6 +37,31 @@ export function Hero() {
             <p className="text-[1.05rem] text-text-mid max-w-115 leading-[1.85] max-lg:mx-auto">
               {t('description')}
             </p>
+
+            {/* Above-the-fold social proof. A single short, punchy review
+                placed between the description and the CTA buttons. This is
+                the highest-impact spot for social proof — visitors see it
+                BEFORE they decide to click anything. We deliberately pick
+                the tightest, most outcome-focused quote in TESTIMONIALS
+                ("After 2 weeks — 50% better") so it reads as a result
+                claim, not just praise. Stars are decorative; the rating
+                is implied by the 5 filled icons. */}
+            <figure className="mt-7 max-w-115 max-lg:mx-auto">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="flex gap-0.5" aria-label={t('reviewStarsLabel')}>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <IconStar key={i} size={14} className="text-gold" />
+                  ))}
+                </div>
+                <span className="text-[.72rem] font-bold uppercase tracking-[1px] text-navy">{t('reviewBadge')}</span>
+              </div>
+              <blockquote className="text-[.92rem] text-text leading-[1.65] italic">
+                &ldquo;{t('reviewQuote')}&rdquo;
+              </blockquote>
+              <figcaption className="text-[.72rem] text-text-light mt-1.5 not-italic">
+                — {t('reviewAttribution')}
+              </figcaption>
+            </figure>
           </div>
 
           {/* 2. Image — mobile: second; desktop: right column spanning both rows */}

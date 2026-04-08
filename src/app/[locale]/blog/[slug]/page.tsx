@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { BLOG_POSTS } from '@/lib/constants';
-import { buildPageMetadata } from '@/lib/seo';
+import { buildPageMetadata, SITE_URL } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 
@@ -57,8 +57,48 @@ export default async function BlogArticlePage({ params }: Props) {
 
   const related = BLOG_POSTS.filter((p) => p.category === post.category && p.slug !== post.slug).slice(0, 2);
 
+  // schema.org Article markup. Required by Google for rich-result eligibility
+  // (Article carousel, top stories, Discover). The author/publisher pair is
+  // required by Google's structured-data validator. Image must be a fully
+  // qualified URL — relative paths fail validation. We point at the rasterized
+  // .jpg (not the .svg used for the in-article hero) because Google's image
+  // validator doesn't accept SVG for Article schema. Article body inferred
+  // from `articleBody` is optional but boosts NLP understanding for E-E-A-T.
+  const articleUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/blog/${post.slug}`;
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    image: [`${SITE_URL}/images/blog/${post.slug}.jpg`],
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      '@type': 'Person',
+      name: 'Marta Nazzar',
+      url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/about`,
+      jobTitle: locale === 'es' ? 'Esteticista Paramédica Licenciada' : 'Licensed Paramedical Aesthetician',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: '360 Radiance',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/images/360-radiance-logo.png`,
+      },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+    inLanguage: locale === 'es' ? 'es-US' : 'en-US',
+    articleSection: post.category,
+    keywords: post.tags.join(', '),
+  };
+
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Header */}
       <section className="bg-white py-16 max-md:py-10">
         <div className="container-site">

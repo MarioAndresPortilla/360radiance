@@ -13,7 +13,7 @@ export function ProductsSection() {
           <ScrollReveal>
             <div className="rounded-2xl aspect-4/3 relative overflow-hidden shadow-md border border-border">
               <Image
-                src="/images/instagram/glow-with-radiance-line.jpg"
+                src="/images/instagram/glow-with-radiance-line.webp"
                 alt="The Radiance Skin Care Line — botanical serums and clinical formulas created by Marta Nazzar"
                 fill
                 className="object-cover"

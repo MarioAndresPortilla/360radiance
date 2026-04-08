@@ -1,20 +1,33 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
-import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
+import { Link, usePathname } from '@/i18n/navigation';
 import Image from 'next/image';
 import { BUSINESS } from '@/lib/constants';
-import { IconPhone, IconWhatsApp } from '@/components/icons/Icons';
+import { IconPhone } from '@/components/icons/Icons';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { MobileNav } from './MobileNav';
 import { cn } from '@/lib/utils';
 
-const NAV_HREFS = ['/services', '/products', '/results', '/about', '/blog', '/contact'] as const;
-
+/*
+ * Top-level site header.
+ *
+ * Owns just the desktop nav layout, the action cluster (locale, phone, Book
+ * Now, hamburger), and the open/close state of the mobile drawer. The drawer
+ * itself lives in MobileNav.tsx, the locale pills in LanguageSwitcher.tsx —
+ * pulled out Apr 2026 when this component crossed 220 lines and became
+ * painful to scan.
+ *
+ * /reviews lives between /results and /about — the "trust funnel" ordering:
+ * see treatments → see outcomes → see what others say → meet the practitioner
+ * → read the journal → contact. Reviews used to be a dead-end page only
+ * reachable from footer/Testimonials CTA, which buried the highest-trust
+ * signal a service business has.
+ */
 export function Navbar() {
   const t = useTranslations('nav');
   const tCommon = useTranslations('common');
-  const locale = useLocale();
-  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
@@ -22,23 +35,22 @@ export function Navbar() {
     { href: '/services' as const, label: t('services') },
     { href: '/products' as const, label: t('products') },
     { href: '/results' as const, label: t('results') },
+    { href: '/reviews' as const, label: t('reviews') },
     { href: '/about' as const, label: t('about') },
     { href: '/blog' as const, label: t('blog') },
     { href: '/contact' as const, label: t('contact') },
   ];
 
+  // Lock body scroll when the mobile drawer opens.
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  // Auto-close the drawer on route change.
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
-
-  function switchLocale(newLocale: 'en' | 'es') {
-    router.replace(pathname, { locale: newLocale });
-  }
 
   return (
     <header className="bg-white sticky top-0 z-100 border-b border-border">
@@ -81,36 +93,31 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-3 max-md:gap-1.5 shrink-0">
-            {/* Language switcher */}
-            <div className="flex items-center gap-1 max-md:hidden text-[.78rem] font-semibold" role="group" aria-label={t('language')}>
-              <button
-                type="button"
-                onClick={() => switchLocale('en')}
-                className={cn('px-2 py-1 rounded transition-colors cursor-pointer', locale === 'en' ? 'text-navy' : 'text-text-light hover:text-navy')}
-                aria-current={locale === 'en' ? 'true' : undefined}
-                aria-label="English"
-              >
-                EN
-              </button>
-              <span className="text-text-faint" aria-hidden="true">/</span>
-              <button
-                type="button"
-                onClick={() => switchLocale('es')}
-                className={cn('px-2 py-1 rounded transition-colors cursor-pointer', locale === 'es' ? 'text-navy' : 'text-text-light hover:text-navy')}
-                aria-current={locale === 'es' ? 'true' : undefined}
-                aria-label="Español"
-              >
-                ES
-              </button>
-            </div>
+            <LanguageSwitcher variant="compact" />
 
+            {/* Desktop: full phone number with label. Hidden on mobile because
+                there isn't enough header room next to the Book Now button. */}
             <a
               href={`tel:${BUSINESS.phoneRaw}`}
-              className="text-text-mid no-underline text-[.82rem] font-medium flex items-center gap-1 max-lg:hidden"
+              className="text-navy no-underline text-[.82rem] font-semibold flex items-center gap-1 max-lg:hidden hover:text-navy-deep transition-colors"
               aria-label={t('callUs', { phone: BUSINESS.phone })}
             >
-              <IconPhone size={14} className="text-text-mid" />
+              <IconPhone size={14} className="text-navy" />
               {BUSINESS.phone}
+            </a>
+
+            {/* Mobile: icon-only tappable phone button. Single biggest
+                mobile-conversion lever for a brick-and-mortar service business
+                — phone calls remain the dominant conversion channel for
+                skincare/aesthetics, and burying the number behind a menu tap
+                measurably reduces call volume. Tap target is 40x40 (well above
+                the 24x24 WCAG 2.5.8 minimum, comfortable for thumbs). */}
+            <a
+              href={`tel:${BUSINESS.phoneRaw}`}
+              className="hidden max-lg:inline-flex w-10 h-10 max-md:w-9 max-md:h-9 items-center justify-center rounded-full bg-navy-pale text-navy hover:bg-navy hover:text-white transition-colors no-underline shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
+              aria-label={t('callUs', { phone: BUSINESS.phone })}
+            >
+              <IconPhone size={16} />
             </a>
 
             <Link
@@ -136,79 +143,7 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/*
-        Mobile menu is anchored directly under the navbar (top-16 = h-16).
-        overflow-hidden on the dialog masks the slide so the white nav can't
-        peek above its anchor and overlap the navbar during the transition.
-        The inner nav has no top border — the navbar's existing border-b
-        already provides the seam, and stacking two borders looked chunky.
-      */}
-      <div
-        id="mobile-menu"
-        role="dialog"
-        aria-label={t('mobileMenu')}
-        aria-hidden={!mobileOpen}
-        className={`hidden max-lg:block fixed inset-0 top-16 z-90 overflow-hidden transition-opacity duration-250 ease-out ${mobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
-      >
-        <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
-        <nav
-          aria-label={t('mobileMenu')}
-          className={`relative w-full bg-white shadow-lg transition-transform duration-250 ease-out ${mobileOpen ? 'translate-y-0' : '-translate-y-full'}`}
-        >
-          <div className="flex flex-col px-5 py-4 gap-0.5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'no-underline text-base font-medium py-3 px-4 rounded-lg hover:bg-navy-pale hover:text-navy transition-colors',
-                  pathname === link.href ? 'text-navy bg-navy-pale' : 'text-text'
-                )}
-                aria-current={pathname === link.href ? 'page' : undefined}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <hr className="border-border my-2" />
-            {/* Mobile language switcher */}
-            <div className="flex items-center gap-2 px-4 py-3" role="group" aria-label={t('language')}>
-              <span className="text-[.78rem] text-text-light font-medium">{t('language')}:</span>
-              <button
-                type="button"
-                onClick={() => switchLocale('en')}
-                className={cn('px-3 py-1 rounded text-[.82rem] font-semibold transition-colors', locale === 'en' ? 'bg-navy text-white' : 'text-text-mid hover:bg-navy-pale')}
-              >
-                English
-              </button>
-              <button
-                type="button"
-                onClick={() => switchLocale('es')}
-                className={cn('px-3 py-1 rounded text-[.82rem] font-semibold transition-colors', locale === 'es' ? 'bg-navy text-white' : 'text-text-mid hover:bg-navy-pale')}
-              >
-                Español
-              </button>
-            </div>
-            <a
-              href={`tel:${BUSINESS.phoneRaw}`}
-              className="text-text-mid no-underline text-[.88rem] font-medium flex items-center gap-2 py-3 px-4"
-              aria-label={t('callUs', { phone: BUSINESS.phone })}
-            >
-              <IconPhone size={16} className="text-text-mid" />
-              {BUSINESS.phone}
-            </a>
-            <a
-              href={BUSINESS.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-whatsapp text-white rounded-lg text-[.85rem] font-semibold py-3 px-4 hover:bg-whatsapp-dark transition-all mt-1"
-              aria-label="WhatsApp"
-            >
-              <IconWhatsApp size={18} className="fill-white" />
-              WhatsApp
-            </a>
-          </div>
-        </nav>
-      </div>
+      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} navLinks={navLinks} />
     </header>
   );
 }

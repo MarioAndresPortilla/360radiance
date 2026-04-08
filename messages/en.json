@@ -24,6 +24,7 @@
     "services": "Services",
     "products": "Products",
     "results": "Results",
+    "reviews": "Reviews",
     "about": "About",
     "blog": "Blog",
     "contact": "Contact",
@@ -52,7 +53,11 @@
     "certBadge": "Face Reality Certified",
     "stat1Label": "Years Medical",
     "stat2Label": "Avg Improvement",
-    "stat3Label": "Serum Origins"
+    "stat3Label": "Serum Origins",
+    "reviewStarsLabel": "Rated 5 out of 5 stars",
+    "reviewBadge": "Verified client review",
+    "reviewQuote": "After 2 weeks — 50% better. After 2 months — 90%. After 2 years of hiding behind makeup, I can finally go out with clear skin.",
+    "reviewAttribution": "Marissa C. · Cystic Acne · 2 Years"
   },
   "trust": {
     "label": "Professional credentials",
@@ -130,6 +135,14 @@
     "rank": "Skin Care Clinic",
     "year": "Award Year",
     "footer": "Powered by Google Reviews · BusinessRate Verified"
+  },
+  "newsletter": {
+    "tag": "Stay in the Glow",
+    "title": "Skin Tips from Marta — Straight to Your Inbox",
+    "subtitle": "Monthly skincare science, treatment guides, and member-only offers. Written by Marta. No spam, no fluff — unsubscribe anytime.",
+    "cta": "Get Skin Tips",
+    "ariaLabel": "Subscribe to the 360 Radiance newsletter",
+    "finePrint": "We never sell or share your email."
   },
   "videos": {
     "tag": "See It in Motion",
@@ -321,11 +334,11 @@
     "whatsappSub": "We reply fast — usually within minutes",
     "visitTitle": "Visit Us",
     "scheduleTag": "Self-Serve Booking",
-    "scheduleTitle": "Pick a time that works for you",
-    "scheduleSubtitle": "See real-time openings on Marta's calendar and lock in your spot in under a minute. The 15-min quick chat is 100% free. The 30-min consultation is $35 — and always free if you're booking the Acne Treatment Program.",
-    "scheduleCtaFull": "Book 30-min Consultation · $35",
-    "scheduleCtaQuick": "Or Free 15-min Quick Chat",
-    "scheduleBullet1": "15-min chat is free · 30-min is $35 (free for the Acne Program)",
+    "scheduleTitle": "Start with a FREE 15-min chat",
+    "scheduleSubtitle": "See real-time openings on Marta's calendar and lock in your spot in under a minute. The 15-min quick chat is 100% free — no commitment, no card on file. Want a deeper dive? The 30-min consultation is $35, and always free if you're booking the Acne Treatment Program.",
+    "scheduleCtaFull": "Book FREE 15-min Chat",
+    "scheduleCtaQuick": "Or 30-min Deep Dive · $35",
+    "scheduleBullet1": "15-min chat is FREE — no card, no commitment",
     "scheduleBullet2": "Personalized treatment roadmap",
     "scheduleBullet3": "Confirmation + reminder by email",
     "formTag": "Send a Message",

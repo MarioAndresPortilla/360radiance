@@ -149,7 +149,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
               <div className="relative">
                 <div className="rounded-2xl aspect-4/3 relative overflow-hidden shadow-md border border-border">
                   <Image
-                    src="/images/instagram/product-line-natural.jpg"
+                    src="/images/instagram/product-line-natural.webp"
                     alt="The full Radiance Skin Care product line — 100% natural botanical formulas"
                     fill
                     className="object-cover"

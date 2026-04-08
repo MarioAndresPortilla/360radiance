@@ -1,8 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
-export function NewsletterSignup() {
+/*
+ * Newsletter signup form. Currently a stub — sets `submitted = true` without
+ * actually sending the email anywhere. The backend wiring is intentionally
+ * deferred until we pick an ESP (Mailchimp / Beehiiv / Resend Audiences) so
+ * the form doesn't silently drop subscribers into a void.
+ *
+ * Used in two places (so form-element id collisions matter):
+ *   1. /blog page (bottom of article list)
+ *   2. Homepage pre-footer
+ *
+ * `useId()` namespaces the email input and label so multiple instances on the
+ * same page don't break label-for / aria associations. Pre-`useId` we'd risk
+ * either breaking accessibility or the second instance pre-filling the first.
+ */
+type Props = {
+  /** Submit button label override (e.g. "Get Skin Tips" on homepage). */
+  buttonText?: string;
+  /** Visually-hidden form aria-label override. */
+  ariaLabel?: string;
+};
+
+export function NewsletterSignup({ buttonText = 'Subscribe', ariaLabel = 'Subscribe to newsletter' }: Props) {
+  const formId = useId();
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -23,11 +45,11 @@ export function NewsletterSignup() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3 max-w-120 mx-auto max-md:flex-col" aria-label="Subscribe to newsletter">
+    <form onSubmit={handleSubmit} className="flex gap-3 max-w-120 mx-auto max-md:flex-col" aria-label={ariaLabel}>
       <div className="flex-1">
-        <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+        <label htmlFor={`${formId}-email`} className="sr-only">Email address</label>
         <input
-          id="newsletter-email"
+          id={`${formId}-email`}
           name="email"
           type="email"
           required
@@ -42,7 +64,7 @@ export function NewsletterSignup() {
         type="submit"
         className="bg-navy text-white py-3.5 px-8 rounded-xl font-semibold text-[.88rem] border-none cursor-pointer transition-all hover:bg-navy-deep hover:-translate-y-px hover:shadow-md font-sans shrink-0"
       >
-        Subscribe
+        {buttonText}
       </button>
     </form>
   );

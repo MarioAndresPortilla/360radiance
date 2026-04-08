@@ -112,32 +112,32 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
           <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1 max-w-260 mx-auto">
             {[
               {
-                src: '/images/instagram/before-after-acne-1.jpg',
+                src: '/images/instagram/before-after-acne-1.webp',
                 alt: 'Client before and after acne treatment — clearer skin and a confident smile after the 12-week program',
                 label: t('acneTreatmentLabel'),
               },
               {
-                src: '/images/instagram/before-after-rosacea-2.jpg',
+                src: '/images/instagram/before-after-rosacea-2.webp',
                 alt: 'Client before and after rosacea treatment — calmed redness and even skin tone',
                 label: t('rosaceaLabel'),
               },
               {
-                src: '/images/instagram/before-after-melasma.jpg',
+                src: '/images/instagram/before-after-melasma.webp',
                 alt: 'Client before and after melasma and hyperpigmentation treatment — even, brighter skin tone',
                 label: t('melasmaLabel'),
               },
               {
-                src: '/images/instagram/before-after-acne-2.jpg',
+                src: '/images/instagram/before-after-acne-2.webp',
                 alt: 'Client before and after the 12-week Acne Treatment Program — dramatic clearing of persistent acne',
                 label: t('twelveWeekLabel'),
               },
               {
-                src: '/images/instagram/before-after-aging.jpg',
+                src: '/images/instagram/before-after-aging.webp',
                 alt: 'Client before and after anti-aging facial treatment — firmer, more lifted appearance',
                 label: t('antiAgingLabel'),
               },
               {
-                src: '/images/instagram/before-after-eye-area.jpg',
+                src: '/images/instagram/before-after-eye-area.webp',
                 alt: 'Client before and after eye area treatment — reduced fine lines and brighter under-eye',
                 label: t('eyeAreaLabel'),
               },

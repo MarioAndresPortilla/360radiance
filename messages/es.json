@@ -24,6 +24,7 @@
     "services": "Servicios",
     "products": "Productos",
     "results": "Resultados",
+    "reviews": "Reseñas",
     "about": "Acerca de",
     "blog": "Blog",
     "contact": "Contacto",
@@ -52,7 +53,11 @@
     "certBadge": "Certificada en Face Reality",
     "stat1Label": "Años Médicos",
     "stat2Label": "Mejora Promedio",
-    "stat3Label": "Orígenes de Suero"
+    "stat3Label": "Orígenes de Suero",
+    "reviewStarsLabel": "Calificado 5 de 5 estrellas",
+    "reviewBadge": "Reseña verificada",
+    "reviewQuote": "A las 2 semanas — 50% mejor. A los 2 meses — 90%. Después de 2 años escondiéndome detrás del maquillaje, finalmente puedo salir con la piel clara.",
+    "reviewAttribution": "Marissa C. · Acné Quístico · 2 Años"
   },
   "trust": {
     "label": "Credenciales profesionales",
@@ -130,6 +135,14 @@
     "rank": "Clínica de Cuidado",
     "year": "Año del Premio",
     "footer": "Impulsado por Google Reviews · Verificado por BusinessRate"
+  },
+  "newsletter": {
+    "tag": "Manténgase Radiante",
+    "title": "Consejos de Marta — Directo a Su Bandeja de Entrada",
+    "subtitle": "Ciencia del cuidado de la piel cada mes, guías de tratamientos y ofertas exclusivas para suscriptores. Escrito por Marta. Sin spam, sin relleno — cancele cuando quiera.",
+    "cta": "Recibir Consejos",
+    "ariaLabel": "Suscríbase al boletín de 360 Radiance",
+    "finePrint": "Nunca vendemos ni compartimos su correo."
   },
   "videos": {
     "tag": "Véalo en Movimiento",
@@ -321,11 +334,11 @@
     "whatsappSub": "Respondemos rápido — usualmente en minutos",
     "visitTitle": "Visítenos",
     "scheduleTag": "Reserva Inmediata",
-    "scheduleTitle": "Elija un horario que le funcione",
-    "scheduleSubtitle": "Vea los horarios disponibles en el calendario de Marta y reserve su lugar en menos de un minuto. La charla rápida de 15 min es 100% gratuita. La consulta de 30 min es de $35 — y siempre es gratuita si reserva el Programa de Tratamiento del Acné.",
-    "scheduleCtaFull": "Reserve Consulta de 30 min · $35",
-    "scheduleCtaQuick": "O Charla Rápida Gratuita de 15 min",
-    "scheduleBullet1": "Charla de 15 min es gratis · 30 min son $35 (gratis con el Programa de Acné)",
+    "scheduleTitle": "Comience con una charla GRATUITA de 15 min",
+    "scheduleSubtitle": "Vea los horarios disponibles en el calendario de Marta y reserve su lugar en menos de un minuto. La charla rápida de 15 min es 100% gratuita — sin compromiso, sin tarjeta de crédito. ¿Quiere profundizar más? La consulta de 30 min es de $35, y siempre gratis si reserva el Programa de Tratamiento del Acné.",
+    "scheduleCtaFull": "Reserve Charla GRATUITA de 15 min",
+    "scheduleCtaQuick": "O Consulta Profunda de 30 min · $35",
+    "scheduleBullet1": "Charla de 15 min es GRATIS — sin tarjeta, sin compromiso",
     "scheduleBullet2": "Hoja de ruta de tratamiento personalizada",
     "scheduleBullet3": "Confirmación y recordatorio por correo",
     "formTag": "Envíenos un Mensaje",

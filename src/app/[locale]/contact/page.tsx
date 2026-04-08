@@ -53,11 +53,17 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   <p className="text-white/80 text-[.95rem] leading-[1.85] mb-8 max-w-100">
                     {t('scheduleSubtitle')}
                   </p>
+                  {/* Primary CTA = the FREE 15-min chat. Secondary = the
+                      paid 30-min deep dive. The free option must lead so
+                      first-time visitors don't bounce thinking everything
+                      costs money. The translation keys keep their original
+                      names (`scheduleCtaFull` = primary, `scheduleCtaQuick`
+                      = secondary) but the events bound to them swap. */}
                   <div className="flex flex-wrap gap-3">
-                    <CalPopupButton variant="white" event="full" ariaLabel={t('scheduleCtaFull')}>
+                    <CalPopupButton variant="white" event="quick" ariaLabel={t('scheduleCtaFull')}>
                       {t('scheduleCtaFull')}
                     </CalPopupButton>
-                    <CalPopupButton variant="outline-white" event="quick" ariaLabel={t('scheduleCtaQuick')}>
+                    <CalPopupButton variant="outline-white" event="full" ariaLabel={t('scheduleCtaQuick')}>
                       {t('scheduleCtaQuick')}
                     </CalPopupButton>
                   </div>

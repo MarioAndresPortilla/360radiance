@@ -2,12 +2,20 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { getCalApi } from '@calcom/embed-react';
 import { CAL, PRODUCT_BUNDLES, PRODUCTS, type Product, type ProductBundle } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { cn } from '@/lib/utils';
 import { track } from '@/lib/analytics';
-import { ProductModal } from './ProductModal';
+
+// Dynamic-imported + conditionally rendered so the modal chunk only loads
+// when a bundle card is actually clicked. See ProductShowcase.tsx for the
+// matching pattern + reasoning.
+const ProductModal = dynamic(
+  () => import('./ProductModal').then((m) => m.ProductModal),
+  { ssr: false },
+);
 
 const ACCENT_BG: Record<ProductBundle['accent'], string> = {
   navy: 'bg-gradient-to-br from-[#2F3269] via-[#3a3d7a] to-[#21244F]',
@@ -287,12 +295,14 @@ export function PackageDeals() {
       ))}
     </div>
 
-    <ProductModal
-      product={activeProduct}
-      source="bundles"
-      onClose={handleCloseModal}
-      onSelectPair={handleSelectPair}
-    />
+    {activeProduct && (
+      <ProductModal
+        product={activeProduct}
+        source="bundles"
+        onClose={handleCloseModal}
+        onSelectPair={handleSelectPair}
+      />
+    )}
     </>
   );
 }
