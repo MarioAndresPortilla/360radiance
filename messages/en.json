@@ -100,6 +100,7 @@
     "tag": "Our Services",
     "title": "Expert Skincare Treatments",
     "subtitle": "From clinical acne programs to luxury Korean facials — every treatment is tailored to your unique skin.",
+    "learnMore": "Learn more",
     "viewAll": "View All {count} Services →",
     "pageTitle": "Services",
     "pageSubtitle": "Every treatment is tailored to your unique skin type and concerns. Marta combines 25+ years of medical expertise with cutting-edge protocols for real results.",
@@ -130,21 +131,26 @@
     "year": "Award Year",
     "footer": "Powered by Google Reviews · BusinessRate Verified"
   },
+  "videos": {
+    "tag": "See It in Motion",
+    "title": "Real Treatments, Real Results",
+    "subtitle": "Short clips from inside the clinic — actual treatments, actual transformations.",
+    "playLabel": "Play video: {title}",
+    "close": "Close video"
+  },
   "about": {
     "tag": "Meet Marta Nazzar",
     "titleText": "The Science Behind Your",
     "titleHighlight": "Best Skin",
-    "p1": "Marta Nazzar is a licensed Paramedical Aesthetician with a B.S. in Biology and A.S. in Medical & Laboratory Studies from Florida College of Natural Health. Her 25+ years of medical background allow her to merge clinical precision with aesthetic artistry.",
-    "p2": "Certified under renowned acne expert Dr. James E. Fulton through the Face Reality program, Marta evaluates diverse skin types to determine the best solution for each individual. She created the Radiance Skin Care Line — botanical formulas free of toxins, parabens, and sulfates.",
+    "p1": "Marta Nazzar is a licensed Paramedical Aesthetician with a B.S. in Biology, an A.S. in Medical & Laboratory Studies, and 25+ years of clinical experience — equal parts science and aesthetic artistry.",
+    "p2": "She created the Radiance Skin Care Line: botanical formulas free of toxins, parabens, and sulfates. Every product blends clinical actives with nature's most beneficial ingredients.",
     "yearsBadge": "25+ Years",
     "yearsBadgeSub": "Medical Experience",
     "pageSubtitle": "25+ years of medical expertise, a deep passion for skincare science, and a commitment to results that change lives.",
     "bioHeading": "From Medical Science to Skincare Artistry",
     "credentialsHeading": "Credentials & Certifications",
     "philosophyHeading": "The 360 Radiance Philosophy",
-    "p3": "Certified under renowned acne expert Dr. James E. Fulton through the Face Reality program, Marta evaluates diverse skin types to determine the best solution for each individual. Dr. Fulton pioneered Retin-A — and his clinical protocol is the foundation of Marta's acne treatment approach.",
-    "p4": "She created the Radiance Skin Care Line — a proprietary collection of botanical formulas free of toxins, parabens, and sulfates. Every product blends clinical science with nature's most beneficial ingredients, designed for real skin conditions and real results.",
-    "p5": "Fluent in English and Spanish, Marta ensures every client feels understood and confident in their treatment plan. Her practice isn't just about clearing skin — it's about restoring confidence and changing lives.",
+    "p3": "Certified through Dr. James E. Fulton's Face Reality program — the same clinician who pioneered Retin-A — Marta brings that proven protocol to every acne client. Bilingual (English/Spanish), her practice isn't just about clearing skin: it's about restoring confidence.",
     "bioHeadingSr": "About Marta Nazzar",
     "philosophy": {
       "scienceFirst": {

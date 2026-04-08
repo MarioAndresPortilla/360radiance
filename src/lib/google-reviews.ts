@@ -6,9 +6,11 @@
 //   1. **Live (Option 1)** — when both `GOOGLE_PLACES_API_KEY` and
 //      `GOOGLE_PLACE_ID` env vars are set, `getGoogleReviews()` calls the
 //      Places API (new) at request time. The fetch is cached by Next.js for
-//      24 hours via `next.revalidate`, well within Google's 30-day TOS limit
-//      for caching reviews. On-demand purges are possible via `revalidateTag`
-//      against the `google-reviews` tag.
+//      30 minutes via `next.revalidate` so new reviews appear on the site
+//      within ~30 min of being posted on Google — effectively "live" from a
+//      visitor's perspective without burning quota or violating Google's
+//      30-day TOS cap on cached reviews. On-demand purges are still possible
+//      via `revalidateTag` against the `google-reviews` tag.
 //
 //   2. **Static (Option 3)** — `scripts/sync-google-reviews.mjs` is a
 //      manual-run script that hits the same Places API endpoint and writes
@@ -52,7 +54,8 @@ export const EMPTY_REVIEWS: GoogleReviewsData = {
 
 const PLACES_API_BASE = 'https://places.googleapis.com/v1/places';
 const FIELD_MASK = 'id,displayName,rating,userRatingCount,reviews';
-const REVALIDATE_SECONDS = 60 * 60 * 24; // 24 hours
+const REVALIDATE_SECONDS = 60 * 30; // 30 minutes — near-live; new reviews
+                                    // surface on the site without a redeploy.
 export const REVIEWS_CACHE_TAG = 'google-reviews';
 
 // Raw shape returned by the Places API (new) — only the fields we care about.

@@ -5,7 +5,6 @@ import { CREDENTIALS } from '@/lib/constants';
 import { buildPageMetadata } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
-import { PageHeader } from '@/components/ui/PageHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Icon, type IconName } from '@/components/icons/Icons';
 import { IconDiploma } from '@/components/icons/Icons';
@@ -28,11 +27,41 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <PageShell>
-      <PageHeader
-        tag={t('tag')}
-        title={`${t('titleText')} ${t('titleHighlight')}`}
-        subtitle={t('pageSubtitle')}
-      />
+      {/* Editorial hero with full-bleed background image of Marta — replaces the
+          stock PageHeader on this page only. Visual signal that the about page
+          is the "story" page; everywhere else still uses the flat PageHeader.
+          The image is positioned right-of-center on desktop so the headline
+          column has a dark gradient backdrop for AAA contrast. On mobile the
+          gradient covers the full image. */}
+      <section className="relative bg-navy-deep overflow-hidden" aria-labelledby="about-hero-heading">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/marta-nazzar.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_top] lg:object-[70%_25%] opacity-55 lg:opacity-75"
+          />
+          {/* Mobile: dark wash across whole image. Desktop: left-side gradient
+              so the headline copy on the left always has high contrast even
+              while the photo dominates the right half. */}
+          <div className="absolute inset-0 bg-navy-deep/65 lg:bg-linear-to-r lg:from-navy-deep lg:via-navy-deep/85 lg:to-navy-deep/10" aria-hidden="true" />
+        </div>
+        <div className="relative container-site py-28 max-md:py-20">
+          <ScrollReveal>
+            <div className="max-w-2xl">
+              <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-gold-light mb-5 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full ring-1 ring-white/15">
+                {t('tag')}
+              </span>
+              <h1 id="about-hero-heading" className="font-serif text-[clamp(2.2rem,4.5vw,3.4rem)] leading-[1.12] mb-5 text-white">
+                {t('titleText')} <span className="text-gold-light">{t('titleHighlight')}</span>
+              </h1>
+              <p className="text-white/85 max-w-130 text-[1.02rem] leading-[1.8]">{t('pageSubtitle')}</p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* Main bio */}
       <section className="py-20 max-md:py-14" aria-labelledby="bio-heading">
@@ -67,9 +96,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 <h3 className="font-serif text-[1.6rem] mb-4 leading-[1.2]">{t('bioHeading')}</h3>
                 <p className="text-text-mid mb-4 text-[.92rem]/[1.85]">{t('p1')}</p>
                 <p className="text-text-mid mb-4 text-[.92rem]/[1.85]">{t('p2')}</p>
-                <p className="text-text-mid mb-4 text-[.92rem]/[1.85]">{t('p3')}</p>
-                <p className="text-text-mid mb-4 text-[.92rem]/[1.85]">{t('p4')}</p>
-                <p className="text-text-mid text-[.92rem]/[1.85]">{t('p5')}</p>
+                <p className="text-text-mid text-[.92rem]/[1.85]">{t('p3')}</p>
               </div>
             </ScrollReveal>
           </div>

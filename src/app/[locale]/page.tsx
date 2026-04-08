@@ -7,6 +7,7 @@ import { ServicesSection } from '@/components/sections/ServicesSection';
 import { AwardSection } from '@/components/sections/AwardSection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { JourneySection } from '@/components/sections/JourneySection';
+import { VideoSection } from '@/components/sections/VideoSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { InstagramSection } from '@/components/sections/InstagramSection';
 import { ProductsSection } from '@/components/sections/ProductsSection';
@@ -25,6 +26,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <AwardSection />
       <AboutSection />
       <JourneySection />
+      <VideoSection />
       <TestimonialsSection />
       <InstagramSection />
       <ProductsSection />

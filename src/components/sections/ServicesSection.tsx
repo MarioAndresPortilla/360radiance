@@ -43,7 +43,7 @@ export function ServicesSection() {
                 role="listitem"
                 aria-label={`${svc.title} — learn more`}
                 className={cn(
-                  'group block bg-white border rounded-2xl p-6 transition-all duration-300 relative hover:border-navy hover:shadow-md hover:-translate-y-0.5 h-full no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy',
+                  'group flex flex-col bg-white border rounded-2xl p-6 transition-all duration-300 relative hover:border-navy hover:shadow-md hover:-translate-y-0.5 h-full no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy',
                   svc.featured ? 'border-navy bg-navy-bg' : 'border-border'
                 )}
               >
@@ -60,9 +60,18 @@ export function ServicesSection() {
                 </div>
                 <h3 className="font-serif text-[.98rem] mb-1.5 text-text group-hover:text-navy transition-colors">{svc.title}</h3>
                 <p className="text-text-mid text-[.82rem] leading-[1.7] mb-3">{svc.description}</p>
-                <span className="inline-block bg-navy-pale text-navy py-1 px-3 rounded-lg text-[.62rem] font-bold uppercase tracking-[.5px]">
-                  {svc.tag}
-                </span>
+                <div className="flex items-center justify-between gap-2 mt-auto pt-2">
+                  <span className="inline-block bg-navy-pale text-navy py-1 px-3 rounded-lg text-[.62rem] font-bold uppercase tracking-[.5px]">
+                    {svc.tag}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="inline-flex items-center gap-1 text-[.72rem] font-semibold text-navy opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all"
+                  >
+                    {t('learnMore')}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                  </span>
+                </div>
               </Link>
             </ScrollReveal>
           ))}

@@ -125,11 +125,27 @@ body {
  * 360px Samsung that buys us 8px of usable width on each side — enough for the
  * navbar (logo + Book Now + hamburger) to stop spilling out the right edge.
  * On larger viewports the clamp still scales up to 3rem so the desktop layout
- * is unchanged. */
+ * is unchanged.
+ *
+ * Stepped max-width: 1140 / 1320 / 1480.
+ *   Default (1140px) holds the original 13–14" laptop layout untouched —
+ *   line lengths and vertical rhythm are tuned for that width.
+ *   ≥1600px viewports (~24" desktops) get +180px so the page stops feeling
+ *   stranded in the middle of a big monitor.
+ *   ≥1920px (Full HD desktop / 27"+) gets the full +340px expansion.
+ *   This is intentionally conservative — the grids inside (services, products,
+ *   etc.) reflow naturally with the extra width because their gap/columns are
+ *   defined in fr units, not fixed rems. Mobile is unaffected. */
 .container-site {
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 clamp(1rem, 4vw, 3rem);
+}
+@media (min-width: 1600px) {
+  .container-site { max-width: 1320px; }
+}
+@media (min-width: 1920px) {
+  .container-site { max-width: 1480px; }
 }
 
 /* Skip link */

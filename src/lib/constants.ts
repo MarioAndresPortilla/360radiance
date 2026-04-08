@@ -69,14 +69,26 @@ export const BUSINESS = {
     // we have it (it makes JSON-LD `sameAs` cleaner for SEO).
     google: 'https://share.google/EZwBBcNduMb0gdThC',
   },
-  // Google review surfaces. Both currently point at the verified share-link
-  // because we don't yet have the Google Place ID for 360 Radiance. Once Marta
-  // provides it, swap `googleReviewWrite` to the canonical write-review deep
-  // link: `https://search.google.com/local/writereview?placeid={PLACE_ID}` —
-  // that opens the "Write a review" sheet directly without an extra click.
-  // `googleProfile` can stay as the share link (or upgrade to the full
-  // /maps/place/... URL for cleaner JSON-LD `sameAs`).
-  googleReviewWrite: 'https://share.google/EZwBBcNduMb0gdThC',
+  // Google review surfaces.
+  //
+  // `googleReviewWrite` is computed at module load: when the GOOGLE_PLACE_ID
+  // env var is provisioned (it already is, for the live Places API integration
+  // in src/lib/google-reviews.ts), we build the canonical "write a review"
+  // deep link — clicking it opens Google's review form directly with the
+  // 5-star rating selector, no extra hop through the business profile. The
+  // `share.google` redirect remains as a fallback for environments where the
+  // env var isn't set (preview deploys, local builds without .env.local).
+  //
+  // Place IDs are public information (they appear in Google Maps URLs), so
+  // there's no security concern with the URL bouncing through a server-
+  // rendered page. constants.ts is imported by both server and client modules
+  // — the only consumers of `googleReviewWrite` are server components, so
+  // reading process.env at module init is safe.
+  //
+  // `googleProfile` stays as the share link (used for "View on Google" CTAs).
+  googleReviewWrite: process.env.GOOGLE_PLACE_ID
+    ? `https://search.google.com/local/writereview?placeid=${process.env.GOOGLE_PLACE_ID}`
+    : 'https://share.google/EZwBBcNduMb0gdThC',
   googleProfile: 'https://share.google/EZwBBcNduMb0gdThC',
 } as const;
 
@@ -195,6 +207,29 @@ export const INSTAGRAM_POSTS: { id: number; image: string; postUrl: string; alt:
     caption: 'Ultrasonic extractions',
   },
 ];
+
+// Videos showcase — short treatment / behind-the-scenes clips that play in a
+// click-to-open lightbox on the landing page. Empty array = section hides
+// entirely (graceful no-op until Marta has clips ready). When adding entries:
+//
+//   - `src`: public URL to an MP4 (preferably H.264 + AAC, ≤15s, ≤4MB). Host
+//     in /public/videos/ — Vercel serves them straight from the edge cache.
+//   - `poster`: a static thumbnail (16:9) shown before the video plays. The
+//     poster carries 100% of the visual weight before someone clicks, so make
+//     it strong (treatment in-progress, hero shot of Marta, before-after).
+//   - `alt`: descriptive caption for the card title AND aria-label.
+//   - `caption`: short subtitle under the title (e.g. "Microneedling · 12s").
+//
+// We DO NOT use a Vimeo/YouTube embed — those add a 1MB+ player and tracking.
+// A native <video> tag is ~8KB and stays on-brand.
+export type VideoClip = {
+  id: string;
+  src: string;
+  poster: string;
+  alt: string;
+  caption: string;
+};
+export const VIDEOS: VideoClip[] = [];
 
 export const HOURS: HourEntry[] = [
   { day: 'Sunday', time: 'Closed', closed: true },
