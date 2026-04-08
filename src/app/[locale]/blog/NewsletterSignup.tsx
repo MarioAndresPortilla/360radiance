@@ -1,71 +1,83 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useId } from 'react';
+import { useTranslations } from 'next-intl';
 
 /*
- * Newsletter signup form. Currently a stub — sets `submitted = true` without
- * actually sending the email anywhere. The backend wiring is intentionally
- * deferred until we pick an ESP (Mailchimp / Beehiiv / Resend Audiences) so
- * the form doesn't silently drop subscribers into a void.
+ * Newsletter signup form — currently in COMING SOON mode.
+ *
+ * The backend wiring (ESP — likely Resend Audiences since we already use Resend
+ * for the contact form) is intentionally deferred. Rather than fake a successful
+ * subscription and silently drop visitor emails into a void, we lock the form
+ * and tell visitors honestly that the feature is launching shortly. This way
+ * Marta can finish the integration on her own clock without misleading anyone.
+ *
+ * To re-enable when the ESP is wired up:
+ *   1. Restore the email state + handleSubmit + submitted state below
+ *   2. Replace the disabled button with a real submit button
+ *   3. Remove the COMING_SOON_OVERLAY block
  *
  * Used in two places (so form-element id collisions matter):
  *   1. /blog page (bottom of article list)
  *   2. Homepage pre-footer
  *
- * `useId()` namespaces the email input and label so multiple instances on the
- * same page don't break label-for / aria associations. Pre-`useId` we'd risk
- * either breaking accessibility or the second instance pre-filling the first.
+ * `useId()` namespaces the email input/label so multiple instances on the same
+ * page don't break label-for / aria associations.
  */
 type Props = {
-  /** Submit button label override (e.g. "Get Skin Tips" on homepage). */
+  /** Submit button label override (kept for parity once re-enabled). */
   buttonText?: string;
   /** Visually-hidden form aria-label override. */
   ariaLabel?: string;
 };
 
-export function NewsletterSignup({ buttonText = 'Subscribe', ariaLabel = 'Subscribe to newsletter' }: Props) {
+export function NewsletterSignup({ ariaLabel = 'Subscribe to newsletter' }: Props) {
   const formId = useId();
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (email) setSubmitted(true);
-  }
-
-  if (submitted) {
-    return (
-      <div className="bg-navy-pale rounded-2xl p-8 text-center" role="status" aria-live="polite">
-        <p className="font-serif text-[1.2rem] text-navy mb-2">You&apos;re in!</p>
-        <p className="text-text-mid text-[.88rem]">
-          Check your inbox for a welcome email. Your first article arrives next week.
-        </p>
-      </div>
-    );
-  }
+  const t = useTranslations('newsletter');
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3 max-w-120 mx-auto max-md:flex-col" aria-label={ariaLabel}>
-      <div className="flex-1">
-        <label htmlFor={`${formId}-email`} className="sr-only">Email address</label>
-        <input
-          id={`${formId}-email`}
-          name="email"
-          type="email"
-          required
-          placeholder="Your email address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autoComplete="email"
-          className="w-full py-3.5 px-5 rounded-xl border border-border bg-white text-text text-[.88rem] outline-none focus:border-navy focus:ring-2 focus:ring-navy/20 transition-all font-sans"
-        />
+    <div className="relative max-w-120 mx-auto">
+      {/* Coming-soon ribbon — sits above the form so visitors see it before
+          they read the disabled input. */}
+      <div className="flex justify-center mb-4">
+        <span className="inline-flex items-center gap-1.5 text-[.66rem] font-bold uppercase tracking-[2px] text-navy bg-gold/30 px-3 py-1.5 rounded-full ring-1 ring-gold/40">
+          <span className="w-1.5 h-1.5 rounded-full bg-navy animate-pulse" aria-hidden="true" />
+          {t('comingSoonTag')}
+        </span>
       </div>
-      <button
-        type="submit"
-        className="bg-navy text-white py-3.5 px-8 rounded-xl font-semibold text-[.88rem] border-none cursor-pointer transition-all hover:bg-navy-deep hover:-translate-y-px hover:shadow-md font-sans shrink-0"
+
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="flex gap-3 max-md:flex-col opacity-70"
+        aria-label={ariaLabel}
       >
-        {buttonText}
-      </button>
-    </form>
+        <div className="flex-1">
+          <label htmlFor={`${formId}-email`} className="sr-only">Email address</label>
+          <input
+            id={`${formId}-email`}
+            name="email"
+            type="email"
+            placeholder="Your email address"
+            disabled
+            aria-disabled="true"
+            autoComplete="email"
+            className="w-full py-3.5 px-5 rounded-xl border border-border bg-white/60 text-text-light text-[.88rem] outline-none transition-all font-sans cursor-not-allowed"
+          />
+        </div>
+        <button
+          type="button"
+          disabled
+          aria-disabled="true"
+          aria-describedby={`${formId}-hint`}
+          className="bg-navy/40 text-white py-3.5 px-8 rounded-xl font-semibold text-[.88rem] border-none transition-all font-sans shrink-0 cursor-not-allowed"
+        >
+          {t('comingSoonButton')}
+        </button>
+      </form>
+
+      <p id={`${formId}-hint`} className="text-[.78rem] text-text-mid mt-4 leading-[1.7] text-center">
+        {t('comingSoonBody')}
+      </p>
+    </div>
   );
 }

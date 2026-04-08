@@ -142,7 +142,10 @@
     "subtitle": "Ciencia del cuidado de la piel cada mes, guías de tratamientos y ofertas exclusivas para suscriptores. Escrito por Marta. Sin spam, sin relleno — cancele cuando quiera.",
     "cta": "Recibir Consejos",
     "ariaLabel": "Suscríbase al boletín de 360 Radiance",
-    "finePrint": "Nunca vendemos ni compartimos su correo."
+    "finePrint": "Nunca vendemos ni compartimos su correo.",
+    "comingSoonTag": "Próximamente",
+    "comingSoonBody": "Estamos dándole los toques finales al boletín — se lanza muy pronto. Guarde el sitio en favoritos y vuelva a visitarnos, o siga a Marta en Instagram para consejos diarios mientras tanto.",
+    "comingSoonButton": "Próximamente"
   },
   "videos": {
     "tag": "Véalo en Movimiento",
