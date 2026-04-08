@@ -4,9 +4,10 @@ import { useEffect, useId, useMemo, useRef } from 'react';
 import Image from 'next/image';
 import { getCalApi } from '@calcom/embed-react';
 import { CAL, PRODUCTS, type Product } from '@/lib/constants';
-import { IconCheck } from '@/components/icons/Icons';
+import { IconCheck, IconBag } from '@/components/icons/Icons';
 import { cn } from '@/lib/utils';
 import { track } from '@/lib/analytics';
+import { useCart } from '@/lib/cart';
 
 interface ProductModalProps {
   product: Product | null;
@@ -39,6 +40,7 @@ export function ProductModal({ product, source, onClose, onSelectPair }: Product
   const titleId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
+  const cart = useCart();
 
   // Cached lookup so the "pairs with" buttons can resolve a product NAME (which
   // is what each Product.pairsWith stores) back to a slug to swap modals.
@@ -125,7 +127,7 @@ export function ProductModal({ product, source, onClose, onSelectPair }: Product
   const gradient = ACCENT_GRADIENTS[product.accent];
   const glow = ACCENT_GLOW[product.accent];
 
-  function handleCtaClick(cta: 'regimen' | 'consultation') {
+  function handleCtaClick(cta: 'regimen' | 'consultation' | 'add_to_cart') {
     if (!product) return;
     track('product_modal_cta_click', {
       product_slug: product.slug,
@@ -135,6 +137,20 @@ export function ProductModal({ product, source, onClose, onSelectPair }: Product
       cta,
       source,
     });
+  }
+
+  function handleAddToCart() {
+    if (!product) return;
+    cart.addItem(product.slug, 1);
+    handleCtaClick('add_to_cart');
+    track('cart_add', {
+      product_slug: product.slug,
+      product_name: product.name,
+      qty: 1,
+      source: 'product_modal',
+    });
+    cart.open();
+    onClose();
   }
 
   function handlePairClick(pairName: string, pairSlug: string | undefined) {
@@ -322,29 +338,60 @@ export function ProductModal({ product, source, onClose, onSelectPair }: Product
                 </section>
               )}
 
-              {/* CTA BAR — pinned to the end of the content column */}
+              {/* CTA BAR — pinned to the end of the content column.
+                  Add to Cart is the primary CTA when Stripe is wired up.
+                  When it isn't (no STRIPE_SECRET_KEY in env), we fall back to
+                  the original Cal.com booking primary so the modal still has
+                  a working primary action and the page never breaks. */}
               <div className="mt-auto pt-6 border-t border-border">
                 <div className="flex flex-col gap-3">
-                  <button
-                    type="button"
-                    data-cal-link={CAL.events.quick.link}
-                    data-cal-namespace={CAL.namespace}
-                    data-cal-config={JSON.stringify({ layout: 'month_view', theme: 'light' })}
-                    onClick={() => handleCtaClick('consultation')}
-                    className="bg-navy text-white hover:bg-navy-deep hover:-translate-y-px hover:shadow-md rounded-xl font-semibold text-[.92rem] py-4 px-6 transition-all cursor-pointer border-0 w-full text-center"
-                  >
-                    Add this to my regimen — Free 15-min chat
-                  </button>
-                  <a
-                    href="/contact"
-                    onClick={() => handleCtaClick('regimen')}
-                    className="bg-transparent border-[1.5px] border-navy text-navy hover:bg-navy hover:text-white rounded-xl font-semibold text-[.85rem] py-3 px-6 transition-all w-full text-center no-underline"
-                  >
-                    Build my custom regimen
-                  </a>
+                  {cart.stripeEnabled ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={handleAddToCart}
+                        className="bg-navy text-white hover:bg-navy-deep hover:-translate-y-px hover:shadow-md rounded-xl font-semibold text-[.92rem] py-4 px-6 transition-all cursor-pointer border-0 w-full text-center inline-flex items-center justify-center gap-2"
+                      >
+                        <IconBag size={18} />
+                        Add to cart — ${product.price}
+                      </button>
+                      <button
+                        type="button"
+                        data-cal-link={CAL.events.quick.link}
+                        data-cal-namespace={CAL.namespace}
+                        data-cal-config={JSON.stringify({ layout: 'month_view', theme: 'light' })}
+                        onClick={() => handleCtaClick('consultation')}
+                        className="bg-transparent border-[1.5px] border-navy text-navy hover:bg-navy hover:text-white rounded-xl font-semibold text-[.85rem] py-3 px-6 transition-all w-full text-center cursor-pointer"
+                      >
+                        Or chat with Marta first — Free 15 min
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        type="button"
+                        data-cal-link={CAL.events.quick.link}
+                        data-cal-namespace={CAL.namespace}
+                        data-cal-config={JSON.stringify({ layout: 'month_view', theme: 'light' })}
+                        onClick={() => handleCtaClick('consultation')}
+                        className="bg-navy text-white hover:bg-navy-deep hover:-translate-y-px hover:shadow-md rounded-xl font-semibold text-[.92rem] py-4 px-6 transition-all cursor-pointer border-0 w-full text-center"
+                      >
+                        Add this to my regimen — Free 15-min chat
+                      </button>
+                      <a
+                        href="/contact"
+                        onClick={() => handleCtaClick('regimen')}
+                        className="bg-transparent border-[1.5px] border-navy text-navy hover:bg-navy hover:text-white rounded-xl font-semibold text-[.85rem] py-3 px-6 transition-all w-full text-center no-underline"
+                      >
+                        Build my custom regimen
+                      </a>
+                    </>
+                  )}
                 </div>
                 <p className="text-center text-[.7rem] text-text-light mt-3">
-                  Free skin analysis · No purchase required · Bilingual EN/ES
+                  {cart.stripeEnabled
+                    ? 'Free shipping over $75 · Secure checkout · USPS · Bilingual support'
+                    : 'Free skin analysis · No purchase required · Bilingual EN/ES'}
                 </p>
               </div>
             </div>

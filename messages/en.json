@@ -146,6 +146,35 @@
     "successTitle": "You're on the list!",
     "successBody": "Thanks for subscribing. The first issue will land in your inbox as soon as the newsletter goes live."
   },
+  "cart": {
+    "title": "Your Cart",
+    "openCart": "Open cart ({count} items)",
+    "close": "Close cart",
+    "emptyTitle": "Your cart is empty",
+    "emptyBody": "Browse the collection and add a few favorites to get started.",
+    "continueShopping": "Browse products",
+    "subtotal": "Subtotal",
+    "shippingNote": "Shipping and taxes calculated at checkout. US orders only.",
+    "freeShippingHint": "Add {remaining} more for free shipping.",
+    "freeShippingUnlocked": "Free shipping unlocked",
+    "checkout": "Checkout securely",
+    "redirecting": "Redirecting to Stripe…",
+    "securePayment": "Secure payment by Stripe · Apple Pay · Google Pay",
+    "checkoutError": "We couldn't start checkout. Please try again or message us if it keeps failing.",
+    "increaseQty": "Increase quantity of {name}",
+    "decreaseQty": "Decrease quantity of {name}",
+    "removeItem": "Remove {name} from cart"
+  },
+  "checkout": {
+    "successTitle": "Order confirmed",
+    "successBody": "Thanks for your order! A receipt is on its way to your inbox. Marta has been notified and will pack and ship within 1–2 business days.",
+    "successOrderId": "Order reference",
+    "successContinue": "Keep browsing",
+    "cancelTitle": "No worries — your cart is still saved",
+    "cancelBody": "We didn't process any payment. Your items are right where you left them whenever you're ready.",
+    "cancelBackToCart": "Back to products",
+    "loadingOrder": "Loading your order…"
+  },
   "videos": {
     "tag": "See It in Motion",
     "title": "Real Treatments, Real Results",

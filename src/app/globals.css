@@ -248,6 +248,19 @@ body {
   will-change: opacity;
 }
 
+/* Cart drawer entry animation. The drawer slides in from the right edge of
+ * the viewport at a snappy 280ms — fast enough not to feel like waiting,
+ * slow enough to read as deliberate motion rather than a snap. The cubic
+ * curve is the same one ProductModal uses (Apple-style settle). Reduced
+ * motion users get an instant snap thanks to the global block above. */
+@keyframes cart-drawer-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+.cart-drawer {
+  animation: cart-drawer-in 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* Print */
 @media print {
   .float-btns, nav, .announcement, .skip-link { display: none !important; }

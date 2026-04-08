@@ -146,6 +146,35 @@
     "successTitle": "¡Está dentro!",
     "successBody": "Gracias por suscribirse. La primera edición llegará a su bandeja de entrada en cuanto el boletín se publique."
   },
+  "cart": {
+    "title": "Su Carrito",
+    "openCart": "Abrir carrito ({count} artículos)",
+    "close": "Cerrar carrito",
+    "emptyTitle": "Su carrito está vacío",
+    "emptyBody": "Explore la colección y agregue algunos favoritos para empezar.",
+    "continueShopping": "Ver productos",
+    "subtotal": "Subtotal",
+    "shippingNote": "El envío y los impuestos se calculan al pagar. Solo pedidos en EE. UU.",
+    "freeShippingHint": "Agregue {remaining} más para envío gratis.",
+    "freeShippingUnlocked": "Envío gratis desbloqueado",
+    "checkout": "Pagar de forma segura",
+    "redirecting": "Redirigiendo a Stripe…",
+    "securePayment": "Pago seguro con Stripe · Apple Pay · Google Pay",
+    "checkoutError": "No pudimos iniciar el pago. Inténtelo de nuevo o escríbanos si sigue fallando.",
+    "increaseQty": "Aumentar cantidad de {name}",
+    "decreaseQty": "Disminuir cantidad de {name}",
+    "removeItem": "Quitar {name} del carrito"
+  },
+  "checkout": {
+    "successTitle": "Pedido confirmado",
+    "successBody": "¡Gracias por su pedido! El recibo va en camino a su bandeja de entrada. Marta ha sido notificada y empacará y enviará en 1-2 días hábiles.",
+    "successOrderId": "Referencia del pedido",
+    "successContinue": "Seguir explorando",
+    "cancelTitle": "Sin problema — su carrito sigue guardado",
+    "cancelBody": "No procesamos ningún pago. Sus artículos están justo donde los dejó, cuando esté listo.",
+    "cancelBackToCart": "Volver a productos",
+    "loadingOrder": "Cargando su pedido…"
+  },
   "videos": {
     "tag": "Véalo en Movimiento",
     "title": "Tratamientos Reales, Resultados Reales",

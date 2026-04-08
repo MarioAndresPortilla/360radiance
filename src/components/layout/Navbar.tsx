@@ -8,6 +8,7 @@ import { BUSINESS } from '@/lib/constants';
 import { IconPhone } from '@/components/icons/Icons';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileNav } from './MobileNav';
+import { CartButton } from '@/components/cart/CartButton';
 import { cn } from '@/lib/utils';
 
 /*
@@ -92,6 +93,10 @@ export function Navbar() {
 
           <div className="flex items-center gap-3 max-md:gap-1.5 shrink-0">
             <LanguageSwitcher variant="compact" />
+
+            {/* Cart button — renders nothing when Stripe isn't configured,
+                so the buy flow doesn't show up in prod until env vars are set. */}
+            <CartButton />
 
             {/* Desktop: full phone number with label. Hidden on mobile because
                 there isn't enough header room next to the Book Now button. */}

@@ -32,7 +32,12 @@ export type AnalyticsEvent =
   | 'product_modal_tab_change'
   | 'bundle_view'
   | 'bundle_cta_click'
-  | 'bundle_product_click';
+  | 'bundle_product_click'
+  | 'cart_add'
+  | 'cart_remove'
+  | 'cart_open'
+  | 'checkout_start'
+  | 'purchase';
 
 export function track(event: AnalyticsEvent, props?: AnalyticsProps): void {
   if (typeof window === 'undefined') return;
