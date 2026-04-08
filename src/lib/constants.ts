@@ -68,6 +68,14 @@ export const BUSINESS = {
     // had on hand. Will be replaced with the full /maps/place/... URL once
     // we have it (it makes JSON-LD `sameAs` cleaner for SEO).
     google: 'https://share.google/EZwBBcNduMb0gdThC',
+    // Third-party review/listing profiles. These feed JSON-LD `sameAs` so
+    // Google can stitch them into the Knowledge Graph "About the source" panel
+    // that appears next to our search result. The old skincaretherapy.net site
+    // had these connections built up over years of crawling — surfacing them
+    // explicitly in structured data is the fastest way to get the new domain
+    // (360radianceskincare.com) the same treatment.
+    yelp: 'https://www.yelp.com/biz/360-radiance-sunrise',
+    groupon: 'https://www.groupon.com/biz/sunrise-fl/360-radiance-1',
   },
   // Google review surfaces.
   //
