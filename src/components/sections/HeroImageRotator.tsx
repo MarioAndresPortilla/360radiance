@@ -91,7 +91,7 @@ export function HeroImageRotator() {
 
   return (
     <div
-      className="relative h-full w-full overflow-hidden bg-navy-deep lg:rounded-none rounded-3xl max-lg:shadow-lg max-lg:ring-1 max-lg:ring-black/5"
+      className="relative h-full w-full overflow-hidden bg-cream"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -101,11 +101,10 @@ export function HeroImageRotator() {
       aria-roledescription="carousel"
     >
       {/* Stacked images, opacity-faded to reveal the active one.
-          object-contain (NOT cover) so the full before/after split is always
-          visible at every viewport width — narrower desktops were chopping off
-          the "after" half before. The empty letterbox space falls back to the
-          navy-deep backdrop above, which matches the bottom gradient overlay
-          and reads as a deliberate frame instead of a fit accident. */}
+          object-cover because the parent card is aspect-square and the source
+          images are 1:1 — they fill perfectly with zero cropping. The bg-cream
+          fallback above is only visible during the brief moment between image
+          load events; no letterboxing in the steady state. */}
       {IMAGES.map((img, i) => (
         <div
           key={img.src}
@@ -117,10 +116,10 @@ export function HeroImageRotator() {
             src={img.src}
             alt={img.alt}
             fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            sizes="(max-width: 1024px) 100vw, 480px"
             priority={i === 0}
             loading={i === 0 ? undefined : 'eager'}
-            className="object-contain object-center"
+            className="object-cover object-center"
           />
         </div>
       ))}
