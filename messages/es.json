@@ -24,7 +24,7 @@
     "services": "Servicios",
     "products": "Productos",
     "results": "Resultados",
-    "reviews": "Reseñas",
+    "testimonials": "Testimonios",
     "about": "Acerca de",
     "blog": "Blog",
     "contact": "Contacto",
@@ -198,7 +198,7 @@
     "beforeAfterSubtitle": "Clientas reales, resultados reales. Estas transformaciones se lograron con el Programa de Tratamiento de Acné de 12 semanas.",
     "expectHeading": "Qué Esperar Durante el Tratamiento",
     "stories": "Historias de Éxito de Clientas",
-    "readAllReviews": "Leer Todas las Reseñas →",
+    "readAllReviews": "Leer Todos los Testimonios →",
     "ctaHeading": "¿Lista para Comenzar Su Camino?",
     "ctaSubtitle": "La mayoría de las clientas ven mejoras visibles en 2 semanas. La consulta para el programa de acné siempre es gratuita — reserve la suya hoy.",
     "expectBody": "Su camino hacia una piel clara es una colaboración de 12 semanas con citas quincenales. Marta le guía en cada paso con tratamientos profesionales, cuidado personalizado en el hogar, y ajustes continuos basados en la respuesta de su piel.",
@@ -234,7 +234,7 @@
     "tag": "Historias de Clientas",
     "title": "Lo Que Dicen Nuestras Clientas",
     "starRating": "Calificado 5 de 5 estrellas",
-    "readAll": "Leer todas las reseñas →",
+    "readAll": "Leer todos los testimonios →",
     "leaveGoogleReview": "Dejar una reseña en Google"
   },
   "reviews": {

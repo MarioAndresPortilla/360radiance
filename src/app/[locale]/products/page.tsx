@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
-import { PageHeader } from '@/components/ui/PageHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { IconCheck } from '@/components/icons/Icons';
 import { PRODUCT_FEATURES } from '@/lib/constants';
@@ -30,11 +29,46 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
 
   return (
     <PageShell>
-      <PageHeader
-        tag={t('pageTag')}
-        title={t('pageTitle')}
-        subtitle={t('pageSubtitle')}
-      />
+      {/* Editorial hero — replaces the flat PageHeader on this page only.
+          Same structural pattern as the About hero (full-bleed image + dark
+          gradient overlay) but with two looped CSS animations layered in:
+          a slow Ken Burns zoom on the product image and a soft gold radial
+          pulse. Both animations are pure CSS (defined in globals.css) and
+          are automatically silenced by the global prefers-reduced-motion
+          block, so users who opt out of motion get a static hero. */}
+      <section className="relative bg-navy-deep overflow-hidden" aria-labelledby="products-hero-heading">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/instagram/product-line-natural.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_30%] max-md:object-[center_top] opacity-55 lg:opacity-70 animate-hero-kenburns"
+          />
+          {/* Mobile: dark wash across whole image. Desktop: left-side gradient
+              so the headline copy on the left always has high contrast even
+              while the photo dominates the right half. */}
+          <div className="absolute inset-0 bg-navy-deep/65 lg:bg-linear-to-r lg:from-navy-deep lg:via-navy-deep/85 lg:to-navy-deep/15" aria-hidden="true" />
+          {/* Soft gold radial that gently breathes — adds perceived "glow"
+              warmth to an otherwise cool navy hero. Sits above the gradient
+              so it tints the whole composition. */}
+          <div className="absolute inset-0 animate-hero-pulse pointer-events-none" aria-hidden="true" />
+        </div>
+        <div className="relative container-site py-28 max-md:py-20">
+          <ScrollReveal>
+            <div className="max-w-2xl">
+              <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-gold-light mb-5 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full ring-1 ring-white/15">
+                {t('pageTag')}
+              </span>
+              <h1 id="products-hero-heading" className="font-serif text-[clamp(2.2rem,4.5vw,3.4rem)] leading-[1.12] mb-5 text-white">
+                {t('pageTitle')}
+              </h1>
+              <p className="text-white/85 max-w-130 text-[1.02rem] leading-[1.8]">{t('pageSubtitle')}</p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* Promise bar */}
       <section className="bg-white border-b border-border py-8">

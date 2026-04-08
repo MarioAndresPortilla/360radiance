@@ -19,11 +19,10 @@ import { cn } from '@/lib/utils';
  * pulled out Apr 2026 when this component crossed 220 lines and became
  * painful to scan.
  *
- * /reviews lives between /results and /about — the "trust funnel" ordering:
- * see treatments → see outcomes → see what others say → meet the practitioner
- * → read the journal → contact. Reviews used to be a dead-end page only
- * reachable from footer/Testimonials CTA, which buried the highest-trust
- * signal a service business has.
+ * Testimonials (/reviews) was demoted out of the header into the footer in
+ * Apr 2026 — six chrome links was already dense and the testimonials page
+ * pulls more weight as a footer-tier "I want to see proof before I commit"
+ * destination than as a top-of-funnel anchor. Blog stays in the header.
  */
 export function Navbar() {
   const t = useTranslations('nav');
@@ -35,7 +34,6 @@ export function Navbar() {
     { href: '/services' as const, label: t('services') },
     { href: '/products' as const, label: t('products') },
     { href: '/results' as const, label: t('results') },
-    { href: '/reviews' as const, label: t('reviews') },
     { href: '/about' as const, label: t('about') },
     { href: '/blog' as const, label: t('blog') },
     { href: '/contact' as const, label: t('contact') },

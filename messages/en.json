@@ -24,7 +24,7 @@
     "services": "Services",
     "products": "Products",
     "results": "Results",
-    "reviews": "Reviews",
+    "testimonials": "Testimonials",
     "about": "About",
     "blog": "Blog",
     "contact": "Contact",
@@ -198,7 +198,7 @@
     "beforeAfterSubtitle": "Real clients, real results. These transformations were achieved with the 12-week Acne Treatment Program.",
     "expectHeading": "What to Expect During Treatment",
     "stories": "Client Success Stories",
-    "readAllReviews": "Read All Reviews →",
+    "readAllReviews": "Read All Testimonials →",
     "ctaHeading": "Ready to Start Your Journey?",
     "ctaSubtitle": "Most clients see visible improvement within 2 weeks. The acne consultation is always free — book yours today.",
     "expectBody": "Your journey to clear skin is a 12-week partnership with bi-weekly appointments. Marta guides you every step of the way with professional treatments, custom home-care, and ongoing adjustments based on your skin's response.",
@@ -234,7 +234,7 @@
     "tag": "Client Stories",
     "title": "What Our Clients Say",
     "starRating": "Rated 5 out of 5 stars",
-    "readAll": "Read all reviews →",
+    "readAll": "Read all testimonials →",
     "leaveGoogleReview": "Leave a Google review"
   },
   "reviews": {

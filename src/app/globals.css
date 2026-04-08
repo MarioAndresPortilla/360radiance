@@ -212,6 +212,42 @@ body {
   animation: modal-scale-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Editorial hero motion (currently used by the products page hero).
+ *
+ * Two looped layers:
+ *   - hero-kenburns: a slow ~24s scale + drift on the background image. The
+ *     image starts subtly off-center and slowly zooms in / pans, giving the
+ *     hero a constant cinematic motion without ever calling attention to
+ *     itself. Set on the Image element directly via the .animate-hero-kenburns
+ *     utility — `transform-origin: center` keeps the crop framing predictable.
+ *   - hero-pulse: a soft gold radial-gradient that breathes opacity 0.18
+ *     ↔ 0.42 over 9s. Sits in its own absolute layer above the dark gradient
+ *     so it tints the navy with a faint warm glow. The radial is positioned
+ *     top-right so it suggests light coming from above-frame.
+ *
+ * Both animations are silenced by the global prefers-reduced-motion block
+ * above (animation-duration: 0.01ms !important applied to all elements). */
+@keyframes hero-kenburns {
+  0%   { transform: scale(1.02) translate(0%, 0%); }
+  50%  { transform: scale(1.10) translate(-1.5%, -1%); }
+  100% { transform: scale(1.02) translate(0%, 0%); }
+}
+@keyframes hero-pulse {
+  0%, 100% { opacity: 0.18; }
+  50%      { opacity: 0.42; }
+}
+.animate-hero-kenburns {
+  animation: hero-kenburns 24s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+.animate-hero-pulse {
+  background: radial-gradient(ellipse 60% 50% at 75% 15%, rgba(231, 194, 126, 0.55), transparent 70%);
+  animation: hero-pulse 9s ease-in-out infinite;
+  mix-blend-mode: screen;
+  will-change: opacity;
+}
+
 /* Print */
 @media print {
   .float-btns, nav, .announcement, .skip-link { display: none !important; }

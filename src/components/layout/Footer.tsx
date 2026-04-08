@@ -21,6 +21,7 @@ export function Footer() {
       links: [
         { label: tNav('about'), href: '/about' },
         { label: tNav('results'), href: '/results' },
+        { label: tNav('testimonials'), href: '/reviews' },
         { label: tNav('blog'), href: '/blog' },
         { label: tNav('products'), href: '/products' },
       ],
@@ -78,7 +79,7 @@ export function Footer() {
                         {link.label}
                       </a>
                     ) : (
-                      <Link href={link.href as '/services' | '/about' | '/results' | '/blog' | '/products' | '/contact' | '/privacy' | '/terms'} className="text-white/40 no-underline text-[.88rem] hover:text-purple-soft transition-colors">
+                      <Link href={link.href as '/services' | '/about' | '/results' | '/reviews' | '/blog' | '/products' | '/contact' | '/privacy' | '/terms'} className="text-white/40 no-underline text-[.88rem] hover:text-purple-soft transition-colors">
                         {link.label}
                       </Link>
                     )}
