@@ -48,8 +48,6 @@
     "ctaSecondary": "See Results",
     "messageUs": "Or message us:",
     "whatsappLink": "WhatsApp — we reply fast",
-    "photoTitle": "Marta Nazzar",
-    "photoSubtitle": "Licensed Paramedical Aesthetician",
     "certBadge": "Face Reality Certified",
     "stat1Label": "Years Medical",
     "stat2Label": "Avg Improvement",
@@ -57,7 +55,16 @@
     "reviewStarsLabel": "Rated 5 out of 5 stars",
     "reviewBadge": "Verified client review",
     "reviewQuote": "After 2 weeks — 50% better. After 2 months — 90%. After 2 years of hiding behind makeup, I can finally go out with clear skin.",
-    "reviewAttribution": "Marissa C. · Cystic Acne · 2 Years"
+    "reviewAttribution": "Marissa C. · Cystic Acne · 2 Years",
+    "rotatorVerified": "Real client · Verified result",
+    "rotatorAcne": "Cystic Acne",
+    "rotatorMelasma": "Melasma & Pigmentation",
+    "rotatorAcneScars": "Hormonal Acne",
+    "rotatorRosacea": "Rosacea",
+    "rotatorAging": "Anti-Aging",
+    "rotatorAriaLabel": "Real client transformation gallery — auto-rotating",
+    "rotatorPaginationAria": "Choose a transformation",
+    "rotatorGoTo": "Show transformation {index} of {total}"
   },
   "trust": {
     "label": "Professional credentials",

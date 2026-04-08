@@ -1,28 +1,43 @@
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { BUSINESS } from '@/lib/constants';
 import { Button } from '@/components/ui/Button';
-import { IconWhatsApp, IconScience, IconStar } from '@/components/icons/Icons';
+import { IconWhatsApp, IconStar } from '@/components/icons/Icons';
 import { HeroStats } from './HeroStats';
+import { HeroImageRotator } from './HeroImageRotator';
 
+/*
+ * Home page hero — split-screen full-height variant.
+ *
+ * Why this layout:
+ *   - Marta's portrait used to live in the right column. She's already shown
+ *     full-bleed on the About page and again in AboutSection lower on this
+ *     same page, so a third surface was redundant. We swap her photo for a
+ *     rotating set of real client before/after transformations
+ *     (HeroImageRotator) — the strongest emotional pull an aesthetics
+ *     business can put above the fold.
+ *   - The right column bleeds all the way to the right edge of the viewport
+ *     (cinematic, premium feel) while the left conversion column stays
+ *     aligned with `container-site` so the badge / headline / review quote
+ *     / CTAs / WhatsApp link / stats bar all sit exactly where they did
+ *     before. Conversion machinery is preserved; aesthetics improved.
+ *   - On mobile (default) the layout collapses to a single column: text
+ *     intro → image carousel → CTAs → stats. Same conversion order as the
+ *     previous hero.
+ *
+ * The `.hero-left-pad` utility is defined in globals.css — it computes a
+ * left padding that aligns the inner edge of the left column with where
+ * `container-site` would otherwise begin (handles the 1140 / 1320 / 1480
+ * stepped widths). The right column has no padding so the image goes edge
+ * to edge.
+ */
 export function Hero() {
   const t = useTranslations('hero');
   return (
-    <section className="py-24 max-md:py-12 bg-white" aria-labelledby="hero-heading">
-      <div className="container-site">
-        {/*
-          Mobile flow (default, single column): intro → image → actions.
-          The intro (badge + headline + description) lands above the photo so
-          users grasp the value prop before seeing a face. CTAs + stats follow
-          the photo since visual trust primes conversion.
-
-          Desktop flow (lg+): the image moves into a right-hand column that
-          spans both rows; intro sits top-left, actions sit bottom-left.
-          Visually equivalent to the original 2-col layout.
-        */}
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-x-20 lg:gap-y-0 lg:items-center max-lg:text-center">
-          {/* 1. Intro — mobile: first; desktop: top-left */}
-          <div className="lg:col-start-1 lg:row-start-1">
+    <section className="bg-white relative" aria-labelledby="hero-heading">
+      <div className="grid lg:grid-cols-2 lg:min-h-[680px] lg:items-stretch max-lg:gap-10 max-lg:py-12">
+        {/* LEFT — conversion column. Aligned with container-site on desktop. */}
+        <div className="hero-left-pad max-lg:px-[clamp(1rem,4vw,3rem)] lg:pr-12 lg:py-20 flex flex-col justify-center max-lg:text-center">
+          <div>
             <div className="inline-flex items-center gap-2.5 bg-white border border-border py-2 px-5 rounded-full text-[.73rem] max-md:text-[.68rem] font-semibold text-navy mb-7 max-md:mb-5 shadow-sm whitespace-nowrap">
               <span className="w-1.5 h-1.5 bg-navy rounded-full shrink-0" aria-hidden="true" />
               {t('badge')}
@@ -38,14 +53,10 @@ export function Hero() {
               {t('description')}
             </p>
 
-            {/* Above-the-fold social proof. A single short, punchy review
-                placed between the description and the CTA buttons. This is
-                the highest-impact spot for social proof — visitors see it
-                BEFORE they decide to click anything. We deliberately pick
-                the tightest, most outcome-focused quote in TESTIMONIALS
-                ("After 2 weeks — 50% better") so it reads as a result
-                claim, not just praise. Stars are decorative; the rating
-                is implied by the 5 filled icons. */}
+            {/* Above-the-fold social proof — see comment in the prior Hero
+                version for the full reasoning. Pairs naturally with the
+                rotating before/after image to the right: visitor reads the
+                quote, then sees an actual transformation. */}
             <figure className="mt-7 max-w-115 max-lg:mx-auto">
               <div className="flex items-center gap-2 mb-2">
                 <div className="flex gap-0.5" aria-label={t('reviewStarsLabel')}>
@@ -62,59 +73,39 @@ export function Hero() {
                 — {t('reviewAttribution')}
               </figcaption>
             </figure>
-          </div>
 
-          {/* 2. Image — mobile: second; desktop: right column spanning both rows */}
-          <div className="relative w-full max-lg:max-w-80 max-lg:mx-auto lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
-            <div className="w-full aspect-[3/4] rounded-3xl overflow-hidden relative shadow-lg ring-1 ring-black/5">
-              <Image
-                src="/images/marta-nazzar.jpg"
-                alt="Marta Nazzar, Licensed Paramedical Aesthetician at 360 Radiance"
-                fill
-                className="object-cover object-top"
-                priority
-                sizes="(max-width: 1024px) 320px, 45vw"
-              />
-              <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-linear-to-t from-[rgba(26,35,50,.8)] to-transparent z-1" aria-hidden="true" />
-              <div className="absolute bottom-7 left-7 right-7 z-2 text-white text-left">
-                <h3 className="font-serif text-[1.3rem] mb-1.5">{t('photoTitle')}</h3>
-                <p className="text-[.78rem] opacity-90 font-medium tracking-wide">{t('photoSubtitle')}</p>
+            <div className="mt-9">
+              <div className="flex gap-4 flex-wrap mb-6 max-lg:justify-center max-md:flex-col max-md:items-stretch">
+                <Button variant="navy" href="/contact" className="py-4! px-9! text-[.92rem]! rounded-xl! justify-center">
+                  {t('ctaPrimary')}
+                </Button>
+                <Button variant="outline-navy" href="/results" className="py-3.5! px-8! text-[.92rem]! rounded-xl! justify-center">
+                  {t('ctaSecondary')}
+                </Button>
               </div>
+              <div className="flex items-center gap-2 text-[.84rem] text-text-light mb-12 max-lg:justify-center">
+                {t('messageUs')}{' '}
+                <a
+                  href={BUSINESS.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-whatsapp-dark font-semibold no-underline inline-flex items-center gap-1.5 hover:underline"
+                  aria-label={t('whatsappLink')}
+                >
+                  <IconWhatsApp size={16} className="fill-whatsapp" />
+                  {t('whatsappLink')}
+                </a>
+              </div>
+              <HeroStats />
             </div>
-            <div className="absolute top-5 right-5 max-md:top-3 max-md:right-3 bg-white/95 backdrop-blur-sm rounded-2xl py-3 px-5 max-md:py-2 max-md:px-3.5 shadow-lg z-2 inline-flex items-center gap-2.5 max-md:gap-1.5 text-[.76rem] max-md:text-[.65rem] font-semibold text-navy whitespace-nowrap">
-              <IconScience size={16} className="text-navy shrink-0" aria-hidden="true" />
-              {t('certBadge')}
-            </div>
-            {/* Decorative accent */}
-            <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-gold/10 rounded-3xl -z-1 max-lg:hidden" aria-hidden="true" />
-            <div className="absolute -top-3 -left-3 w-16 h-16 bg-navy/8 rounded-2xl -z-1 max-lg:hidden" aria-hidden="true" />
           </div>
+        </div>
 
-          {/* 3. Actions — mobile: third; desktop: bottom-left */}
-          <div className="lg:col-start-1 lg:row-start-2 lg:mt-9">
-            <div className="flex gap-4 flex-wrap mb-6 max-lg:justify-center max-md:flex-col max-md:items-stretch">
-              <Button variant="navy" href="/contact" className="py-4! px-9! text-[.92rem]! rounded-xl! justify-center">
-                {t('ctaPrimary')}
-              </Button>
-              <Button variant="outline-navy" href="/results" className="py-3.5! px-8! text-[.92rem]! rounded-xl! justify-center">
-                {t('ctaSecondary')}
-              </Button>
-            </div>
-            <div className="flex items-center gap-2 text-[.84rem] text-text-light mb-12 max-lg:justify-center">
-              {t('messageUs')}{' '}
-              <a
-                href={BUSINESS.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-whatsapp-dark font-semibold no-underline inline-flex items-center gap-1.5 hover:underline"
-                aria-label={t('whatsappLink')}
-              >
-                <IconWhatsApp size={16} className="fill-whatsapp" />
-                {t('whatsappLink')}
-              </a>
-            </div>
-            <HeroStats />
-          </div>
+        {/* RIGHT — image rotator. On mobile: constrained square card centered.
+            On desktop: stretches to fill the right column, edge-to-edge with
+            the viewport. */}
+        <div className="relative max-lg:aspect-square max-lg:max-w-105 max-lg:mx-auto max-lg:px-[clamp(1rem,4vw,3rem)] lg:p-0 lg:min-h-[680px]">
+          <HeroImageRotator />
         </div>
       </div>
     </section>

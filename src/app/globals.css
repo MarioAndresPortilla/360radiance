@@ -261,6 +261,45 @@ body {
   animation: cart-drawer-in 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Hero image rotator cross-fade. Each image in the rotator stack toggles
+ * its opacity when the active index changes; this transition handles the
+ * 1.2s soft fade between them. The reduced-motion guard above flattens
+ * this to ~0ms so users who opted out of motion get an instant swap. */
+.hero-rotator-fade {
+  transition: opacity 1200ms ease-in-out;
+}
+
+/* Hero left-column padding utility — aligns the inner edge of the home
+ * page hero's conversion column with the page-wide `container-site` so
+ * the headline starts at the same x-position as every other section's
+ * content. The right column of the hero (the image rotator) escapes
+ * container-site entirely and bleeds to the viewport's right edge.
+ *
+ * Stepped to match container-site's responsive max-widths:
+ *   ≥1024 → align with 1140px container
+ *   ≥1600 → align with 1320px container
+ *   ≥1920 → align with 1480px container
+ *
+ * The `max(2rem, …)` floor protects the layout on viewports just barely
+ * over 1024px where the math would otherwise put the headline flush
+ * against the left edge.
+ */
+@media (min-width: 1024px) {
+  .hero-left-pad {
+    padding-left: max(2rem, calc((100vw - 1140px) / 2));
+  }
+}
+@media (min-width: 1600px) {
+  .hero-left-pad {
+    padding-left: max(2rem, calc((100vw - 1320px) / 2));
+  }
+}
+@media (min-width: 1920px) {
+  .hero-left-pad {
+    padding-left: max(2rem, calc((100vw - 1480px) / 2));
+  }
+}
+
 /* Print */
 @media print {
   .float-btns, nav, .announcement, .skip-link { display: none !important; }

@@ -48,8 +48,6 @@
     "ctaSecondary": "Ver Resultados",
     "messageUs": "O envíenos un mensaje:",
     "whatsappLink": "WhatsApp — respondemos rápido",
-    "photoTitle": "Marta Nazzar",
-    "photoSubtitle": "Esteticista Paramédica Licenciada",
     "certBadge": "Certificada en Face Reality",
     "stat1Label": "Años Médicos",
     "stat2Label": "Mejora Promedio",
@@ -57,7 +55,16 @@
     "reviewStarsLabel": "Calificado 5 de 5 estrellas",
     "reviewBadge": "Reseña verificada",
     "reviewQuote": "A las 2 semanas — 50% mejor. A los 2 meses — 90%. Después de 2 años escondiéndome detrás del maquillaje, finalmente puedo salir con la piel clara.",
-    "reviewAttribution": "Marissa C. · Acné Quístico · 2 Años"
+    "reviewAttribution": "Marissa C. · Acné Quístico · 2 Años",
+    "rotatorVerified": "Cliente real · Resultado verificado",
+    "rotatorAcne": "Acné Quístico",
+    "rotatorMelasma": "Melasma y Pigmentación",
+    "rotatorAcneScars": "Acné Hormonal",
+    "rotatorRosacea": "Rosácea",
+    "rotatorAging": "Anti-Edad",
+    "rotatorAriaLabel": "Galería de transformaciones de clientes reales — rotación automática",
+    "rotatorPaginationAria": "Elegir una transformación",
+    "rotatorGoTo": "Mostrar transformación {index} de {total}"
   },
   "trust": {
     "label": "Credenciales profesionales",
