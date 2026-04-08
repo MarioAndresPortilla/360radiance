@@ -103,8 +103,11 @@ export function Hero() {
 
         {/* RIGHT — image rotator. On mobile: constrained square card centered.
             On desktop: stretches to fill the right column, edge-to-edge with
-            the viewport. */}
-        <div className="relative max-lg:aspect-square max-lg:max-w-105 max-lg:mx-auto max-lg:px-[clamp(1rem,4vw,3rem)] lg:p-0 lg:min-h-[680px]">
+            the viewport. The thin gold left border on desktop is a deliberate
+            visual seam — it punctuates the transition from the white
+            conversion column to the dark cinematic gallery so the layout
+            reads as "intro | proof" rather than a chopped-in-half page. */}
+        <div className="relative max-lg:aspect-square max-lg:max-w-105 max-lg:mx-auto max-lg:px-[clamp(1rem,4vw,3rem)] lg:p-0 lg:min-h-[680px] lg:border-l-[2px] lg:border-gold/50">
           <HeroImageRotator />
         </div>
       </div>
