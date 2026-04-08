@@ -11,7 +11,7 @@ export function HoursSection() {
   const today = new Date().getDay();
 
   return (
-    <section className="py-24 max-md:py-16 bg-white" id="contact" aria-labelledby="hours-heading">
+    <section className="py-16 max-md:py-12 bg-white" id="contact" aria-labelledby="hours-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader id="hours-heading" tag={t('tag')} title={t('title')} />

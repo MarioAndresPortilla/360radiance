@@ -9,7 +9,7 @@ const WHY_KEYS = ['expertise', 'protocol', 'european', 'botanicals', 'personaliz
 export function WhySection() {
   const t = useTranslations('why');
   return (
-    <section className="py-24 max-md:py-16" aria-labelledby="why-heading">
+    <section className="py-16 max-md:py-12" aria-labelledby="why-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader

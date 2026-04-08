@@ -19,7 +19,7 @@ import { NewsletterSignup } from '@/app/[locale]/blog/NewsletterSignup';
 export function NewsletterSection() {
   const t = useTranslations('newsletter');
   return (
-    <section className="py-20 max-md:py-14 bg-navy-pale" aria-labelledby="newsletter-heading">
+    <section className="py-14 max-md:py-10 bg-navy-pale" aria-labelledby="newsletter-heading">
       <div className="container-site">
         <ScrollReveal>
           <div className="max-w-150 mx-auto text-center">

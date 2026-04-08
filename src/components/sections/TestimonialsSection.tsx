@@ -74,7 +74,7 @@ export async function TestimonialsSection() {
   const featuredStatic = TESTIMONIALS.slice(0, 3);
 
   return (
-    <section className="py-24 max-md:py-16" id="reviews" aria-labelledby="reviews-heading">
+    <section className="py-16 max-md:py-12" id="reviews" aria-labelledby="reviews-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader id="reviews-heading" tag={t('tag')} title={t('title')} />

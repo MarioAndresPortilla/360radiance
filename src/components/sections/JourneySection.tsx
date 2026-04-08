@@ -7,7 +7,7 @@ import { ProgressBar } from '@/components/ui/ProgressBar';
 export function JourneySection() {
   const t = useTranslations('results');
   return (
-    <section className="py-24 max-md:py-16 bg-white" id="results" aria-labelledby="results-heading">
+    <section className="py-16 max-md:py-12 bg-white" id="results" aria-labelledby="results-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader

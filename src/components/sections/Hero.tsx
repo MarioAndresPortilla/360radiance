@@ -34,9 +34,9 @@ export function Hero() {
   const t = useTranslations('hero');
   return (
     <section className="bg-white relative" aria-labelledby="hero-heading">
-      <div className="grid lg:grid-cols-2 lg:min-h-[680px] lg:items-stretch max-lg:gap-10 max-lg:py-12">
+      <div className="grid lg:grid-cols-2 lg:min-h-[640px] lg:items-stretch max-lg:gap-8 max-lg:py-8">
         {/* LEFT — conversion column. Aligned with container-site on desktop. */}
-        <div className="hero-left-pad max-lg:px-[clamp(1rem,4vw,3rem)] lg:pr-12 lg:py-20 flex flex-col justify-center max-lg:text-center">
+        <div className="hero-left-pad max-lg:px-[clamp(1rem,4vw,3rem)] lg:pr-12 lg:py-14 flex flex-col justify-center max-lg:text-center">
           <div>
             <div className="inline-flex items-center gap-2.5 bg-white border border-border py-2 px-5 rounded-full text-[.73rem] max-md:text-[.68rem] font-semibold text-navy mb-7 max-md:mb-5 shadow-sm whitespace-nowrap">
               <span className="w-1.5 h-1.5 bg-navy rounded-full shrink-0" aria-hidden="true" />
@@ -107,7 +107,7 @@ export function Hero() {
             visual seam — it punctuates the transition from the white
             conversion column to the dark cinematic gallery so the layout
             reads as "intro | proof" rather than a chopped-in-half page. */}
-        <div className="relative max-lg:aspect-square max-lg:max-w-105 max-lg:mx-auto max-lg:px-[clamp(1rem,4vw,3rem)] lg:p-0 lg:min-h-[680px] lg:border-l-[2px] lg:border-gold/50">
+        <div className="relative max-lg:aspect-square max-lg:max-w-105 max-lg:mx-auto max-lg:px-[clamp(1rem,4vw,3rem)] lg:p-0 lg:min-h-[640px] lg:border-l-[2px] lg:border-gold/50">
           <HeroImageRotator />
         </div>
       </div>
