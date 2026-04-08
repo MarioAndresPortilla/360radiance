@@ -143,9 +143,8 @@
     "cta": "Get Skin Tips",
     "ariaLabel": "Subscribe to the 360 Radiance newsletter",
     "finePrint": "We never sell or share your email.",
-    "comingSoonTag": "Coming Soon",
-    "comingSoonBody": "We're putting the finishing touches on the newsletter — it's launching shortly. Bookmark the site and check back, or follow Marta on Instagram for daily skin tips in the meantime.",
-    "comingSoonButton": "Launching soon"
+    "successTitle": "You're on the list!",
+    "successBody": "Thanks for subscribing. The first issue will land in your inbox as soon as the newsletter goes live."
   },
   "videos": {
     "tag": "See It in Motion",

@@ -143,9 +143,8 @@
     "cta": "Recibir Consejos",
     "ariaLabel": "Suscríbase al boletín de 360 Radiance",
     "finePrint": "Nunca vendemos ni compartimos su correo.",
-    "comingSoonTag": "Próximamente",
-    "comingSoonBody": "Estamos dándole los toques finales al boletín — se lanza muy pronto. Guarde el sitio en favoritos y vuelva a visitarnos, o siga a Marta en Instagram para consejos diarios mientras tanto.",
-    "comingSoonButton": "Próximamente"
+    "successTitle": "¡Está dentro!",
+    "successBody": "Gracias por suscribirse. La primera edición llegará a su bandeja de entrada en cuanto el boletín se publique."
   },
   "videos": {
     "tag": "Véalo en Movimiento",
