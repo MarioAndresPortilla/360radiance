@@ -3,6 +3,8 @@ import { DM_Serif_Display, Plus_Jakarta_Sans } from 'next/font/google';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { BUSINESS } from '@/lib/constants';
 import { getGoogleReviews } from '@/lib/google-reviews';
 import { SITE_URL, buildPageMetadata } from '@/lib/seo';
@@ -271,6 +273,12 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           {children}
         </NextIntlClientProvider>
+        {/* Vercel Web Analytics + Speed Insights — both auto-no-op outside
+            production deploys, so local dev / preview branches don't pollute
+            the metrics. The src/lib/analytics.ts wrapper forwards every
+            track() call to the same script that gets injected here. */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

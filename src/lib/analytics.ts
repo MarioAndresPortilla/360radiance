@@ -1,22 +1,36 @@
 'use client';
 
 /*
- * Lightweight, vendor-agnostic analytics helper.
+ * Lightweight analytics helper, wired to Vercel Web Analytics.
  *
- * Forwards every event to whichever provider happens to be loaded on the page
- * (GA4 / GTM via window.dataLayer, Plausible via window.plausible) and keeps a
- * small in-memory ring buffer for live debugging in DevTools (window.__360_events).
+ * Vercel Analytics is loaded once at the layout level via the <Analytics />
+ * component (src/app/[locale]/layout.tsx). That component handles automatic
+ * pageview tracking and exposes a `track()` function that we wrap here so the
+ * rest of the codebase keeps importing `track` from this module — no
+ * vendor-specific imports leak into product / cart / bundle code.
  *
- * SSR-safe: every call is a no-op on the server. Adding a new provider only
- * requires another forwarder inside `track()`.
+ * SSR-safe: every call is a no-op on the server (the underlying Vercel
+ * helper is also a no-op there, but we guard up front so the function never
+ * touches `window` during render).
+ *
+ * Why not GA4 / Plausible: we're hosted on Vercel, Vercel Analytics ships
+ * privacy-friendly + cookie-less + zero-config tracking, no extra vendor
+ * dashboards to log into, and the events show up alongside Speed Insights
+ * in the same Vercel project. If we ever need a richer event store, the
+ * shape of `track()` is generic enough to fan out to a second backend
+ * (Sentry breadcrumbs, PostHog, etc.) without changing call sites.
+ *
+ * For local debugging, every event is also pushed onto a small in-memory
+ * ring buffer at `window.__360_events` and console.debug-logged outside of
+ * production builds.
  */
+
+import { track as vercelTrack } from '@vercel/analytics/react';
 
 type AnalyticsValue = string | number | boolean | null | undefined;
 export type AnalyticsProps = Record<string, AnalyticsValue>;
 
 interface AnalyticsWindow extends Window {
-  dataLayer?: Array<Record<string, unknown>>;
-  plausible?: (event: string, opts?: { props?: AnalyticsProps }) => void;
   __360_events?: Array<{ t: number; event: string; props?: AnalyticsProps }>;
 }
 
@@ -41,22 +55,22 @@ export type AnalyticsEvent =
 
 export function track(event: AnalyticsEvent, props?: AnalyticsProps): void {
   if (typeof window === 'undefined') return;
-  const w = window as AnalyticsWindow;
 
-  // GA4 / Google Tag Manager
-  const payload = { event, ...props };
-  if (Array.isArray(w.dataLayer)) {
-    w.dataLayer.push(payload);
+  // Forward to Vercel Web Analytics. Vercel only accepts non-undefined values
+  // in the property bag, so strip undefineds defensively — keeps us out of
+  // their "invalid event property" warning path.
+  if (props) {
+    const cleaned: Record<string, string | number | boolean | null> = {};
+    for (const [k, v] of Object.entries(props)) {
+      if (v !== undefined) cleaned[k] = v;
+    }
+    vercelTrack(event, cleaned);
   } else {
-    w.dataLayer = [payload];
-  }
-
-  // Plausible (loaded as a separate snippet)
-  if (typeof w.plausible === 'function') {
-    w.plausible(event, props ? { props } : undefined);
+    vercelTrack(event);
   }
 
   // Local ring buffer — inspect with `window.__360_events` in DevTools
+  const w = window as AnalyticsWindow;
   const ring = w.__360_events ?? (w.__360_events = []);
   ring.push({ t: Date.now(), event, props });
   if (ring.length > RING_LIMIT) ring.shift();
