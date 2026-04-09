@@ -44,7 +44,7 @@ export function AwardSection() {
               </p>
               <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1 max-md:gap-4 mb-8">
                 {[
-                  { value: '5.0', label: t('googleRating') },
+                  { value: '4.9', label: t('googleRating') },
                   { value: '#1', label: t('rank') },
                   { value: '2026', label: t('year') },
                 ].map((stat) => (

@@ -86,8 +86,11 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
 
   const googleReviews = await getGoogleReviews();
   const showGoogleSection = hasGoogleReviews(googleReviews);
-  const displayRating = googleReviews.rating?.toFixed(1) ?? '5.0';
-  const displayCount = googleReviews.totalReviews ?? null;
+  // Hand-tracked baselines mirror layout.tsx — update both places when the
+  // numbers drift, or set GOOGLE_PLACES_API_KEY + GOOGLE_PLACE_ID in Vercel
+  // to make them self-update from the Places API every 30 minutes.
+  const displayRating = googleReviews.rating?.toFixed(1) ?? '4.9';
+  const displayCount = googleReviews.totalReviews ?? 45;
 
   return (
     <PageShell>

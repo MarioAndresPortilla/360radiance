@@ -247,12 +247,16 @@ export default async function LocaleLayout({
 
   const m = META[locale as keyof typeof META] ?? META.en;
   // Pull live (or snapshotted) Google review numbers for the AggregateRating
-  // schema. Falls back to our hand-tracked baseline (5.0 / 50 reviews) when no
-  // live data is available, so the JSON-LD is always populated.
+  // schema. Falls back to the hand-tracked baseline (4.9 / 45 reviews — last
+  // verified 2026-04-09 from Marta's Google Business Profile) when no live
+  // data is available, so the JSON-LD is always populated. Update both
+  // numbers here when the next manual reconciliation happens, or set the
+  // GOOGLE_PLACES_API_KEY + GOOGLE_PLACE_ID env vars in Vercel to make them
+  // self-update from the Places API every 30 minutes.
   const reviews = await getGoogleReviews();
   const aggregateRating: AggregateRating = {
-    ratingValue: reviews.rating != null ? reviews.rating.toFixed(1) : '5.0',
-    reviewCount: reviews.totalReviews != null ? String(reviews.totalReviews) : '50',
+    ratingValue: reviews.rating != null ? reviews.rating.toFixed(1) : '4.9',
+    reviewCount: reviews.totalReviews != null ? String(reviews.totalReviews) : '45',
   };
   const businessJsonLd = buildJsonLd(locale, aggregateRating);
 
