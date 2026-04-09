@@ -39,7 +39,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
       <section className="relative bg-navy-deep overflow-hidden" aria-labelledby="products-hero-heading">
         <div className="absolute inset-0">
           <Image
-            src="/images/instagram/product-line-natural.webp"
+            src="/images/Radiance_Complete_360_Product_Line.jpeg"
             alt=""
             fill
             priority
@@ -128,7 +128,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
                 Curated Bundles
               </h2>
               <p className="text-text-mid max-w-150 mx-auto text-[.95rem] leading-[1.7]">
-                Pre-built routines hand-selected by Marta — every product chosen to amplify the next. Save up to 19% versus buying individually.
+                Pre-built routines hand-selected by Marta — every product chosen to amplify the next. Save up to 16% versus buying individually.
               </p>
             </div>
           </ScrollReveal>
@@ -183,8 +183,8 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
               <div className="relative">
                 <div className="rounded-2xl aspect-4/3 relative overflow-hidden shadow-md border border-border">
                   <Image
-                    src="/images/instagram/product-line-natural.webp"
-                    alt="The full Radiance Skin Care product line — 100% natural botanical formulas"
+                    src="/images/Radiance_Peptide_Serum_Benefits_Infographic.jpeg"
+                    alt="Radiance Peptide Serum with Hyaluronic Acid — clinical benefits breakdown showing deep hydration, smoothing, collagen support, and gentle daily-use formula"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 45vw"
