@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "sync:reviews": "node scripts/sync-google-reviews.mjs",
     "rasterize:blog": "node scripts/rasterize-blog-images.mjs"
   },
   "dependencies": {

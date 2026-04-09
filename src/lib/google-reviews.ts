@@ -1,32 +1,19 @@
-// Google reviews — hybrid live + static loader.
+// Google reviews — live-only loader.
 //
 // This module is the single source of truth for review data on the site.
-// It supports two delivery modes that complement each other:
+// It calls the Google Places API (new) on every server render and caches
+// the result for 30 minutes via Next.js's `fetch` cache. New reviews
+// surface within ~30 min of being posted on Google without a redeploy.
 //
-//   1. **Live (Option 1)** — when both `GOOGLE_PLACES_API_KEY` and
-//      `GOOGLE_PLACE_ID` env vars are set, `getGoogleReviews()` calls the
-//      Places API (new) at request time. The fetch is cached by Next.js for
-//      30 minutes via `next.revalidate` so new reviews appear on the site
-//      within ~30 min of being posted on Google — effectively "live" from a
-//      visitor's perspective without burning quota or violating Google's
-//      30-day TOS cap on cached reviews. On-demand purges are still possible
-//      via `revalidateTag` against the `google-reviews` tag.
+// Failure mode: if the env vars are missing or the fetch fails for any
+// reason (rate limit, network blip, malformed payload), the loader
+// returns EMPTY_REVIEWS and the consuming UI hides its review section.
+// We deliberately do NOT fall back to a static snapshot or hand-curated
+// testimonials anymore — Marta wanted only authentic, real-time Google
+// reviews on the site.
 //
-//   2. **Static (Option 3)** — `scripts/sync-google-reviews.mjs` is a
-//      manual-run script that hits the same Places API endpoint and writes
-//      the normalized result into `src/data/google-reviews.json`. When the
-//      live env vars are missing or the live fetch fails, the loader falls
-//      back to that JSON file. This means the site can render real reviews
-//      even on a build environment without API access (or before the API
-//      key is provisioned).
-//
-// Resolution order on every server render:
-//   live API → static JSON → empty (UI falls back to hand-curated TESTIMONIALS)
-//
-// The Places API (new) only returns the **5 most recent** reviews. That is a
-// Google quota limit, not ours.
-
-import staticReviews from '@/data/google-reviews.json';
+// The Places API (new) only returns the **5 most recent** reviews. That
+// is a Google quota limit, not ours.
 
 export type GoogleReview = {
   authorName: string;
@@ -104,14 +91,15 @@ function normalize(raw: RawPlacesResponse): GoogleReviewsData {
 }
 
 /**
- * Fetch reviews live from the Google Places API. Returns null on any failure
- * (missing env vars, network error, non-2xx response, malformed payload) so
- * callers can fall back to the static JSON without throwing.
+ * Resolve Google reviews for server-side rendering. Hits the live Places
+ * API and returns the normalized result. On any failure (missing env
+ * vars, non-2xx response, malformed payload, network error) returns
+ * EMPTY_REVIEWS so callers degrade gracefully without throwing.
  */
-async function fetchLiveReviews(): Promise<GoogleReviewsData | null> {
+export async function getGoogleReviews(): Promise<GoogleReviewsData> {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
   const placeId = process.env.GOOGLE_PLACE_ID;
-  if (!apiKey || !placeId) return null;
+  if (!apiKey || !placeId) return EMPTY_REVIEWS;
 
   try {
     const res = await fetch(`${PLACES_API_BASE}/${encodeURIComponent(placeId)}`, {
@@ -123,40 +111,14 @@ async function fetchLiveReviews(): Promise<GoogleReviewsData | null> {
     });
     if (!res.ok) {
       console.error('[google-reviews] Places API non-OK response:', res.status, await res.text().catch(() => ''));
-      return null;
+      return EMPTY_REVIEWS;
     }
     const raw = (await res.json()) as RawPlacesResponse;
     return normalize(raw);
   } catch (err) {
     console.error('[google-reviews] Places API fetch failed:', err);
-    return null;
+    return EMPTY_REVIEWS;
   }
-}
-
-/**
- * Read the static JSON snapshot written by `scripts/sync-google-reviews.mjs`.
- * The file always exists (a placeholder is committed) but may have an empty
- * `reviews` array if the script has not been run yet.
- */
-function getStaticReviews(): GoogleReviewsData {
-  // The JSON file is committed with the same shape as GoogleReviewsData, so
-  // this cast is safe as long as the schema in scripts/sync-google-reviews.mjs
-  // matches the type defined above.
-  return staticReviews as GoogleReviewsData;
-}
-
-/**
- * Resolve Google reviews for server-side rendering. Tries live API first,
- * falls back to the static JSON, falls back to empty. Never throws.
- */
-export async function getGoogleReviews(): Promise<GoogleReviewsData> {
-  const live = await fetchLiveReviews();
-  if (live && live.reviews.length > 0) return live;
-
-  const snapshot = getStaticReviews();
-  if (snapshot.reviews.length > 0) return snapshot;
-
-  return EMPTY_REVIEWS;
 }
 
 /** True when we have at least one real Google review to render. */

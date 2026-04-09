@@ -1,4 +1,4 @@
-import type { Service, Testimonial, WhyCard, Credential, JourneyStep, ProductFeature, HourEntry, TrustItem } from '@/types';
+import type { Service, WhyCard, Credential, JourneyStep, ProductFeature, HourEntry, TrustItem } from '@/types';
 import { BLOG_CONTENT } from './blog-content';
 import { BLOG_CONTENT_2 } from './blog-content-2';
 import { BLOG_CONTENT_ES } from './blog-content-es';
@@ -433,86 +433,6 @@ export const JOURNEY_STEPS: JourneyStep[] = [
     title: 'Clear Skin',
     description: '90%+ improvement. Final bi-weekly visit (6 of 6) locks in results and transitions you to long-term maintenance care.',
     progress: 95,
-  },
-];
-
-// Hand-curated client testimonials. These show on the homepage and the
-// /reviews page when live Google reviews aren't available, AND below the live
-// Google reviews on /reviews so visitors always see longer-form transformation
-// stories. Several entries below are sourced from real Google reviews — the
-// names are reduced to first-name + last-initial for privacy and the quotes
-// are lightly trimmed for length but never edited for meaning. New entries
-// added 2026-04-09 from the latest batch of Google reviews.
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    text: 'Within the first week, many of my inflamed cysts had reduced. This regime has my skin controlled — I would have never believed it.',
-    name: 'Carla',
-    condition: 'Hormonal Acne',
-    avatarColor: 'bg-navy',
-    initial: 'C',
-  },
-  {
-    text: 'After 2 weeks — 50% better. After 2 months — 90%. After 2 years of hiding behind makeup, I can finally go out with clear skin.',
-    name: 'Marissa C.',
-    condition: 'Cystic Acne · 2 Years',
-    avatarColor: 'bg-gold',
-    initial: 'M',
-  },
-  {
-    text: "I've been going to Marta at 360 Radiance for years and she completely transformed my skin. When I first started, I was struggling with persistent acne that nothing seemed to fix. Not only did she help clear my face, but she taught me how to take care of my skin long-term.",
-    name: 'Alexsandra R.',
-    condition: 'Persistent Acne · Multi-year client',
-    avatarColor: 'bg-purple-soft',
-    initial: 'A',
-  },
-  {
-    text: '360 Radiance is a hidden GEM. The expertise, knowledge and professionalism is like no other I have seen in years. I have been Marta\'s client for over 4 years and at 53 years old, my skin has never looked better.',
-    name: 'Marielena G.',
-    condition: 'Anti-Aging · 4+ year client',
-    avatarColor: 'bg-navy-deep',
-    initial: 'M',
-  },
-  {
-    text: "Truly a GEM. EXTREMELY knowledgeable, professional, and AMAZING. She's giving me the radiant skin I always dreamed of.",
-    name: 'Karen K.',
-    condition: 'Acne Rosacea',
-    avatarColor: 'bg-navy-deep',
-    initial: 'K',
-  },
-  {
-    text: 'I had an incredible facial with Marta and am absolutely thrilled with the results. My skin hasn\'t felt this soft or looked this clear in years. She was professional, extremely knowledgeable, and took the time to explain every step.',
-    name: 'Lilian G.',
-    condition: 'Facial · First visit',
-    avatarColor: 'bg-gold',
-    initial: 'L',
-  },
-  {
-    text: '20 years of rosacea. 2 weeks to see improvement. 4 weeks — completely clear. Beyond all expectations.',
-    name: 'Delcy V.',
-    condition: 'Rosacea · 20 Years',
-    avatarColor: 'bg-gold-dark',
-    initial: 'D',
-  },
-  {
-    text: 'I have tried so many things and nothing has worked… until I came here! My face hasn\'t looked this good in a long time and I am so grateful for the amazing work Marta has done. 100/10 would recommend.',
-    name: 'Ana G.',
-    condition: 'Tried Everything',
-    avatarColor: 'bg-navy',
-    initial: 'A',
-  },
-  {
-    text: 'She got to the source of my acne. Within weeks — total transformation. Clear skin, scar free.',
-    name: 'Vanessa P.',
-    condition: 'Persistent Acne',
-    avatarColor: 'bg-purple-soft',
-    initial: 'V',
-  },
-  {
-    text: "Most thorough microderm I've ever had — out of about 10 aestheticians. Didn't leave without making my next appointment.",
-    name: 'New from NJ',
-    condition: 'Microdermabrasion',
-    avatarColor: 'bg-gold',
-    initial: 'J',
   },
 ];
 

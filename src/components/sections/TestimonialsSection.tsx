@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { BUSINESS, TESTIMONIALS } from '@/lib/constants';
+import { BUSINESS } from '@/lib/constants';
 import { getGoogleReviews, hasGoogleReviews, type GoogleReview } from '@/lib/google-reviews';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -66,12 +66,14 @@ function GoogleReviewMiniCard({ review }: { review: GoogleReview }) {
 export async function TestimonialsSection() {
   const t = await getTranslations('testimonials');
   const googleReviews = await getGoogleReviews();
-  // Show up to 3 Google reviews on the homepage. If we don't have any yet,
-  // fall back to the hand-curated TESTIMONIALS array so the section is never
-  // empty.
-  const showGoogle = hasGoogleReviews(googleReviews);
-  const featuredGoogle = showGoogle ? googleReviews.reviews.slice(0, 3) : [];
-  const featuredStatic = TESTIMONIALS.slice(0, 3);
+
+  // Live Google reviews are now the only source of truth. If the Places API
+  // returns nothing (missing creds, rate limit, transient failure) we hide
+  // the entire section rather than fall back to hand-curated quotes — Marta
+  // explicitly wanted only authentic, verifiable reviews on the site.
+  if (!hasGoogleReviews(googleReviews)) return null;
+
+  const featured = googleReviews.reviews.slice(0, 3);
 
   return (
     <section className="py-16 max-md:py-12" id="reviews" aria-labelledby="reviews-heading">
@@ -80,33 +82,11 @@ export async function TestimonialsSection() {
           <SectionHeader id="reviews-heading" tag={t('tag')} title={t('title')} />
         </ScrollReveal>
         <div className="grid grid-cols-3 gap-7 max-lg:grid-cols-2 max-lg:gap-6 max-md:grid-cols-1 max-md:gap-5" role="list">
-          {showGoogle
-            ? featuredGoogle.map((review, i) => (
-                <ScrollReveal key={`${review.authorName}-${i}`}>
-                  <GoogleReviewMiniCard review={review} />
-                </ScrollReveal>
-              ))
-            : featuredStatic.map((tm) => (
-                <ScrollReveal key={tm.name}>
-                  <blockquote className="bg-white border border-border rounded-2xl p-8 max-md:p-6 transition-all duration-300 hover:shadow-md hover:border-border-hover" role="listitem">
-                    <div className="flex gap-1 mb-4" aria-label={t('starRating')}>
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <IconStar key={i} size={14} className="text-gold" aria-hidden="true" />
-                      ))}
-                    </div>
-                    <p className="text-text-mid text-[.88rem] leading-[1.8] italic mb-6">{tm.text}</p>
-                    <footer className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-[.72rem] font-bold text-white shrink-0 ${tm.avatarColor}`} aria-hidden="true">
-                        {tm.initial}
-                      </div>
-                      <div>
-                        <cite className="font-semibold text-[.85rem] not-italic">{tm.name}</cite>
-                        <div className="text-[.72rem] text-text-light mt-0.5">{tm.condition}</div>
-                      </div>
-                    </footer>
-                  </blockquote>
-                </ScrollReveal>
-              ))}
+          {featured.map((review, i) => (
+            <ScrollReveal key={`${review.authorName}-${i}`}>
+              <GoogleReviewMiniCard review={review} />
+            </ScrollReveal>
+          ))}
         </div>
         <div className="text-center mt-10 flex items-center justify-center gap-4 flex-wrap">
           <Link

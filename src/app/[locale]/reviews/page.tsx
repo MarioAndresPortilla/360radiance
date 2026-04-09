@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { BUSINESS, TESTIMONIALS } from '@/lib/constants';
+import { BUSINESS } from '@/lib/constants';
 import { getGoogleReviews, hasGoogleReviews, type GoogleReview } from '@/lib/google-reviews';
 import { buildPageMetadata } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
@@ -86,11 +86,13 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
 
   const googleReviews = await getGoogleReviews();
   const showGoogleSection = hasGoogleReviews(googleReviews);
-  // Hand-tracked baselines mirror layout.tsx — update both places when the
-  // numbers drift, or set GOOGLE_PLACES_API_KEY + GOOGLE_PLACE_ID in Vercel
-  // to make them self-update from the Places API every 30 minutes.
-  const displayRating = googleReviews.rating?.toFixed(1) ?? '4.9';
-  const displayCount = googleReviews.totalReviews ?? 45;
+  // Numbers come straight from the live Places API. If the API is
+  // unavailable both fields will be null and the rating summary block
+  // hides — we no longer ship a hand-tracked baseline since Marta
+  // wanted only authentic Google data on the site.
+  const displayRating = googleReviews.rating?.toFixed(1) ?? null;
+  const displayCount = googleReviews.totalReviews ?? null;
+  const showRatingSummary = displayRating !== null;
 
   return (
     <PageShell>
@@ -100,49 +102,55 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
         subtitle={tr('pageSubtitle')}
       />
 
-      {/* Rating summary */}
-      <section className="bg-white border-b border-border py-10">
-        <div className="container-site">
-          <ScrollReveal>
-            <div className="flex items-center justify-center gap-8 max-md:flex-col max-md:gap-4">
-              <div className="text-center">
-                <div className="font-serif text-[3rem] text-navy leading-none">{displayRating}</div>
-                <div className="flex gap-0.5 justify-center my-2">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <IconStar key={i} size={18} className="text-gold" aria-hidden="true" />
-                  ))}
+      {/* Rating summary — only renders when the live Places API returned a
+          numeric rating. Without that we'd be showing a fake star count. */}
+      {showRatingSummary && (
+        <section className="bg-white border-b border-border py-10">
+          <div className="container-site">
+            <ScrollReveal>
+              <div className="flex items-center justify-center gap-8 max-md:flex-col max-md:gap-4">
+                <div className="text-center">
+                  <div className="font-serif text-[3rem] text-navy leading-none">{displayRating}</div>
+                  <div className="flex gap-0.5 justify-center my-2">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <IconStar key={i} size={18} className="text-gold" aria-hidden="true" />
+                    ))}
+                  </div>
+                  <div className="text-[.78rem] text-text-mid">
+                    {displayCount !== null ? tr('basedOnCount', { count: displayCount }) : tr('basedOn')}
+                  </div>
                 </div>
-                <div className="text-[.78rem] text-text-mid">
-                  {displayCount ? tr('basedOnCount', { count: displayCount }) : tr('basedOn')}
+                <div className="w-px h-16 bg-border max-md:hidden" aria-hidden="true" />
+                <div className="text-center">
+                  <div className="font-serif text-[2rem] text-navy">100%</div>
+                  <div className="text-[.78rem] text-text-mid">{tr('wouldRecommend')}</div>
+                </div>
+                <div className="w-px h-16 bg-border max-md:hidden" aria-hidden="true" />
+                <div className="text-center">
+                  <div className="font-serif text-[2rem] text-navy">90%+</div>
+                  <div className="text-[.78rem] text-text-mid">{tr('avgImprovement')}</div>
                 </div>
               </div>
-              <div className="w-px h-16 bg-border max-md:hidden" aria-hidden="true" />
-              <div className="text-center">
-                <div className="font-serif text-[2rem] text-navy">100%</div>
-                <div className="text-[.78rem] text-text-mid">{tr('wouldRecommend')}</div>
+              <div className="text-center mt-6">
+                <a
+                  href={BUSINESS.googleProfile}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[.82rem] text-navy font-semibold no-underline hover:underline"
+                >
+                  <GoogleG size={16} />
+                  {tr('viewOnGoogle')}
+                </a>
               </div>
-              <div className="w-px h-16 bg-border max-md:hidden" aria-hidden="true" />
-              <div className="text-center">
-                <div className="font-serif text-[2rem] text-navy">90%+</div>
-                <div className="text-[.78rem] text-text-mid">{tr('avgImprovement')}</div>
-              </div>
-            </div>
-            <div className="text-center mt-6">
-              <a
-                href={BUSINESS.googleProfile}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[.82rem] text-navy font-semibold no-underline hover:underline"
-              >
-                <GoogleG size={16} />
-                {tr('viewOnGoogle')}
-              </a>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
 
-      {/* Live Google reviews — only rendered when at least one is available */}
+      {/* Live Google reviews — the only review section on this page now.
+          Hidden when the Places API returns nothing so we never render an
+          empty grid. The "share your story" section below still drives
+          visitors to write a new review even when this section is hidden. */}
       {showGoogleSection && (
         <section className="py-20 max-md:py-14 bg-white" aria-labelledby="google-reviews-heading">
           <div className="container-site">
@@ -166,46 +174,6 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
           </div>
         </section>
       )}
-
-      {/* All testimonials — hand-curated client stories shown beneath the live
-          Google section (or as the only section before reviews are populated). */}
-      <section className="py-20 max-md:py-14" aria-labelledby="all-reviews-heading">
-        <div className="container-site">
-          {showGoogleSection ? (
-            <ScrollReveal>
-              <div className="text-center mb-10">
-                <h2 id="all-reviews-heading" className="font-serif text-[clamp(1.4rem,2.5vw,1.9rem)] mb-2.5">{tr('clientStoriesHeading')}</h2>
-                <p className="text-text-mid max-w-130 mx-auto text-[.9rem] leading-[1.7]">{tr('clientStoriesSubtitle')}</p>
-              </div>
-            </ScrollReveal>
-          ) : (
-            <h2 id="all-reviews-heading" className="sr-only">{tr('allReviews')}</h2>
-          )}
-          <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
-            {TESTIMONIALS.map((testimonial) => (
-              <ScrollReveal key={testimonial.name}>
-                <blockquote className="bg-white border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-md hover:border-border-hover h-full flex flex-col">
-                  <div className="flex gap-0.5 mb-4" aria-label="Rated 5 out of 5 stars">
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <IconStar key={j} size={16} className="text-gold" aria-hidden="true" />
-                    ))}
-                  </div>
-                  <p className="text-text-mid text-[.92rem] leading-[1.85] italic mb-6 flex-1">&ldquo;{testimonial.text}&rdquo;</p>
-                  <footer className="flex items-center gap-3">
-                    <div className={`w-11 h-11 rounded-full flex items-center justify-center text-[.8rem] font-bold text-white shrink-0 ${testimonial.avatarColor}`} aria-hidden="true">
-                      {testimonial.initial}
-                    </div>
-                    <div>
-                      <cite className="font-semibold text-[.88rem] not-italic block">{testimonial.name}</cite>
-                      <div className="text-[.72rem] text-text-light">{testimonial.condition}</div>
-                    </div>
-                  </footer>
-                </blockquote>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Share your story */}
       <section className="py-16 bg-white" aria-labelledby="share-heading">

@@ -6,14 +6,6 @@ export interface Service {
   featured?: boolean;
 }
 
-export interface Testimonial {
-  text: string;
-  name: string;
-  condition: string;
-  avatarColor: string;
-  initial: string;
-}
-
 export interface WhyCard {
   icon: string;
   iconTheme: 'navy' | 'gold';

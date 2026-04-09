@@ -277,7 +277,6 @@
   },
   "reviews": {
     "pageSubtitle": "Real testimonials from real people who transformed their skin. Every review is from a verified 360 Radiance client.",
-    "allReviews": "All Reviews",
     "basedOn": "Based on client reviews",
     "basedOnCount": "Based on {count} Google reviews",
     "wouldRecommend": "Would recommend to a friend",
@@ -286,8 +285,6 @@
     "googleVerifiedTag": "Verified on Google",
     "googleHeading": "From our Google reviews",
     "googleSubtitle": "The most recent reviews left directly on our Google Business Profile by verified clients.",
-    "clientStoriesHeading": "More client stories",
-    "clientStoriesSubtitle": "Hand-selected testimonials from clients who transformed their skin with the 12-week program.",
     "shareTitle": "Are You a 360 Radiance Client?",
     "shareBody": "We'd love to hear about your experience. Share your skin transformation story and help others discover the confidence of clear, radiant skin.",
     "leaveReview": "Leave a Google review",

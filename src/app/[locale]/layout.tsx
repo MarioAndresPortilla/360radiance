@@ -158,13 +158,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 type AggregateRating = { ratingValue: string; reviewCount: string };
 
-function buildJsonLd(locale: string, aggregateRating: AggregateRating) {
+function buildJsonLd(locale: string, aggregateRating: AggregateRating | null) {
   const inLanguage = locale === 'es' ? 'es-US' : 'en-US';
   const description = locale === 'es'
     ? 'Clínica de cuidado paramédico de la piel especializada en tratamiento del acné, microdermoabrasión, HydraFacial, microneedling, peelings químicos, y cuidado botánico de la piel.'
     : 'Paramedical skincare clinic specializing in acne treatment, microdermabrasion, HydraFacial, microneedling, chemical peels, and botanical skincare.';
 
-  return {
+  // Build the base business object first, then conditionally attach the
+  // aggregateRating only when we have real numbers from the Places API.
+  // Google's Rich Results validator rejects AggregateRating objects with
+  // missing ratingValue/reviewCount, so it's better to omit the property
+  // entirely than to ship a placeholder — and we promised Marta the
+  // schema would only ever reflect authentic Google data.
+  const business: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': ['MedicalBusiness', 'BeautySalon'],
     '@id': `${SITE_URL}/#business`,
@@ -217,13 +223,18 @@ function buildJsonLd(locale: string, aggregateRating: AggregateRating) {
       { '@type': 'City', name: 'Davie' },
       { '@type': 'City', name: 'Fort Lauderdale' },
     ],
-    aggregateRating: {
+  };
+
+  if (aggregateRating) {
+    business.aggregateRating = {
       '@type': 'AggregateRating',
       ratingValue: aggregateRating.ratingValue,
       bestRating: '5',
       reviewCount: aggregateRating.reviewCount,
-    },
-  };
+    };
+  }
+
+  return business;
 }
 
 const websiteJsonLd = {
@@ -248,18 +259,20 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const m = META[locale as keyof typeof META] ?? META.en;
-  // Pull live (or snapshotted) Google review numbers for the AggregateRating
-  // schema. Falls back to the hand-tracked baseline (4.9 / 45 reviews — last
-  // verified 2026-04-09 from Marta's Google Business Profile) when no live
-  // data is available, so the JSON-LD is always populated. Update both
-  // numbers here when the next manual reconciliation happens, or set the
-  // GOOGLE_PLACES_API_KEY + GOOGLE_PLACE_ID env vars in Vercel to make them
-  // self-update from the Places API every 30 minutes.
+  // Pull live Google review numbers from the Places API for the
+  // AggregateRating schema. If the API call fails or both fields come
+  // back null, we omit aggregateRating from the JSON-LD entirely
+  // (buildJsonLd handles the null case) — better to ship valid schema
+  // without a rating than schema with a stale hardcoded baseline that
+  // would mislead Google's Rich Results.
   const reviews = await getGoogleReviews();
-  const aggregateRating: AggregateRating = {
-    ratingValue: reviews.rating != null ? reviews.rating.toFixed(1) : '4.9',
-    reviewCount: reviews.totalReviews != null ? String(reviews.totalReviews) : '45',
-  };
+  const aggregateRating: AggregateRating | null =
+    reviews.rating != null && reviews.totalReviews != null
+      ? {
+          ratingValue: reviews.rating.toFixed(1),
+          reviewCount: String(reviews.totalReviews),
+        }
+      : null;
   const businessJsonLd = buildJsonLd(locale, aggregateRating);
 
   return (

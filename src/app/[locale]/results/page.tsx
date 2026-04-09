@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { JOURNEY_STEPS, TESTIMONIALS } from '@/lib/constants';
+import { JOURNEY_STEPS } from '@/lib/constants';
 import { buildPageMetadata } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ProgressBar } from '@/components/ui/ProgressBar';
-import { IconStar, IconCheck } from '@/components/icons/Icons';
+import { IconCheck } from '@/components/icons/Icons';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -207,45 +207,26 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
         </div>
       </section>
 
-      {/* Featured testimonials */}
+      {/* Read all reviews CTA — the previous "Featured testimonials" grid
+          rendered hand-curated quotes from constants.ts. Removed when we
+          consolidated review content to live Google reviews only; the
+          /reviews page is now the single canonical place for testimonials,
+          and this CTA points visitors there. */}
       <section className="py-20 max-md:py-14" aria-labelledby="stories-heading">
         <div className="container-site">
           <ScrollReveal>
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <h2 id="stories-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-2.5">{t('stories')}</h2>
               <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7]">
                 {t('storiesSubtitle')}
               </p>
             </div>
+            <div className="text-center">
+              <Link href="/reviews" className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-navy text-navy rounded-lg font-semibold text-[.85rem] px-6 py-3 transition-all hover:bg-navy hover:text-white no-underline">
+                {t('readAllReviews')}
+              </Link>
+            </div>
           </ScrollReveal>
-          <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
-            {TESTIMONIALS.slice(0, 3).map((testimonial) => (
-              <ScrollReveal key={testimonial.name}>
-                <blockquote className="bg-white border border-border rounded-2xl p-7 transition-all duration-300 hover:shadow-md hover:border-border-hover">
-                  <div className="flex gap-0.5 mb-3" aria-label="Rated 5 out of 5 stars">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <IconStar key={i} size={14} className="text-gold" aria-hidden="true" />
-                    ))}
-                  </div>
-                  <p className="text-text-mid text-[.85rem] leading-[1.8] italic mb-5">{testimonial.text}</p>
-                  <footer className="flex items-center gap-2.5">
-                    <div className={`w-9 h-9 rounded-full flex items-center justify-center text-[.7rem] font-bold text-white shrink-0 ${testimonial.avatarColor}`} aria-hidden="true">
-                      {testimonial.initial}
-                    </div>
-                    <div>
-                      <cite className="font-semibold text-[.82rem] not-italic">{testimonial.name}</cite>
-                      <div className="text-[.68rem] text-text-light">{testimonial.condition}</div>
-                    </div>
-                  </footer>
-                </blockquote>
-              </ScrollReveal>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link href="/reviews" className="inline-flex items-center gap-1.5 bg-transparent border-[1.5px] border-navy text-navy rounded-lg font-semibold text-[.85rem] px-6 py-3 transition-all hover:bg-navy hover:text-white no-underline">
-              {t('readAllReviews')}
-            </Link>
-          </div>
         </div>
       </section>
 
