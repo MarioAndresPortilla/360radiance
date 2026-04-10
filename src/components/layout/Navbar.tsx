@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
-import Image from 'next/image';
 import { BUSINESS } from '@/lib/constants';
 import { IconPhone } from '@/components/icons/Icons';
+import { Logo } from './Logo';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileNav } from './MobileNav';
 import { CartButton } from '@/components/cart/CartButton';
@@ -57,21 +57,13 @@ export function Navbar() {
         <div className="container-site flex justify-between items-center h-16 gap-6 max-lg:gap-3 max-md:gap-2">
           <Link href="/" className="flex items-center no-underline min-w-0" aria-label={t('homeAria')}>
             {/*
-              The horizontal lotus logo has an 8:1 aspect ratio (480x60), so at
-              h-9 it renders ~288px wide — wider than half a 360px Samsung viewport.
-              We CAP the rendered width on small mobiles (max-w-[160px]) and let
-              the height auto-derive, so the logo always fits next to the
-              "Book Now" + hamburger cluster without clipping. On lg+ we let it
-              breathe at its natural h-9 size.
+              Inline SVG logo — always renders as true vector, never rasterised
+              by the Next.js image optimiser. The viewBox is ~8.7:1, so at h-9
+              it renders ~313px wide. We CAP the rendered width on small mobiles
+              (max-w-[160px]) so the logo fits next to the "Book Now" + hamburger
+              cluster without clipping.
             */}
-            <Image
-              src="/logo-horizontal-purple-light.svg"
-              alt="360 Radiance"
-              width={240}
-              height={30}
-              priority
-              className="h-9 w-auto max-lg:h-8 max-md:h-7 max-md:max-w-40 max-[380px]:max-w-35"
-            />
+            <Logo className="h-9 w-auto max-lg:h-8 max-md:h-7 max-md:max-w-40 max-[380px]:max-w-35" />
           </Link>
 
           <div className="flex gap-6 items-center max-lg:hidden" role="list">
