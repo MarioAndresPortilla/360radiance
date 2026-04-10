@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:360radianceskincare.com)",
+      "Bash(curl -sI https://360radianceskincare.com/favicon.ico)",
+      "Bash(curl -s https://360radianceskincare.com/en)",
+      "Bash(curl -sI \"https://360radianceskincare.com/favicon.ico?favicon.0l86.dw6jvlle.ico?dpl=dpl_3czvLU7rDFgwS6TWrXQz8AX1qHKN\")",
+      "Bash(node scripts/generate-favicon.mjs)",
+      "Bash(ls -la /c/Users/mport/Documents/360radiance/*.ts)",
+      "Bash(find /c/Users/mport/Documents/360radiance/src/app/[locale] -name \"page.tsx\" -type f)",
+      "Read(//c/Users/mport/Documents/360radiance/**)",
+      "Bash(node -e ':*)",
+      "Bash(mkdir -p src/data)",
+      "Bash(grep -n 'ProductModal\\\\|use client' src/app/[locale]/products/ProductShowcase.tsx src/app/[locale]/products/PackageDeals.tsx src/app/[locale]/products/ProductModal.tsx)",
+      "Bash(find \"c:/Users/mport/Documents/360radiance/src\" -type f \\\\\\( -name \"*.ts\" -o -name \"*.tsx\" \\\\\\) -exec grep -l \"redirect\\\\|testimonial\" {} \\\\;)",
+      "Bash(grep -n \"bg-\\\\|backgroundImage\\\\|style=\" /c/Users/mport/Documents/360radiance/src/components/sections/*.tsx)",
+      "Bash(npm view:*)"
+    ]
+  }
+}

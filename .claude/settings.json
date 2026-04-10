@@ -18,7 +18,14 @@
       "Bash(npm run:*)",
       "Bash(curl -s \"http://localhost:3456/_next/image?url=%2Fimages%2Fmarta-nazzar.jpg&w=640&q=75\" -o /dev/null -w \"%{http_code} %{content_type} %{size_download}\\\\n\")",
       "Bash(curl -s \"https://cal.com/360radianceskincare/30min\")",
-      "Bash(curl -s http://localhost:3456/robots.txt)"
+      "Bash(curl -s http://localhost:3456/robots.txt)",
+      "Bash(mv \"WhatsApp Image 2026-04-06 at 5.18.01 PM.jpeg\" \"treatment-mesotherapy-serums.jpg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-06 at 5.18.01 PM \\(1\\).jpeg\" \"treatment-non-inflamed-acne.jpg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-06 at 5.18.01 PM \\(2\\).jpeg\" \"treatment-ultrasonic-extractions.jpg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-06 at 5.18.01 PM \\(3\\).jpeg\" \"treatment-laser-pigmentation.jpg\")",
+      "Bash(mv \"WhatsApp Image 2026-04-06 at 5.18.02 PM.jpeg\" \"treatment-microneedling.jpg\")",
+      "Bash(curl -sIL \"https://share.google/EZwBBcNduMb0gdThC\")",
+      "Bash(curl -sL \"https://share.google/EZwBBcNduMb0gdThC\" -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\")"
     ]
   }
 }
