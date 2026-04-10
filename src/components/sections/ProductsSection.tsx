@@ -13,8 +13,8 @@ export function ProductsSection() {
           <ScrollReveal>
             <div className="rounded-2xl aspect-4/3 relative overflow-hidden shadow-md border border-border">
               <Image
-                src="/images/instagram/glow-with-radiance-line.webp"
-                alt="The Radiance Skin Care Line — botanical serums and clinical formulas created by Marta Nazzar"
+                src="/images/Radiance_5_Serum_Lineup_Dark_Background.jpeg"
+                alt="The Radiance Skin Care serum lineup — Peptide, Vitamin C, Hydration Essence, Collagen, and Tone Rescue on marble"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 55vw"

@@ -1,18 +1,39 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BLOG_CATEGORIES, type BlogPost } from '@/lib/constants';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { cn } from '@/lib/utils';
 
+const POSTS_PER_PAGE = 10;
+
 export function BlogGrid({ posts }: { posts: BlogPost[] }) {
   const [category, setCategory] = useState('All');
+  const [page, setPage] = useState(1);
 
   const filtered = category === 'All'
     ? posts
     : posts.filter((p) => p.category === category);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / POSTS_PER_PAGE));
+  const safeCurrentPage = Math.min(page, totalPages);
+  const paginatedPosts = filtered.slice(
+    (safeCurrentPage - 1) * POSTS_PER_PAGE,
+    safeCurrentPage * POSTS_PER_PAGE,
+  );
+
+  const handleCategoryChange = useCallback((cat: string) => {
+    setCategory(cat);
+    setPage(1);
+  }, []);
+
+  const handlePageChange = useCallback((newPage: number) => {
+    setPage(newPage);
+    // Scroll to the top of the grid section
+    document.getElementById('articles-heading')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
 
   return (
     <div>
@@ -23,7 +44,7 @@ export function BlogGrid({ posts }: { posts: BlogPost[] }) {
             type="button"
             role="tab"
             aria-selected={category === cat}
-            onClick={() => setCategory(cat)}
+            onClick={() => handleCategoryChange(cat)}
             className={cn(
               'py-2.5 px-6 rounded-full text-[.82rem] font-semibold transition-all cursor-pointer',
               category === cat
@@ -37,7 +58,7 @@ export function BlogGrid({ posts }: { posts: BlogPost[] }) {
       </div>
 
       <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1" role="tabpanel">
-        {filtered.map((post) => (
+        {paginatedPosts.map((post) => (
           <ScrollReveal key={post.slug}>
             <Link href={`/blog/${post.slug}`} className="no-underline">
               <article className="group bg-white rounded-2xl ring-1 ring-black/[.06] hover:ring-navy/20 hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
@@ -90,6 +111,62 @@ export function BlogGrid({ posts }: { posts: BlogPost[] }) {
       {filtered.length === 0 && (
         <p className="text-center text-text-light italic py-12" aria-live="polite">
           No articles in this category yet. Check back soon.
+        </p>
+      )}
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <nav className="mt-14 flex items-center justify-center gap-2" aria-label="Blog pagination">
+          {/* Previous */}
+          <button
+            type="button"
+            disabled={safeCurrentPage === 1}
+            onClick={() => handlePageChange(safeCurrentPage - 1)}
+            className="inline-flex items-center justify-center w-10 h-10 rounded-full ring-1 ring-black/[.06] bg-white text-text-mid transition-all hover:ring-navy/25 hover:text-navy disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:ring-black/[.06] disabled:hover:text-text-mid cursor-pointer"
+            aria-label="Previous page"
+          >
+            <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          {/* Page numbers */}
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+            <button
+              key={p}
+              type="button"
+              onClick={() => handlePageChange(p)}
+              aria-current={p === safeCurrentPage ? 'page' : undefined}
+              className={cn(
+                'inline-flex items-center justify-center w-10 h-10 rounded-full text-[.85rem] font-semibold transition-all cursor-pointer',
+                p === safeCurrentPage
+                  ? 'bg-navy text-white shadow-md'
+                  : 'ring-1 ring-black/[.06] bg-white text-text-mid hover:ring-navy/25 hover:text-navy'
+              )}
+            >
+              {p}
+            </button>
+          ))}
+
+          {/* Next */}
+          <button
+            type="button"
+            disabled={safeCurrentPage === totalPages}
+            onClick={() => handlePageChange(safeCurrentPage + 1)}
+            className="inline-flex items-center justify-center w-10 h-10 rounded-full ring-1 ring-black/[.06] bg-white text-text-mid transition-all hover:ring-navy/25 hover:text-navy disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:ring-black/[.06] disabled:hover:text-text-mid cursor-pointer"
+            aria-label="Next page"
+          >
+            <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </nav>
+      )}
+
+      {/* Page info */}
+      {filtered.length > POSTS_PER_PAGE && (
+        <p className="text-center text-[.78rem] text-text-light mt-4">
+          Showing {(safeCurrentPage - 1) * POSTS_PER_PAGE + 1}–{Math.min(safeCurrentPage * POSTS_PER_PAGE, filtered.length)} of {filtered.length} articles
         </p>
       )}
     </div>

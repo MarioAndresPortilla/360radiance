@@ -165,9 +165,9 @@ export const INSTAGRAM_POSTS: { id: number; image: string; postUrl: string; alt:
   },
   {
     id: 3,
-    image: '/images/instagram/radiance-serums-five.webp',
+    image: '/images/Radiance_4_Serums_On_Greenery.jpeg',
     postUrl: 'https://instagram.com/360radianceinc',
-    alt: 'The Radiance Skin Care Line — five signature serums including Peptide, Radian-C, Glycolic, Collagen, and Eye Rescue',
+    alt: 'Radiance Skin Care serums — Glycolic, Glyctide, Peptide, and Eye Rescue arranged on lush greenery',
     caption: 'The Radiance Serums',
   },
   {
@@ -200,10 +200,10 @@ export const INSTAGRAM_POSTS: { id: number; image: string; postUrl: string; alt:
   },
   {
     id: 8,
-    image: '/images/instagram/radiance-glycolic-trio.webp',
+    image: '/images/Radiance_Serum_Quad_Collagen_Glycolic_Glyctide_Tone_Rescue.jpeg',
     postUrl: 'https://instagram.com/360radianceinc',
-    alt: 'Radiance Skin Care Glycolic line — Gentle Glycolic Cleanser, Glycolic Serum, and Equalizing Moisture Gel',
-    caption: 'The Glycolic line',
+    alt: 'Radiance Skin Care — Collagen, Glycolic, Glyctide, and Tone Rescue serums on botanical leaves',
+    caption: 'Signature serums',
   },
   {
     id: 9,
