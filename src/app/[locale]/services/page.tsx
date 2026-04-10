@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { SERVICE_DETAILS, ACNE_PROGRAM_PRICING, ACNE_PROGRAM_CONTRAINDICATIONS } from '@/lib/constants';
+import { SERVICE_DETAILS, ACNE_PROGRAM_PRICING, ACNE_PROGRAM_CONTRAINDICATIONS, FRESHA } from '@/lib/constants';
 import { buildPageMetadata } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
@@ -107,12 +107,23 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                         </div>
                       )}
 
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-1.5 bg-navy text-white rounded-xl font-semibold text-[.88rem] px-7 py-3.5 transition-all hover:bg-navy-deep hover:-translate-y-px hover:shadow-md no-underline mt-6"
-                      >
-                        {t('bookTreatment')}
-                      </Link>
+                      {svc.slug === 'free-consultation' ? (
+                        <Link
+                          href="/contact"
+                          className="inline-flex items-center gap-1.5 bg-navy text-white rounded-xl font-semibold text-[.88rem] px-7 py-3.5 transition-all hover:bg-navy-deep hover:-translate-y-px hover:shadow-md no-underline mt-6"
+                        >
+                          {t('bookConsultation')}
+                        </Link>
+                      ) : (
+                        <a
+                          href={FRESHA.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 bg-navy text-white rounded-xl font-semibold text-[.88rem] px-7 py-3.5 transition-all hover:bg-navy-deep hover:-translate-y-px hover:shadow-md no-underline mt-6"
+                        >
+                          {t('bookTreatment')}
+                        </a>
+                      )}
                     </div>
 
                     <div className={cn(i % 2 === 1 && 'max-lg:order-none lg:order-1')}>
@@ -182,6 +193,8 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         heading={t('ctaHeading')}
         subtitle={t('ctaSubtitle')}
         buttonText={t('ctaButton')}
+        secondaryText={t('ctaBookTreatment')}
+        secondaryHref={FRESHA.url}
       />
     </PageShell>
   );

@@ -104,16 +104,9 @@ export const BUSINESS = {
 // because it emits preload/forced-reflow warnings from Cal.com's own bundle
 // that we cannot suppress from our origin. Click-to-open modal avoids that.
 //
-// Marta exposes two consultation event types: a 15-minute quick chat (free)
-// and a 30-minute full consultation ($35 — under the ~$50 industry average for
-// a paid 30-min esthetician consult, e.g. Clear Beauty Skincare in Frisco TX
-// charges $50). The 30-min fee is waived for clients booking the Acne Treatment
-// Program — that consultation is always free. Both surfaces (home
-// BookingSection and /contact schedule card) show both event types so visitors
-// can self-select. Default in places where only one button fits
-// (FloatingButtons) is the 30-min event. NOTE: the paid status of the 30-min
-// event must also be configured in Cal.com's dashboard (Stripe app) — this
-// constant only governs how we *describe* the price in our own UI.
+// Cal.com is used exclusively for free consultations. Service appointments
+// are booked through Fresha (see FRESHA constant below). The UI surfaces a
+// single "Book Free Consultation" CTA everywhere — no 15/30-min split.
 const CAL_USERNAME = '360radianceskincare';
 export const CAL = {
   username: CAL_USERNAME,
@@ -125,10 +118,6 @@ export const CAL = {
     full: { slug: '30min', minutes: 30, link: `${CAL_USERNAME}/30min` },
   },
   // Default link for single-button surfaces (FloatingButtons FAB).
-  // Points at the FREE 15-min quick chat to keep the entry-point friction as
-  // low as possible — the FAB is the click of last resort, so we don't want a
-  // $35 paywall in front of it. Visitors who want the deeper 30-min consult
-  // can still find it on /contact and the home BookingSection.
   get defaultLink() {
     return this.events.quick.link;
   },
@@ -136,16 +125,25 @@ export const CAL = {
 
 export type CalEventKey = keyof typeof CAL.events;
 
-// Pricing for the general consultation event types (NOT the Acne Program — that
-// consultation is always free; see ACNE_PROGRAM_PRICING below). The 15-min
-// quick chat is free as a low-friction entry point. The 30-min consult is
-// priced under the ~$50 industry average so we beat it without cheapening the
-// service. Update both Cal.com and this constant in lockstep.
+// Fresha — service appointment booking for clients who already know what
+// treatment they want. Cal.com stays for free consultations only. Fresha
+// provides a full service menu with pricing, durations, and
+// its own marketplace discovery (new client acquisition at $0/month).
+//
+// HOW TO SET UP:
+// 1. Create your free Fresha business profile at https://www.fresha.com/for-business
+// 2. Add all 16 services with correct durations and pricing
+// 3. Replace the placeholder URL below with your Fresha booking page URL
+//    (format: https://www.fresha.com/book-now/YOUR-BUSINESS-SLUG)
+export const FRESHA = {
+  // ⚠️  Replace with your actual Fresha booking URL once your profile is live.
+  url: 'https://www.fresha.com/book-now/360-radiance-XXXXXXXX',
+} as const;
+
+// All consultations are free. This constant is kept for any code that
+// references it, but the price is always zero.
 export const CONSULTATION_PRICING = {
-  quickChatMinutes: 15,
-  quickChatPrice: 0,
-  fullConsultMinutes: 30,
-  fullConsultPrice: 35,
+  consultationPrice: 0,
 } as const;
 
 // Instagram showcase: each entry is one card on the homepage.
@@ -325,8 +323,8 @@ export const SERVICES: Service[] = [
   },
   {
     icon: 'scan',
-    title: 'Skin Analysis & Consultation',
-    description: 'Comprehensive evaluation of your skin type, conditions, and lifestyle. Your treatment roadmap starts here. Free 15-min chat or $35 30-min deep dive (free with the Acne Program).',
+    title: 'Free Consultation',
+    description: 'Comprehensive evaluation of your skin type, conditions, and lifestyle. Your personalized treatment roadmap starts here — always free.',
     tag: 'Starting Point',
   },
   {

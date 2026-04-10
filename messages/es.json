@@ -130,8 +130,10 @@
     "biWeeklyDesc": "Visitas quincenales durante 12 semanas (6 en total). Cada visita incluye monitoreo del progreso y un facial para acné para preparar su piel para la siguiente fase del tratamiento.",
     "contraindicationsTitle": "Importante: Antes de Comenzar el Tratamiento",
     "ctaHeading": "¿No Está Segura Cuál Tratamiento Es el Adecuado?",
-    "ctaSubtitle": "Reserve una charla rápida gratuita de 15 min o una consulta de 30 min por $35 y Marta diseñará un plan de tratamiento adaptado a sus necesidades. La consulta siempre es gratuita para el Programa de Tratamiento del Acné.",
-    "ctaButton": "Reserve Su Consulta"
+    "ctaSubtitle": "Reserve una consulta gratuita y Marta diseñará un plan de tratamiento adaptado a sus necesidades.",
+    "ctaButton": "Reserve Consulta Gratuita",
+    "ctaBookTreatment": "O reserve un tratamiento directamente en Fresha →",
+    "bookConsultation": "Reserve Consulta Gratuita →"
   },
   "award": {
     "tag": "Ganadora del Premio",
@@ -339,11 +341,12 @@
   },
   "booking": {
     "title": "¿Lista para una Piel Clara y Radiante?",
-    "subtitle": "Reserve una charla rápida gratuita de 15 min o una consulta de 30 min por $35 con Marta — la consulta siempre es gratuita para clientes que reservan el Programa de Tratamiento del Acné. Su hoja de ruta de tratamiento personalizada comienza con una sola conversación.",
-    "scheduleCtaFull": "Reserve Consulta de 30 min · $35",
+    "subtitle": "Reserve una consulta gratuita con Marta y obtenga una hoja de ruta de tratamiento personalizada. Su camino hacia una piel clara y radiante comienza con una sola conversación.",
+    "scheduleCtaFull": "Reserve Consulta Gratuita",
     "scheduleCtaQuick": "O Charla Rápida Gratuita de 15 min",
     "callCta": "O llame al",
-    "whatsappCta": "o escríbanos por WhatsApp"
+    "whatsappCta": "o escríbanos por WhatsApp",
+    "freshaCtaLabel": "¿Ya sabe qué tratamiento quiere? Reserve directamente →"
   },
   "hours": {
     "tag": "Visítenos",
@@ -369,11 +372,11 @@
     "whatsappSub": "Respondemos rápido — usualmente en minutos",
     "visitTitle": "Visítenos",
     "scheduleTag": "Reserva Inmediata",
-    "scheduleTitle": "Comience con una charla GRATUITA de 15 min",
-    "scheduleSubtitle": "Vea los horarios disponibles en el calendario de Marta y reserve su lugar en menos de un minuto. La charla rápida de 15 min es 100% gratuita — sin compromiso, sin tarjeta de crédito. ¿Quiere profundizar más? La consulta de 30 min es de $35, y siempre gratis si reserva el Programa de Tratamiento del Acné.",
-    "scheduleCtaFull": "Reserve Charla GRATUITA de 15 min",
-    "scheduleCtaQuick": "O Consulta Profunda de 30 min · $35",
-    "scheduleBullet1": "Charla de 15 min es GRATIS — sin tarjeta, sin compromiso",
+    "scheduleTitle": "Reserve Su Consulta Gratuita",
+    "scheduleSubtitle": "Vea los horarios disponibles en el calendario de Marta y reserve su lugar en menos de un minuto. 100% gratuita — sin compromiso, sin tarjeta de crédito.",
+    "scheduleCtaFull": "Reserve Consulta Gratuita",
+    "scheduleCtaQuick": "O reserve un tratamiento directamente en Fresha →",
+    "scheduleBullet1": "Consulta gratuita — sin tarjeta, sin compromiso",
     "scheduleBullet2": "Hoja de ruta de tratamiento personalizada",
     "scheduleBullet3": "Confirmación y recordatorio por correo",
     "formTag": "Envíenos un Mensaje",
@@ -499,7 +502,7 @@
       },
       "sharing": {
         "heading": "Con Quién Compartimos Su Información",
-        "body": "Compartimos información únicamente con proveedores de servicios que nos ayudan a operar el negocio, bajo obligaciones contractuales de confidencialidad: Cal.com (programación de citas), Resend (entrega de correo electrónico transaccional), nuestro procesador de pagos y nuestro proveedor de hosting. Podemos divulgar información cuando lo exija la ley, para proteger nuestros derechos legales o para responder a una solicitud legal verificada."
+        "body": "Compartimos información únicamente con proveedores de servicios que nos ayudan a operar el negocio, bajo obligaciones contractuales de confidencialidad: Cal.com (programación de consultas), Fresha (reserva de citas de tratamiento), Resend (entrega de correo electrónico transaccional), nuestro procesador de pagos y nuestro proveedor de hosting. Podemos divulgar información cuando lo exija la ley, para proteger nuestros derechos legales o para responder a una solicitud legal verificada."
       },
       "cookies": {
         "heading": "Cookies y Seguimiento",
@@ -552,7 +555,7 @@
       },
       "booking": {
         "heading": "Reservas, Cancelaciones y Ausencias",
-        "body": "Las citas pueden reservarse a través de nuestro sitio web, Cal.com, por teléfono o WhatsApp. Avise con al menos 24 horas de anticipación si necesita cancelar o reprogramar. Las ausencias o cancelaciones tardías pueden resultar en una tarifa a nuestra discreción. La charla rápida de 15 minutos es gratuita. La consulta de 30 minutos cuesta $35 — y siempre es gratuita para clientes que reservan el Programa de Tratamiento del Acné."
+        "body": "Las citas pueden reservarse a través de nuestro sitio web, Fresha, Cal.com, por teléfono o WhatsApp. Las consultas son gratuitas. Las citas de tratamiento pueden reservarse directamente a través de Fresha. Avise con al menos 24 horas de anticipación si necesita cancelar o reprogramar. Las ausencias o cancelaciones tardías pueden resultar en una tarifa a nuestra discreción."
       },
       "contraindications": {
         "heading": "Contraindicaciones y Divulgaciones",

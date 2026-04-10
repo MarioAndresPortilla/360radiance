@@ -4,7 +4,6 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { PageShell } from '@/components/layout/PageShell';
 import { CtaBanner } from '@/components/ui/CtaBanner';
-import { PageHeader } from '@/components/ui/PageHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { BLOG_POSTS } from '@/lib/constants';
 import { buildPageMetadata } from '@/lib/seo';
@@ -32,55 +31,80 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
 
   return (
     <PageShell>
-      <PageHeader
-        tag={t('pageTag')}
-        title={t('pageTitle')}
-        subtitle={t('pageSubtitle')}
-      />
-
-      {/* Featured article */}
+      {/* ── Featured hero ────────────────────────────────────────── */}
       {featured && (
-        <section className="py-16 bg-white border-b border-border" aria-labelledby="featured-article-heading">
-          <div className="container-site">
+        <section className="relative bg-navy-deep overflow-hidden" aria-labelledby="featured-article-heading">
+          {/* Background image with overlay */}
+          <div className="absolute inset-0">
+            <Image
+              src={`/images/blog/${featured.slug}.jpg`}
+              alt=""
+              fill
+              className="object-cover opacity-25"
+              sizes="100vw"
+              priority
+              aria-hidden="true"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/95 to-navy-deep/60" />
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+          </div>
+
+          <div className="container-site relative z-1 py-24 max-md:py-16">
             <ScrollReveal>
-              <div className="grid grid-cols-[1.3fr_1fr] gap-12 items-center max-lg:grid-cols-1">
+              <div className="grid grid-cols-[1fr_1fr] gap-16 items-center max-lg:grid-cols-1 max-lg:gap-10">
+                {/* Copy */}
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-[.6rem] font-bold uppercase tracking-[1px] text-gold-a11y bg-gold-highlight py-1 px-2.5 rounded-md">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="text-[.6rem] font-bold uppercase tracking-[2px] text-gold bg-gold/10 border border-gold/20 py-1.5 px-3 rounded-full">
                       {t('featured')}
                     </span>
-                    <span className="text-[.6rem] font-bold uppercase tracking-[.5px] text-navy bg-navy-pale py-1 px-2.5 rounded-md">
+                    <span className="text-[.6rem] font-bold uppercase tracking-[1px] text-white/60 bg-white/[.08] border border-white/10 py-1.5 px-3 rounded-full">
                       {featured.category}
                     </span>
                   </div>
-                  <h2 id="featured-article-heading" className="font-serif text-[1.8rem] leading-[1.2] mb-4">
-                    <Link href={`/blog/${featured.slug}`} className="no-underline text-text hover:text-navy transition-colors">{featured.title}</Link>
-                  </h2>
-                  <p className="text-text-mid text-[.95rem] leading-[1.85] mb-6">{featured.excerpt}</p>
-                  <Link href={`/blog/${featured.slug}`} className="text-navy text-[.88rem] font-semibold no-underline hover:underline">{t('readFullArticle')}</Link>
-                  <div className="flex items-center gap-4 text-[.78rem] text-text-light mb-6">
+
+                  <h1 id="featured-article-heading" className="font-serif text-white text-[clamp(1.8rem,4vw,2.8rem)] leading-[1.12] mb-5">
+                    <Link href={`/blog/${featured.slug}`} className="no-underline text-white hover:text-gold transition-colors duration-300">
+                      {featured.title}
+                    </Link>
+                  </h1>
+
+                  <p className="text-white/60 text-[1rem] leading-[1.85] mb-8 max-w-110">
+                    {featured.excerpt}
+                  </p>
+
+                  <div className="flex items-center gap-5 mb-8">
+                    <Link
+                      href={`/blog/${featured.slug}`}
+                      className="inline-flex items-center gap-2.5 bg-white text-navy-deep font-semibold text-[.88rem] px-7 py-3.5 rounded-xl no-underline hover:-translate-y-px hover:shadow-lg transition-all"
+                    >
+                      {t('readFullArticle')}
+                    </Link>
+                  </div>
+
+                  <div className="flex items-center gap-5 text-[.78rem] text-white/40">
                     <time dateTime={featured.date}>
                       {new Date(featured.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                     </time>
-                    <span aria-hidden="true">&middot;</span>
+                    <span aria-hidden="true" className="w-1 h-1 rounded-full bg-white/20" />
                     <span>{featured.readTime} min read</span>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {featured.tags.map((tag) => (
-                      <span key={tag} className="text-[.65rem] font-semibold text-text-mid bg-cream py-1 px-2.5 rounded-md">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
-                <div className="rounded-2xl overflow-hidden aspect-4/3 relative">
-                  <Image
-                    src={`/images/blog/${featured.slug}.jpg`}
-                    alt={featured.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 45vw"
-                  />
+
+                {/* Featured image */}
+                <div className="relative max-lg:order-first">
+                  <div className="rounded-2xl overflow-hidden aspect-4/3 relative ring-1 ring-white/10 shadow-2xl">
+                    <Image
+                      src={`/images/blog/${featured.slug}.svg`}
+                      alt={featured.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      unoptimized
+                    />
+                  </div>
+                  {/* Decorative glow */}
+                  <div className="absolute -inset-4 bg-gold/[.04] rounded-3xl -z-1 blur-2xl" aria-hidden="true" />
                 </div>
               </div>
             </ScrollReveal>
@@ -88,26 +112,40 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
         </section>
       )}
 
-      {/* Category filter + article grid */}
-      <section className="py-20 max-md:py-14" aria-labelledby="articles-heading">
+      {/* ── Category filter + article grid ────────────────────── */}
+      <section className="py-20 max-md:py-14 bg-cream" aria-labelledby="articles-heading">
         <div className="container-site">
           <ScrollReveal>
-            <h2 id="articles-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] text-center mb-2.5">{t('allArticles')}</h2>
-            <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7] text-center mb-10">
-              {t('allArticlesSubtitle')}
-            </p>
+            <div className="text-center mb-12">
+              <span className="inline-block text-[.62rem] font-bold uppercase tracking-[2.5px] text-navy mb-4 bg-navy-pale px-4 py-1.5 rounded-full">
+                {t('pageTag')}
+              </span>
+              <h2 id="articles-heading" className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] mb-3">{t('allArticles')}</h2>
+              <p className="text-text-mid max-w-130 mx-auto text-[.95rem] leading-[1.7]">
+                {t('allArticlesSubtitle')}
+              </p>
+            </div>
           </ScrollReveal>
           <BlogGrid posts={rest} />
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="py-16 bg-white" aria-labelledby="newsletter-heading">
-        <div className="container-site">
+      {/* ── Newsletter ────────────────────────────────────────── */}
+      <section className="relative bg-navy-deep overflow-hidden py-20 max-md:py-14" aria-labelledby="newsletter-heading">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-gold/[.04]" />
+          <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-white/[.02]" />
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+        </div>
+
+        <div className="container-site relative z-1">
           <ScrollReveal>
             <div className="max-w-150 mx-auto text-center">
-              <h2 id="newsletter-heading" className="font-serif text-[1.6rem] mb-3">{t('newsletterTitle')}</h2>
-              <p className="text-text-mid text-[.95rem] leading-[1.7] mb-8">
+              <span className="inline-block text-[.6rem] font-bold uppercase tracking-[2.5px] text-gold mb-5 border border-gold/25 px-3.5 py-1.5 rounded-full">
+                {t('pageTag')}
+              </span>
+              <h2 id="newsletter-heading" className="font-serif text-white text-[clamp(1.4rem,3vw,2rem)] mb-4">{t('newsletterTitle')}</h2>
+              <p className="text-white/55 text-[.95rem] leading-[1.7] mb-10">
                 {t('newsletterSubtitle')}
               </p>
               <NewsletterSignup />
@@ -116,62 +154,79 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* Topics deep dive */}
-      <section className="py-20 max-md:py-14" aria-labelledby="topics-heading">
+      {/* ── Topics deep dive ──────────────────────────────────── */}
+      <section className="py-20 max-md:py-14 bg-white" aria-labelledby="topics-heading">
         <div className="container-site">
           <ScrollReveal>
-            <h2 id="topics-heading" className="font-serif text-[1.6rem] text-center mb-10">{t('topicsHeading')}</h2>
-            <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
+            <div className="text-center mb-12">
+              <span className="inline-block text-[.62rem] font-bold uppercase tracking-[2.5px] text-navy mb-4 bg-navy-pale px-4 py-1.5 rounded-full">
+                Explore
+              </span>
+              <h2 id="topics-heading" className="font-serif text-[clamp(1.4rem,3vw,2rem)]">{t('topicsHeading')}</h2>
+            </div>
+            <div className="grid grid-cols-3 gap-5 max-md:grid-cols-1">
               {[
                 {
                   title: t('topics.acneScience.title'),
                   desc: t('topics.acneScience.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Acne Science').length,
-                  color: 'bg-navy-pale text-navy',
+                  accent: 'from-navy to-navy-deep',
+                  badge: 'bg-navy-pale text-navy',
                 },
                 {
                   title: t('topics.ingredients.title'),
                   desc: t('topics.ingredients.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Ingredients').length,
-                  color: 'bg-gold-highlight text-gold-a11y',
+                  accent: 'from-gold to-gold-dark',
+                  badge: 'bg-gold-highlight text-gold-a11y',
                 },
                 {
                   title: t('topics.skinHealth.title'),
                   desc: t('topics.skinHealth.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Skin Health').length,
-                  color: 'bg-navy-pale text-navy',
+                  accent: 'from-navy to-navy-deep',
+                  badge: 'bg-navy-pale text-navy',
                 },
                 {
                   title: t('topics.treatments.title'),
                   desc: t('topics.treatments.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Treatments').length,
-                  color: 'bg-gold-highlight text-gold-a11y',
+                  accent: 'from-gold to-gold-dark',
+                  badge: 'bg-gold-highlight text-gold-a11y',
                 },
                 {
                   title: t('topics.productGuides.title'),
                   desc: t('topics.productGuides.desc'),
                   count: BLOG_POSTS.filter((p) => p.category === 'Product Guides').length,
-                  color: 'bg-navy-pale text-navy',
+                  accent: 'from-navy to-navy-deep',
+                  badge: 'bg-navy-pale text-navy',
                 },
                 {
                   title: t('topics.comingSoon.title'),
                   desc: t('topics.comingSoon.desc'),
                   count: 0,
-                  color: 'bg-cream-dark text-text-light',
+                  accent: 'from-text-faint to-text-light',
+                  badge: 'bg-cream-dark text-text-light',
                 },
               ].map((topic) => (
-                <div key={topic.title} className="bg-white rounded-2xl p-7 border border-border hover:border-border-hover hover:shadow-md transition-all">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`text-[.6rem] font-bold uppercase tracking-[.5px] py-0.5 px-2 rounded-md ${topic.color}`}>
+                <div
+                  key={topic.title}
+                  className="group relative bg-white rounded-2xl p-7 ring-1 ring-black/[.06] hover:ring-navy/20 hover:shadow-lg transition-all overflow-hidden"
+                >
+                  {/* Top accent bar */}
+                  <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${topic.accent} opacity-0 group-hover:opacity-100 transition-opacity`} aria-hidden="true" />
+
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-[.6rem] font-bold uppercase tracking-[1px] py-1 px-2.5 rounded-md ${topic.badge}`}>
                       {topic.title}
                     </span>
                     {topic.count > 0 && (
-                      <span className="text-[.72rem] font-semibold text-text-light">
-                        {t('topics.articleCount', { count: topic.count })}
+                      <span className="text-[.7rem] font-bold text-text-light bg-cream rounded-full w-7 h-7 flex items-center justify-center">
+                        {topic.count}
                       </span>
                     )}
                   </div>
-                  <p className="text-text-mid text-[.82rem] leading-[1.7]">{topic.desc}</p>
+                  <p className="text-text-mid text-[.82rem] leading-[1.75]">{topic.desc}</p>
                 </div>
               ))}
             </div>

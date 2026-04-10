@@ -130,8 +130,10 @@
     "biWeeklyDesc": "Bi-weekly visits over 12 weeks (6 total). Each visit includes progress monitoring and an acne facial to prepare your skin for the next phase of treatment.",
     "contraindicationsTitle": "Important: Before Beginning Treatment",
     "ctaHeading": "Not Sure Which Treatment Is Right?",
-    "ctaSubtitle": "Book a free 15-min chat or a $35 30-min consultation and Marta will design a treatment plan tailored to your unique needs. The consultation is always free for the Acne Treatment Program.",
-    "ctaButton": "Book Your Consultation"
+    "ctaSubtitle": "Book a free consultation and Marta will design a treatment plan tailored to your unique needs.",
+    "ctaButton": "Book Free Consultation",
+    "ctaBookTreatment": "Or book a treatment directly on Fresha →",
+    "bookConsultation": "Book Free Consultation →"
   },
   "award": {
     "tag": "Award Winner",
@@ -339,11 +341,12 @@
   },
   "booking": {
     "title": "Ready for Clear, Radiant Skin?",
-    "subtitle": "Book a free 15-min chat or a $35 30-min consultation with Marta — the consultation is always free for clients booking the Acne Treatment Program. Your personalized treatment roadmap starts with a single conversation.",
-    "scheduleCtaFull": "Book 30-min Consultation · $35",
+    "subtitle": "Book a free consultation with Marta and get a personalized treatment roadmap. Your journey to clear, radiant skin starts with a single conversation.",
+    "scheduleCtaFull": "Book Free Consultation",
     "scheduleCtaQuick": "Or Free 15-min Quick Chat",
     "callCta": "Or call",
-    "whatsappCta": "or message us on WhatsApp"
+    "whatsappCta": "or message us on WhatsApp",
+    "freshaCtaLabel": "Already know what you want? Book a treatment directly →"
   },
   "hours": {
     "tag": "Visit Us",
@@ -369,11 +372,11 @@
     "whatsappSub": "We reply fast — usually within minutes",
     "visitTitle": "Visit Us",
     "scheduleTag": "Self-Serve Booking",
-    "scheduleTitle": "Start with a FREE 15-min chat",
-    "scheduleSubtitle": "See real-time openings on Marta's calendar and lock in your spot in under a minute. The 15-min quick chat is 100% free — no commitment, no card on file. Want a deeper dive? The 30-min consultation is $35, and always free if you're booking the Acne Treatment Program.",
-    "scheduleCtaFull": "Book FREE 15-min Chat",
-    "scheduleCtaQuick": "Or 30-min Deep Dive · $35",
-    "scheduleBullet1": "15-min chat is FREE — no card, no commitment",
+    "scheduleTitle": "Book Your Free Consultation",
+    "scheduleSubtitle": "See real-time openings on Marta's calendar and lock in your spot in under a minute. 100% free — no commitment, no card on file.",
+    "scheduleCtaFull": "Book Free Consultation",
+    "scheduleCtaQuick": "Or book a treatment directly on Fresha →",
+    "scheduleBullet1": "Free consultation — no card, no commitment",
     "scheduleBullet2": "Personalized treatment roadmap",
     "scheduleBullet3": "Confirmation + reminder by email",
     "formTag": "Send a Message",
@@ -499,7 +502,7 @@
       },
       "sharing": {
         "heading": "Who We Share Information With",
-        "body": "We share information only with service providers that help us operate the business, under contractual confidentiality obligations: Cal.com (appointment scheduling), Resend (transactional email delivery), our payment processor, and our website hosting provider. We may disclose information when required by law, to protect our legal rights, or to respond to a verified legal request."
+        "body": "We share information only with service providers that help us operate the business, under contractual confidentiality obligations: Cal.com (consultation scheduling), Fresha (service appointment booking), Resend (transactional email delivery), our payment processor, and our website hosting provider. We may disclose information when required by law, to protect our legal rights, or to respond to a verified legal request."
       },
       "cookies": {
         "heading": "Cookies and Tracking",
@@ -552,7 +555,7 @@
       },
       "booking": {
         "heading": "Booking, Cancellations & No-Shows",
-        "body": "Appointments may be booked through our website, Cal.com, by phone, or by WhatsApp. Please give at least 24 hours notice if you need to cancel or reschedule. No-shows or late cancellations may result in a fee at our discretion. The 15-minute quick chat is free. The 30-minute consultation is $35 — and is always free for clients booking the Acne Treatment Program."
+        "body": "Appointments may be booked through our website, Fresha, Cal.com, by phone, or by WhatsApp. Consultations are free. Treatment appointments can be booked directly through Fresha. Please give at least 24 hours notice if you need to cancel or reschedule. No-shows or late cancellations may result in a fee at our discretion."
       },
       "contraindications": {
         "heading": "Contraindications & Disclosures",

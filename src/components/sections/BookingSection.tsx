@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { BUSINESS } from '@/lib/constants';
+import { BUSINESS, FRESHA } from '@/lib/constants';
 import { IconPhone, IconWhatsApp } from '@/components/icons/Icons';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { CalPopupButton } from '@/components/ui/CalPopupButton';
@@ -21,22 +21,19 @@ export function BookingSection() {
               {t('subtitle')}
             </p>
 
-            {/* Single primary CTA — the FREE 15-min chat. The previous version
-                had two equal-weight Cal buttons side by side, which felt
-                cluttered and forced visitors to make a choice before clicking
-                anything. The 30-min paid option lives as a small text link
-                below so it's still discoverable for visitors who want a
-                deeper dive, without competing for the eye. Phone + WhatsApp
-                stay as text-only secondary options since they're different
-                channels (not redundant CTAs). */}
             <div className="relative z-1 flex flex-col items-center gap-5">
-              <CalPopupButton variant="white" event="full" ariaLabel={t('scheduleCtaFull')}>
+              <CalPopupButton variant="white" event="quick" ariaLabel={t('scheduleCtaFull')}>
                 {t('scheduleCtaFull')}
               </CalPopupButton>
 
-              <CalPopupButton variant="link-white" event="quick" ariaLabel={t('scheduleCtaQuick')}>
-                {t('scheduleCtaQuick')}
-              </CalPopupButton>
+              <a
+                href={FRESHA.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white/80 text-[.85rem] hover:text-white transition-colors underline underline-offset-4 decoration-white/30 hover:decoration-white/70"
+              >
+                {t('freshaCtaLabel')}
+              </a>
 
               <div className="flex items-center gap-6 max-md:flex-col max-md:gap-3 mt-1">
                 <a
