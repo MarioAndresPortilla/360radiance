@@ -1,12 +1,25 @@
 'use client';
 
-import { useActionState, useId } from 'react';
+import { useActionState, useEffect, useId, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { useTranslations } from 'next-intl';
 import { sendContactEmail, type ContactFormState } from './actions';
 import { cn } from '@/lib/utils';
 
 const initialState: ContactFormState = { ok: false };
+
+// Format US phone numbers as the user types: 5551234567 → (555) 123-4567.
+// Numbers starting with "+" are treated as international and left mostly
+// alone (digits + spaces only) so users can type their own format without
+// us mangling it.
+function formatPhoneNumber(value: string): string {
+  if (value.startsWith('+')) return value.replace(/[^\d+ ]/g, '').slice(0, 20);
+  const digits = value.replace(/\D/g, '').slice(0, 10);
+  if (digits.length === 0) return '';
+  if (digits.length <= 3) return `(${digits}`;
+  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+}
 
 const inputBase =
   'w-full rounded-xl border border-border bg-white px-4 py-3 text-[.95rem] text-text placeholder:text-text-faint transition-colors focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/15';
@@ -51,6 +64,18 @@ export function ContactForm() {
   const t = useTranslations('contact.form');
   const [state, formAction] = useActionState(sendContactEmail, initialState);
   const formId = useId();
+  const [phone, setPhone] = useState('');
+
+  // Re-sync the controlled phone input when a failed submit echoes the
+  // submitted value back in state.values. Other fields are uncontrolled and
+  // use defaultValue, but phone is controlled for live formatting so it
+  // needs this explicit sync. We intentionally do NOT re-format here — the
+  // value came from the server, which received exactly what we sent.
+  useEffect(() => {
+    if (state.values?.phone !== undefined) {
+      setPhone(state.values.phone);
+    }
+  }, [state]);
 
   if (state.ok) {
     return (
@@ -93,6 +118,8 @@ export function ContactForm() {
             autoComplete="name"
             placeholder={t('namePlaceholder')}
             className={inputBase}
+            defaultValue={state.values?.name ?? ''}
+            key={`name-${state.values?.name ?? ''}`}
             aria-invalid={state.errors?.name ? 'true' : undefined}
             aria-describedby={state.errors?.name ? `${formId}-name-err` : undefined}
           />
@@ -114,6 +141,8 @@ export function ContactForm() {
             inputMode="email"
             placeholder={t('emailPlaceholder')}
             className={inputBase}
+            defaultValue={state.values?.email ?? ''}
+            key={`email-${state.values?.email ?? ''}`}
             aria-invalid={state.errors?.email ? 'true' : undefined}
             aria-describedby={state.errors?.email ? `${formId}-email-err` : undefined}
           />
@@ -123,52 +152,50 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5">
-        <div>
-          <label htmlFor={`${formId}-phone`} className={labelBase}>
-            {t('phoneLabel')} {requiredMark}
-          </label>
-          <input
-            id={`${formId}-phone`}
-            name="phone"
-            type="tel"
-            required
-            autoComplete="tel"
-            inputMode="tel"
-            placeholder={t('phonePlaceholder')}
-            className={inputBase}
-            aria-invalid={state.errors?.phone ? 'true' : undefined}
-            aria-describedby={state.errors?.phone ? `${formId}-phone-err` : undefined}
-          />
-          {state.errors?.phone && (
-            <p id={`${formId}-phone-err`} className={errorText}>{state.errors.phone[0]}</p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor={`${formId}-concern`} className={labelBase}>
-            {t('concernLabel')}
-          </label>
-          <select
-            id={`${formId}-concern`}
-            name="concern"
-            defaultValue=""
-            className={cn(inputBase, 'appearance-none bg-[length:1.1em] bg-no-repeat bg-[right_1rem_center] pr-10')}
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231A7F7E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>\")",
-            }}
-          >
-            <option value="">{t('concernPlaceholder')}</option>
-            <option value="acne">{t('concernAcne')}</option>
-            <option value="rosacea">{t('concernRosacea')}</option>
-            <option value="antiAging">{t('concernAntiAging')}</option>
-            <option value="pigmentation">{t('concernPigmentation')}</option>
-            <option value="sensitivity">{t('concernSensitivity')}</option>
-            <option value="other">{t('concernOther')}</option>
-          </select>
-        </div>
+      <div>
+        <label htmlFor={`${formId}-phone`} className={labelBase}>
+          {t('phoneLabel')} {requiredMark}
+        </label>
+        <input
+          id={`${formId}-phone`}
+          name="phone"
+          type="tel"
+          required
+          autoComplete="tel"
+          inputMode="tel"
+          placeholder={t('phonePlaceholder')}
+          className={inputBase}
+          value={phone}
+          onChange={(e) => setPhone(formatPhoneNumber(e.target.value))}
+          aria-invalid={state.errors?.phone ? 'true' : undefined}
+          aria-describedby={state.errors?.phone ? `${formId}-phone-err` : undefined}
+        />
+        {state.errors?.phone && (
+          <p id={`${formId}-phone-err`} className={errorText}>{state.errors.phone[0]}</p>
+        )}
       </div>
+
+      <fieldset className="min-w-0">
+        <legend className={labelBase}>{t('concernLabel')}</legend>
+        <div className="flex flex-wrap gap-2" role="radiogroup" aria-label={t('concernLabel')}>
+          {(['acne', 'rosacea', 'antiAging', 'pigmentation', 'sensitivity', 'other'] as const).map((opt) => (
+            <label
+              key={opt}
+              className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-border bg-white px-3.5 py-2 text-[.82rem] font-medium text-text-mid transition-colors has-[:checked]:border-navy has-[:checked]:bg-navy-pale has-[:checked]:text-navy-deep"
+            >
+              <input
+                type="radio"
+                name="concern"
+                value={opt}
+                className="sr-only"
+                defaultChecked={state.values?.concern === opt}
+                key={`concern-${opt}-${state.values?.concern ?? ''}`}
+              />
+              {t(`concern${opt.charAt(0).toUpperCase() + opt.slice(1)}` as 'concernAcne')}
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
       <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5">
         <fieldset className="min-w-0">
@@ -179,7 +206,14 @@ export function ContactForm() {
                 key={opt}
                 className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-border bg-white px-3.5 py-2 text-[.82rem] font-medium text-text-mid transition-colors has-[:checked]:border-navy has-[:checked]:bg-navy-pale has-[:checked]:text-navy-deep"
               >
-                <input type="radio" name="preferredContact" value={opt} className="sr-only" />
+                <input
+                  type="radio"
+                  name="preferredContact"
+                  value={opt}
+                  className="sr-only"
+                  defaultChecked={state.values?.preferredContact === opt}
+                  key={`preferredContact-${opt}-${state.values?.preferredContact ?? ''}`}
+                />
                 {t(`preferredContact_${opt}` as 'preferredContact_phone')}
               </label>
             ))}
@@ -194,7 +228,14 @@ export function ContactForm() {
                 key={opt}
                 className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-border bg-white px-3.5 py-2 text-[.82rem] font-medium text-text-mid transition-colors has-[:checked]:border-navy has-[:checked]:bg-navy-pale has-[:checked]:text-navy-deep"
               >
-                <input type="radio" name="bestTime" value={opt} className="sr-only" />
+                <input
+                  type="radio"
+                  name="bestTime"
+                  value={opt}
+                  className="sr-only"
+                  defaultChecked={state.values?.bestTime === opt}
+                  key={`bestTime-${opt}-${state.values?.bestTime ?? ''}`}
+                />
                 {t(`bestTime_${opt}` as 'bestTime_morning')}
               </label>
             ))}
@@ -213,6 +254,8 @@ export function ContactForm() {
           required
           placeholder={t('messagePlaceholder')}
           className={cn(inputBase, 'resize-y min-h-32')}
+          defaultValue={state.values?.message ?? ''}
+          key={`message-${state.values?.message ?? ''}`}
           aria-invalid={state.errors?.message ? 'true' : undefined}
           aria-describedby={state.errors?.message ? `${formId}-message-err` : undefined}
         />

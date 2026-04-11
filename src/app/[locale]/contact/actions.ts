@@ -18,11 +18,44 @@ const ContactSchema = z.object({
   website: z.string().max(0).optional(),
 });
 
+// Subset of form fields we echo back on error so the client can repopulate
+// the inputs instead of wiping the user's work. React 19's useActionState
+// does NOT automatically preserve form field values across a failed server
+// action — inputs are uncontrolled by default, and re-renders don't touch
+// their DOM values. The fix is to stash the submitted strings in state here
+// and pass them as `defaultValue` on re-render.
+export type ContactFormValues = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  concern?: string;
+  preferredContact?: string;
+  bestTime?: string;
+  message?: string;
+};
+
 export type ContactFormState = {
   ok: boolean;
   message?: string;
   errors?: Partial<Record<keyof z.infer<typeof ContactSchema>, string[]>>;
+  values?: ContactFormValues;
 };
+
+function pickValues(formData: FormData): ContactFormValues {
+  const getStr = (k: string) => {
+    const v = formData.get(k);
+    return typeof v === 'string' ? v : undefined;
+  };
+  return {
+    name: getStr('name'),
+    email: getStr('email'),
+    phone: getStr('phone'),
+    concern: getStr('concern'),
+    preferredContact: getStr('preferredContact'),
+    bestTime: getStr('bestTime'),
+    message: getStr('message'),
+  };
+}
 
 const CONCERN_LABELS: Record<string, string> = {
   acne: 'Acne',
@@ -70,12 +103,15 @@ export async function sendContactEmail(
     website: formData.get('website') || undefined,
   };
 
+  const submittedValues = pickValues(formData);
+
   const parsed = ContactSchema.safeParse(raw);
   if (!parsed.success) {
     return {
       ok: false,
       message: 'Please correct the highlighted fields and try again.',
       errors: parsed.error.flatten().fieldErrors as ContactFormState['errors'],
+      values: submittedValues,
     };
   }
 
@@ -89,12 +125,19 @@ export async function sendContactEmail(
   const to = process.env.CONTACT_EMAIL_TO;
   const from = process.env.CONTACT_EMAIL_FROM;
 
+  // Fail loud with the *specific* missing key so production misconfiguration
+  // is diagnosable from logs alone. Never leak the API key value itself —
+  // only whether it's present.
   if (!apiKey || !to || !from) {
-    // Fail loud in dev so misconfiguration is obvious; users see a generic msg.
-    console.error('[contact] Missing RESEND_API_KEY / CONTACT_EMAIL_TO / CONTACT_EMAIL_FROM');
+    const missing: string[] = [];
+    if (!apiKey) missing.push('RESEND_API_KEY');
+    if (!to) missing.push('CONTACT_EMAIL_TO');
+    if (!from) missing.push('CONTACT_EMAIL_FROM');
+    console.error(`[contact] Missing env vars: ${missing.join(', ')}`);
     return {
       ok: false,
       message: 'Email service is not configured yet. Please call or message us directly while we get this fixed.',
+      values: submittedValues,
     };
   }
 
@@ -141,6 +184,7 @@ export async function sendContactEmail(
       return {
         ok: false,
         message: 'Something went wrong sending your message. Please call or WhatsApp us instead.',
+        values: submittedValues,
       };
     }
     return {
@@ -152,6 +196,7 @@ export async function sendContactEmail(
     return {
       ok: false,
       message: 'Something went wrong sending your message. Please call or WhatsApp us instead.',
+      values: submittedValues,
     };
   }
 }
