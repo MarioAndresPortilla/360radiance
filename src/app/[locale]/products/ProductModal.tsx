@@ -2,8 +2,8 @@
 
 import { useEffect, useId, useMemo, useRef } from 'react';
 import Image from 'next/image';
-import { getCalApi } from '@calcom/embed-react';
-import { CAL, PRODUCTS, type Product } from '@/lib/constants';
+import { PRODUCTS, type Product } from '@/lib/constants';
+import { useCalBooking } from '@/lib/use-cal-booking';
 import { IconCheck, IconBag } from '@/components/icons/Icons';
 import { cn } from '@/lib/utils';
 import { track } from '@/lib/analytics';
@@ -51,27 +51,11 @@ export function ProductModal({ product, source, onClose, onSelectPair }: Product
     }, {});
   }, []);
 
-  // Initialize the Cal embed once so the in-modal CTA opens the same booking
-  // surface as everywhere else on the site (matching theme + namespace).
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const cal = await getCalApi({ namespace: CAL.namespace });
-      if (cancelled) return;
-      cal('ui', {
-        theme: 'light',
-        cssVarsPerTheme: {
-          light: { 'cal-brand': '#2F3269' },
-          dark: { 'cal-brand': '#2F3269' },
-        },
-        hideEventTypeDetails: false,
-        layout: 'month_view',
-      });
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  // Cal.com booking — warms up the embed, opens modal on click, and falls
+  // back to opening the raw cal.com URL in a new tab if the embed is blocked
+  // (adblocker / strict CSP / network). Shared hook keeps this consistent
+  // with the nav CTAs and floating booking button.
+  const { openBooking } = useCalBooking();
 
   // Body scroll lock + focus trap + ESC handler — runs only while open.
   useEffect(() => {
@@ -357,10 +341,10 @@ export function ProductModal({ product, source, onClose, onSelectPair }: Product
                       </button>
                       <button
                         type="button"
-                        data-cal-link={CAL.events.quick.link}
-                        data-cal-namespace={CAL.namespace}
-                        data-cal-config={JSON.stringify({ layout: 'month_view', theme: 'light' })}
-                        onClick={() => handleCtaClick('consultation')}
+                        onClick={() => {
+                          handleCtaClick('consultation');
+                          openBooking('quick');
+                        }}
                         className="bg-transparent border-[1.5px] border-navy text-navy hover:bg-navy hover:text-white rounded-xl font-semibold text-[.85rem] py-3 px-6 transition-all w-full text-center cursor-pointer"
                       >
                         Or chat with Marta first — Free 15 min
@@ -370,10 +354,10 @@ export function ProductModal({ product, source, onClose, onSelectPair }: Product
                     <>
                       <button
                         type="button"
-                        data-cal-link={CAL.events.quick.link}
-                        data-cal-namespace={CAL.namespace}
-                        data-cal-config={JSON.stringify({ layout: 'month_view', theme: 'light' })}
-                        onClick={() => handleCtaClick('consultation')}
+                        onClick={() => {
+                          handleCtaClick('consultation');
+                          openBooking('quick');
+                        }}
                         className="bg-navy text-white hover:bg-navy-deep hover:-translate-y-px hover:shadow-md rounded-xl font-semibold text-[.92rem] py-4 px-6 transition-all cursor-pointer border-0 w-full text-center"
                       >
                         Add this to my regimen — Free 15-min chat

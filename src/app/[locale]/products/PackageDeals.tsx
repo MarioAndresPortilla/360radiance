@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { getCalApi } from '@calcom/embed-react';
-import { CAL, PRODUCT_BUNDLES, PRODUCTS, type Product, type ProductBundle } from '@/lib/constants';
+import { PRODUCT_BUNDLES, PRODUCTS, type Product, type ProductBundle } from '@/lib/constants';
+import { useCalBooking } from '@/lib/use-cal-booking';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { cn } from '@/lib/utils';
 import { track } from '@/lib/analytics';
@@ -77,26 +77,10 @@ export function PackageDeals() {
   const seenRef = useRef<Set<string>>(new Set());
   const cardRefs = useRef<Map<string, HTMLElement>>(new Map());
 
-  // Initialize Cal once so the bundle CTAs can open the booking modal.
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const cal = await getCalApi({ namespace: CAL.namespace });
-      if (cancelled) return;
-      cal('ui', {
-        theme: 'light',
-        cssVarsPerTheme: {
-          light: { 'cal-brand': '#2F3269' },
-          dark: { 'cal-brand': '#2F3269' },
-        },
-        hideEventTypeDetails: false,
-        layout: 'month_view',
-      });
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  // Cal.com booking for the bundle "Reserve" CTAs. Shared hook handles the
+  // embed warm-up, theme init, and direct-link fallback if the embed is
+  // blocked by an adblocker / CSP / network issue.
+  const { openBooking } = useCalBooking();
 
   // Intersection observer fires `bundle_view` once when each card is visible.
   // This is the analytics signal that tells us "users actually saw this bundle"
@@ -278,10 +262,10 @@ export function PackageDeals() {
               {/* CTA */}
               <button
                 type="button"
-                data-cal-link={CAL.events.quick.link}
-                data-cal-namespace={CAL.namespace}
-                data-cal-config={JSON.stringify({ layout: 'month_view', theme: 'light' })}
-                onClick={() => handleCtaClick({ bundle, products, originalTotal, savings, savingsPct })}
+                onClick={() => {
+                  handleCtaClick({ bundle, products, originalTotal, savings, savingsPct });
+                  openBooking('quick');
+                }}
                 className="w-full bg-navy text-white hover:bg-navy-deep hover:-translate-y-px hover:shadow-md rounded-xl font-semibold text-[.9rem] py-3.5 px-6 transition-all cursor-pointer border-0 text-center"
               >
                 Reserve this bundle &rarr;

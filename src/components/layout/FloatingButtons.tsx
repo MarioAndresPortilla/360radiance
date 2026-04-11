@@ -1,58 +1,23 @@
 'use client';
 
-import { useCallback, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { getCalApi } from '@calcom/embed-react';
-import { BUSINESS, CAL } from '@/lib/constants';
+import { BUSINESS } from '@/lib/constants';
+import { useCalBooking } from '@/lib/use-cal-booking';
 import { IconWhatsApp } from '@/components/icons/Icons';
 
-type CalApi = Awaited<ReturnType<typeof getCalApi>>;
-
-// Floating action stack: Cal.com booking (primary) + WhatsApp. We warm up
-// the Cal embed on mount AND open the modal via an explicit onClick that
-// calls the cal stub function directly. The stub queues commands until
-// embed.js finishes downloading, so the very first click is honored even
-// if the user taps the FAB before the embed script has loaded.
+// Floating action stack: Cal.com booking (primary) + WhatsApp. Embed init +
+// fallback-to-direct-link logic lives in useCalBooking — if cal.com's script
+// is blocked or the embed fails, `openBooking('quick')` opens the raw cal.com
+// page in a new tab so the user still reaches Marta's availability.
 export function FloatingButtons() {
   const tCommon = useTranslations('common');
-  const calRef = useRef<CalApi | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const cal = await getCalApi({ namespace: CAL.namespace });
-      if (cancelled) return;
-      calRef.current = cal;
-      cal('ui', {
-        theme: 'light',
-        cssVarsPerTheme: {
-          light: { 'cal-brand': '#2F3269' },
-          dark: { 'cal-brand': '#2F3269' },
-        },
-        hideEventTypeDetails: false,
-        layout: 'month_view',
-      });
-    })();
-    return () => { cancelled = true; };
-  }, []);
-
-  const openBooking = useCallback(async () => {
-    let cal = calRef.current;
-    if (!cal) {
-      cal = await getCalApi({ namespace: CAL.namespace });
-      calRef.current = cal;
-    }
-    cal('modal', {
-      calLink: CAL.defaultLink,
-      config: { layout: 'month_view', theme: 'light' },
-    });
-  }, []);
+  const { openBooking } = useCalBooking();
 
   return (
     <div className="fab-stack fixed z-90 flex flex-col gap-3 items-end print:hidden" role="group">
       <button
         type="button"
-        onClick={openBooking}
+        onClick={() => openBooking('quick')}
         className="bg-gold text-navy w-13 h-13 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-250 hover:bg-gold-light hover:-translate-y-0.5 cursor-pointer"
         aria-label={tCommon('bookFreeConsultation')}
       >
