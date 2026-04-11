@@ -13,7 +13,7 @@ export function ProductsSection() {
           <ScrollReveal>
             <div className="rounded-2xl aspect-4/3 relative overflow-hidden shadow-md border border-border">
               <Image
-                src="/images/Radiance_5_Serum_Lineup_Dark_Background.jpeg"
+                src="/images/Radiance_5_Serum_Lineup_Marble.jpeg"
                 alt="The Radiance Skin Care serum lineup — Peptide, Vitamin C, Hydration Essence, Collagen, and Tone Rescue on marble"
                 fill
                 className="object-cover"

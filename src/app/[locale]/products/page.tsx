@@ -183,7 +183,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
               <div className="relative">
                 <div className="rounded-2xl aspect-4/3 relative overflow-hidden shadow-md border border-border">
                   <Image
-                    src="/images/Radiance_Peptide_Serum_Benefits_Infographic.jpeg"
+                    src="/images/Radiance_Peptide_Serum_Benefits_Lifestyle.jpeg"
                     alt="Radiance Peptide Serum with Hyaluronic Acid — clinical benefits breakdown showing deep hydration, smoothing, collagen support, and gentle daily-use formula"
                     fill
                     className="object-cover"

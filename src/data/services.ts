@@ -97,6 +97,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Visible improvement after a single session',
     ],
     idealFor: ['Back acne', 'Shoulder breakouts', 'Blackheads & congestion', 'Post-inflammatory scarring', 'Pre-event skin prep', 'Athletes & active lifestyles'],
+    image: '/images/instagram/treatment-ultrasonic-extractions.webp',
+    imageAlt: 'Professional ultrasonic extractions during a deep-cleansing back facial at 360 Radiance',
   },
   {
     slug: 'microdermabrasion',
@@ -118,6 +120,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Zero downtime — return to daily activities immediately',
     ],
     idealFor: ['Fine lines & wrinkles', 'Dull complexion', 'Enlarged pores', 'Uneven skin tone', 'Sun damage', 'Age spots'],
+    image: '/images/Radiance_4_Product_Spa_Lifestyle.jpeg',
+    imageAlt: 'Radiance Skin Care products styled in a spa setting representing the microdermabrasion post-treatment routine',
   },
   {
     slug: 'glass-ampule-serums',
@@ -162,6 +166,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Bilingual consultation available (English/Spanish)',
     ],
     idealFor: ['First-time clients', 'Unsure which treatment to choose', 'Multiple skin concerns', 'Sensitive skin types', 'Product-overwhelmed clients', 'Anyone seeking expert guidance'],
+    image: '/images/marta-nazzar.jpg',
+    imageAlt: 'Marta Nazzar, licensed medical aesthetician, available for a free in-clinic consultation at 360 Radiance',
   },
   {
     slug: 'botanical-treatments',
@@ -183,6 +189,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Take-home products available for continued care',
     ],
     idealFor: ['Sensitive skin', 'Chemical-free preference', 'Redness & irritation', 'Eczema-prone skin', 'Post-procedure care', 'Holistic skincare approach'],
+    image: '/images/Radiance_Gentle_Herbal_Cleanser_Bokeh.jpeg',
+    imageAlt: 'Radiance Gentle Herbal Cleanser — a proprietary botanical formula from the 360 Radiance skin care line',
   },
   {
     slug: 'custom-regimen-design',
@@ -204,6 +212,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Long-term skin health, not just quick fixes',
     ],
     idealFor: ['Clients finishing a treatment program', 'Inconsistent skincare routines', 'Product-overwhelmed clients', 'Maintenance after clearing', 'Budget-conscious skincare', 'Anyone wanting expert guidance'],
+    image: '/images/Radiance_5_Serum_Lineup_Marble.jpeg',
+    imageAlt: 'A full Radiance Skin Care serum lineup representing a custom-designed home-care regimen',
   },
   {
     slug: 'hydrafacial',
@@ -225,6 +235,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       '95% client satisfaction rate',
     ],
     idealFor: ['Dull complexion', 'Congested pores', 'Dehydrated skin', 'Pre-event prep', 'First-time facial clients', 'Monthly maintenance'],
+    image: '/images/instagram/treatment-mesotherapy-serums.webp',
+    imageAlt: 'Vortex-fusion serum infusion during a HydraFacial-style treatment at 360 Radiance',
   },
   {
     slug: 'led-facial-therapy',
@@ -269,6 +281,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Detailed aftercare protocol included',
     ],
     idealFor: ['Acne scarring', 'Hyperpigmentation', 'Fine lines', 'Rough texture', 'Sun damage', 'Uneven skin tone'],
+    image: '/images/Radiance_Serum_Quad_Dark_Leaves.jpeg',
+    imageAlt: 'A lineup of Radiance glycolic and acid-based serums representing the chemical peel treatment range',
   },
   {
     slug: 'microneedling',
@@ -313,6 +327,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Honest consultation with realistic timelines',
     ],
     idealFor: ['Full tattoo removal', 'Partial fading for cover-ups', 'Old or faded tattoos', 'Multi-color tattoos', 'Small to medium tattoos', 'Professional appearance needs'],
+    image: '/images/instagram/treatment-laser-pigmentation.webp',
+    imageAlt: 'Q-switched Nd:YAG laser session for pigmentation and tattoo removal at 360 Radiance',
   },
   {
     slug: 'oxygen-facial-therapy',
@@ -334,6 +350,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Pairs beautifully with other treatments',
     ],
     idealFor: ['Dehydrated skin', 'Pre-event glow', 'Acne-prone skin needing hydration', 'Dull complexion', 'Post-travel skin revival', 'Sensitive skin'],
+    image: '/images/Radiance_Peptide_Serum_Molecule_Bokeh.jpeg',
+    imageAlt: 'Radiance Peptide Serum with molecular backdrop — the actives infused during an oxygen facial therapy session',
   },
   {
     slug: 'carbon-yag-laser',
@@ -378,6 +396,8 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       'Visibly luminous, rejuvenated skin',
     ],
     idealFor: ['Luxury skincare lovers', 'Aging & mature skin', 'Dehydrated skin', 'Special occasion pampering', 'Fans of Korean skincare', 'Gift experiences'],
+    image: '/images/Radiance_Holiday_Collection_Bokeh.jpeg',
+    imageAlt: 'A luxurious holiday display of premium skincare products representing the Sulwhasoo Korean facial experience',
   },
   {
     slug: 'skin-deep-facial',
