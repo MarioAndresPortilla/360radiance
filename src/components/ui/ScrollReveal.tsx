@@ -38,7 +38,7 @@ export function ScrollReveal({ children, className, delay }: Props) {
   return (
     <div
       ref={ref}
-      className={cn('opacity-0 translate-y-6 transition-all duration-650 ease-out', className)}
+      className={cn('opacity-0 transform-[translateY(1.5rem)] transition-all duration-650 ease-out', className)}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

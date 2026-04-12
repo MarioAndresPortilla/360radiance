@@ -10,9 +10,11 @@
  * on the desktop layout + state ownership; the drawer reads the open/close
  * state via props.
  *
- * Anchored at top-16 (h-16) so it sits flush under the sticky header and
- * fills the remaining viewport height so the white panel covers everything
- * below the navbar (no partial backdrop/gap on short menus). Earlier version
+ * Anchored via a dynamic `topOffset` prop (measured from the header's
+ * bounding rect) so it sits flush under the sticky header regardless of
+ * whether the announcement bar is still in view. Fills the remaining
+ * viewport height so the white panel covers everything below the navbar
+ * (no partial backdrop/gap on short menus). Earlier version
  * used a ~40% black backdrop beneath an auto-height panel, which on mobile
  * read as a broken/unfinished overlay where the page content bled through
  * below the menu items. Closing is handled by the hamburger toggle in the
@@ -37,10 +39,12 @@ export function MobileNav({
   open,
   onClose,
   navLinks,
+  topOffset,
 }: {
   open: boolean;
   onClose: () => void;
   navLinks: NavLink[];
+  topOffset: number;
 }) {
   const t = useTranslations('nav');
   const pathname = usePathname();
@@ -51,8 +55,9 @@ export function MobileNav({
       role="dialog"
       aria-label={t('mobileMenu')}
       aria-hidden={!open}
+      style={{ top: topOffset }}
       className={cn(
-        'hidden max-lg:block fixed inset-0 top-16 z-90 overflow-hidden transition-opacity duration-250 ease-out',
+        'hidden max-lg:block fixed left-0 right-0 bottom-0 z-90 overflow-hidden transition-opacity duration-250 ease-out',
         open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none',
       )}
     >

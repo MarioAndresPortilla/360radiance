@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { BUSINESS } from '@/lib/constants';
@@ -29,6 +29,8 @@ export function Navbar() {
   const t = useTranslations('nav');
   const tCommon = useTranslations('common');
   const [mobileOpen, setMobileOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const [menuTop, setMenuTop] = useState(64);
   const pathname = usePathname();
 
   const navLinks = [
@@ -39,6 +41,14 @@ export function Navbar() {
     { href: '/blog' as const, label: t('blog') },
     { href: '/contact' as const, label: t('contact') },
   ];
+
+  // Measure the header's bottom edge so MobileNav starts flush below it,
+  // regardless of whether the announcement bar is still in view.
+  useEffect(() => {
+    if (mobileOpen && headerRef.current) {
+      setMenuTop(headerRef.current.getBoundingClientRect().bottom);
+    }
+  }, [mobileOpen]);
 
   // Lock body scroll when the mobile drawer opens.
   useEffect(() => {
@@ -52,7 +62,7 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="bg-white sticky top-0 z-100 border-b border-border">
+    <header ref={headerRef} className="bg-white sticky top-0 z-100 border-b border-border">
       <nav aria-label={t('ariaLabel')}>
         <div className="container-site flex justify-between items-center h-16 gap-6 max-lg:gap-3 max-md:gap-2">
           <Link href="/" className="flex items-center no-underline min-w-0" aria-label={t('homeAria')}>
@@ -131,7 +141,7 @@ export function Navbar() {
         </div>
       </nav>
 
-      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} navLinks={navLinks} />
+      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} navLinks={navLinks} topOffset={menuTop} />
     </header>
   );
 }

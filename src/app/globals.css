@@ -96,7 +96,7 @@ html {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .vis { opacity: 1 !important; transform: none !important; }
+  .vis { opacity: 1 !important; translate: none !important; transform: none !important; }
 }
 
 body {
