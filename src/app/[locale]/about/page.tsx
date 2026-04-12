@@ -51,13 +51,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <div className="relative container-site py-28 max-md:py-20">
           <ScrollReveal>
             <div className="max-w-2xl">
-              <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-gold-light mb-5 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full ring-1 ring-white/15">
+              <span className="inline-block text-[.65rem] font-bold uppercase tracking-[2.5px] text-gold-light mb-5 bg-white/8 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10">
                 {t('tag')}
               </span>
               <h1 id="about-hero-heading" className="font-serif text-[clamp(2.2rem,4.5vw,3.4rem)] leading-[1.12] mb-5 text-white">
                 {t('titleText')} <span className="text-gold-light">{t('titleHighlight')}</span>
               </h1>
-              <p className="text-white/85 max-w-130 text-[1.02rem] leading-[1.8]">{t('pageSubtitle')}</p>
+              <p className="text-white/80 max-w-130 text-[1.02rem] leading-[1.8]">{t('pageSubtitle')}</p>
             </div>
           </ScrollReveal>
         </div>
@@ -112,7 +112,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <div className="grid grid-cols-6 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2">
             {CREDENTIALS.map((cred) => (
               <ScrollReveal key={cred.label}>
-                <div className="bg-white rounded-2xl p-6 text-center border border-border hover:border-border-hover hover:shadow-md transition-all">
+                <div className="bg-white rounded-2xl p-6 text-center border border-border hover:border-navy/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                   <div className="w-12 h-12 bg-navy-pale rounded-xl flex items-center justify-center mx-auto mb-3" aria-hidden="true">
                     <Icon name={cred.icon as IconName} size={24} className="text-navy" />
                   </div>
@@ -121,7 +121,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               </ScrollReveal>
             ))}
             <ScrollReveal>
-              <div className="bg-white rounded-2xl p-6 text-center border border-border hover:border-border-hover hover:shadow-md transition-all flex items-center justify-center">
+              <div className="bg-white rounded-2xl p-6 text-center border border-border hover:border-navy/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center">
                 <Image
                   src="/images/ascp-member.png"
                   alt="Associated Skin Care Professionals Member"

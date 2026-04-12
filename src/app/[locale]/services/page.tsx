@@ -39,13 +39,13 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
 
         <div className="container-site relative z-1 text-center">
           <ScrollReveal>
-            <span className="inline-block text-[.65rem] font-bold uppercase tracking-[2.5px] text-gold mb-5 bg-white/[.08] px-4 py-1.5 rounded-full border border-white/10">
+            <span className="inline-block text-[.65rem] font-bold uppercase tracking-[2.5px] text-gold mb-5 bg-white/8 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10">
               {t('tag')}
             </span>
-            <h1 className="font-serif text-white text-[clamp(2.2rem,5vw,3.4rem)] leading-[1.1] mb-5">
+            <h1 className="font-serif text-white text-[clamp(2.2rem,4.5vw,3.4rem)] leading-[1.12] mb-5">
               {t('title')}
             </h1>
-            <p className="text-white/70 text-[1.05rem] leading-[1.85] max-w-130 mx-auto">
+            <p className="text-white/80 text-[1.02rem] leading-[1.8] max-w-130 mx-auto">
               {t('pageSubtitle')}
             </p>
           </ScrollReveal>

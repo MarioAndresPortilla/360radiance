@@ -58,13 +58,13 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
         <div className="relative container-site py-28 max-md:py-20">
           <ScrollReveal>
             <div className="max-w-2xl">
-              <span className="inline-block text-[.68rem] font-bold uppercase tracking-[2px] text-gold-light mb-5 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full ring-1 ring-white/15">
+              <span className="inline-block text-[.65rem] font-bold uppercase tracking-[2.5px] text-gold-light mb-5 bg-white/8 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10">
                 {t('pageTag')}
               </span>
               <h1 id="products-hero-heading" className="font-serif text-[clamp(2.2rem,4.5vw,3.4rem)] leading-[1.12] mb-5 text-white">
                 {t('pageTitle')}
               </h1>
-              <p className="text-white/85 max-w-130 text-[1.02rem] leading-[1.8]">{t('pageSubtitle')}</p>
+              <p className="text-white/80 max-w-130 text-[1.02rem] leading-[1.8]">{t('pageSubtitle')}</p>
             </div>
           </ScrollReveal>
         </div>
@@ -141,7 +141,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
         <div className="container-site">
           <ScrollReveal>
             <h2 id="how-heading" className="font-serif text-[1.6rem] text-center mb-10">{t('howHeading')}</h2>
-            <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
+            <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
               {[
                 { num: '01', title: t('how.clinician.title'), desc: t('how.clinician.desc') },
                 { num: '02', title: t('how.treatmentPaired.title'), desc: t('how.treatmentPaired.desc') },

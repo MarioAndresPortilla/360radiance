@@ -34,7 +34,7 @@ const GoogleG = ({ size = 16, mono = false }: { size?: number; mono?: boolean })
 function GoogleReviewCard({ review }: { review: GoogleReview }) {
   const filledStars = Math.round(review.rating);
   return (
-    <blockquote className="bg-white border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-md hover:border-border-hover h-full flex flex-col">
+    <blockquote className="bg-white border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-md hover:border-navy/20 hover:-translate-y-0.5 h-full flex flex-col">
       <div className="flex items-center justify-between mb-4">
         <div className="flex gap-0.5" aria-label={`Rated ${review.rating} out of 5 stars`}>
           {Array.from({ length: 5 }).map((_, j) => (

@@ -22,10 +22,10 @@ function formatPhoneNumber(value: string): string {
 }
 
 const inputBase =
-  'w-full rounded-xl border border-border bg-white px-4 py-3 text-[.95rem] text-text placeholder:text-text-faint transition-colors focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/15';
+  'w-full rounded-xl border border-border bg-white px-4 py-3 text-[.95rem] text-text placeholder:text-text-faint transition-colors focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/25';
 
-const labelBase = 'block text-[.78rem] font-semibold text-text mb-2';
-const errorText = 'mt-1.5 text-[.75rem] text-red-600';
+const labelBase = 'block text-[.82rem] font-semibold text-text mb-2';
+const errorText = 'mt-1.5 text-[.8rem] text-red-600';
 const requiredMark = <span className="text-navy" aria-hidden="true">*</span>;
 
 function SubmitButton({ label, sendingLabel }: { label: string; sendingLabel: string }) {

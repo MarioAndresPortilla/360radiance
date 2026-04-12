@@ -12,7 +12,7 @@
 
 import { getGoogleReviews } from '@/lib/google-reviews';
 
-export const dynamic = 'force-static';
+export const revalidate = 1800; // 30 min ISR — matches getGoogleReviews cache
 
 export async function GET() {
   const data = await getGoogleReviews();

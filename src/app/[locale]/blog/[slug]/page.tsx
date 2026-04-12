@@ -198,7 +198,7 @@ export default async function BlogArticlePage({ params }: Props) {
             <div className="grid grid-cols-2 gap-7 max-w-175 mx-auto max-md:grid-cols-1">
               {related.map((r) => (
                 <Link key={r.slug} href={`/blog/${r.slug}`} className="group no-underline">
-                  <article className="bg-white rounded-2xl border border-border overflow-hidden hover:border-navy hover:shadow-md transition-all">
+                  <article className="bg-white rounded-2xl border border-border overflow-hidden hover:border-navy/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <div className="aspect-video relative overflow-hidden">
                       <Image
                         src={`/images/blog/${r.slug}.svg`}

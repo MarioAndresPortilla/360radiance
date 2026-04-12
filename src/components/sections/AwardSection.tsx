@@ -42,7 +42,7 @@ export function AwardSection() {
               <p className="text-white/60 text-[1rem] leading-[1.85] mb-8 max-w-120">
                 {t('description')}
               </p>
-              <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1 max-md:gap-4 mb-8">
+              <div className="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-4 mb-8">
                 {[
                   { value: '4.9', label: t('googleRating') },
                   { value: '#1', label: t('rank') },

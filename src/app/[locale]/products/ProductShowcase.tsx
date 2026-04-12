@@ -130,11 +130,11 @@ export function ProductShowcase() {
 
                   {/* Top badges */}
                   <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2">
-                    <span className="text-[.58rem] font-bold uppercase tracking-[1px] text-white/95 bg-white/15 backdrop-blur px-2.5 py-1 rounded-full border border-white/25">
+                    <span className="text-[.65rem] font-bold uppercase tracking-[1px] text-white/95 bg-white/15 backdrop-blur px-2.5 py-1 rounded-full border border-white/25">
                       {product.category}
                     </span>
                     {product.badge && (
-                      <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-navy bg-gold py-1 px-2.5 rounded-full shadow-md">
+                      <span className="text-[.65rem] font-bold uppercase tracking-[.5px] text-navy bg-gold py-1 px-2.5 rounded-full shadow-md">
                         {product.badge}
                       </span>
                     )}
@@ -152,7 +152,7 @@ export function ProductShowcase() {
                       <span className="text-[.7rem] text-text-light">{product.size.split('·')[0].trim()}</span>
                     </div>
                     {product.origin && (
-                      <span className="text-[.58rem] font-bold uppercase tracking-[.5px] text-gold-a11y bg-gold-highlight py-1 px-2 rounded-md">
+                      <span className="text-[.65rem] font-bold uppercase tracking-[.5px] text-gold-a11y bg-gold-highlight py-1 px-2 rounded-md">
                         {product.origin}
                       </span>
                     )}
@@ -161,7 +161,7 @@ export function ProductShowcase() {
                   {/* Concern tags */}
                   <div className="flex flex-wrap gap-1 mb-4">
                     {product.concerns.slice(0, 3).map((c) => (
-                      <span key={c} className="text-[.58rem] uppercase tracking-[.5px] font-bold text-navy-deep bg-navy-pale py-0.5 px-2 rounded-md">
+                      <span key={c} className="text-[.65rem] uppercase tracking-[.5px] font-bold text-navy-deep bg-navy-pale py-0.5 px-2 rounded-md">
                         {c}
                       </span>
                     ))}

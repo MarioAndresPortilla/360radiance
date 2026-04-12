@@ -35,7 +35,7 @@ export function ServicesSection() {
             subtitle={t('subtitle')}
           />
         </ScrollReveal>
-        <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-lg:gap-5 max-md:grid-cols-1 max-md:gap-4" role="list">
+        <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-lg:gap-5 max-md:grid-cols-2 max-md:gap-4 max-sm:grid-cols-1" role="list">
           {featured.map((svc, i) => (
             <ScrollReveal key={svc.title}>
               <Link

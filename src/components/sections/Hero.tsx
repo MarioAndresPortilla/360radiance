@@ -54,7 +54,7 @@ export function Hero() {
                 <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gold/40 rounded-full" aria-hidden="true" />
               </span>
             </h1>
-            <p className="text-[1.05rem] text-white/70 max-w-115 leading-[1.85] max-lg:mx-auto">
+            <p className="text-[1.02rem] text-white/80 max-w-115 leading-[1.8] max-lg:mx-auto">
               {t('description')}
             </p>
 
