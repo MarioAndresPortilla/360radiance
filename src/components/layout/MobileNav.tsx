@@ -57,7 +57,7 @@ export function MobileNav({
       aria-hidden={!open}
       style={{ top: topOffset }}
       className={cn(
-        'hidden max-lg:block fixed left-0 right-0 bottom-0 z-90 overflow-hidden transition-opacity duration-250 ease-out',
+        'hidden max-lg:block fixed left-0 right-0 bottom-0 z-95 overflow-hidden transition-opacity duration-250 ease-out',
         open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none',
       )}
     >
