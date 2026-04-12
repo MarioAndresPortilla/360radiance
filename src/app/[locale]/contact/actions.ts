@@ -181,14 +181,9 @@ export async function sendContactEmail(
     });
     if (error) {
       console.error('[contact] Resend error:', error);
-      // TEMP: surface the Resend error name+message in the user-facing
-      // response so we can diagnose production failures without digging
-      // through Vercel logs. Once the email pipeline is verified working,
-      // revert this to the generic message below.
-      const detail = `[Resend ${error.name ?? 'error'}] ${error.message ?? 'unknown'}`;
       return {
         ok: false,
-        message: `Something went wrong sending your message. ${detail}. Please call or WhatsApp us instead.`,
+        message: 'Something went wrong sending your message. Please call or WhatsApp us instead.',
         values: submittedValues,
       };
     }
@@ -198,11 +193,9 @@ export async function sendContactEmail(
     };
   } catch (err) {
     console.error('[contact] Unexpected error:', err);
-    // TEMP: same diagnostic surfacing for unexpected exceptions.
-    const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
     return {
       ok: false,
-      message: `Something went wrong sending your message. [${detail}]. Please call or WhatsApp us instead.`,
+      message: 'Something went wrong sending your message. Please call or WhatsApp us instead.',
       values: submittedValues,
     };
   }
