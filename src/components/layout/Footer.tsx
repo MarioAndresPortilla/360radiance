@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { BUSINESS } from '@/lib/constants';
 import { IconWhatsApp } from '@/components/icons/Icons';
+import { Logo } from './Logo';
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -11,8 +12,8 @@ export function Footer() {
     <footer className="bg-[#141C27] text-white/45 py-10" role="contentinfo">
       <div className="container-site flex flex-col gap-6 items-center text-center">
         {/* Brand */}
-        <Link href="/" className="no-underline text-white" aria-label={tNav('homeAria')}>
-          <span className="font-serif text-[1.2rem]">360 Radiance</span>
+        <Link href="/" className="no-underline" aria-label={tNav('homeAria')}>
+          <Logo className="h-10 w-auto" variant="light" />
         </Link>
 
         {/* Socials */}

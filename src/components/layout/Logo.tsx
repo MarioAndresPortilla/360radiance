@@ -13,7 +13,9 @@
  * Gradient IDs are prefixed with "logo-" to avoid collisions if other inline
  * SVGs share the page.
  */
-export function Logo({ className }: { className?: string }) {
+export function Logo({ className, variant = 'dark' }: { className?: string; variant?: 'dark' | 'light' }) {
+  const textFill = variant === 'light' ? '#FFFFFF' : '#2A2D5E';
+  const tagFill = variant === 'light' ? 'rgba(255,255,255,0.6)' : '#5A4D80';
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +115,7 @@ export function Logo({ className }: { className?: string }) {
         fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
         fontSize="23"
         fontWeight="700"
-        fill="#2A2D5E"
+        fill={textFill}
         letterSpacing="3.5"
         textRendering="geometricPrecision"
       >
@@ -127,7 +129,7 @@ export function Logo({ className }: { className?: string }) {
         fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
         fontSize="10.5"
         fontWeight="500"
-        fill="#5A4D80"
+        fill={tagFill}
         letterSpacing="5.5"
         textRendering="geometricPrecision"
       >
