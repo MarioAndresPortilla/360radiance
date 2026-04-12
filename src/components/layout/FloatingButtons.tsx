@@ -18,13 +18,13 @@ export function FloatingButtons() {
       <button
         type="button"
         onClick={() => openBooking('quick')}
-        className="bg-gold text-navy w-13 h-13 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-250 hover:bg-gold-light hover:-translate-y-0.5 cursor-pointer"
-        aria-label={tCommon('bookFreeConsultation')}
+        className="bg-gold text-navy rounded-2xl flex items-center gap-2 px-4 py-3 shadow-lg transition-all duration-250 hover:bg-gold-light hover:-translate-y-0.5 cursor-pointer font-semibold text-sm whitespace-nowrap"
       >
-        <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <rect x="3" y="4" width="18" height="18" rx="2" />
           <path d="M16 2v4M8 2v4M3 10h18" />
         </svg>
+        {tCommon('bookNow')}
       </button>
       <a
         href={BUSINESS.whatsapp}

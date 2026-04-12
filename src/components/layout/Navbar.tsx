@@ -115,13 +115,6 @@ export function Navbar() {
               <IconPhone size={16} />
             </a>
 
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-1.5 bg-navy text-white rounded-lg font-semibold text-[.82rem] max-md:text-[.74rem] px-5 py-2.5 max-md:px-3 max-md:py-2 transition-all cursor-pointer hover:bg-navy-deep hover:-translate-y-px hover:shadow-md no-underline whitespace-nowrap"
-            >
-              {tCommon('bookNow')}
-            </Link>
-
             <button
               type="button"
               className="hidden max-lg:flex flex-col justify-center items-center w-10 h-10 max-md:w-9 max-md:h-9 gap-1.5 bg-transparent border-none cursor-pointer p-1 shrink-0"
