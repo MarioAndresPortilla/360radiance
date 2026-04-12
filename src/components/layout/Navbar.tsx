@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { BUSINESS } from '@/lib/constants';
@@ -29,8 +29,7 @@ export function Navbar() {
   const t = useTranslations('nav');
   const tCommon = useTranslations('common');
   const [mobileOpen, setMobileOpen] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
-  const [menuTop, setMenuTop] = useState(64);
+  const scrollYRef = useRef(0);
   const pathname = usePathname();
 
   const navLinks = [
@@ -42,19 +41,32 @@ export function Navbar() {
     { href: '/contact' as const, label: t('contact') },
   ];
 
-  // Measure the header's bottom edge so MobileNav starts flush below it,
-  // regardless of whether the announcement bar is still in view.
-  useEffect(() => {
-    if (mobileOpen && headerRef.current) {
-      setMenuTop(headerRef.current.getBoundingClientRect().bottom);
-    }
-  }, [mobileOpen]);
+  // Bulletproof scroll lock — `overflow: hidden` alone doesn't work on iOS
+  // Safari. Pinning the body with `position: fixed` + saved scroll offset
+  // prevents all background scrolling including momentum/rubber-band.
+  const lockScroll = useCallback(() => {
+    scrollYRef.current = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollYRef.current}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+  }, []);
 
-  // Lock body scroll when the mobile drawer opens.
+  const unlockScroll = useCallback(() => {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, scrollYRef.current);
+  }, []);
+
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [mobileOpen]);
+    if (mobileOpen) lockScroll();
+    else unlockScroll();
+    return unlockScroll;
+  }, [mobileOpen, lockScroll, unlockScroll]);
 
   // Auto-close the drawer on route change.
   useEffect(() => {
@@ -63,7 +75,7 @@ export function Navbar() {
 
   return (
     <>
-      <header ref={headerRef} className="bg-white sticky top-0 z-100 border-b border-border">
+      <header className="bg-white sticky top-0 z-100 border-b border-border">
         <nav aria-label={t('ariaLabel')}>
           <div className="container-site flex justify-between items-center h-16 gap-6 max-lg:gap-3 max-md:gap-2">
             <Link href="/" className="flex items-center no-underline min-w-0" aria-label={t('homeAria')}>
@@ -148,7 +160,7 @@ export function Navbar() {
           which on mobile browsers can use transforms internally and break
           fixed positioning for descendants. z-90 keeps it below the header
           (z-100) but above page content. */}
-      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} navLinks={navLinks} topOffset={menuTop} />
+      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} navLinks={navLinks} />
     </>
   );
 }

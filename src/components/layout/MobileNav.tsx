@@ -11,10 +11,9 @@
  * state via props.
  *
  * Rendered as a sibling of the <header> (not a child) so `position: fixed`
- * resolves against the viewport. Mobile browsers can use transforms inside
- * sticky elements, which traps fixed descendants. A dynamic `topOffset`
- * prop (measured from the header's bounding rect) keeps it flush under
- * the sticky header regardless of announcement bar visibility. Earlier version
+ * resolves against the viewport. The overlay covers `inset-0` (full screen)
+ * with `pt-16` on the inner nav to clear the sticky header (h-16 / z-100),
+ * which paints on top. No JS measurement needed. Earlier version
  * used a ~40% black backdrop beneath an auto-height panel, which on mobile
  * read as a broken/unfinished overlay where the page content bled through
  * below the menu items. Closing is handled by the hamburger toggle in the
@@ -39,12 +38,10 @@ export function MobileNav({
   open,
   onClose,
   navLinks,
-  topOffset,
 }: {
   open: boolean;
   onClose: () => void;
   navLinks: NavLink[];
-  topOffset: number;
 }) {
   const t = useTranslations('nav');
   const pathname = usePathname();
@@ -55,16 +52,18 @@ export function MobileNav({
       role="dialog"
       aria-label={t('mobileMenu')}
       aria-hidden={!open}
-      style={{ top: topOffset }}
       className={cn(
-        'hidden max-lg:block fixed left-0 right-0 bottom-0 z-95 overflow-hidden transition-opacity duration-250 ease-out',
+        'hidden max-lg:block fixed inset-0 z-95 transition-opacity duration-250 ease-out',
         open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none',
       )}
     >
+      {/* pt-16 clears the sticky header (h-16 / z-100) which paints on top
+          of this overlay. No JS measurement needed — the header is always
+          64px when stuck at top-0. */}
       <nav
         aria-label={t('mobileMenu')}
         className={cn(
-          'relative w-full h-full bg-white shadow-lg overflow-y-auto transition-transform duration-250 ease-out',
+          'w-full h-full pt-16 bg-white shadow-lg overflow-y-auto overscroll-contain transition-transform duration-250 ease-out',
           open ? 'translate-y-0' : '-translate-y-full',
         )}
         onClick={(e) => {
