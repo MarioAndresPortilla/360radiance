@@ -7,7 +7,7 @@ import { ProgressBar } from '@/components/ui/ProgressBar';
 export function JourneySection() {
   const t = useTranslations('results');
   return (
-    <section className="py-16 max-md:py-12 bg-white" id="results" aria-labelledby="results-heading">
+    <section className="py-14 max-md:py-10 bg-cream" id="results" aria-labelledby="results-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader
@@ -17,15 +17,20 @@ export function JourneySection() {
             subtitle={t('subtitle')}
           />
         </ScrollReveal>
-        <ol className="grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-lg:gap-5 list-none">
+        <ol className="grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-lg:gap-4 list-none">
           {JOURNEY_STEPS.map((step) => (
             <ScrollReveal key={step.number}>
-              <li className="bg-white border border-border rounded-2xl p-7 max-md:p-6 text-center transition-all duration-300 hover:border-navy hover:shadow-md">
-                <div className="font-serif text-[1.8rem] text-navy mb-2" aria-hidden="true">{step.number}</div>
-                <div className="text-[.62rem] font-bold uppercase tracking-[1.5px] text-gold-a11y mb-3">{step.weekLabel}</div>
-                <h4 className="font-serif text-[.98rem] mb-2">{step.title}</h4>
-                <p className="text-text-mid text-[.82rem] leading-[1.65]">{step.description}</p>
-                <ProgressBar targetWidth={step.progress} />
+              <li className="group bg-white border border-border rounded-2xl p-6 transition-all duration-300 hover:border-navy hover:shadow-md hover:-translate-y-0.5 h-full flex flex-col">
+                <div className="w-12 h-12 rounded-xl bg-navy flex items-center justify-center mb-3 shadow-sm group-hover:shadow-md transition-shadow">
+                  <span className="font-serif text-[1.2rem] text-gold leading-none">{step.number}</span>
+                </div>
+                <div className="text-[.6rem] font-bold uppercase tracking-[1.5px] text-gold-a11y mb-2">{step.weekLabel}</div>
+                <h4 className="font-serif text-[.95rem] mb-2">{step.title}</h4>
+                <p className="text-text-mid text-[.8rem] leading-[1.65] mb-auto">{step.description}</p>
+                <div className="mt-3">
+                  <ProgressBar targetWidth={step.progress} />
+                  <div className="text-[.65rem] text-text-light mt-1 text-right font-medium">{step.progress}%</div>
+                </div>
               </li>
             </ScrollReveal>
           ))}

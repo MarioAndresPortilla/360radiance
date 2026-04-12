@@ -8,7 +8,7 @@ const TRUST_KEYS = ['biology', 'faceReality', 'medical', 'european', 'ascp', 'bi
 export function TrustBar() {
   const t = useTranslations('trust');
   return (
-    <div className="bg-white border-b border-border py-6" role="region" aria-label={t('label')}>
+    <div className="bg-cream border-b border-border py-5" role="region" aria-label={t('label')}>
       <div className="flex justify-center items-center gap-10 flex-wrap max-lg:gap-6 max-md:gap-5 max-md:px-5">
         {TRUST_ITEMS.map((item, i) => (
           <div key={item.label} className="flex items-center gap-2.5 text-[.8rem] font-medium text-text-mid">

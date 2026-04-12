@@ -25,7 +25,7 @@ export function ServicesSection() {
   const featured = SERVICES.slice(0, FEATURED_COUNT);
 
   return (
-    <section className="py-16 max-md:py-12 bg-white" id="services" aria-labelledby="services-heading">
+    <section className="py-14 max-md:py-10 bg-cream" id="services" aria-labelledby="services-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader
@@ -43,7 +43,7 @@ export function ServicesSection() {
                 role="listitem"
                 aria-label={`${svc.title} — learn more`}
                 className={cn(
-                  'group flex flex-col bg-white border rounded-2xl p-6 transition-all duration-300 relative hover:border-navy hover:shadow-md hover:-translate-y-0.5 h-full no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy',
+                  'group flex flex-col bg-white border rounded-2xl p-6 transition-all duration-300 relative hover:border-navy hover:shadow-lg hover:-translate-y-1 h-full no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy shadow-sm',
                   svc.featured ? 'border-navy bg-navy-bg' : 'border-border'
                 )}
               >

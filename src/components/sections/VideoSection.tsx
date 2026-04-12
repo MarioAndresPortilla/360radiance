@@ -58,7 +58,7 @@ export function VideoSection() {
   if (VIDEOS.length === 0) return null;
 
   return (
-    <section className="py-16 max-md:py-12 bg-cream" aria-labelledby="videos-heading">
+    <section className="py-14 max-md:py-10 bg-white" aria-labelledby="videos-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader

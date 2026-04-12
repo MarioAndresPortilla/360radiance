@@ -31,7 +31,7 @@ import { HeroImageRotator } from './HeroImageRotator';
 export function Hero() {
   const t = useTranslations('hero');
   return (
-    <section className="bg-white py-16 max-md:py-12" aria-labelledby="hero-heading">
+    <section className="bg-white py-14 max-md:py-10" aria-labelledby="hero-heading">
       <div className="container-site">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-x-20 lg:gap-y-0 lg:items-center max-lg:text-center">
           {/* 1. Intro — mobile: first; desktop: top-left */}

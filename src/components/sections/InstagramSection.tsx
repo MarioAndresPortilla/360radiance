@@ -7,7 +7,7 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 export function InstagramSection() {
   const t = useTranslations('instagram');
   return (
-    <section className="py-16 max-md:py-12" aria-labelledby="instagram-heading">
+    <section className="py-14 max-md:py-10" aria-labelledby="instagram-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader

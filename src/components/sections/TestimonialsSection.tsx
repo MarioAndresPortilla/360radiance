@@ -19,7 +19,7 @@ const GoogleG = ({ size = 16, mono = false }: { size?: number; mono?: boolean })
 function GoogleReviewMiniCard({ review }: { review: GoogleReview }) {
   const filledStars = Math.round(review.rating);
   return (
-    <blockquote className="bg-white border border-border rounded-2xl p-8 max-md:p-6 transition-all duration-300 hover:shadow-md hover:border-border-hover h-full flex flex-col" role="listitem">
+    <blockquote className="bg-white border border-border rounded-2xl p-7 max-md:p-5 transition-all duration-300 hover:shadow-lg hover:border-navy hover:-translate-y-0.5 h-full flex flex-col" role="listitem">
       <div className="flex items-center justify-between mb-4">
         <div className="flex gap-1" aria-label={`Rated ${review.rating} out of 5 stars`}>
           {Array.from({ length: 5 }).map((_, i) => (
@@ -76,7 +76,7 @@ export async function TestimonialsSection() {
   const featured = googleReviews.reviews.slice(0, 3);
 
   return (
-    <section className="py-16 max-md:py-12" id="reviews" aria-labelledby="reviews-heading">
+    <section className="py-14 max-md:py-10 bg-cream" id="reviews" aria-labelledby="reviews-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader id="reviews-heading" tag={t('tag')} title={t('title')} />

@@ -6,7 +6,7 @@ import { IconStar } from '@/components/icons/Icons';
 export function AwardSection() {
   const t = useTranslations('award');
   return (
-    <section className="py-16 max-md:py-12 bg-text overflow-hidden" aria-labelledby="award-heading">
+    <section className="py-14 max-md:py-10 bg-text overflow-hidden" aria-labelledby="award-heading">
       <div className="container-site">
         <div className="grid grid-cols-[1fr_1.2fr] gap-16 max-lg:gap-10 items-center max-lg:grid-cols-1">
           <ScrollReveal>

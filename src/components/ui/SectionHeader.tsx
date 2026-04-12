@@ -7,7 +7,7 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ tag, title, subtitle, id }: SectionHeaderProps) {
   return (
-    <div className="text-center mb-14 max-md:mb-10">
+    <div className="text-center mb-10 max-md:mb-8">
       <span className="inline-block text-[.7rem] font-bold uppercase tracking-[2.5px] text-navy mb-4 bg-navy-pale/70 px-5 py-2 rounded-full">
         {tag}
       </span>

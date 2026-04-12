@@ -7,9 +7,9 @@ import { IconCheck } from '@/components/icons/Icons';
 export function ProductsSection() {
   const t = useTranslations('products');
   return (
-    <section className="py-16 max-md:py-12 bg-white" aria-labelledby="products-heading">
+    <section className="py-14 max-md:py-10 bg-cream" aria-labelledby="products-heading">
       <div className="container-site">
-        <div className="grid grid-cols-[1.2fr_1fr] gap-20 max-lg:gap-12 items-center max-lg:grid-cols-1">
+        <div className="grid grid-cols-[1.2fr_1fr] gap-14 max-lg:gap-10 items-center max-lg:grid-cols-1">
           <ScrollReveal>
             <div className="rounded-2xl aspect-4/3 relative overflow-hidden shadow-md border border-border">
               <Image

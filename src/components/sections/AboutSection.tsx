@@ -8,9 +8,9 @@ import { IconDiploma } from '@/components/icons/Icons';
 export function AboutSection() {
   const t = useTranslations('about');
   return (
-    <section className="py-16 max-md:py-12" id="about" aria-labelledby="about-heading">
+    <section className="py-14 max-md:py-10 bg-cream" id="about" aria-labelledby="about-heading">
       <div className="container-site">
-        <div className="grid grid-cols-[1fr_1.4fr] gap-20 max-lg:gap-12 items-center max-lg:grid-cols-1">
+        <div className="grid grid-cols-[1fr_1.4fr] gap-14 max-lg:gap-10 items-center max-lg:grid-cols-1">
           <ScrollReveal>
             <div className="relative max-lg:max-w-75 max-lg:mx-auto">
               <div className="rounded-2xl overflow-hidden aspect-3/4 shadow-md relative">

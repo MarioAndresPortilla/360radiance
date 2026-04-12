@@ -9,7 +9,7 @@ export function BookingSection() {
   const t = useTranslations('booking');
 
   return (
-    <section className="py-16 max-md:py-12" id="booking" aria-labelledby="booking-heading">
+    <section className="py-14 max-md:py-10" id="booking" aria-labelledby="booking-heading">
       <div className="container-site">
         <ScrollReveal>
           <div className="bg-navy rounded-3xl px-8 py-12 sm:px-12 sm:py-14 lg:px-16 lg:py-14 text-center text-white relative overflow-hidden">

@@ -9,7 +9,7 @@ const WHY_KEYS = ['expertise', 'protocol', 'european', 'botanicals', 'personaliz
 export function WhySection() {
   const t = useTranslations('why');
   return (
-    <section className="py-16 max-md:py-12" aria-labelledby="why-heading">
+    <section className="py-14 max-md:py-10" aria-labelledby="why-heading">
       <div className="container-site">
         <ScrollReveal>
           <SectionHeader
@@ -24,7 +24,7 @@ export function WhySection() {
             const key = WHY_KEYS[i];
             return (
               <ScrollReveal key={card.title}>
-                <article className="group bg-white border border-border rounded-2xl p-8 max-md:p-6 transition-all duration-300 relative hover:border-border-hover hover:shadow-md hover:-translate-y-0.75" role="listitem">
+                <article className="group bg-white border border-border rounded-2xl p-7 max-md:p-5 transition-all duration-300 relative hover:border-navy hover:shadow-lg hover:-translate-y-1" role="listitem">
                   <div className="absolute top-0 left-6 right-6 h-0.5 bg-navy rounded-b-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true" />
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 ${card.iconTheme === 'navy' ? 'bg-navy-pale' : 'bg-gold-highlight'}`} aria-hidden="true">
                     <Icon name={card.icon as IconName} size={26} className={card.iconTheme === 'navy' ? 'text-navy' : 'text-gold-dark'} />
