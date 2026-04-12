@@ -1,6 +1,6 @@
 'use client';
 
-import { useActionState, useEffect, useId, useState } from 'react';
+import { useActionState, useId } from 'react';
 import { useFormStatus } from 'react-dom';
 import { useTranslations } from 'next-intl';
 import { sendContactEmail, type ContactFormState } from './actions';
@@ -64,18 +64,6 @@ export function ContactForm() {
   const t = useTranslations('contact.form');
   const [state, formAction] = useActionState(sendContactEmail, initialState);
   const formId = useId();
-  const [phone, setPhone] = useState('');
-
-  // Re-sync the controlled phone input when a failed submit echoes the
-  // submitted value back in state.values. Other fields are uncontrolled and
-  // use defaultValue, but phone is controlled for live formatting so it
-  // needs this explicit sync. We intentionally do NOT re-format here — the
-  // value came from the server, which received exactly what we sent.
-  useEffect(() => {
-    if (state.values?.phone !== undefined) {
-      setPhone(state.values.phone);
-    }
-  }, [state]);
 
   if (state.ok) {
     return (
@@ -165,8 +153,23 @@ export function ContactForm() {
           inputMode="tel"
           placeholder={t('phonePlaceholder')}
           className={inputBase}
-          value={phone}
-          onChange={(e) => setPhone(formatPhoneNumber(e.target.value))}
+          defaultValue={state.values?.phone ?? ''}
+          key={`phone-${state.values?.phone ?? ''}`}
+          onInput={(e) => {
+            // Live-format phone numbers without making the input controlled
+            // (controlled inputs caused a hydration mismatch in production).
+            // We mutate the DOM value directly and restore the cursor offset
+            // adjusted for added/removed formatting characters so the caret
+            // doesn't jump to the end while the user is editing the middle.
+            const input = e.currentTarget;
+            const cursor = input.selectionStart ?? input.value.length;
+            const before = input.value;
+            const after = formatPhoneNumber(before);
+            if (before === after) return;
+            input.value = after;
+            const next = Math.max(0, cursor + (after.length - before.length));
+            input.setSelectionRange(next, next);
+          }}
           aria-invalid={state.errors?.phone ? 'true' : undefined}
           aria-describedby={state.errors?.phone ? `${formId}-phone-err` : undefined}
         />
