@@ -26,14 +26,23 @@ export function CtaBanner({ heading, subtitle, buttonText, secondaryText, second
             {label}
           </Link>
           {secondaryText && secondaryHref && (
-            <a
-              href={secondaryHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[.85rem] text-white/80 underline underline-offset-4 decoration-white/30 hover:text-white hover:decoration-white/70 transition-colors"
-            >
-              {secondaryText}
-            </a>
+            secondaryHref.startsWith('/') ? (
+              <Link
+                href={secondaryHref}
+                className="text-[.85rem] text-white/80 underline underline-offset-4 decoration-white/30 hover:text-white hover:decoration-white/70 transition-colors"
+              >
+                {secondaryText}
+              </Link>
+            ) : (
+              <a
+                href={secondaryHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[.85rem] text-white/80 underline underline-offset-4 decoration-white/30 hover:text-white hover:decoration-white/70 transition-colors"
+              >
+                {secondaryText}
+              </a>
+            )
           )}
         </div>
       </div>

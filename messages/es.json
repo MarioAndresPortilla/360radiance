@@ -132,7 +132,7 @@
     "ctaHeading": "¿No Está Segura Cuál Tratamiento Es el Adecuado?",
     "ctaSubtitle": "Reserve una consulta gratuita y Marta diseñará un plan de tratamiento adaptado a sus necesidades.",
     "ctaButton": "Reserve Consulta Gratuita",
-    "ctaBookTreatment": "O reserve un tratamiento directamente en Fresha →",
+    "ctaBookTreatment": "O contáctenos para reservar un tratamiento →",
     "bookConsultation": "Reserve Consulta Gratuita →"
   },
   "award": {
@@ -346,7 +346,7 @@
     "scheduleCtaQuick": "O Charla Rápida Gratuita de 15 min",
     "callCta": "O llame al",
     "whatsappCta": "o escríbanos por WhatsApp",
-    "freshaCtaLabel": "¿Ya sabe qué tratamiento quiere? Reserve directamente →"
+    "freshaCtaLabel": "¿Ya sabe qué tratamiento quiere? Contáctenos para reservar →"
   },
   "hours": {
     "tag": "Visítenos",
@@ -375,7 +375,7 @@
     "scheduleTitle": "Reserve Su Consulta Gratuita",
     "scheduleSubtitle": "Vea los horarios disponibles en el calendario de Marta y reserve su lugar en menos de un minuto. 100% gratuita — sin compromiso, sin tarjeta de crédito.",
     "scheduleCtaFull": "Reserve Consulta Gratuita",
-    "scheduleCtaQuick": "O reserve un tratamiento directamente en Fresha →",
+    "scheduleCtaQuick": "Reservas en línea próximamente",
     "scheduleBullet1": "Consulta gratuita — sin tarjeta, sin compromiso",
     "scheduleBullet2": "Hoja de ruta de tratamiento personalizada",
     "scheduleBullet3": "Confirmación y recordatorio por correo",

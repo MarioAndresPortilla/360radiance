@@ -136,8 +136,11 @@ export type CalEventKey = keyof typeof CAL.events;
 // 3. Replace the placeholder URL below with your Fresha booking page URL
 //    (format: https://www.fresha.com/book-now/YOUR-BUSINESS-SLUG)
 export const FRESHA = {
-  // ⚠️  Replace with your actual Fresha booking URL once your profile is live.
-  url: 'https://www.fresha.com/book-now/360-radiance-XXXXXXXX',
+  // ⚠️  TEMP: Redirecting to /contact until the Fresha account is ready.
+  //    Once live, replace with: 'https://www.fresha.com/book-now/YOUR-BUSINESS-SLUG'
+  url: '/contact',
+  /** While true, booking links render as internal <Link> instead of external <a>. */
+  isTemporaryRedirect: true,
 } as const;
 
 // All consultations are free. This constant is kept for any code that

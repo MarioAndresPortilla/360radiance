@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
-import { BUSINESS, FRESHA } from '@/lib/constants';
+import { BUSINESS } from '@/lib/constants';
+import { Link } from '@/i18n/navigation';
 import { IconPhone, IconWhatsApp } from '@/components/icons/Icons';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { CalPopupButton } from '@/components/ui/CalPopupButton';
@@ -26,14 +27,12 @@ export function BookingSection() {
                 {t('scheduleCtaFull')}
               </CalPopupButton>
 
-              <a
-                href={FRESHA.url}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/contact"
                 className="inline-flex items-center gap-2 text-white/80 text-[.85rem] hover:text-white transition-colors underline underline-offset-4 decoration-white/30 hover:decoration-white/70"
               >
                 {t('freshaCtaLabel')}
-              </a>
+              </Link>
 
               <div className="flex items-center gap-6 max-md:flex-col max-md:gap-3 mt-1">
                 <a

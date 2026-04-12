@@ -132,7 +132,7 @@
     "ctaHeading": "Not Sure Which Treatment Is Right?",
     "ctaSubtitle": "Book a free consultation and Marta will design a treatment plan tailored to your unique needs.",
     "ctaButton": "Book Free Consultation",
-    "ctaBookTreatment": "Or book a treatment directly on Fresha →",
+    "ctaBookTreatment": "Or contact us to book a treatment →",
     "bookConsultation": "Book Free Consultation →"
   },
   "award": {
@@ -346,7 +346,7 @@
     "scheduleCtaQuick": "Or Free 15-min Quick Chat",
     "callCta": "Or call",
     "whatsappCta": "or message us on WhatsApp",
-    "freshaCtaLabel": "Already know what you want? Book a treatment directly →"
+    "freshaCtaLabel": "Already know what you want? Contact us to book →"
   },
   "hours": {
     "tag": "Visit Us",
@@ -375,7 +375,7 @@
     "scheduleTitle": "Book Your Free Consultation",
     "scheduleSubtitle": "See real-time openings on Marta's calendar and lock in your spot in under a minute. 100% free — no commitment, no card on file.",
     "scheduleCtaFull": "Book Free Consultation",
-    "scheduleCtaQuick": "Or book a treatment directly on Fresha →",
+    "scheduleCtaQuick": "Online booking coming soon",
     "scheduleBullet1": "Free consultation — no card, no commitment",
     "scheduleBullet2": "Personalized treatment roadmap",
     "scheduleBullet3": "Confirmation + reminder by email",

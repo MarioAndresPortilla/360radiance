@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { BUSINESS, FRESHA } from '@/lib/constants';
+import { BUSINESS } from '@/lib/constants';
 import { buildPageMetadata } from '@/lib/seo';
 import { PageShell } from '@/components/layout/PageShell';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
@@ -143,14 +143,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                     <CalPopupButton variant="white" event="quick" ariaLabel={t('scheduleCtaFull')}>
                       {t('scheduleCtaFull')}
                     </CalPopupButton>
-                    <a
-                      href={FRESHA.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[.85rem] text-white/60 underline underline-offset-4 decoration-white/20 hover:text-white hover:decoration-white/50 transition-colors"
-                    >
+                    <span className="text-[.85rem] text-white/50 italic">
                       {t('scheduleCtaQuick')}
-                    </a>
+                    </span>
                   </div>
 
                   <ul className="grid grid-cols-3 max-md:grid-cols-1 gap-4" aria-label="What to expect">
