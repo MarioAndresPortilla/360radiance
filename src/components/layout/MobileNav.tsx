@@ -10,11 +10,11 @@
  * on the desktop layout + state ownership; the drawer reads the open/close
  * state via props.
  *
- * Anchored via a dynamic `topOffset` prop (measured from the header's
- * bounding rect) so it sits flush under the sticky header regardless of
- * whether the announcement bar is still in view. Fills the remaining
- * viewport height so the white panel covers everything below the navbar
- * (no partial backdrop/gap on short menus). Earlier version
+ * Rendered as a sibling of the <header> (not a child) so `position: fixed`
+ * resolves against the viewport. Mobile browsers can use transforms inside
+ * sticky elements, which traps fixed descendants. A dynamic `topOffset`
+ * prop (measured from the header's bounding rect) keeps it flush under
+ * the sticky header regardless of announcement bar visibility. Earlier version
  * used a ~40% black backdrop beneath an auto-height panel, which on mobile
  * read as a broken/unfinished overlay where the page content bled through
  * below the menu items. Closing is handled by the hamburger toggle in the
