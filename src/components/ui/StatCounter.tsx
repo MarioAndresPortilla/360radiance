@@ -6,9 +6,10 @@ interface Props {
   target: number;
   suffix: string;
   label: string;
+  dark?: boolean;
 }
 
-export function StatCounter({ target, suffix, label }: Props) {
+export function StatCounter({ target, suffix, label, dark }: Props) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const animated = useRef(false);
@@ -41,10 +42,10 @@ export function StatCounter({ target, suffix, label }: Props) {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="font-serif text-[2rem] text-navy">
+      <div className={`font-serif text-[2rem] ${dark ? 'text-gold-light' : 'text-navy'}`}>
         {count}{suffix}
       </div>
-      <div className="text-[.65rem] text-text-light font-semibold uppercase tracking-[.8px]">
+      <div className={`text-[.65rem] font-semibold uppercase tracking-[.8px] ${dark ? 'text-white/50' : 'text-text-light'}`}>
         {label}
       </div>
     </div>
