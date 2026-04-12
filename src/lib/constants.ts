@@ -382,12 +382,6 @@ export const SERVICES: Service[] = [
     tag: 'Laser Peel',
   },
   {
-    icon: 'globe',
-    title: 'Sulwhasoo Korean Facial',
-    description: 'Luxury organic Korean skincare ritual using Sulwhasoo botanicals. Ginseng-infused for deep nourishment and radiance.',
-    tag: 'Luxury',
-  },
-  {
     icon: 'care',
     title: 'Skin Deep Facial',
     description: 'Our comprehensive deep-cleansing facial. Extractions, enzyme peel, custom mask, and hydrating finish for all skin types.',

@@ -10,7 +10,14 @@
  * on the desktop layout + state ownership; the drawer reads the open/close
  * state via props.
  *
- * Anchored at top-16 (h-16) so it sits flush under the sticky header.
+ * Anchored at top-16 (h-16) so it sits flush under the sticky header and
+ * fills the remaining viewport height so the white panel covers everything
+ * below the navbar (no partial backdrop/gap on short menus). Earlier version
+ * used a ~40% black backdrop beneath an auto-height panel, which on mobile
+ * read as a broken/unfinished overlay where the page content bled through
+ * below the menu items. Closing is handled by the hamburger toggle in the
+ * navbar above.
+ *
  * overflow-hidden on the dialog wrapper masks the slide-in transform so the
  * white drawer can't peek above its anchor and overlap the navbar mid-animation.
  * The Y-translate animation (not opacity-only) is what makes it read as a
@@ -49,13 +56,18 @@ export function MobileNav({
         open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none',
       )}
     >
-      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
       <nav
         aria-label={t('mobileMenu')}
         className={cn(
-          'relative w-full bg-white shadow-lg transition-transform duration-250 ease-out',
+          'relative w-full h-full bg-white shadow-lg overflow-y-auto transition-transform duration-250 ease-out',
           open ? 'translate-y-0' : '-translate-y-full',
         )}
+        onClick={(e) => {
+          // Dismiss when tapping the empty area below the menu items, but
+          // let taps on actual links/buttons bubble normally. Any click whose
+          // target is the nav element itself (i.e. the empty space) closes.
+          if (e.target === e.currentTarget) onClose();
+        }}
       >
         <div className="flex flex-col px-5 py-4 gap-0.5">
           {navLinks.map((link) => (
