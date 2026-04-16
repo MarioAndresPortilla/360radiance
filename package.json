@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "rasterize:blog": "node scripts/rasterize-blog-images.mjs"
+    "rasterize:blog": "node scripts/rasterize-blog-images.mjs",
+    "indexnow": "node scripts/indexnow-submit.mjs"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
