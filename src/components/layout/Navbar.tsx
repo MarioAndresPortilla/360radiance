@@ -29,6 +29,8 @@ export function Navbar() {
   const t = useTranslations('nav');
   const tCommon = useTranslations('common');
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [headerBottom, setHeaderBottom] = useState(64);
+  const headerRef = useRef<HTMLElement>(null);
   const scrollYRef = useRef(0);
   const pathname = usePathname();
 
@@ -63,8 +65,17 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (mobileOpen) lockScroll();
-    else unlockScroll();
+    if (mobileOpen) {
+      // Measure header bottom BEFORE locking scroll — the lock pins the
+      // body with position:fixed which un-sticks the header, shifting it
+      // if the announcement bar is still in view.
+      if (headerRef.current) {
+        setHeaderBottom(headerRef.current.getBoundingClientRect().bottom);
+      }
+      lockScroll();
+    } else {
+      unlockScroll();
+    }
     return unlockScroll;
   }, [mobileOpen, lockScroll, unlockScroll]);
 
@@ -75,7 +86,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className="bg-white sticky top-0 z-100 border-b border-border">
+      <header ref={headerRef} className="bg-white sticky top-0 z-100 border-b border-border">
         <nav aria-label={t('ariaLabel')}>
           <div className="container-site flex justify-between items-center h-16 gap-6 max-lg:gap-3 max-md:gap-2">
             <Link href="/" className="flex items-center no-underline min-w-0" aria-label={t('homeAria')}>
@@ -160,7 +171,7 @@ export function Navbar() {
           which on mobile browsers can use transforms internally and break
           fixed positioning for descendants. z-90 keeps it below the header
           (z-100) but above page content. */}
-      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} navLinks={navLinks} />
+      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} navLinks={navLinks} headerBottom={headerBottom} />
     </>
   );
 }
