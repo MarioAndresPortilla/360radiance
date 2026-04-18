@@ -38,6 +38,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <Image
             src="/images/marta-nazzar.jpg"
             alt=""
+            aria-hidden="true"
             fill
             priority
             sizes="100vw"

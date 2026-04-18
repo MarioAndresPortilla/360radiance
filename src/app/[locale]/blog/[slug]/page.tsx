@@ -65,6 +65,7 @@ export default async function BlogArticlePage({ params }: Props) {
   // validator doesn't accept SVG for Article schema. Article body inferred
   // from `articleBody` is optional but boosts NLP understanding for E-E-A-T.
   const articleUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/blog/${post.slug}`;
+  const localePrefix = locale === 'en' ? '' : `/${locale}`;
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -76,7 +77,7 @@ export default async function BlogArticlePage({ params }: Props) {
     author: {
       '@type': 'Person',
       name: 'Marta Nazzar',
-      url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/about`,
+      url: `${SITE_URL}${localePrefix}/about`,
       jobTitle: locale === 'es' ? 'Esteticista Paramédica Licenciada' : 'Licensed Paramedical Aesthetician',
     },
     publisher: {
@@ -93,11 +94,42 @@ export default async function BlogArticlePage({ params }: Props) {
     keywords: post.tags.join(', '),
   };
 
+  // BreadcrumbList matches the visible breadcrumb nav below and unlocks
+  // breadcrumb-rich results in Bing + Google SERPs. Positions are 1-indexed.
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: locale === 'es' ? 'Inicio' : 'Home',
+        item: `${SITE_URL}${localePrefix || '/'}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: locale === 'es' ? 'Blog' : 'Blog',
+        item: `${SITE_URL}${localePrefix}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: articleUrl,
+      },
+    ],
+  };
+
   return (
     <PageShell>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Header */}
       <section className="bg-white py-16 max-md:py-10">

@@ -41,6 +41,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
           <Image
             src="/images/Radiance_Complete_360_Product_Line.jpeg"
             alt=""
+            aria-hidden="true"
             fill
             priority
             sizes="100vw"

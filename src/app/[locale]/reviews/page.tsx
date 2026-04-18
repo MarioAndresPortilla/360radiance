@@ -57,6 +57,7 @@ function GoogleReviewCard({ review }: { review: GoogleReview }) {
           <Image
             src={review.authorPhotoUrl}
             alt=""
+            aria-hidden="true"
             width={44}
             height={44}
             unoptimized
